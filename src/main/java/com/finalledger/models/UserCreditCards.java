@@ -29,27 +29,4 @@ class UserCreditCards {
         this.cardId = cardId;
     }
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public Long getCardId() {
-        return cardId;
-    }
-
-    public void setCardId(Long cardId) {
-        this.cardId = cardId;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
 }
