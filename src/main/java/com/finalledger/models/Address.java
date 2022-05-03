@@ -35,26 +35,30 @@ public class Address {
             joinColumns={@JoinColumn(name = "contact_id")},
             inverseJoinColumns={@JoinColumn(name = "address_id")}
     )
-    private List<Address> addresses;
+    private List<Address> contactAddresses;
 
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable (
             name = "personal_addresses",
-            joinColumns={@JoinColumn(name )}
+            joinColumns={@JoinColumn(name = "personal_id" )},
+            inverseJoinColumns = {@JoinColumn(name = "address_id")}
     )
+    private List<Address> personalAddresses;
 
     public Address() {}
 
-    public Address(String propertyType, String streetAddress, String streetAddress2, String city, String state, int zipcode) {
+    public Address(String propertyType, String streetAddress, String streetAddress2, String city, String state, int zipcode, List<Address> contactAddresses, List<Address> personalAddresses) {
         this.propertyType = propertyType;
         this.streetAddress = streetAddress;
         this.streetAddress2 = streetAddress2;
         this.city = city;
         this.state = state;
         this.zipcode = zipcode;
+        this.contactAddresses = contactAddresses;
+        this.personalAddresses = personalAddresses;
     }
 
-    public Address(Long id, String propertyType, String streetAddress, String streetAddress2, String city, String state, int zipcode) {
+    public Address(Long id, String propertyType, String streetAddress, String streetAddress2, String city, String state, int zipcode, List<Address> contactAddresses, List<Address> personalAddresses) {
         this.id = id;
         this.propertyType = propertyType;
         this.streetAddress = streetAddress;
@@ -62,6 +66,8 @@ public class Address {
         this.city = city;
         this.state = state;
         this.zipcode = zipcode;
+        this.contactAddresses = contactAddresses;
+        this.personalAddresses = personalAddresses;
     }
 
     public Long getId() {
@@ -96,12 +102,20 @@ public class Address {
         this.streetAddress2 = streetAddress2;
     }
 
-    public List<Address> getAddresses() {
-        return addresses;
+    public List<Address> getContactAddresses() {
+        return contactAddresses;
     }
 
-    public void setAddresses(List<Address> addresses) {
-        this.addresses = addresses;
+    public void setContactAddresses(List<Address> contactAddresses) {
+        this.contactAddresses = contactAddresses;
+    }
+
+    public List<Address> getPersonalAddresses() {
+        return personalAddresses;
+    }
+
+    public void setPersonalAddresses(List<Address> personalAddresses) {
+        this.personalAddresses = personalAddresses;
     }
 
     public String getCity() {

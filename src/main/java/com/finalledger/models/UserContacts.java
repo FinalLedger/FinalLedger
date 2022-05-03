@@ -26,7 +26,7 @@ public class UserContacts {
     @Column(nullable = false)
     private String email;
 
-    @ManyToMany(cascade = CascadeType.ALL, mappedBy = "addresses")
+    @ManyToMany(cascade = CascadeType.ALL, mappedBy = "contactAddresses")
     private List<Address> address;
 
     public UserContacts() {}
