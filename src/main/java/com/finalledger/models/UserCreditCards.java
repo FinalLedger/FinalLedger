@@ -7,7 +7,7 @@ import java.util.List;
 class UserCreditCards {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name ="user_id", nullable = false)
+    @Column(name ="userCreditCard_id", nullable = false)
     private Long id;
 
 

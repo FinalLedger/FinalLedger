@@ -17,19 +17,21 @@ public class CreditCard {
     private String issuer;
 
     @ManyToOne
-    @JoinColumn(name="user_id")
+    @JoinColumn(name="userCreditCard_Id")
     private User user;
 
     public CreditCard(){}
 
-    public CreditCard(Long id,String type, String issuer){
+    public CreditCard(Long id,String type, String issuer, User user){
         this.id = id;
         this.type = type;
         this.issuer = issuer;
+        this.user = user;
     }
-    public CreditCard(String type, String issuer){
+    public CreditCard(String type, String issuer, User user){
         this.type = type;
         this.issuer = issuer;
+        this.user = user;
     }
 
     public Long getId() {
