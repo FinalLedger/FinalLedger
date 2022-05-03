@@ -24,27 +24,26 @@ public class User {
     @Column(nullable = false)
     private boolean isMainUser;
 
-
-    @ManyToMany(cascade = CascadeType.ALL)
-    private List<User> users;
+    @ManyToMany(cascade = CascadeType.ALL, mappedBy = "users")
+    private List<CreditCard> creditCards;
 
     public User() {}
 
-    public User(String username, String email, String password, boolean isMainUser, List<User> users) {
+    public User(String username, String email, String password, boolean isMainUser) {
         this.username = username;
         this.email = email;
         this.password = password;
         this.isMainUser = isMainUser;
-        this.users = users;
+
     }
 
-    public User(Long id, String username, String email, String password, boolean isMainUser, List<User> users) {
+    public User(Long id, String username, String email, String password, boolean isMainUser) {
         this.id = id;
         this.username = username;
         this.email = email;
         this.password = password;
         this.isMainUser = isMainUser;
-        this.users = users;
+
     }
 
     public Long getId() {

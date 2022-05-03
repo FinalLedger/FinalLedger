@@ -6,8 +6,8 @@ import java.util.List;
 @Entity
 public class CreditCard {
     @Id
-    @GeneratedValue
-    @Column(name= "creditCardId", nullable = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="id", nullable = false)
     private Long id;
 
     @Column(nullable = false)
@@ -16,22 +16,26 @@ public class CreditCard {
     @Column(nullable=false)
     private String issuer;
 
-    @ManyToOne
-    @JoinColumn(name="userCreditCard_Id")
-    private User user;
+    @ManyToMany
+    @JoinTable(
+            name="User_Credit_Cards",
+            joinColumns={@JoinColumn(name="user_id")},
+            inverseJoinColumns={@JoinColumn(name="card_id")})
+    private List<User> users;
 
     public CreditCard(){}
 
-    public CreditCard(Long id,String type, String issuer, User user){
+    public CreditCard(Long id, String type, String issuer, List<User> users) {
         this.id = id;
         this.type = type;
         this.issuer = issuer;
-        this.user = user;
+        this.users = users;
+
     }
-    public CreditCard(String type, String issuer, User user){
+    public CreditCard( String type, String issuer, List<User> users) {
         this.type = type;
         this.issuer = issuer;
-        this.user = user;
+        this.users = users;
     }
 
     public Long getId() {
@@ -56,5 +60,13 @@ public class CreditCard {
 
     public void setIssuer(String issuer) {
         this.issuer = issuer;
+    }
+
+    public List<User> getUsers() {
+        return users;
+    }
+
+    public void setUsers(List<User> users) {
+        this.users = users;
     }
 }

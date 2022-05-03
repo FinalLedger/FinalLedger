@@ -1,6 +1,6 @@
 package com.finalledger.repositories;
 
-import org.apache.catalina.User;
+import com.finalledger.models.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface UserCreditCardsRepository extends JpaRepository <User,Long> {
