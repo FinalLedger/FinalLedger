@@ -6,23 +6,34 @@
 
 body {
     background: #333;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
     font-family: 'Montserrat', sans-serif;
     height: 100vh;
     margin: -20px 0 50px;
+    cursor: grabbing;
 }
-
 nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    color: #7d11e3;
+    border: #212121 solid 3px;
+    width: 100%;
+    height: 90px;
+    text-align: center;
+    position: center;
+
+}
+.nav-logo {
+
+}
+/*nav {
     font-weight: bolder;
     display: flex;
     flex-direction: row;
     text-decoration: none;
     list-style: none;
     font-family: 'Radio Canada', sans-serif;
-}
+}*/
 h1 {
     font-weight: bold;
     margin: 0;
@@ -66,8 +77,9 @@ button {
     letter-spacing: 1px;
     text-transform: uppercase;
     transition: transform 80ms ease-in;
+    box-shadow: 0 14px 18px rgba(125, 17, 227, 0.58), 0 10px 10px rgb(125, 17, 17, 227);
 }
-button:hover {
+.button:hover {
     color: purple;
     transition: ease-out 1s;
 }
@@ -95,7 +107,7 @@ input {
 .container {
     background-color: #fff;
     border-radius: 10px;
-    box-shadow: 0 14px 28px rgba(125, 17, 227, 0.58), 0 10px 10px rgb(125, 17, 227);
+    box-shadow: 0 14px 28px rgba(125, 17, 227, 0.58), 0 10px 10px rgb(230, 229, 232);
     position: relative;
     overflow: hidden;
     width: 768px;
@@ -171,4 +183,121 @@ input {
     margin: 0 5px;
     height: 40px;
     width: 40px;
+}
+/* Index/Landing Page*/
+.landing-container {
+    width: 95%;
+    height: 200px;
+   /* position: center;*/
+    box-shadow: 0 14px 28px rgba(125, 17, 227, 0.58), 0 10px 10px rgb(125, 17, 227);
+    border: #7d11e3 solid 3px;
+    padding-top: 5%;
+    margin-left: 25px;
+}
+
+
+
+
+.button {
+    position: relative;
+    padding: 1em 1.8em;
+    outline: none;
+    border: 1px solid #303030;
+    background: #212121;
+    color: #ae00ff;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 15px;
+    overflow: hidden;
+    /*Slow Down?*/
+    transition: 0.2s;
+    border-radius: 20px;
+    cursor: crosshair;
+    font-weight: bold;
+}
+
+.button:hover {
+    box-shadow: 0 0 10px #ae00ff, 0 0 25px #001eff, 0 0 50px #ae00ff;
+    transition-delay: 0.6s;
+}
+
+.button span {
+    position: absolute;
+}
+
+.button span:nth-child(1) {
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #ae00ff);
+}
+
+.button:hover span:nth-child(1) {
+    left: 100%;
+    transition: 0.7s;
+}
+
+.button span:nth-child(3) {
+    bottom: 0;
+    right: -100%;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #001eff);
+}
+
+.button:hover span:nth-child(3) {
+    right: 100%;
+    transition: 0.7s;
+    transition-delay: 0.35s;
+}
+
+.button span:nth-child(2) {
+    top: -100%;
+    right: 0;
+    width: 2px;
+    height: 100%;
+    background: linear-gradient(180deg, transparent, #ae00ff);
+}
+
+.button:hover span:nth-child(2) {
+    top: 100%;
+    transition: 0.7s;
+    transition-delay: 0.17s;
+}
+
+.button span:nth-child(4) {
+    bottom: -100%;
+    left: 0;
+    width: 2px;
+    height: 100%;
+    background: linear-gradient(360deg, transparent, #001eff);
+}
+
+.button:hover span:nth-child(4) {
+    bottom: 100%;
+    transition: 0.7s;
+    transition-delay: 0.52s;
+}
+
+.button:active {
+    background: #ae00af;
+    background: linear-gradient(to top right, #ae00af, #001eff);
+    color: #bfbfbf;
+    box-shadow: 0 0 8px #ae00ff, 0 0 8px #001eff, 0 0 8px #ae00ff;
+    transition: 0.1s;
+}
+
+.button:active span:nth-child(1)
+span:nth-child(2)
+span:nth-child(2)
+span:nth-child(2) {
+    transition: none;
+    transition-delay: .5ms;
+}
+.nav {
+    align-items: center;
+    padding-top: 25%;
+    display: flex;
+    justify-content: space-evenly;
 }

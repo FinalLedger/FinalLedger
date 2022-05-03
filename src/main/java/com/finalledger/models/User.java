@@ -25,6 +25,7 @@ public class User {
 
     public User() {}
 
+
     public User(String username, String email, String password, boolean isMainUser) {
         this.username = username;
         this.email = email;

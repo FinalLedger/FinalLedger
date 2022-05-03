@@ -2,6 +2,7 @@ package com.finalledger.controllers;
 
 import com.finalledger.models.User;
 import com.finalledger.repositories.UserRepository;
+//import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,6 +14,7 @@ public class UserController {
 
     private final UserRepository userDao;
 
+
     public UserController(UserRepository userDao) {
         this.userDao = userDao;
     }
@@ -20,7 +22,7 @@ public class UserController {
     @GetMapping("/register")
     public String showRegistrationForm(Model model){
         model.addAttribute("user", new User());
-        return "/register";
+        return "register";
     }
 
     @PostMapping("/register")
@@ -31,5 +33,9 @@ public class UserController {
         return "redirect:/login";
     }
 
+    @GetMapping("/profile")
+    public String showProfile() {
+        return "profile";
+    }
 
 }
