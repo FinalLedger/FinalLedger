@@ -24,11 +24,9 @@ public class User {
     @Column(nullable = false)
     private boolean isMainUser;
 
+
     @ManyToMany(cascade = CascadeType.ALL)
     private List<User> users;
-
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
-    private List<UserCreditCards> cards;
 
     public User() {}
 
