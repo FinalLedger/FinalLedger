@@ -1,9 +1,10 @@
 package com.finalledger.models;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
-@Table(name = "userPersonalInformation")
+@Table(name = "user_personal")
 public class UserPersonalInformation {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -44,9 +45,13 @@ public class UserPersonalInformation {
     @JoinColumn(name = "main_user_id")
     private User user;
 
-    public UserPersonalInformation() {}
+    @ManyToMany(cascade = CascadeType.ALL, mappedBy = "personalAddresses")
+    private List<Address> address;
 
-    public UserPersonalInformation(String legalName, String maidenName, String primaryAddress, int phoneNumber, String birthPlace, String maritalStatus, String occupation, String citizenship, String religion, String militaryStatus, User user) {
+    public UserPersonalInformation() {
+    }
+
+    public UserPersonalInformation(String legalName, String maidenName, String primaryAddress, int phoneNumber, String birthPlace, String maritalStatus, String occupation, String citizenship, String religion, String militaryStatus, User user, List<Address> address) {
         this.legalName = legalName;
         this.maidenName = maidenName;
         this.primaryAddress = primaryAddress;
@@ -58,9 +63,10 @@ public class UserPersonalInformation {
         this.religion = religion;
         this.militaryStatus = militaryStatus;
         this.user = user;
+        this.address = address;
     }
 
-    public UserPersonalInformation(Long id, String legalName, String maidenName, String primaryAddress, int phoneNumber, String birthPlace, String maritalStatus, String occupation, String citizenship, String religion, String militaryStatus, User user) {
+    public UserPersonalInformation(Long id, String legalName, String maidenName, String primaryAddress, int phoneNumber, String birthPlace, String maritalStatus, String occupation, String citizenship, String religion, String militaryStatus, User user, List<Address> address) {
         this.id = id;
         this.legalName = legalName;
         this.maidenName = maidenName;
@@ -73,6 +79,7 @@ public class UserPersonalInformation {
         this.religion = religion;
         this.militaryStatus = militaryStatus;
         this.user = user;
+        this.address = address;
     }
 
     public Long getId() {
@@ -81,6 +88,14 @@ public class UserPersonalInformation {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getLegalName() {
+        return legalName;
+    }
+
+    public void setLegalName(String legalName) {
+        this.legalName = legalName;
     }
 
     public String getMaidenName() {
@@ -161,5 +176,13 @@ public class UserPersonalInformation {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public List<Address> getAddress() {
+        return address;
+    }
+
+    public void setAddress(List<Address> address) {
+        this.address = address;
     }
 }

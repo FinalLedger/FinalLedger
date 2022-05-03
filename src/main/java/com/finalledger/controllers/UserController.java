@@ -13,11 +13,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 public class UserController {
 
     private final UserRepository userDao;
-//    private final PasswordEncoder passwordEncoder;
+
 
     public UserController(UserRepository userDao) {
         this.userDao = userDao;
-//        this.passwordEncoder = passwordEncoder;
     }
 
     @GetMapping("/register")
