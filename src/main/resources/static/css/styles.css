@@ -14,17 +14,20 @@ body {
 nav {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+
     color: #7d11e3;
     border: #212121 solid 3px;
     width: 100%;
     height: 90px;
     text-align: center;
     position: center;
+    justify-content: space-around;
+    font-weight: bolder;
 
 }
 .nav-logo {
-
+text-align: left;
+    padding-left: 10px;
 }
 /*nav {
     font-weight: bolder;
@@ -301,3 +304,4 @@ span:nth-child(2) {
     display: flex;
     justify-content: space-evenly;
 }
+
