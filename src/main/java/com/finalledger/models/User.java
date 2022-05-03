@@ -27,6 +27,9 @@ public class User {
     @ManyToMany(cascade = CascadeType.ALL)
     private List<User> users;
 
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
+    private List<UserCreditCards> cards;
+
     public User() {}
 
     public User(String username, String email, String password, boolean isMainUser, List<User> users) {
