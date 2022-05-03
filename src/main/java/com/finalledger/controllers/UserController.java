@@ -16,15 +16,14 @@ public class UserController {
     private final PasswordEncoder passwordEncoder;
 
     public UserController(UserRepository userDao, PasswordEncoder passwordEncoder) {
-
         this.userDao = userDao;
         this.passwordEncoder = passwordEncoder;
     }
 
     @GetMapping("/register")
-    public String showSignupForm(Model model){
+    public String showRegistrationForm(Model model){
         model.addAttribute("user", new User());
-        return "users/register";
+        return "/register";
     }
 
     @PostMapping("/register")
