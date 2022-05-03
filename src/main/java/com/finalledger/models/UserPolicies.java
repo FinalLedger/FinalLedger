@@ -1,31 +1,31 @@
 package com.finalledger.models;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class UserPolicies {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name ="id", nullable = false)
+    @Column(name ="userPolicyId", nullable = false)
     private Long userId;
 
     @Column(nullable = false)
     private Long financialInvestmentId;
 
-    @ManyToOne
-    @JoinColumn(name="user_id")
-    private User user;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
+    private List<InsurancePolicy> insurancePolicy;
 
     public UserPolicies(){}
 
-    public UserPolicies(Long userId, User user, Long financialInvestmentId){
+    public UserPolicies(Long userId, Long financialInvestmentId, List<InsurancePolicy> insurancePolicy){
         this.userId = userId;
-        this.user = user;
         this.financialInvestmentId = financialInvestmentId;
+        this.insurancePolicy = insurancePolicy;
     }
-    public UserPolicies(User user, Long financialInvestmentId){
-        this.user =user;
+    public UserPolicies(User user, Long financialInvestmentId,List<InsurancePolicy> insurancePolicy){
         this.financialInvestmentId = financialInvestmentId;
+        this.insurancePolicy = insurancePolicy;
     }
 
     public Long getUserId() {
@@ -44,11 +44,11 @@ public class UserPolicies {
         this.financialInvestmentId = financialInvestmentId;
     }
 
-    public User getUser() {
-        return user;
+    public List<InsurancePolicy> getInsurancePolicy() {
+        return insurancePolicy;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setInsurancePolicy(List<InsurancePolicy> insurancePolicy) {
+        this.insurancePolicy = insurancePolicy;
     }
 }

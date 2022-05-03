@@ -20,12 +20,14 @@ class UserCreditCards {
 
     public UserCreditCards(){}
 
-    public UserCreditCards(Long id,Long cardId){
+    public UserCreditCards(Long id,Long cardId, List<CreditCard> creditCards){
+        this.creditCards = creditCards;
         this.id = id;
         this.cardId = cardId;
     }
 
-    public UserCreditCards(Long cardId){
+    public UserCreditCards(Long cardId,  List<CreditCard> creditCards){
+        this.creditCards = creditCards;
         this.cardId = cardId;
     }
 

@@ -8,7 +8,6 @@ public class UserPersonalController {
 
     private final UserRepository userDao;
 
-
     public UserPersonalController(UserRepository userDao) {
         this.userDao = userDao;
     }
