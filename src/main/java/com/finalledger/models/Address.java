@@ -30,24 +30,24 @@ public class Address {
     private int zipcode;
 
     @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable (
+    @JoinTable(
             name = "contact_addresses",
-            joinColumns={@JoinColumn(name = "contact_id")},
-            inverseJoinColumns={@JoinColumn(name = "address_id")}
+            joinColumns = {@JoinColumn(name = "address_id")},
+            inverseJoinColumns = {@JoinColumn(name = "contact_id")}
     )
-    private List<Address> contactAddresses;
+    private List<UserContacts> contactAddresses;
 
     @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable (
+    @JoinTable(
             name = "personal_addresses",
-            joinColumns={@JoinColumn(name = "personal_id" )},
-            inverseJoinColumns = {@JoinColumn(name = "address_id")}
+            joinColumns = {@JoinColumn(name = "address_id")},
+            inverseJoinColumns = {@JoinColumn(name = "personal_id")}
     )
-    private List<Address> personalAddresses;
+    private List<UserPersonalInformation> personalAddresses;
 
     public Address() {}
 
-    public Address(String propertyType, String streetAddress, String streetAddress2, String city, String state, int zipcode, List<Address> contactAddresses, List<Address> personalAddresses) {
+    public Address(String propertyType, String streetAddress, String streetAddress2, String city, String state, int zipcode, List<UserContacts> contactAddresses, List<UserPersonalInformation> personalAddresses) {
         this.propertyType = propertyType;
         this.streetAddress = streetAddress;
         this.streetAddress2 = streetAddress2;
@@ -58,7 +58,7 @@ public class Address {
         this.personalAddresses = personalAddresses;
     }
 
-    public Address(Long id, String propertyType, String streetAddress, String streetAddress2, String city, String state, int zipcode, List<Address> contactAddresses, List<Address> personalAddresses) {
+    public Address(Long id, String propertyType, String streetAddress, String streetAddress2, String city, String state, int zipcode, List<UserContacts> contactAddresses, List<UserPersonalInformation> personalAddresses) {
         this.id = id;
         this.propertyType = propertyType;
         this.streetAddress = streetAddress;
@@ -102,22 +102,6 @@ public class Address {
         this.streetAddress2 = streetAddress2;
     }
 
-    public List<Address> getContactAddresses() {
-        return contactAddresses;
-    }
-
-    public void setContactAddresses(List<Address> contactAddresses) {
-        this.contactAddresses = contactAddresses;
-    }
-
-    public List<Address> getPersonalAddresses() {
-        return personalAddresses;
-    }
-
-    public void setPersonalAddresses(List<Address> personalAddresses) {
-        this.personalAddresses = personalAddresses;
-    }
-
     public String getCity() {
         return city;
     }
@@ -140,5 +124,21 @@ public class Address {
 
     public void setZipcode(int zipcode) {
         this.zipcode = zipcode;
+    }
+
+    public List<UserContacts> getContactAddresses() {
+        return contactAddresses;
+    }
+
+    public void setContactAddresses(List<UserContacts> contactAddresses) {
+        this.contactAddresses = contactAddresses;
+    }
+
+    public List<UserPersonalInformation> getPersonalAddresses() {
+        return personalAddresses;
+    }
+
+    public void setPersonalAddresses(List<UserPersonalInformation> personalAddresses) {
+        this.personalAddresses = personalAddresses;
     }
 }
