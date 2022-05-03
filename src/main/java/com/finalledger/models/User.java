@@ -29,6 +29,7 @@ public class User {
 
     public User() {}
 
+
     public User(String username, String email, String password, boolean isMainUser, List<User> users) {
         this.username = username;
         this.email = email;
