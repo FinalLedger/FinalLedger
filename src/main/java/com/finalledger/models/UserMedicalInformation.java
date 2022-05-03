@@ -4,7 +4,7 @@ package com.finalledger.models;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "userMedicalInformation")
+@Table(name = "user_medical")
 public class UserMedicalInformation {
 
     @Id

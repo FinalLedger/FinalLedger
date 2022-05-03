@@ -1,9 +1,10 @@
 package com.finalledger.models;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
-@Table(name = "userPersonalInformation")
+@Table(name = "user_personal")
 public class UserPersonalInformation {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -43,6 +44,9 @@ public class UserPersonalInformation {
     @OneToOne
     @JoinColumn(name = "main_user_id")
     private User user;
+
+    @ManyToMany(cascade = CascadeType.ALL, mappedBy = "addresses")
+    private List<Address> address;
 
     public UserPersonalInformation() {}
 

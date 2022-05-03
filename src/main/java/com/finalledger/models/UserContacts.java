@@ -1,9 +1,10 @@
 package com.finalledger.models;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
-@Table(name = "userContacts")
+@Table(name = "user_contacts")
 public class UserContacts {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,12 +26,12 @@ public class UserContacts {
     @Column(nullable = false)
     private String email;
 
-    @Column(nullable = false)
-    private String address;
+    @ManyToMany(cascade = CascadeType.ALL, mappedBy = "addresses")
+    private List<Address> address;
 
     public UserContacts() {}
 
-    public UserContacts(String relationship, String firstName, String lastName, int phoneNumber, String email, String address, User user) {
+    public UserContacts(String relationship, String firstName, String lastName, int phoneNumber, String email, List<Address> address, User user) {
         this.relationship = relationship;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -40,7 +41,7 @@ public class UserContacts {
         this.user = user;
     }
 
-    public UserContacts(Long id, String relationship, String firstName, String lastName, int phoneNumber, String email, String address, User user) {
+    public UserContacts(Long id, String relationship, String firstName, String lastName, int phoneNumber, String email, List<Address> address, User user) {
         this.id = id;
         this.relationship = relationship;
         this.firstName = firstName;
@@ -103,11 +104,11 @@ public class UserContacts {
         this.email = email;
     }
 
-    public String getAddress() {
+    public List<Address> getAddress() {
         return address;
     }
 
-    public void setAddress(String address) {
+    public void setAddress(List<Address> address) {
         this.address = address;
     }
 
