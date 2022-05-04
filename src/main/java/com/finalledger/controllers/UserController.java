@@ -34,7 +34,7 @@ public class UserController {
 
     @GetMapping("/profile")
     public String showProfile() {
-        return "personal/profile";
+        return "users/profile";
     }
 
 }
