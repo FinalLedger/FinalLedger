@@ -1,7 +1,6 @@
 package com.finalledger.models;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Entity
 @Table(name = "users")
@@ -24,26 +23,37 @@ public class User {
     @Column(nullable = false)
     private boolean isMainUser;
 
-    @ManyToMany(cascade = CascadeType.ALL)
-    private List<User> users;
+
+    @ManyToMany(cascade = CascadeType.ALL, mappedBy = "users")
+    private List<CreditCard> creditCards;
+
+    @ManyToMany(cascade = CascadeType.ALL, mappedBy = "users")
+    private List<FinancialInvestment> financialInvestments;
+
+    @ManyToMany(cascade = CascadeType.ALL, mappedBy = "users")
+    private List<InsurancePolicy> insurancePolicy;
+
+    @ManyToMany(cascade = CascadeType.ALL, mappedBy = "users")
+    private List<BankAccounts> bankAccounts;
 
     public User() {}
 
-    public User(String username, String email, String password, boolean isMainUser, List<User> users) {
+
+    public User(String username, String email, String password, boolean isMainUser) {
         this.username = username;
         this.email = email;
         this.password = password;
         this.isMainUser = isMainUser;
-        this.users = users;
+
     }
 
-    public User(Long id, String username, String email, String password, boolean isMainUser, List<User> users) {
+    public User(Long id, String username, String email, String password, boolean isMainUser) {
         this.id = id;
         this.username = username;
         this.email = email;
         this.password = password;
         this.isMainUser = isMainUser;
-        this.users = users;
+
     }
 
     public Long getId() {
@@ -85,4 +95,5 @@ public class User {
     public void setMainUser(boolean mainUser) {
         isMainUser = mainUser;
     }
+
 }
