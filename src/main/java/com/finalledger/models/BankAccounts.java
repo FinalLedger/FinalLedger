@@ -6,8 +6,8 @@ import java.util.List;
 @Entity
 public class BankAccounts {
     @Id
-    @GeneratedValue
-    @Column(name= "bankAccountId", nullable = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name= "id", nullable = false)
     private Long id;
 
     @Column(nullable = false)
