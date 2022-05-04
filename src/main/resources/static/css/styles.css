@@ -345,3 +345,20 @@ span:nth-child(2) {
     position:center;
 }
 
+.card img {
+    height: 300px;
+    width:  250px;
+}
+.card-two {
+    position: center;
+    border: #212121 solid 3px;
+}
+
+.typewrite {
+    color: whitesmoke;
+}
+/*Used For Main age*/
+.typewriter {
+font-weight:  bolder;
+    font-size: large;
+}

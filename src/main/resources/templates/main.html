@@ -10,109 +10,109 @@
 </head>
 <nav class="main-nav">
   <h2 class="nav-logo">Ledger</h2>
+
   <a>sds</a>
   <a>zxc</a>
   <a>dhd</a>
 </nav>
+
 <body>
-<h1>Final Ledger</h1>
+<h1 style="display: flex; flex-direction: row">Final Ledger</h1>
+<br>
+<hr>
+<h1>
+  <a href="" class="typewrite typewriter" data-period="2000" data-type='[ "Welcome to the Main Page", "Here you can access all content based on your account capabilities." ]'>
+    <span class="wrap"></span>
+  </a>
+</h1>
 
-<!--Hypothetical code-->
-<!--<ul class="tabs">
-  <li>
-    <a class="active" href="#">
-      <i class="fa fa-home tab-icon"></i>
-      Home
-    </a>
-  </li>
-  <li>
-    <a href="#" class="expand">
-      <i class="fa fa-file tab-icon"></i>
-      <i class="fa fa-times close-icon"></i>
-      <span>4G Performance Optimization</span>
-    </a>
-  </li>
-  <li>
-    <a href="#" class="expand">
-      <i class="fa fa-check-circle tab-icon"></i>
-      <i class="fa fa-times close-icon"></i>
-      <span>4G Performance Optimization Solutions</span>
-    </a>
-  </li>
-  <li class="tooltip" data-title="4G Performance Optimization">
-    <a href="#">
-      <i class="fa fa-user tab-icon"></i>
-      <i class="fa fa-times close-icon"></i>
-      <span>4G Performance Optimization</span>
-    </a>
-  </li>
-  <li class="tooltip" data-title="4G Performance Optimization Solutions">
-    <a href="#">
-      <i class="fa fa-car tab-icon"></i>
-      <i class="fa fa-times close-icon"></i>
-      <span>4G Performance Optimization Solutions</span>
-    </a>
-  </li>
-  <li>
-    <a href="#">
-      <i class="fa fa-pen tab-icon"></i>
-      <i class="fa fa-times close-icon"></i>
-      Register
-    </a>
-  </li>
-  <li>
-    <a href="#">
-      <i class="fa fa-plane tab-icon"></i>
-      <i class="fa fa-times close-icon"></i>
-      Travel
-    </a>
-  </li>
-  <li>
-    <a href="#">
-      <i class="fa fa-utensils tab-icon"></i>
-      <i class="fa fa-times close-icon"></i>
-      Food
-    </a>
-  </li>
-</ul>-->
+<!--<nav>
+  <ul class="nav nav-tabs" id="myTab" role="tablist">
+    <li class="nav-item" role="presentation">
+      <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">Home</button>
+    </li>
+    <li class="nav-item" role="presentation">
+      <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">Profile</button>
+    </li>
+    <li class="nav-item" role="presentation">
+      <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact" type="button" role="tab" aria-controls="contact" aria-selected="false">Contact</button>
+    </li>
+  </ul>
+  <div class="tab-content" id="myTabContent">
+    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">...</div>
+    <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">...</div>
+    <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">...</div>
+  </div>
+</nav>-->
+
+
+
+
+
+
+
+
+
+
+
+
 <script>
-  var $tabs = $('.tabs li a');
+  var TxtType = function(el, toRotate, period) {
+    this.toRotate = toRotate;
+    this.el = el;
+    this.loopNum = 0;
+    this.period = parseInt(period, 10) || 2000;
+    this.txt = '';
+    this.tick();
+    this.isDeleting = false;
+  };
 
-  $tabs.click(function() {
-    $('.active').removeClass('active');
-    $(this).addClass('active');
-  });
-  $tabs.mouseover(function(){
-    let $icon = $(this).find('.tab-icon');
-    let $closeIcon = $(this).find('.close-icon');
-    if($closeIcon.length > 0) {
-      $icon.css('display', 'none');
-      $closeIcon.css('display', 'inline-block');
+  TxtType.prototype.tick = function() {
+    var i = this.loopNum % this.toRotate.length;
+    var fullTxt = this.toRotate[i];
+
+    if (this.isDeleting) {
+      this.txt = fullTxt.substring(0, this.txt.length - 1);
+    } else {
+      this.txt = fullTxt.substring(0, this.txt.length + 1);
     }
-  });
-  $tabs.mouseout(function(){
-    let $icon = $(this).find('.tab-icon');
-    let $closeIcon = $(this).find('.close-icon');
-    if($closeIcon.length > 0) {
-      $icon.css('display', 'inline-block');
-      $closeIcon.css('display', 'none');
+
+    this.el.innerHTML = '<span class="wrap">'+this.txt+'</span>';
+
+    var that = this;
+    var delta = 200 - Math.random() * 100;
+
+    if (this.isDeleting) { delta /= 2; }
+
+    if (!this.isDeleting && this.txt === fullTxt) {
+      delta = this.period;
+      this.isDeleting = true;
+    } else if (this.isDeleting && this.txt === '') {
+      this.isDeleting = false;
+      this.loopNum++;
+      delta = 500;
     }
-  });
-  $tabs.find('.close-icon').click(function(e){
-    e.stopPropagation();
-    let $li = $(this).closest('li');
-    let $link = $li.find('a');
-    if($link.hasClass('active')) {
-      if($li.next().length > 0) {
-        $li.next().find('a').addClass('active');
-      } else {
-        $li.prev().find('a').addClass('active');
+
+    setTimeout(function() {
+      that.tick();
+    }, delta);
+  };
+
+  window.onload = function() {
+    var elements = document.getElementsByClassName('typewrite');
+    for (var i=0; i<elements.length; i++) {
+      var toRotate = elements[i].getAttribute('data-type');
+      var period = elements[i].getAttribute('data-period');
+      if (toRotate) {
+        new TxtType(elements[i], JSON.parse(toRotate), period);
       }
     }
-    $li.hide(function(){
-      $li.remove();
-    });
-  });
+    // INJECT CSS
+    var css = document.createElement("style");
+    css.type = "text/css";
+    css.innerHTML = ".typewrite > .wrap { border-right: 0.08em solid #fff}";
+    document.body.appendChild(css);
+  };
 </script>
 <footer>
   <a href="#">A</a>
