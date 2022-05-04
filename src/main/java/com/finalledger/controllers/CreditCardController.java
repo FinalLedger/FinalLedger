@@ -1,9 +1,10 @@
 package com.finalledger.controllers;
 
-public class CreditCardController {
-    private final CreditCardController userDao;
+import com.finalledger.repositories.UserRepository;
 
-    public CreditCardController(CreditCardController userDao) {
+public class CreditCardController {
+    private final UserRepository userDao;
+    public CreditCardController(UserRepository userDao) {
         this.userDao = userDao;
     }
 }

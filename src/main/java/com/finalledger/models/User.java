@@ -27,6 +27,15 @@ public class User {
     @ManyToMany(cascade = CascadeType.ALL, mappedBy = "users")
     private List<CreditCard> creditCards;
 
+    @ManyToMany(cascade = CascadeType.ALL, mappedBy = "users")
+    private List<FinancialInvestment> financialInvestments;
+
+    @ManyToMany(cascade = CascadeType.ALL, mappedBy = "users")
+    private List<InsurancePolicy> insurancePolicy;
+
+    @ManyToMany(cascade = CascadeType.ALL, mappedBy = "users")
+    private List<BankAccounts> bankAccounts;
+
     public User() {}
 
     public User(String username, String email, String password, boolean isMainUser) {

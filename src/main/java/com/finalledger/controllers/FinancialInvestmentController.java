@@ -2,11 +2,10 @@ package com.finalledger.controllers;
 
 import com.finalledger.repositories.UserRepository;
 
-public class UserInvestmentController{
-
+public class FinancialInvestmentController {
     private final UserRepository userDao;
 
-    public UserInvestmentController(UserRepository userDao) {
+    public FinancialInvestmentController(UserRepository userDao) {
         this.userDao = userDao;
     }
 }

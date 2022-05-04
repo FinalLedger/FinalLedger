@@ -1,6 +1,7 @@
 package com.finalledger.models;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class BankAccounts {
@@ -21,27 +22,30 @@ public class BankAccounts {
     @Column(nullable = false)
     private boolean savingAccount;
 
-    @ManyToOne
-    @JoinColumn(name="UserAccountId")
-    private User user;
+    @ManyToMany
+    @JoinTable(
+            name="user_accounts",
+            joinColumns={@JoinColumn(name="user_id")},
+            inverseJoinColumns={@JoinColumn(name="bank_id")})
+    private List<User> users;
 
     public BankAccounts(){}
 
-    public BankAccounts(Long id,String company, String contactInfo,User user , boolean checkingAccount , boolean savingAccount){
+    public BankAccounts(Long id, String company, String contactInfo, boolean checkingAccount, boolean savingAccount, List<User> users) {
         this.id = id;
         this.company = company;
         this.contactInfo = contactInfo;
-        this.user = user;
         this.checkingAccount = checkingAccount;
         this.savingAccount = savingAccount;
-
+        this.users = users;
     }
-    public BankAccounts(String company, String contactInfo, User user , boolean checkingAccount , boolean savingAccount){
+
+    public BankAccounts(String company, String contactInfo, boolean checkingAccount, boolean savingAccount, List<User> users) {
         this.company = company;
         this.contactInfo = contactInfo;
-        this.user = user;
         this.checkingAccount = checkingAccount;
         this.savingAccount = savingAccount;
+        this.users = users;
     }
 
     public Long getId() {
@@ -84,11 +88,11 @@ public class BankAccounts {
         this.savingAccount = savingAccount;
     }
 
-    public User getUser() {
-        return user;
+    public List<User> getUsers() {
+        return users;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setUsers(List<User> users) {
+        this.users = users;
     }
 }
