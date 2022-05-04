@@ -16,7 +16,7 @@ public class FinancialInvestment {
     @Column(nullable = false)
     private Long current_value;
 
-    @Column(nullable = false)
+    @Column(nullable = false, unique=true)
     private String beneficiary;
 
     @Column(nullable = false)
