@@ -11,20 +11,25 @@ body {
     margin: -20px 0 50px;
     cursor: grabbing;
 }
+
 nav {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+
     color: #7d11e3;
     border: #212121 solid 3px;
     width: 100%;
     height: 90px;
     text-align: center;
     position: center;
+    justify-content: space-between;
+    font-weight: bolder;
+
 
 }
 .nav-logo {
-
+text-align: left;
+    padding-left: 10px;
 }
 /*nav {
     font-weight: bolder;
@@ -193,9 +198,12 @@ input {
     border: #7d11e3 solid 3px;
     padding-top: 5%;
     margin-left: 25px;
+    background-color: #f3f3f3;
 }
 
-
+.landing-container.h2 {
+    margin-left: 23px;
+}
 
 
 .button {
@@ -295,9 +303,62 @@ span:nth-child(2) {
     transition: none;
     transition-delay: .5ms;
 }
-.nav {
+/*.nav {
     align-items: center;
     padding-top: 25%;
     display: flex;
     justify-content: space-evenly;
+}*/
+.set-title {
+    color: whitesmoke;
+    margin-top: 110px;
+}
+.set {
+    color: whitesmoke;
+    padding-top: 20px;
+    display: flex;
+}
+
+.set-img {
+
+}
+.img-one {
+ margin: 0 0 0 233px;
+    height: 200px;
+    width: 200px;
+}
+
+.set-text-2 {
+    color: whitesmoke;
+    padding-top: 40px;
+    display: flex;
+}
+
+
+/*main*/
+
+.tabs {
+    color:whitesmoke;
+}
+.main-nav a {
+    color: white;
+    position:center;
+}
+
+.card img {
+    height: 300px;
+    width:  250px;
+}
+.card-two {
+    position: center;
+    border: #212121 solid 3px;
+}
+
+.typewrite {
+    color: whitesmoke;
+}
+/*Used For Main age*/
+.typewriter {
+font-weight:  bolder;
+    font-size: large;
 }

@@ -8,7 +8,7 @@
     <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
     <title>Ledger</title>
 </head>
-<body>
+<body style="background-color: #333333">  🚨 <!--move CSS-->
 <nav>
     <ul>
         <li><a href="#">Home</a></li>
@@ -17,7 +17,7 @@
     </ul>
 </nav>
 
-<div class="container" id="container">
+<div style="margin: 100px;" class="container" id="container">  🚨 <!--move CSS-->
     <div class="form-container log-in-container">
         <form th:action="@{/login}" method="post">
             <h1>Login</h1>
@@ -50,7 +50,8 @@
         $("h1").click(function(){
             $("p").toggle();
             $("form").toggle();
-            $("body").css({'background': '#333'});
+            $("body").css({'background': '#ffffff'});
+            $("nav").css({'background': '#333'});
             $("form").append('<img href="https://ca.slack-edge.com/T029BRGN0-U02N7JEAQDP-e4013fbae92e-512" height="100px"; width="100px";>');
         });
     });
