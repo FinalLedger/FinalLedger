@@ -23,6 +23,19 @@ public class User {
     @Column(nullable = false)
     private boolean isMainUser;
 
+
+    @ManyToMany(cascade = CascadeType.ALL, mappedBy = "users")
+    private List<CreditCard> creditCards;
+
+    @ManyToMany(cascade = CascadeType.ALL, mappedBy = "users")
+    private List<FinancialInvestment> financialInvestments;
+
+    @ManyToMany(cascade = CascadeType.ALL, mappedBy = "users")
+    private List<InsurancePolicy> insurancePolicy;
+
+    @ManyToMany(cascade = CascadeType.ALL, mappedBy = "users")
+    private List<BankAccounts> bankAccounts;
+
     public User() {}
 
 
@@ -31,6 +44,7 @@ public class User {
         this.email = email;
         this.password = password;
         this.isMainUser = isMainUser;
+
     }
 
     public User(Long id, String username, String email, String password, boolean isMainUser) {
@@ -39,6 +53,7 @@ public class User {
         this.email = email;
         this.password = password;
         this.isMainUser = isMainUser;
+
     }
 
     public Long getId() {
