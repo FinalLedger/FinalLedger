@@ -1,15 +1,118 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
+    <link rel="stylesheet" href=".././static/css/styles.css">
+    <link rel="stylesheet" href=".././static/css/style.scss">
+    <link  rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js";>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css";>
     <meta charset="UTF-8">
-    <title>About Us</title>
-    <link th:replace="/partials :: bootstrap">
+    <title>Title</title>
 </head>
+<nav class="main-nav">
+    <h2 class="nav-logo">Ledger</h2>
+
+    <a>sds</a>
+    <a>zxc</a>
+    <a>dhd</a>
+</nav>
 <body>
-<nav th:replace="/partials :: navbar"></nav>
-<h1>About Us</h1>
+<h1 style="display: flex; flex-direction: row">Final Ledger</h1>
+<br>
+<hr>
+<h1>
+    <a href="" class="typewrite" data-period="2000" data-type='[ "Hi, Im Jack.", "Im a veteran, and love to Develop." ]'>
+        <span class="wrap"></span>
+    </a>
+</h1>
 <div>
-<!--    insert our headshots and links here     -->
+    <!--1-->
+
+    <div class="card">
+        <img src="https://ca.slack-edge.com/T029BRGN0-U02MS185YTX-bb22efb3fca3-512" class="card-img-top profile-img" alt="img">
+        <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
+        <!--2-->
+        <a href="" class="typewrite" data-period="2000" data-type='[ "Hi, Im Therman.", "Im just a guy who likes all aspects of I.T." ]'>
+            <span class="wrap"></span>
+        </a>
+
+        <div class="card card-two" style="width: 9rem;">
+            <img src="https://ca.slack-edge.com/T029BRGN0-U02MN8EJRGW-36a7ee367d5a-512" class="card-img-top profile-img" alt="img">
+            <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div>
+        </div>
+
+    </div>
 </div>
+<script>
+    var TxtType = function(el, toRotate, period) {
+        this.toRotate = toRotate;
+        this.el = el;
+        this.loopNum = 0;
+        this.period = parseInt(period, 10) || 2000;
+        this.txt = '';
+        this.tick();
+        this.isDeleting = false;
+    };
+
+    TxtType.prototype.tick = function() {
+        var i = this.loopNum % this.toRotate.length;
+        var fullTxt = this.toRotate[i];
+
+        if (this.isDeleting) {
+            this.txt = fullTxt.substring(0, this.txt.length - 1);
+        } else {
+            this.txt = fullTxt.substring(0, this.txt.length + 1);
+        }
+
+        this.el.innerHTML = '<span class="wrap">'+this.txt+'</span>';
+
+        var that = this;
+        var delta = 200 - Math.random() * 100;
+
+        if (this.isDeleting) { delta /= 2; }
+
+        if (!this.isDeleting && this.txt === fullTxt) {
+            delta = this.period;
+            this.isDeleting = true;
+        } else if (this.isDeleting && this.txt === '') {
+            this.isDeleting = false;
+            this.loopNum++;
+            delta = 500;
+        }
+
+        setTimeout(function() {
+            that.tick();
+        }, delta);
+    };
+
+    window.onload = function() {
+        var elements = document.getElementsByClassName('typewrite');
+        for (var i=0; i<elements.length; i++) {
+            var toRotate = elements[i].getAttribute('data-type');
+            var period = elements[i].getAttribute('data-period');
+            if (toRotate) {
+                new TxtType(elements[i], JSON.parse(toRotate), period);
+            }
+        }
+        // INJECT CSS
+        var css = document.createElement("style");
+        css.type = "text/css";
+        css.innerHTML = ".typewrite > .wrap { border-right: 0.08em solid #fff}";
+        document.body.appendChild(css);
+    };
+</script>
+<footer>
+    <a href="#">A</a>
+    <a href="#">A</a>
+    <a href="#">A</a>
+</footer>
 </body>
 </html>
