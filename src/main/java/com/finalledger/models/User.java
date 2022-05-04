@@ -1,6 +1,7 @@
 package com.finalledger.models;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "users")
