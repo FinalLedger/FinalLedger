@@ -20,10 +20,10 @@ public class UserContacts {
     @Column(nullable = false)
     private String lastName;
 
-    @Column(nullable = false)
+    @Column(nullable = false, unique=true)
     private int phoneNumber;
 
-    @Column(nullable = false)
+    @Column(nullable = false, unique=true)
     private String email;
 
     @ManyToMany(cascade = CascadeType.ALL, mappedBy = "contactAddresses")

@@ -19,7 +19,7 @@ public class InsurancePolicy {
     @Column(nullable = false)
     private Long currentValue;
 
-    @Column(nullable = false)
+    @Column(nullable = false, unique=true)
     private String beneficiary;
 
     @ManyToMany

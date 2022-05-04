@@ -16,10 +16,10 @@ public class BankAccounts {
     @Column(nullable = false)
     private String contactInfo;
 
-    @Column(nullable = false)
+    @Column(nullable = false, unique=true)
     private boolean checkingAccount;
 
-    @Column(nullable = false)
+    @Column(nullable = false, unique=true)
     private boolean savingAccount;
 
     @ManyToMany
