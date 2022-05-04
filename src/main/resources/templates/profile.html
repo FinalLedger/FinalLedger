@@ -1,23 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Profile Page</title>
-<style>
-    nav {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-around;
-        color: #7d11e3;
-    }
-</style>
+    <link th:replace="/partials :: bootstrap">
 </head>
 <body>
-<nav>
-    <a>sds</a>
-    <a>zxc</a>
-    <a>dhd</a>
-</nav>
+<nav th:replace="/partials :: navbar"></nav>
 <h1> Welcome to You're Profile Page </h1>
 <P>Navigate around from<em> here</em></P>
 </body>
