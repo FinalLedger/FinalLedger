@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 public class UserController {
 
     private final UserRepository userDao;
-//    private final PasswordEncoder passwordEncoder;
 
     public UserController(UserRepository userDao) {
         this.userDao = userDao;
@@ -22,7 +21,7 @@ public class UserController {
     @GetMapping("/register")
     public String showRegistrationForm(Model model){
         model.addAttribute("user", new User());
-        return "/register";
+        return "register";
     }
 
     @PostMapping("/register")
@@ -33,5 +32,9 @@ public class UserController {
         return "redirect:/login";
     }
 
+    @GetMapping("/profile")
+    public String showProfile() {
+        return "profile";
+    }
 
 }

@@ -1,7 +1,6 @@
 package com.finalledger.models;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Entity
 @Table(name = "users")
@@ -24,6 +23,7 @@ public class User {
     @Column(nullable = false)
     private boolean isMainUser;
 
+
     @ManyToMany(cascade = CascadeType.ALL, mappedBy = "users")
     private List<CreditCard> creditCards;
 
@@ -37,6 +37,7 @@ public class User {
     private List<BankAccounts> bankAccounts;
 
     public User() {}
+
 
     public User(String username, String email, String password, boolean isMainUser) {
         this.username = username;
@@ -94,4 +95,5 @@ public class User {
     public void setMainUser(boolean mainUser) {
         isMainUser = mainUser;
     }
+
 }
