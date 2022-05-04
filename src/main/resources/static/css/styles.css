@@ -11,6 +11,7 @@ body {
     margin: -20px 0 50px;
     cursor: grabbing;
 }
+
 nav {
     display: flex;
     flex-direction: row;
@@ -21,8 +22,9 @@ nav {
     height: 90px;
     text-align: center;
     position: center;
-    justify-content: space-around;
+    justify-content: space-between;
     font-weight: bolder;
+
 
 }
 .nav-logo {
@@ -196,9 +198,12 @@ input {
     border: #7d11e3 solid 3px;
     padding-top: 5%;
     margin-left: 25px;
+    background-color: #f3f3f3;
 }
 
-
+.landing-container.h2 {
+    margin-left: 23px;
+}
 
 
 .button {
@@ -298,10 +303,45 @@ span:nth-child(2) {
     transition: none;
     transition-delay: .5ms;
 }
-.nav {
+/*.nav {
     align-items: center;
     padding-top: 25%;
     display: flex;
     justify-content: space-evenly;
+}*/
+.set-title {
+    color: whitesmoke;
+    margin-top: 110px;
+}
+.set {
+    color: whitesmoke;
+    padding-top: 20px;
+    display: flex;
+}
+
+.set-img {
+
+}
+.img-one {
+ margin: 0 0 0 233px;
+    height: 200px;
+    width: 200px;
+}
+
+.set-text-2 {
+    color: whitesmoke;
+    padding-top: 40px;
+    display: flex;
+}
+
+
+/*main*/
+
+.tabs {
+    color:whitesmoke;
+}
+.main-nav a {
+    color: white;
+    position:center;
 }
 

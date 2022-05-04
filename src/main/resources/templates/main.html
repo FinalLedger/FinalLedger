@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" href=".././static/css/styles.css">
+  <link rel="stylesheet" href=".././static/css/style.scss">
+  <link  rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js";>
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css";>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<nav class="main-nav">
+  <h2 class="nav-logo">Ledger</h2>
+  <a>sds</a>
+  <a>zxc</a>
+  <a>dhd</a>
+</nav>
+<body>
+<h1>Final Ledger</h1>
+
+<!--Hypothetical code-->
+<!--<ul class="tabs">
+  <li>
+    <a class="active" href="#">
+      <i class="fa fa-home tab-icon"></i>
+      Home
+    </a>
+  </li>
+  <li>
+    <a href="#" class="expand">
+      <i class="fa fa-file tab-icon"></i>
+      <i class="fa fa-times close-icon"></i>
+      <span>4G Performance Optimization</span>
+    </a>
+  </li>
+  <li>
+    <a href="#" class="expand">
+      <i class="fa fa-check-circle tab-icon"></i>
+      <i class="fa fa-times close-icon"></i>
+      <span>4G Performance Optimization Solutions</span>
+    </a>
+  </li>
+  <li class="tooltip" data-title="4G Performance Optimization">
+    <a href="#">
+      <i class="fa fa-user tab-icon"></i>
+      <i class="fa fa-times close-icon"></i>
+      <span>4G Performance Optimization</span>
+    </a>
+  </li>
+  <li class="tooltip" data-title="4G Performance Optimization Solutions">
+    <a href="#">
+      <i class="fa fa-car tab-icon"></i>
+      <i class="fa fa-times close-icon"></i>
+      <span>4G Performance Optimization Solutions</span>
+    </a>
+  </li>
+  <li>
+    <a href="#">
+      <i class="fa fa-pen tab-icon"></i>
+      <i class="fa fa-times close-icon"></i>
+      Register
+    </a>
+  </li>
+  <li>
+    <a href="#">
+      <i class="fa fa-plane tab-icon"></i>
+      <i class="fa fa-times close-icon"></i>
+      Travel
+    </a>
+  </li>
+  <li>
+    <a href="#">
+      <i class="fa fa-utensils tab-icon"></i>
+      <i class="fa fa-times close-icon"></i>
+      Food
+    </a>
+  </li>
+</ul>-->
+<script>
+  var $tabs = $('.tabs li a');
+
+  $tabs.click(function() {
+    $('.active').removeClass('active');
+    $(this).addClass('active');
+  });
+  $tabs.mouseover(function(){
+    let $icon = $(this).find('.tab-icon');
+    let $closeIcon = $(this).find('.close-icon');
+    if($closeIcon.length > 0) {
+      $icon.css('display', 'none');
+      $closeIcon.css('display', 'inline-block');
+    }
+  });
+  $tabs.mouseout(function(){
+    let $icon = $(this).find('.tab-icon');
+    let $closeIcon = $(this).find('.close-icon');
+    if($closeIcon.length > 0) {
+      $icon.css('display', 'inline-block');
+      $closeIcon.css('display', 'none');
+    }
+  });
+  $tabs.find('.close-icon').click(function(e){
+    e.stopPropagation();
+    let $li = $(this).closest('li');
+    let $link = $li.find('a');
+    if($link.hasClass('active')) {
+      if($li.next().length > 0) {
+        $li.next().find('a').addClass('active');
+      } else {
+        $li.prev().find('a').addClass('active');
+      }
+    }
+    $li.hide(function(){
+      $li.remove();
+    });
+  });
+</script>
+<footer>
+  <a href="#">A</a>
+  <a href="#">A</a>
+  <a href="#">A</a>
+</footer>
+</body>
+</html>
