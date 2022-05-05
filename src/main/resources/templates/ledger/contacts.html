@@ -26,6 +26,34 @@
       <a class="nav-link" href="/ledger/financial">Financial</a>
     </li>
   </ul>
+<!--display list of contacts created with options to edit, delete, and add new contact-->
+  <form th:action="@{/ledger/contacts}" method="post">
+    <div class="mb-3">
+      <label for="firstName" class="form-label">First Name</label>
+      <input type="text" class="form-control" id="firstName">
+    </div>
+    <div class="mb-3">
+      <label for="lastName" class="form-label">Last Name</label>
+      <input type="text" class="form-control" id="lastName">
+    </div>
+    <div class="mb-3">
+      <label for="relationship" class="form-label">Relationship</label>
+      <input type="text" class="form-control" id="relationship">
+    </div>
+    <div class="mb-3">
+      <label for="phoneNumber" class="form-label">Phone Number</label>
+      <input type="tel" class="form-control" id="phoneNumber">
+    </div>
+    <div class="mb-3">
+      <label for="email" class="form-label">Email</label>
+      <input type="email" class="form-control" id="email">
+    </div>
+    <div class="mb-3">
+      <label for="address" class="form-label">Address</label>
+      <input type="text" class="form-control" id="address">
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
 </div>
 </body>
 </html>
