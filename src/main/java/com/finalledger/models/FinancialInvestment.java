@@ -1,5 +1,8 @@
 package com.finalledger.models;
 
+import com.finalledger.repositories.FinancialInvestmentRepository;
+import com.finalledger.repositories.UserRepository;
+
 import javax.persistence.*;
 import java.util.List;
 

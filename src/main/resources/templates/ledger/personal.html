@@ -39,6 +39,67 @@
       <a class="nav-link" href="/ledger/financial">Financial</a>
     </li>
   </ul>
+
+  <form th:action="@{/ledger/personal}" method="post">
+    <div class="mb-3">
+      <label for="legalName" class="form-label">Legal Name</label>
+      <input type="text" class="form-control" id="legalName">
+    </div>
+    <div class="mb-3">
+      <label for="maidenName" class="form-label">Maiden Name</label>
+      <input type="text" class="form-control" id="maidenName">
+    </div>
+    <div class="mb-3">
+      <label for="primaryAddress" class="form-label">Primary Address</label>
+      <input type="text" class="form-control" id="primaryAddress">
+    </div>
+    <div class="mb-3">
+      <label for="phoneNumber" class="form-label">Phone Number</label>
+      <input type="tel" class="form-control" id="phoneNumber">
+    </div>
+    <div class="mb-3">
+      <label for="birthPlace" class="form-label">Birth Place</label>
+      <input type="text" class="form-control" id="birthPlace">
+    </div>
+    <div class="mb-3">
+      <label for="maritalStatus" class="form-label">Marital Status</label>
+      <select name="maritalStatus" class="form-select" id="maritalStatus">
+        <option selected>Select marital status</option>
+        <option value="single">Single</option>
+        <option value="married">Married</option>
+        <option value="divorced">Divorced</option>
+        <option value="widowed">Widowed</option>
+      </select>
+    </div>
+    <div class="mb-3">
+      <label for="occupation" class="form-label">Occupation</label>
+      <input type="text" class="form-control" id="occupation">
+    </div>
+    <div class="mb-3">
+      <label for="citizenship" class="form-label">Citizenship</label>
+      <select name="citizenship" class="form-select" id="citizenship">
+        <option selected>Select citizenship status</option>
+        <option value="citizen">US Citizen</option>
+        <option value="LPR">Lawful Permanent Resident</option>
+        <option value="visitor">Temporary Visitor</option>
+        <option value="undocImmigrant">Undocumented Immigrant</option>
+      </select>
+    </div>
+    <div class="mb-3">
+      <label for="religion" class="form-label">Religion</label>
+      <input type="text" class="form-control" id="religion">
+    </div>
+    <div class="mb-3">
+      <label for="militaryStatus" class="form-label">Military Status</label>
+      <select name="militaryStatus" class="form-select" id="militaryStatus">
+        <option selected>Select military status</option>
+        <option value="activeDuty">Active-duty</option>
+        <option value="veteran">Veteran</option>
+        <option value="honorableDischarge">Honorable Discharge</option>
+      </select>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
 </div>
 
 <script>
