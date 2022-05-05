@@ -23,7 +23,7 @@ public class UserDocumentController {
     public String showUserDocuments(Model model){
         model.addAttribute("documents", new UserDocuments());
 
-        return "/ledger/documents";
+        return "ledger/documents";
     }
 
     @PostMapping("/ledger/documents")
