@@ -3,11 +3,13 @@ package com.finalledger.controllers;
 import com.finalledger.models.BankAccounts;
 import com.finalledger.repositories.BankAccountsRepository;
 import com.finalledger.repositories.UserRepository;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
+@Controller
 public class BankAccountsController {
     private final UserRepository userDao;
     private final BankAccountsRepository bankAccountsDao;
