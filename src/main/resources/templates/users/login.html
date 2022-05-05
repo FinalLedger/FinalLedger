@@ -3,7 +3,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <meta name="google-signin-client_id" content="549436147051-47s9ccbtg0hsgodenhg3r6pn729cvt9q.apps.googleusercontent.com">
+    <meta name="google-signin-client_id" th:content="${googleAPI}">
     <script src="https://apis.google.com/js/platform.js" async defer></script>
 <!--    <link rel="stylesheet" href="../../static/css/styles.css">-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -42,7 +42,10 @@
             <button>Log In</button>
         </form>
 
-        <button onclick="signOut()">Sign Out</button>
+        <div>
+            <button onclick="signOut()">Sign Out</button>
+        </div>
+
     </div>
     <div class="overlay-container">
         <div class="overlay">
