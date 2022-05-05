@@ -43,7 +43,7 @@ public class FinancialController {
         return "/ledger/financial";
     }
 
-    @PostMapping("/ledger/financial"
+    @PostMapping("/ledger/financial")
     public String saveFinancialInformation(@ModelAttribute FinancialInvestment finance){
 
         return "redirect:ledger/financial";
