@@ -64,10 +64,13 @@ base {
 .card img {
     height: 300px;
     width:  250px;
+    box-shadow: 5px 5px 15px 5px grey;
 }
 .card-two {
     position: center;
+    /*
     box-shadow: 0 0 8px #0a0a0a, 0 0 8px rgba(125, 17, 227, 0.58), 0 0 8px #ae00ff;
+    */
 
 
 
