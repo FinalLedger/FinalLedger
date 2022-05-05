@@ -26,6 +26,40 @@
             <a class="nav-link" href="/ledger/financial">Financial</a>
         </li>
     </ul>
+
+    <form th:action="@{/ledger/medical}" method="post">
+        <div class="mb-3">
+            <label for="willLocation" class="form-label">Will Location</label>
+            <input type="text" class="form-control" id="willLocation">
+        </div>
+        <div class="mb-3">
+            <label for="poaDocLocation" class="form-label">POA Doc Location</label>
+            <input type="text" class="form-control" id="poaDocLocation">
+        </div>
+        <div class="mb-3">
+            <label for="dnrDocLocation" class="form-label">DNR Doc Location</label>
+            <input type="text" class="form-control" id="dnrDocLocation">
+        </div>
+        <div class="mb-3">
+            <label for="bloodType" class="form=label">Blood Type</label>
+            <select name="bloodType" class="form-select" id="bloodType">
+                <option selected>Select blood type</option>
+                <option value="typeA">Type A</option>
+                <option value="typeB">Type B</option>
+                <option value="typeAB">Type AB</option>
+                <option value="typeO">Type O</option>
+            </select>
+        </div>
+        <div class="mb-3">
+            <label for="medicalConditions" class="form-label">Medical Conditions</label>
+            <input type="text" class="form-control" id="medicalConditions">
+        </div>
+        <div class="mb-3">
+            <label for="healthInsurance" class="form-label">Health Insurance</label>
+            <input type="text" class="form-control" id="healthInsurance">
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
 </div>
 </body>
 </html>
