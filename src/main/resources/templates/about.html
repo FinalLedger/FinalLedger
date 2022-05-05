@@ -1,60 +1,15 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
-    <link rel="stylesheet" href=".././static/css/styles.css">
-    <link rel="stylesheet" href=".././static/css/style.scss">
+    <!--<link rel="stylesheet" href=".././static/css/styles.css">-->
+    <link rel="stylesheet" href="../js/about.js">  <!--Link Ineffective🚨 folder choice? Using inline for moment-->
+    <link rel="stylesheet" href=".././static/css/about.css">
     <link  rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css">
     <meta charset="UTF-8">
     <title>Title</title>
     <link th:replace="/partials/navbar :: bootstrap">
-    <style>
-        /*first carousel*/
-        div#carousel {
-            perspective: 1200px;
-            background: #100000;
-            padding-top: 10%;
-            font-size:0;
-            margin-bottom: 3rem;
-            overflow: hidden;
-        }
-        figure#spinner {
-            transform-style: preserve-3d;
-            height: 300px;
-            transform-origin: 50% 50% -500px;
-            transition: 1s;
-        }
-        figure#spinner img {
-            width: 40%; max-width: 425px;
-            position: absolute; left: 30%;
-            transform-origin: 50% 50% -500px;
-            outline:1px solid transparent;
-        }
-        figure#spinner img:nth-child(1) { transform:rotateY(0deg);
-        }
-        figure#spinner img:nth-child(2) { transform: rotateY(-45deg); }
-        figure#spinner img:nth-child(3) { transform: rotateY(-90deg); }
-        figure#spinner img:nth-child(4) { transform: rotateY(-135deg); }
-        figure#spinner img:nth-child(5){ transform: rotateY(-180deg); }
-        figure#spinner img:nth-child(6){ transform: rotateY(-225deg); }
-        figure#spinner img:nth-child(7){ transform: rotateY(-270deg); }
-        figure#spinner img:nth-child(8){ transform: rotateY(-315deg); }
-        div#carousel ~ span {
-            color: #fff;
-            margin: 5%;
-            display: inline-block;
-            text-decoration: none;
-            font-size: 2rem;
-            transition: 0.6s color;
-            position: relative;
-            margin-top: -6rem;
-            border-bottom: none;
-            line-height: 0; }
-        div#carousel ~ span:hover { color: #888; cursor: pointer; }
 
-        /*2nd carousel*/
-
-    </style>
 
 </head>
 <nav th:replace="/partials/navbar :: navbar"></nav>
@@ -63,7 +18,7 @@
 <br>
 <hr>
 
-<base  style="box-shadow: 0 0 8px #ae00ff, 0 0 8px #001eff, 0 0 8px #ae00ff;" href="https://s3-us-west-2.amazonaws.com/s.cdpn.io/4273/wanaka-tree.jpg">
+<base>
 <div id="carousel">
     <figure id="spinner">
         <img src="https://ca.slack-edge.com/T029BRGN0-U02MUV5L150-39afa35a0e97-512" alt>
@@ -82,7 +37,7 @@
 
 
 <h1>
-    <a href="" class="typewrite" data-period="2000" data-type='[ "Hi, Im Jack.", "Im a veteran, and love to Develop." ]'>
+    <a href="" class="typewrite" data-period="2000" data-type='[ "Hello there,  Im Therman" ]'>
         <span class="wrap"></span>
     </a>
 </h1>
@@ -90,28 +45,53 @@
     <!--1-->
 
     <div class="card">
-        <img src="https://ca.slack-edge.com/T029BRGN0-U02MS185YTX-bb22efb3fca3-512" class="card-img-top profile-img" alt="img">
+        <img src="https://ca.slack-edge.com/T029BRGN0-U02MN8EJRGW-36a7ee367d5a-512" class="card-img-top profile-img" alt="img">
         <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
+            <h5 class="card-title">Therman   </h5>
+            <a href="" class="typewrite" data-period="2000" data-type='[ "Im just a guy who likes all aspects of I.T." ]'>
+                <span class="wrap"></span>
+            </a>
+            <br>
+            <a href="#" class="btn btn-primary">GitHub</a>
         </div>
-        <!--2-->
-        <a href="" class="typewrite" data-period="2000" data-type='[ "Hi, Im Therman.", "Im just a guy who likes all aspects of I.T." ]'>
+
+
+    </div>
+    <h1>
+        <a href="" class="typewrite" data-period="2000" data-type='[ "Hi, Im Jack." ]'>
             <span class="wrap"></span>
         </a>
+    </h1>
 
-        <div class="card card-two" style="width: 9rem;">
-            <img src="https://ca.slack-edge.com/T029BRGN0-U02MN8EJRGW-36a7ee367d5a-512" class="card-img-top profile-img" alt="img">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
-            </div>
+    <div class="card ">
+        <div class="card-two">
+        <img src="https://ca.slack-edge.com/T029BRGN0-U02MS185YTX-bb22efb3fca3-512" class="card-img-top profile-img" alt="img">
+        <div class="card-body">
+            <h5 class="card-title">Jack(Ranchaya Sambath)</h5>
+            <a href="" class="typewrite" data-period="2000" data-type='[ "Im a coder who loves to develop" ]'>
+                <span class="wrap"></span>
+            </a>
+            <br>
+            <a href="#" class="btn btn-primary">Github</a>
         </div>
+        </div>
+        <!--2-->
+
+
+        <img src="https://ca.slack-edge.com/T029BRGN0-U02MUV5L150-39afa35a0e97-512" class="card-img-top profile-img" alt="img">
+        <div class="card-body">
+            <h5 class="card-title">Jason Comstock</h5>
+            <a href="" class="typewrite" data-period="2000" data-type='[ "Im a full stack developer" ]'>
+                <span class="wrap"></span>
+            </a>
+            <br>
+            <a href="#" class="btn btn-primary">GitHub</a>
+        </div>
+        <!--2-->
 
     </div>
 </div>
+<button><a href="#top"> Top</a></button>
 <script>
     var TxtType = function(el, toRotate, period) {
         this.toRotate = toRotate;
@@ -133,7 +113,7 @@
             this.txt = fullTxt.substring(0, this.txt.length + 1);
         }
 
-        this.el.innerHTML = '<span class="wrap">'+this.txt+'</span>';
+        this.el.innerHTML = '<span class="#">'+this.txt+'</span>';
 
         var that = this;
         var delta = 200 - Math.random() * 100;
@@ -196,14 +176,14 @@
 
         if (this.isDeleting) { delta /= 2; }
 
-        if (!this.isDeleting && this.txt === fullTxt) {
+      /*  if (!this.isDeleting && this.txt === fullTxt) {
             delta = this.period;
             this.isDeleting = true;
         } else if (this.isDeleting && this.txt === '') {
             this.isDeleting = false;
             this.loopNum++;
             delta = 500;
-        }
+        }*/
 
         setTimeout(function() {
             that.tick();
@@ -231,12 +211,7 @@
         if (!sign) { angle = angle + 45; } else { angle = angle - 45; }
         spinner.setAttribute("style","-webkit-transform: rotateY("+ angle +"deg); -moz-transform: rotateY("+ angle +"deg); transform: rotateY("+ angle +"deg);");
     }
-
 </script>
-<footer>
-    <a href="#">A</a>
-    <a href="#">A</a>
-    <a href="#">A</a>
-</footer>
+
 </body>
 </html>
