@@ -344,7 +344,7 @@ span:nth-child(2) {
     color: white;
     position:center;
 }
-
+/*About.html banner img's*/✅
 .card img {
     height: 300px;
     width:  250px;
@@ -354,6 +354,7 @@ span:nth-child(2) {
     border: #212121 solid 3px;
 }
 
+/*Used For Color of typewrite for ABout Page*/  ✅
 .typewrite {
     color: whitesmoke;
 }
