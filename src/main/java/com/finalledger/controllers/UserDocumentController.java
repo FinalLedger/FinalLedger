@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 @Controller
 public class UserDocumentController {
 
-    @Value("${fileStack}")
+    @Value("${fileStackAPI}")
     public String fileStackAPIKey;
 
     private final UserRepository userDao;
@@ -28,7 +28,7 @@ public class UserDocumentController {
     public String showUserDocuments(Model model){
 
         model.addAttribute("documents", new UserDocuments());
-        model.addAttribute("fileStack", fileStackAPIKey);
+        model.addAttribute("fileStackAPI", fileStackAPIKey);
 
         return "ledger/documents";
     }
