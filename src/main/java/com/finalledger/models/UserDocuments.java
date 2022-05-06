@@ -13,7 +13,7 @@ public class UserDocuments {
     private String title;
 
     @Column(nullable = false)
-    private String documentUpload;
+    private String document_upload;
 
     @OneToOne
     @JoinColumn(name = "main_user_id")
@@ -24,13 +24,13 @@ public class UserDocuments {
     public UserDocuments(Long id,String title, String document_upload,User user){
         this.id= id;
         this.title = title;
-        this.documentUpload = documentUpload;
+        this.document_upload = document_upload;
         this.user =user;
     }
 
     public UserDocuments(String title, String document_upload,User user){
         this.title = title;
-        this.documentUpload = documentUpload;
+        this.document_upload = document_upload;
         this.user =user;
     }
 
@@ -51,11 +51,11 @@ public class UserDocuments {
     }
 
     public String getDocumentUpload() {
-        return documentUpload;
+        return document_upload;
     }
 
     public void setDocumentUpload(String documentUpload) {
-        this.documentUpload = documentUpload;
+        this.document_upload = documentUpload;
     }
 
     public User getUser() {
