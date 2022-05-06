@@ -1,9 +1,12 @@
-#boxLogo {
-    width: 50em;
-    height: 25em;
+#boxLogo{
     background: lightgray;
+    height: 25em;
+    width: 50em;
     display: flex;
     margin: auto;
+}
+#title-nav{
+    font-family: 'Luxurious Script',cursive;
 }
 
 #ledger-h1, #row-1 , #row-2 , #row-3{
@@ -22,3 +25,48 @@
     text-align: center;
     border: 2px solid black;
 }
+
+/*---card animations---*/
+.flip-card-inner{
+    position: relative;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+    margin-left: 61em;
+}
+.flip-card-front> p{
+    margin-top: 2em ;
+    width: 35em;
+    height: auto;
+}
+.flip-card-back{
+    background: gray;
+    position: absolute;
+    transform: rotateY(180deg);
+}
+.flip-card-back > p {
+    margin-top: 2em ;
+    width: 35em;
+    height: auto;
+}
+.flip-card-front, .flip-card-back {
+    position: absolute;
+    width: fit-content;
+    height: fit-content;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+}
+.flip-card-front {
+    background: gray;
+}
+.flip-card-inner {
+    position: absolute;
+    width: 300px;
+    height: 200px;
+    text-align: center;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+}
+.flip-card:hover .flip-card-inner {
+    transform: rotateY(180deg);
+}
+/*---------------------------*/
