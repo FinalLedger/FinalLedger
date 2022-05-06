@@ -1,0 +1,24 @@
+#boxLogo {
+    width: 50em;
+    height: 25em;
+    background: lightgray;
+    display: flex;
+    margin: auto;
+}
+
+#ledger-h1, #row-1 , #row-2 , #row-3{
+    margin-top: 5em;
+    margin-bottom: 5em;
+    text-align: center;
+}
+.back-top{
+    margin-top: 2em;
+    margin-bottom: 2em;
+    text-align: center;
+}
+#footer{
+    background-color: lightgray;
+    padding: 1.5em;
+    text-align: center;
+    border: 2px solid black;
+}
