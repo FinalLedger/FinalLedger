@@ -41,8 +41,11 @@
   <script src="//static.filestackapi.com/filestack-js/3.x.x/filestack.min.js"></script>
 
   <script th:inline="javascript">
+    /*<![CDATA[*/
+
     window.addEventListener('DOMContentLoaded', function () {
-      const apikey = "ApdS4zWdFR5CS2PliJ5koz";
+
+      const apikey = /*[[${fileStackAPI}]]*/ 'Api Key';
       const client = filestack.init(apikey);
 
       const options = {
@@ -97,7 +100,7 @@
 
 
     });
-
+/*]]>*/
   </script>
 
 
