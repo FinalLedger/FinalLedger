@@ -97,7 +97,7 @@ public class User {
         this.password = password;
     }
 
-    public boolean isMainUser() {
+    public boolean getIsMainUser() {
         return isMainUser;
     }
 
