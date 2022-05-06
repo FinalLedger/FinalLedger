@@ -18,14 +18,17 @@
             <p>my connections?</p>
             <p>logout</p>
         </div>
-        <div class="col-8">
+        <div class="col-8 text-center">
             <h3>My Connections</h3>
-            <p>list of connections go here with option to delete them</p>
-            <form th:action="@{/profile}" method="post">
-                <label for="emailInvite" class="form-label">Send invite through email</label>
-                <input type="text" class="form-control" id="emailInvite">
-                <button type="submit" class="btn btn-primary">Send Invite</button>
-            </form>
+            <div class="container">
+                <p>list of connections go here with option to delete them</p>
+                <form th:action="@{/profile}" method="post">
+                    <div class="input-group">
+                        <input type="email" class="form-control" id="emailInvite" placeholder="Send invite through email">
+                        <button type="submit" class="btn btn-primary">Send Invite</button>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
 </div>
