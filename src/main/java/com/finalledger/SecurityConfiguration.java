@@ -1,6 +1,5 @@
 package com.finalledger;
 
-
 import com.finalledger.services.UserDetailsLoader;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
