@@ -85,3 +85,9 @@ base {
 .card-two {
 
 }
+#span-left{
+    float: left;
+}
+#span-right{
+    float: right;
+}
