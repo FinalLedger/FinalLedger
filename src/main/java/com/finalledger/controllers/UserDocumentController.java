@@ -3,6 +3,7 @@ package com.finalledger.controllers;
 import com.finalledger.models.UserDocuments;
 import com.finalledger.repositories.UserDocumentsRepository;
 import com.finalledger.repositories.UserRepository;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,6 +12,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
 public class UserDocumentController {
+
+    @Value("${fileStackAPI}")
+    public String fileStackAPIKey;
+
     private final UserRepository userDao;
     private final UserDocumentsRepository userDocumentsDao;
 
@@ -21,7 +26,9 @@ public class UserDocumentController {
 
     @GetMapping("/ledger/documents")
     public String showUserDocuments(Model model){
+
         model.addAttribute("documents", new UserDocuments());
+        model.addAttribute("fileStackAPI", fileStackAPIKey);
 
         return "ledger/documents";
     }

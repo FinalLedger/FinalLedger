@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Ledger</title>
+  <title>Documents</title>
   <link th:replace="/partials/navbar :: bootstrap">
 </head>
 <body>
@@ -27,7 +27,80 @@
     </li>
   </ul>
   <br>
-  <h1>Upload your documents here</h1>
+  <h1 >Upload Your Important Documents here</h1>
+  <h5>You can upload (image files, pdf files, video files and text files) </h5>
+<!--  <input type="file" />-->
+<!--  <div class="controls">-->
+<!--    <button id="cancel">Cancel</button>-->
+<!--    <button id="pause">Pause</button>-->
+<!--    <button id="resume">Resume</button>-->
+<!--  </div>-->
+<!--  <div>Progress: <span id="progress"></span></div>-->
+  <button id="uploadDoc" onclick="uploadDoc()">upload a file</button>
+
+  <script src="//static.filestackapi.com/filestack-js/3.x.x/filestack.min.js"></script>
+
+  <script th:inline="javascript">
+    window.addEventListener('DOMContentLoaded', function () {
+      const apikey = "ApdS4zWdFR5CS2PliJ5koz";
+      const client = filestack.init(apikey);
+
+      const options = {
+        accept: ["image/*",".pdf",".video/*","text/*"],
+        // storeTo: {
+        //   location: 'final_ledger_db',
+        //   path: 'jdbc:mysql://localhost:3306/final_ledger_db'
+        // },
+        uploadConfig: {
+          retry: 5,
+          timeout: 60000
+        },
+        transformations: {
+          crop: true,
+          circle: true,
+          rotate: true
+        },
+      };
+
+      function uploadDoc() {
+        client.picker(options).open();
+      }
+
+      document.getElementById('uploadDoc').onclick = uploadDoc;
+
+      // const onProgress = (evt) => {
+      //   document.getElementById('progress').innerHTML = `${evt.totalPercent}%`;
+      // };
+      //
+      // document.querySelector('input').addEventListener('change', (event) => {
+      //   const files = event.target.files[0];
+      //   const token = {};
+      //   const cancel = document.getElementById('cancel');
+      //   const pause = document.getElementById('pause');
+      //   const resume = document.getElementById('resume');
+      //
+      //   [cancel, resume, pause].forEach((btn) => {
+      //     const id = btn.id;
+      //     btn.addEventListener('click', () => {
+      //       token[id]();
+      //     });
+      //   });
+      //
+      //   client.upload(files, { onProgress }, {}, token)
+      //           .then(res => {
+      //             console.log('success: ', res)
+      //           })
+      //           .catch(err => {
+      //             console.log(err)
+      //           });
+      // });
+
+
+    });
+
+  </script>
+
+
 </div>
 </body>
 </html>
