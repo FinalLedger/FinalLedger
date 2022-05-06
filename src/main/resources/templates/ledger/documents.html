@@ -31,22 +31,19 @@
   <h5>You can upload (image files, pdf files, video files and text files) </h5>
 
   <div class="documents">
-    
+
     <form th:action="@{/ledger/documents}" th:method="post" th:object="${documents}">
 
-      <label for="title" th:field="*(title)">Title</label>
-      <input id="title" type="text" value="type of document you wish to upload">
+      <label for="title" th:field="*{title}">Title</label>
+      <input id="title" type="text" placeholder="type of document you wish to upload">
 
-      <input th:field="*{document_upload}" type="hidden">
-      <button id="uploadDoc" onclick="uploadDoc()">upload a file</button>
     </form>
+
+    <div class="form-group">
+      <label for="uploadDoc" th:field="*{document_upload}">Upload a document</label>
+      <input id="uploadDoc" onclick="uploadDoc()" type="submit" class="form-control-file" value="Upload your document">
+    </div>
     
-  </div>
-  
-  <input id="stashFilestackURL" name="stashFilestackURL" value="replaceme"
-         th:field="*{document_upload}" type="hidden">
-  <div style="width: 100%; display: flex; justify-content: center; margin-top: 30px">
-    <div id='upload' class="btn btn3" style="width: 200px!important; height: 80px!important; display: flex; align-items: center">Upload Profile Picture</div>
   </div>
 
   <script src="//static.filestackapi.com/filestack-js/3.x.x/filestack.min.js"></script>
