@@ -362,3 +362,6 @@ span:nth-child(2) {
 font-weight:  bolder;
     font-size: large;
 }
+.navbar {
+    background-color: silver !important;
+}

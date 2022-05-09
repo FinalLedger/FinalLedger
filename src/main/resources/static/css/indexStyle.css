@@ -1,9 +1,20 @@
+body {
+    background-color: #FAEBD7;
+}
+
+
 #boxLogo{
-    background: lightgray;
+    background-image: url("https://images.unsplash.com/photo-1620287920810-3f5b9746380c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1587&q=80" ) ;
+   background-position: center;
+    /*background: lightgray;*/
+    /*font-weight: bolder;*/
     height: 25em;
     width: 50em;
     display: flex;
     margin: auto;
+    color:silver;
+    font-family: 'Luxurious Script',cursive;
+    box-shadow: 5px 5px 15px 5px grey;
 }
 #title-nav{
     font-family: 'Luxurious Script',cursive;
@@ -69,4 +80,37 @@
 .flip-card:hover .flip-card-inner {
     transform: rotateY(180deg);
 }
+
+.landing-container {
+    width: 95%;
+    height: 200px;
+    /* position: center;*/
+    box-shadow: 0 14px 28px rgba(5, 0, 9, 0.58), 0 10px 10px rgb(250, 235, 215);
+    border: #efa440 solid 3px;
+    padding-top: 5%;
+    margin-left: 25px;
+    background-color: #d6b4b4;
+    text-align: center;
+}
+
+.img-one {
+    width: 275px;
+    height: 183px;
+    box-shadow: 5px 5px 15px 5px black;
+}
+/*Index Navbar*/
+.navbar {
+    background-color: silver !important;
+}
+/*Idex  Data text*/
+.text-head {
+    color: #BD7979FF;
+}
+h2 {
+    color: black;
+}
+a {
+    color: #BD7979FF;
+}
+
 /*---------------------------*/
