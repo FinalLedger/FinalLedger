@@ -7,23 +7,66 @@
 </head>
 <body>
 <nav th:replace="/partials/navbar :: navbar"></nav>
-<h1>Register</h1>
-<form th:action="@{/register}" th:method="post">
-    <label for="email">Email</label>
-    <input id="email" name="email" type="text">
-    <label for="username">Username</label>
-    <input id="username" name="username" type="text">
-    <label for="password">Password</label>
-    <input id="password" name="password" type="password">
-    <label for="confirmPass">Confirm Password</label>
-    <input id="confirmPass" name="confirmPass" type="password">
-    <label for="accountType">Account Type</label>
-    <select name="accountType" id="accountType">
-<!--        <option selected value="test">Select an option</option>-->
-        <option value="false">Basic Account</option>
-        <option value="true">Full Account</option>
-    </select>
-    <input value="Register" type="submit">
-</form>
+<div class="container">
+    <h1>Register</h1>
+    <form th:action="@{/register}" method="post">
+        <div class="mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input id="email" name="email" class="form-control" type="text">
+        </div>
+        <div class="mb-3">
+            <label for="username" class="form-label">Username</label>
+            <input id="username" name="username" class="form-control" type="text">
+        </div>
+        <div class="mb-3">
+            <label for="password" class="form-label">Password</label>
+            <input id="password" name="password" class="form-control" type="password">
+            <div id="passwordHelp" class="form-text">Your password must:<br>
+                <span id="8char">Be at least 8 characters long</span><br>
+                <span id="uppercase">Include at least one uppercase letter</span><br>
+                <span id="lowercase">Include at least one lowercase letter</span><br>
+                <span id="num">Include at least one number</span><br>
+                <span id="special">Include at least one special character</span>
+            </div>
+        </div>
+        <div class="mb-3">
+            <label for="confirmPass" class="form-label">Confirm Password</label>
+            <input id="confirmPass" name="confirmPass" class="form-control" type="password">
+            <div id="confirmPassMsg" class="form-text"></div>
+        </div>
+        <div class="mb-3">
+            <label for="accountType" class="form-label">Account Type</label>
+            <select name="accountType" id="accountType" class="form-select">
+                <option selected>Select account type</option>
+                <option value="false">Basic Account</option>
+                <option value="true">Full Account</option>
+            </select>
+        </div>
+        <input id="submitBtn" value="Register" type="submit">
+    </form>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+        crossorigin="anonymous"></script>
+<script>
+    $(document).ready(function () {
+        $("#password").keyup(function () {
+            const password = $("#password").val();
+            if (password.length < 8) {
+                $("#8char").css("color", "red");
+            } else {
+                $("#8char").css("color", "green");
+            }
+            // check others and light up others
+        });
+        $('#confirmPass').focusout(function () {
+            const password = $('#password').val();
+            const confirmPass = $('#confirmPass').val();
+            if (password !== confirmPass) {
+                $("#confirmPassMsg").html("Passwords do not match.").css("color", "red");
+            }
+        });
+    })
+</script>
 </body>
 </html>
