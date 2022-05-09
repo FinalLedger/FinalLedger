@@ -37,10 +37,14 @@
 
             <span>or use your account</span>
             <div>
-                <input type="email" placeholder="Email" />
+                <label>
+                    <input name="username" type="text" placeholder="username" />
+                </label>
             </div>
             <div>
-                <input type="password" placeholder="Password" />
+                <label>
+                    <input name="password" type="password" placeholder="Password" />
+                </label>
             </div>
 
             <a href="#">Forgot your password?</a>
@@ -70,12 +74,12 @@
             $("form").toggle();
             $("body").css({'background': '#ffffff'});
             $("nav").css({'background': '#333'});
-            $("form").append('<img href="https://ca.slack-edge.com/T029BRGN0-U02N7JEAQDP-e4013fbae92e-512" height="100px"; width="100px";>');
+            $("form").append('<img href="https://ca.slack-edge.com/T029BRGN0-U02N7JEAQDP-e4013fbae92e-512" height="100px" width="100px">');
         });
     });
     $(document).ready(function() {
         $("main").append(function () {
-            $("form").append('<img href="https://ca.slack-edge.com/T029BRGN0-U02N7JEAQDP-e4013fbae92e-512" height="100px"; width="100px";>');
+            $("form").append('<img href="https://ca.slack-edge.com/T029BRGN0-U02N7JEAQDP-e4013fbae92e-512" height="100px" width="100px">');
         });
     });
 

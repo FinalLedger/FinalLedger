@@ -56,12 +56,17 @@ public class User {
         this.isMainUser = isMainUser;
 
     }
+
     public User(User copy) {
         id = copy.id;
         username = copy.username;
         email = copy.email;
         password = copy.password;
         isMainUser = copy.isMainUser;
+        creditCards = copy.creditCards;
+        financialInvestments = copy.financialInvestments;
+        insurancePolicy = copy.insurancePolicy;
+        bankAccounts = copy.bankAccounts;
 
     }
 
