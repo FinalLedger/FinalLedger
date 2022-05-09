@@ -18,10 +18,10 @@ public class User {
     @Column(nullable = false, unique = true)
     private String email;
 
-    @Column(nullable = false, unique=true)
+    @Column(nullable = false)
     private String password;
 
-    @Column(nullable = false, unique=true)
+    @Column(nullable = false)
     private boolean isMainUser;
 
 
@@ -101,8 +101,8 @@ public class User {
         return isMainUser;
     }
 
-    public void setMainUser(boolean mainUser) {
-        isMainUser = mainUser;
+    public void setMainUser(boolean isMainUser) {
+        this.isMainUser = isMainUser;
     }
 
 }
