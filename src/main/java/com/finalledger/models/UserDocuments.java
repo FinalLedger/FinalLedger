@@ -4,15 +4,18 @@ import javax.persistence.*;
 
 @Entity
 public class UserDocuments {
+
+
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private Long id;
 
-    @Column(nullable = false)
+    @Column
     private String title;
 
-    @Column(nullable = false)
+    @Column
     private String document_upload;
 
     @OneToOne
@@ -21,17 +24,23 @@ public class UserDocuments {
 
     public UserDocuments(){}
 
-    public UserDocuments(Long id,String title, String document_upload,User user){
+    public UserDocuments(Long id, String title, String document_upload) {
+        this.id = id;
+        this.title = title;
+        this.document_upload = document_upload;
+    }
+
+    public UserDocuments(Long id, String title, String document_upload, User user){
         this.id= id;
         this.title = title;
         this.document_upload = document_upload;
-        this.user =user;
+        this.user = user;
     }
 
     public UserDocuments(String title, String document_upload,User user){
         this.title = title;
         this.document_upload = document_upload;
-        this.user =user;
+        this.user = user;
     }
 
     public Long getId() {
@@ -50,12 +59,12 @@ public class UserDocuments {
         this.title = title;
     }
 
-    public String getDocumentUpload() {
+    public String getDocument_upload() {
         return document_upload;
     }
 
-    public void setDocumentUpload(String documentUpload) {
-        this.document_upload = documentUpload;
+    public void setDocument_upload(String document_upload) {
+        this.document_upload = document_upload;
     }
 
     public User getUser() {
