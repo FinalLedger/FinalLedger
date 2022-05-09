@@ -8,19 +8,20 @@
 <body>
 <nav th:replace="/partials/navbar :: navbar"></nav>
 <h1>Register</h1>
-<form th:action="@{/register}" th:method="post" th:object="${user}">
+<form th:action="@{/register}" th:method="post">
     <label for="email">Email</label>
-    <input id="email" type="text" th:field="*{email}">
+    <input id="email" name="email" type="text">
     <label for="username">Username</label>
-    <input id="username" type="text" th:field="*{username}">
+    <input id="username" name="username" type="text">
     <label for="password">Password</label>
-    <input id="password" type="password" th:field="*{password}">
+    <input id="password" name="password" type="password">
     <label for="confirmPass">Confirm Password</label>
-    <input id="confirmPass" type="password">
+    <input id="confirmPass" name="confirmPass" type="password">
     <label for="accountType">Account Type</label>
-    <select name="accountType" id="accountType" th:field="*{isMainUser}">
-        <option th:value="0">Basic Account</option>
-        <option th:value="1">Full Account</option>
+    <select name="accountType" id="accountType">
+<!--        <option selected value="test">Select an option</option>-->
+        <option value="false">Basic Account</option>
+        <option value="true">Full Account</option>
     </select>
     <input value="Register" type="submit">
 </form>

@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class UserController {
@@ -27,10 +28,13 @@ public class UserController {
     }
 
     @PostMapping("/register")
-    public String saveUser(@ModelAttribute User user){
-        String hash = passwordEncoder.encode(user.getPassword());
+    public String saveUser(@ModelAttribute User user, @RequestParam(name = "username") String username, @RequestParam(name = "email") String email, @RequestParam(name = "password") String password, @RequestParam(name = "confirmPass") String confirmPass, @RequestParam(name = "accountType")boolean isMainUser){
+        String hash = passwordEncoder.encode(password);
+        user.setMainUser(isMainUser);
         System.out.println("user.getIsMainUser() = " + user.getIsMainUser());
         user.setPassword(hash);
+        user.setUsername(username);
+        user.setEmail(email);
         userDao.save(user);
         return "redirect:/login";
     }
