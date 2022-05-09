@@ -25,6 +25,62 @@
     text-align: center;
     border: 2px solid black;
 }
+/*-- profile styling --*/
+body {
+    background-image : url(https://images.unsplash.com/photo-1615800098746-73af8261e3df?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=688&q=80);
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+hr{
+    width: 90em;
+    margin: auto;
+}
+#a-left{
+    height: auto;
+    width: 25em;
+}
+#a-right{
+    border: solid black 2px;
+    height:auto;
+    width: 50em;
+    padding-bottom: 10em;
+}
+#a-right > h2,form{
+    margin-top: .5em;
+    text-align: center;
+}
+a{
+    text-align: center;
+}
+img{
+    clip-path: circle();
+}
+.user-type{
+    margin-bottom: 2em;
+}
+.user-button{
+    margin-left: 5em;
+}
+#form-button{
+    text-align: center;
+    margin-top: 1em;
+}
+#invite-field, #form-button {
+    width: 30%;
+    text-align: center;
+}
+/*----------------------*/
+
+
+
+
+
+
+
+
+
+
+
 
 /*---card animations---*/
 .flip-card-inner{
