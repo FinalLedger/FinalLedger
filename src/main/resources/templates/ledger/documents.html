@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" name="fileStackAPI" th:content="${fileStackAPI}">
   <title>Documents</title>
   <link th:replace="/partials/navbar :: bootstrap">
 </head>
@@ -37,16 +37,25 @@
       <label for="title" th:field="*{title}">Title</label>
       <input id="title" type="text" placeholder="type of document you wish to upload">
 
+      <div class="form-group">
+        <label for="uploadDoc" >Upload a document</label>
+        <input id="uploadDoc" value="replaceMe" th:field="*{document_upload}"  type="hidden">
+         <div id="buttonUpload"  onclick="uploadDoc()" class="form-control-file">Click to upload documents</div>
+      </div>
+
+      <input type="submit" value="Submit request">
     </form>
 
-    <div class="form-group">
-      <label for="uploadDoc" th:field="*{document_upload}">Upload a document</label>
-      <input id="uploadDoc" onclick="uploadDoc()" type="submit" class="form-control-file" value="Upload your document">
-    </div>
-    
-  </div>
 
-  <script src="//static.filestackapi.com/filestack-js/3.x.x/filestack.min.js"></script>
+
+  </div>
+</div>
+
+<script
+        src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+        crossorigin="anonymous"></script>
+<script src="//static.filestackapi.com/filestack-js/3.x.x/filestack.min.js"></script>
 
   <script th:inline="javascript">
     /*<![CDATA[*/
@@ -57,11 +66,8 @@
       const client = filestack.init(apikey);
 
       const options = {
+        onUploadDone: (res) => $("#uploadDoc").val(res.filesUploaded[0].url),
         accept: ["image/*",".pdf",".video/*","text/*"],
-        // storeTo: {
-        //   location: 'final_ledger_db',
-        //   path: 'jdbc:mysql://localhost:3306/final_ledger_db'
-        // },
         uploadConfig: {
           retry: 5,
           timeout: 60000
@@ -76,14 +82,12 @@
       function uploadDoc() {
         client.picker(options).open();
       }
-
-      document.getElementById('uploadDoc').onclick = uploadDoc;
+      document.getElementById('buttonUpload').onclick = uploadDoc;
 
     });
 /*]]>*/
   </script>
 
 
-</div>
 </body>
 </html>
