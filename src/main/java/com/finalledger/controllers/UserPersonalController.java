@@ -1,8 +1,10 @@
 package com.finalledger.controllers;
 
+import com.finalledger.models.User;
 import com.finalledger.models.UserPersonalInformation;
 import com.finalledger.repositories.UserPersonalRepository;
 import com.finalledger.repositories.UserRepository;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -28,7 +30,8 @@ public class UserPersonalController {
 
     @PostMapping("/ledger/personal")
     public String saveUserPersonalInformation(@ModelAttribute UserPersonalInformation userPersonalInformation){
-
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        userPersonalDao.save(user);
         return"redirect:/ledger/personal";
     }
 

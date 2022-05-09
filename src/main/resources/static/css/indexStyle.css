@@ -26,11 +26,6 @@
     border: 2px solid black;
 }
 /*-- profile styling --*/
-body {
-    background-image : url(https://images.unsplash.com/photo-1615800098746-73af8261e3df?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=688&q=80);
-    background-repeat: no-repeat;
-    background-size: 100%;
-}
 hr{
     width: 90em;
     margin: auto;

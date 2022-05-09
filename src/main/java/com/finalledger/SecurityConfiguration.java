@@ -52,7 +52,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers(
                         "/profile", // only authenticated users can create posts
-                        "/ledger" // only authenticated users can edit posts
+                        "/ledger"// only authenticated users can edit posts
+
 
                 )
                 .authenticated()
