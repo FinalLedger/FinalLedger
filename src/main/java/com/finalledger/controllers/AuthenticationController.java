@@ -1,4 +1,3 @@
-/*
 package com.finalledger.controllers;
 
 import org.springframework.beans.factory.annotation.Value;
@@ -22,4 +21,4 @@ public class AuthenticationController {
 }
 
 
-*/
+
