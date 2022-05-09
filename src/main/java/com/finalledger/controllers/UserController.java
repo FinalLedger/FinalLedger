@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.swing.*;
+
 @Controller
 public class UserController {
 
@@ -22,19 +24,18 @@ public class UserController {
     }
 
     @GetMapping("/register")
-    public String showRegistrationForm(Model model){
-        model.addAttribute("user", new User());
+    public String showRegistrationForm() {
         return "users/register";
     }
 
     @PostMapping("/register")
-    public String saveUser(@ModelAttribute User user, @RequestParam(name = "username") String username, @RequestParam(name = "email") String email, @RequestParam(name = "password") String password, @RequestParam(name = "confirmPass") String confirmPass, @RequestParam(name = "accountType")boolean isMainUser){
+    public String saveUser(@RequestParam(name = "username") String username, @RequestParam(name = "email") String email, @RequestParam(name = "password") String password, @RequestParam(name = "confirmPass") String confirmPass, @RequestParam(name = "accountType") boolean isMainUser) {
+//        if (!password.equals(confirmPass)) {
+//            System.out.println("Password does not match, please try again.");
+//            return "redirect:/register";
+//        }
         String hash = passwordEncoder.encode(password);
-        user.setMainUser(isMainUser);
-        System.out.println("user.getIsMainUser() = " + user.getIsMainUser());
-        user.setPassword(hash);
-        user.setUsername(username);
-        user.setEmail(email);
+        User user = new User(username, email, hash, isMainUser);
         userDao.save(user);
         return "redirect:/login";
     }
