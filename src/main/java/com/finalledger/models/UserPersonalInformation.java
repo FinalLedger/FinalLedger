@@ -42,7 +42,6 @@ public class UserPersonalInformation {
     private String militaryStatus;
 
     @OneToOne
-    @JoinColumn(name = "main_user_id")
     private User user;
 
     @ManyToMany(cascade = CascadeType.ALL, mappedBy = "personalAddresses")

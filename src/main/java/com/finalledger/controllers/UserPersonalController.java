@@ -31,13 +31,14 @@ public class UserPersonalController {
     public String showUserPersonalForm(Model model, Principal principal) {
         model.addAttribute("personal", new UserPersonalInformation());
 //        return "/ledger/personal";
-        return principal == null ?  "redirect:/login" : "/ledger/personal";
+        return principal == null ?  "redirect:login" : "ledger/personal";
     }
 
     @PostMapping("/ledger/personal")
     public String saveUserPersonalInformation(@ModelAttribute UserPersonalInformation userPersonalInformation){
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        userPersonalDao.save(user);
-        return"redirect:/ledger/personal";
+        userPersonalInformation.setUser(user);
+        userPersonalDao.save(userPersonalInformation);
+        return"redirect:ledger/personal";
     }
 }
