@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8" name="fileStackAPI" th:content="${fileStackAPI}">
   <title>Documents</title>
+  <link rel="stylesheet" th:href="@{/css/documents.css}">
   <link th:replace="/partials/navbar :: bootstrap">
 </head>
 <body>
@@ -35,28 +36,26 @@
     <form th:action="@{/ledger/documents}" th:method="post" th:object="${documents}">
 
       <label for="title" th:field="*{title}">Title</label>
-      <input id="title" type="text" placeholder="type of document you wish to upload">
+      <input id="title" name="title" type="text" placeholder="type of document you wish to upload">
 
       <div class="form-group">
-        <label for="uploadDoc" >Upload a document</label>
-        <input id="uploadDoc" value="replaceMe" th:field="*{document_upload}"  type="hidden">
-         <div id="buttonUpload"  onclick="uploadDoc()" class="form-control-file">Click to upload documents</div>
+        <label for="uploadDoc" >
+          <input id="uploadDoc" name="document_upload" value="replaceMe" th:field="*{document_upload}" type="hidden">
+        </label>
+         <div id="buttonUpload" onclick="uploadDoc()" class="form-control-file btn btn3">Upload documents</div>
       </div>
-
+      <br>
       <input type="submit" value="Submit request">
     </form>
-
-
 
   </div>
 </div>
 
-<script
-        src="https://code.jquery.com/jquery-3.6.0.min.js"
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"
         integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
         crossorigin="anonymous"></script>
 <script src="//static.filestackapi.com/filestack-js/3.x.x/filestack.min.js"></script>
-
+<!--<script th:src="@{../../js/documents.js}"></script>-->
   <script th:inline="javascript">
     /*<![CDATA[*/
 
@@ -66,7 +65,9 @@
       const client = filestack.init(apikey);
 
       const options = {
-        onUploadDone: (res) => $("#uploadDoc").val(res.filesUploaded[0].url),
+        onUploadDone: (res) => {$("#uploadDoc").val(res.filesUploaded[0].url);
+          console.log(res);
+        },
         accept: ["image/*",".pdf",".video/*","text/*"],
         uploadConfig: {
           retry: 5,
@@ -87,7 +88,6 @@
     });
 /*]]>*/
   </script>
-
 
 </body>
 </html>

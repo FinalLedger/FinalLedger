@@ -1,0 +1,18 @@
+.btn {
+    transition: all ease 0.8s;
+    font-weight: bold;
+    border-radius: 8px;
+}
+.btn3{
+    background-color: transparent;
+    color: #1777F2;
+    border: 3px solid #1777F2;
+    height: 60px;
+    width: 120px;
+    font-size: 20px;
+}
+.btn3:hover {
+    box-shadow: inset 200px 0 0 0 #1777F2;
+    color: #796706 !important;
+    text-shadow: black 1px 1px;
+}

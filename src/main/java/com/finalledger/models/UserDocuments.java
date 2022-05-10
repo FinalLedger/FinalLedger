@@ -5,8 +5,6 @@ import javax.persistence.*;
 @Entity
 public class UserDocuments {
 
-
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
@@ -24,12 +22,6 @@ public class UserDocuments {
 
     public UserDocuments(){}
 
-    public UserDocuments(Long id, String title, String document_upload) {
-        this.id = id;
-        this.title = title;
-        this.document_upload = document_upload;
-    }
-
     public UserDocuments(Long id, String title, String document_upload, User user){
         this.id= id;
         this.title = title;
@@ -37,7 +29,7 @@ public class UserDocuments {
         this.user = user;
     }
 
-    public UserDocuments(String title, String document_upload,User user){
+    public UserDocuments(String title, String document_upload, User user){
         this.title = title;
         this.document_upload = document_upload;
         this.user = user;
