@@ -1,8 +1,10 @@
 package com.finalledger.controllers;
 
+import com.finalledger.models.User;
 import com.finalledger.models.UserMedicalInformation;
 import com.finalledger.repositories.UserMedicalRepository;
 import com.finalledger.repositories.UserRepository;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -27,6 +29,8 @@ public class UserMedicalController {
 
     @PostMapping("/ledger/medical")
     public String saveMedicalInformation(@ModelAttribute UserMedicalInformation userMedicalInformation){
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        userMedicalDao.save(user);
         return"redirect:/ledger/medical";
     }
 
