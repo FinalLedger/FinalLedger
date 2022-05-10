@@ -136,12 +136,12 @@ img{
 
 .landing-container {
     width: 95%;
-    height: 200px;
+   /* height: 200px;*/
     /* position: center;*/
     box-shadow: 0 14px 28px rgba(5, 0, 9, 0.58), 0 10px 10px rgb(250, 235, 215);
     border: #efa440 solid 3px;
     padding-top: 5%;
-    margin-left: 25px;
+    /*margin-left: 25px;*/
     background-color: #d6b4b4;
     text-align: center;
     position: center;
