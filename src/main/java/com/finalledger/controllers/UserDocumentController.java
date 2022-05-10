@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.security.Principal;
+import java.util.ArrayList;
 
 @Controller
 public class UserDocumentController {
@@ -43,18 +44,14 @@ public class UserDocumentController {
 
         // set the current user to the document
         User userLoggedIn = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        userDocument.setUser(userLoggedIn);
+        User persistUser = userDao.getById(userLoggedIn.getId());
 
-//        System.out.println("userLoggedIn = " + userLoggedIn.getId());
-//
-//        userDocument.setTitle(title);
-//        System.out.println("title = " + title);
-//
-//        userDocument.setDocument_upload(document_upload);
-//        System.out.println("document_upload = " + document_upload);
+        userDocument.setUser(persistUser);
 
-
-//        userDocumentsDao.save(userDocument);
+        ArrayList<UserDocuments> documents = new ArrayList<>();
+        documents.add(userDocument);
+        persistUser.setDocuments(documents);
+        userDao.save(persistUser);
 
         return("redirect:/ledger/documents");
     }
