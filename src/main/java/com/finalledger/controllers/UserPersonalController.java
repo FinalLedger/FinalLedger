@@ -12,9 +12,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.security.Principal;
+import java.util.ArrayList;
 
 @Controller
 public class UserPersonalController {
@@ -29,16 +31,21 @@ public class UserPersonalController {
 
     @GetMapping("/ledger/personal")
     public String showUserPersonalForm(Model model, Principal principal) {
-        model.addAttribute("personal", new UserPersonalInformation());
+        model.addAttribute("userPersonalInformation", new UserPersonalInformation());
 //        return "/ledger/personal";
-        return principal == null ?  "redirect:login" : "ledger/personal";
+        return principal == null ?  "redirect:/login" : "/ledger/personal";
     }
 
     @PostMapping("/ledger/personal")
     public String saveUserPersonalInformation(@ModelAttribute UserPersonalInformation userPersonalInformation){
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        userPersonalInformation.setUser(user);
+        User persistUser = userDao.getById(user.getId());
+        userPersonalInformation.setUser(persistUser);
+        ArrayList<UserPersonalInformation> document = new ArrayList<>();
+        document.add(userPersonalInformation);
+        userDao.save(persistUser);
         userPersonalDao.save(userPersonalInformation);
-        return"redirect:ledger/personal";
+
+        return"redirect:/ledger/personal";
     }
 }
