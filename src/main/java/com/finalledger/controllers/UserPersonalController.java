@@ -44,6 +44,7 @@ public class UserPersonalController {
         ArrayList<UserPersonalInformation> document = new ArrayList<>();
         document.add(userPersonalInformation);
         userDao.save(persistUser);
+
         userPersonalDao.save(userPersonalInformation);
 
         return"redirect:/ledger/personal";
