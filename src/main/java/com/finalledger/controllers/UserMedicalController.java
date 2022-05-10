@@ -27,7 +27,7 @@ public class UserMedicalController {
     @GetMapping("/ledger/medical")
     public String showUserMedicalForm(Model model, Principal principal) {
         model.addAttribute("userMedicalInformation", new UserMedicalInformation());
-        return principal == null ? "redirect:/login" : "/ledger/medical";
+        return principal == null ? "redirect:login" : "ledger/medical";
     }
 
     @PostMapping("/ledger/medical")
@@ -40,8 +40,8 @@ public class UserMedicalController {
         userDao.save(persistUser);
 
 
-//        userMedicalDao.save(user);
-        return"redirect:/ledger/medical";
+        userMedicalDao.save(userMedicalInformation);
+        return"redirect:ledger/medical";
     }
 
 }
