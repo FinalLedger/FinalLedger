@@ -44,6 +44,7 @@ public class UserDocumentController {
         // set the current user to the document
         User userLoggedIn = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         userDocument.setUser(userLoggedIn);
+
 //        System.out.println("userLoggedIn = " + userLoggedIn.getId());
 //
 //        userDocument.setTitle(title);
@@ -53,7 +54,7 @@ public class UserDocumentController {
 //        System.out.println("document_upload = " + document_upload);
 
 
-        userDocumentsDao.save(userDocument);
+//        userDocumentsDao.save(userDocument);
 
         return("redirect:/ledger/documents");
     }
