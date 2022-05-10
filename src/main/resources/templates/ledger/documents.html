@@ -35,8 +35,8 @@
 
     <form th:action="@{/ledger/documents}" th:method="post" th:object="${documents}">
 
-      <label for="title" th:field="*{title}">Title</label>
-      <input id="title" name="title" type="text" placeholder="type of document you wish to upload">
+      <label for="title">Title</label>
+      <input id="title" name="title" type="text" th:field="*{title}" placeholder="Name of your Document">
 
       <div class="form-group">
         <label for="uploadDoc" >
