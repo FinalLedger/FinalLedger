@@ -13,7 +13,8 @@
 </head>
 <body>
 <nav th:replace="/partials/navbar :: navbar"></nav>
-<h1 style="display: flex; flex-direction: row">Final Ledger</h1>
+<h1 class="title">Final Ledger</h1><br>
+<h2 class="sec-title">More About Us</h2>
 <br>
 <hr>
 
@@ -33,29 +34,39 @@
 <span class="ss-icon" onclick="galleryspin('-')" id="span-left">&lt;</span>
 <span class="ss-icon" onclick="galleryspin('')" id="span-right">&gt;</span>
 
+<!--Profiles-->
 
-
-<h1>
-    <a href="" class="typewrite" data-period="2000" data-type='[ "Hello there,  Im Therman" ]'>
-        <span class="wrap"></span>
-    </a>
-</h1>
+<!--Profile 1-->
 <div>
-    <!--1-->
+    <h1>
+        <a href="" class="typewrite" data-period="2000" data-type='[ "Hey There, Im Therman." ]'>
+            <span class="wrap"></span>
+        </a>
+    </h1>
 
-    <div class="card">
-        <img src="https://ca.slack-edge.com/T029BRGN0-U02MN8EJRGW-36a7ee367d5a-512" class="card-img-top profile-img" alt="img">
-        <div class="card-body">
-            <h5 class="card-title">Therman   </h5>
-            <a href="" class="typewrite" data-period="2000" data-type='[ "Im just a guy who likes all aspects of I.T." ]'>
-                <span class="wrap"></span>
-            </a>
-            <br>
-            <a href="" class="btn btn-primary">GitHub</a>
+    <div class="card ">
+        <div class="card-two">
+            <img src="https://ca.slack-edge.com/T029BRGN0-U02MN8EJRGW-36a7ee367d5a-512" class="card-img-top profile-img" alt="img">
+            <div class="card-body">
+                <h5 class="card-title">Jack(Ranchaya Sambath)</h5>
+                <a href="" class="typewrite" data-period="2000" data-type='[ "Im just a guy who likes all aspects of I.T." ]'>
+                    <span class="wrap"></span>
+                </a>
+                <br>
+                <a href="#" class="btn btn-primary btn-color">Github</a>
+                <a href="#" class="btn btn-primary btn-color">Linkedin</a>
+            </div>
         </div>
-
-
     </div>
+
+
+
+
+
+
+
+    <!--Profile 2-->
+
     <h1>
         <a href="" class="typewrite" data-period="2000" data-type='[ "Hi, Im Jack." ]'>
             <span class="wrap"></span>
@@ -71,28 +82,69 @@
                 <span class="wrap"></span>
             </a>
             <br>
-            <a href="#" class="btn btn-primary">Github</a>
+            <a href="#" class="btn btn-primary btn-color">Github</a>
+            <a href="#" class="btn btn-primary btn-color">Linkedin</a>
         </div>
         </div>
-        <!--2-->
-       <h1> <a href="" class="typewrite" data-period="2000" data-type='[ "My name is Jason" ]'>
-            <span class="wrap"></span>
-        </a>
-        </h1>
-        <img src="https://ca.slack-edge.com/T029BRGN0-U02MUV5L150-39afa35a0e97-512" class="card-img-top profile-img" alt="img">
-        <div class="card-body">
-            <h5 class="card-title">Jason Comstock</h5>
-            <a href="" class="typewrite" data-period="2000" data-type='[ "Im a full stack developer" ]'>
+
+<!--Profile 3-->
+        <h1 class="header-text">
+            <a href="" class="typewrite" data-period="2000" data-type='[ "Hi, Im  profile  3." ]'>
                 <span class="wrap"></span>
             </a>
-            <br>
-            <a href="https://github.com/JMComstock" class="btn btn-primary">GitHub</a>
+        </h1>
+
+        <div class="card ">
+            <div class="card-two">
+                <img src="https://ca.slack-edge.com/T029BRGN0-U02MS185YTX-bb22efb3fca3-512" class="card-img-top profile-img" alt="img">
+                <div class="card-body">
+                    <h5 class="card-title">Jack(Ranchaya Sambath)</h5>
+                    <a href="" class="typewrite" data-period="2000" data-type='[ "Im a coder who loves to develop" ]'>
+                        <span class="wrap"></span>
+                    </a>
+                    <br>
+                    <a href="#" class="btn btn-primary btn-color">Github</a>
+                    <a href="#" class="btn btn-primary btn-color">Linkedin</a>
+                </div>
+            </div>
         </div>
-        <!--2-->
+
+
+
+        <div>
+            <h1 class="header-text">
+                <a href="" class="typewrite" data-period="2000" data-type='[ "Hey There, Im Therman." ]'>
+                    <span class="wrap"></span>
+                </a>
+            </h1>
+
+            <div class="card ">
+                <div class="card-two">
+                    <img src="https://ca.slack-edge.com/T029BRGN0-U02MN8EJRGW-36a7ee367d5a-512" class="card-img-top profile-img" alt="img">
+                    <div class="card-body">
+                        <h5 class="card-title">Jack(Ranchaya Sambath)</h5>
+                        <a href="" class="typewrite" data-period="2000" data-type='[ "Im just a guy who likes all aspects of I.T." ]'>
+                            <span class="wrap"></span>
+                        </a>
+                        <br>
+                        <a href="#" class="btn btn-primary btn-color">Github</a>
+                        <a href="#" class="btn btn-primary btn-color">Linkedin</a>
+                    </div></div>
+                </div>
+            </div>
+
 
     </div>
 </div>
-<button><a href="#top"> Top</a></button>
+<button><a  class="btn-color" href="#top"> Top</a></button>
+<div class="row" id="footer">
+    <div class="col-12">
+        <a href="/">Home</a> |
+        <a href="#">Products</a> |
+        <a href="#">Company</a> |
+        <a href="#">Blog</a>
+    </div>
+</div>
 <script>
     var TxtType = function(el, toRotate, period) {
         this.toRotate = toRotate;
