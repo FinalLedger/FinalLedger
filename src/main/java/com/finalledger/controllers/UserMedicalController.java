@@ -11,10 +11,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import java.security.Principal;
+import java.util.ArrayList;
+
 @Controller
 public class UserMedicalController {
     private final UserRepository userDao;
-    private final UserMedicalRepository userMedicalDao ;
+    private final UserMedicalRepository userMedicalDao;
 
     public UserMedicalController(UserRepository userDao, UserMedicalRepository userMedicalDao) {
         this.userDao = userDao;
@@ -22,15 +25,22 @@ public class UserMedicalController {
     }
 
     @GetMapping("/ledger/medical")
-    public String showUserMedicalForm(Model model){
-        model.addAttribute("medical", new UserMedicalInformation());
-        return("ledger/medical");
+    public String showUserMedicalForm(Model model, Principal principal) {
+        model.addAttribute("userMedicalInformation", new UserMedicalInformation());
+        return principal == null ? "redirect:/login" : "/ledger/medical";
     }
 
     @PostMapping("/ledger/medical")
-    public String saveMedicalInformation(@ModelAttribute UserMedicalInformation userMedicalInformation){
+    public String saveMedicalInformation(@ModelAttribute UserMedicalInformation userMedicalInformation) {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        userMedicalDao.save(user);
+        User persistUser = userDao.getById(user.getId());
+        userMedicalInformation.setUser(persistUser);
+        ArrayList<UserMedicalInformation> document = new ArrayList<>();
+        document.add(userMedicalInformation);
+        userDao.save(persistUser);
+
+
+//        userMedicalDao.save(user);
         return"redirect:/ledger/medical";
     }
 
