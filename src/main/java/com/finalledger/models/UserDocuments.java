@@ -16,7 +16,7 @@ public class UserDocuments {
     @Column
     private String document_upload;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "main_user_id")
     private User user;
 
