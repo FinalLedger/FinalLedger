@@ -39,17 +39,21 @@ public class UserDocumentController {
     }
 
     @PostMapping("/ledger/documents")
-    public String saveUserDocuments (@ModelAttribute UserDocuments userDocuments, @RequestParam(name = "title") String title, @RequestParam(name = "document_upload") String document_upload){
+    public String saveUserDocuments (@ModelAttribute UserDocuments userDocument, @RequestParam(name = "title") String title, @RequestParam(name = "document_upload") String document_upload){
 
         // set the current user to the document
-        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        userDocuments.setUser(user);
-        System.out.println("user = " + user);
-        userDocuments.setTitle(title);
-        System.out.println("title = " + title);
-        userDocuments.setDocument_upload(document_upload);
-        System.out.println("document_upload = " + document_upload);
-//        userDocumentsDao.save(userDocuments);
+        User userLoggedIn = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        userDocument.setUser(userLoggedIn);
+//        System.out.println("userLoggedIn = " + userLoggedIn.getId());
+//
+//        userDocument.setTitle(title);
+//        System.out.println("title = " + title);
+//
+//        userDocument.setDocument_upload(document_upload);
+//        System.out.println("document_upload = " + document_upload);
+
+
+        userDocumentsDao.save(userDocument);
 
         return("redirect:/ledger/documents");
     }
