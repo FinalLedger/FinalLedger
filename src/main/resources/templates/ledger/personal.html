@@ -40,7 +40,7 @@
     </li>
   </ul>
   <br>
-  <form th:action="@{/ledger/personal}" th:method="post" th:object="${personal}">
+  <form th:action="@{/ledger/personal}" th:method="post" th:object="${userPersonalInformation}">
     <div class="mb-3">
       <label for="legalName" class="form-label">Legal Name</label>
       <input type="text" th:field="*{legalName}" class="form-control" id="legalName">
@@ -64,11 +64,11 @@
     <div class="mb-3">
       <label for="maritalStatus" class="form-label">Marital Status</label>
       <select name="maritalStatus" th:field="*{maritalStatus}" class="form-select" id="maritalStatus">
-        <option selected value="selected">Select marital status</option>
-        <option value="single">Single</option>
-        <option value="married">Married</option>
-        <option value="divorced">Divorced</option>
-        <option value="widowed">Widowed</option>
+        <!--        <option selected th:value="selected">Select marital status</option>-->
+        <option th:value="single">Single</option>
+        <option th:value="married">Married</option>
+        <option th:value="divorced">Divorced</option>
+        <option th:value="widowed">Widowed</option>
       </select>
     </div>
     <div class="mb-3">
@@ -78,11 +78,11 @@
     <div class="mb-3">
       <label for="citizenship" class="form-label">Citizenship</label>
       <select name="citizenship" th:field="*{citizenship}" class="form-select" id="citizenship">
-        <option selected value="selected">Select citizenship status</option>
-        <option value="citizen">US Citizen</option>
-        <option value="LPR">Lawful Permanent Resident</option>
-        <option value="visitor">Temporary Visitor</option>
-        <option value="undocImmigrant">Undocumented Immigrant</option>
+        <!--        <option selected>Select citizenship status</option>-->
+        <option th:value="citizen">US Citizen</option>
+        <option th:value="LPR">Lawful Permanent Resident</option>
+        <option th:value="visitor">Temporary Visitor</option>
+        <option th:value="undocImmigrant">Undocumented Immigrant</option>
       </select>
     </div>
     <div class="mb-3">
@@ -92,10 +92,10 @@
     <div class="mb-3">
       <label for="militaryStatus" class="form-label">Military Status</label>
       <select name="militaryStatus" th:field="*{militaryStatus}" class="form-select" id="militaryStatus">
-        <option selected value="selected">Select military status</option>
-        <option value="activeDuty">Active-duty</option>
-        <option value="veteran">Veteran</option>
-        <option value="honorableDischarge">Honorable Discharge</option>
+        <!--        <option selected>Select military status</option>-->
+        <option th:value="activeDuty">Active-duty</option>
+        <option th:value="veteran">Veteran</option>
+        <option th:value="honorableDischarge">Honorable Discharge</option>
       </select>
     </div>
     <button type="submit" class="btn btn-primary">Submit</button>
