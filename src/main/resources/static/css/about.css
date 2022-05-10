@@ -126,3 +126,7 @@ text-align: center
 h2.sec-title {
 color: silver;
 }
+span.wrap {
+    color: silver;
+    font-size: larger;
+}
