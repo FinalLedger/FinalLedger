@@ -27,10 +27,10 @@
         </li>
     </ul>
     <br>
-    <form th:action="@{/ledger/medical}" method="post">
+    <form th:action="@{/ledger/medical}" th:method="post" th:object="${userMedicalInformation}">
         <div class="mb-3">
             <label for="willLocation" class="form-label">Will Location</label>
-            <input type="text" class="form-control" id="willLocation">
+            <input type="text" th:field="willLocation" class="form-control" id="willLocation">
         </div>
         <div class="mb-3">
             <label for="poaDocLocation" class="form-label">POA Doc Location</label>
