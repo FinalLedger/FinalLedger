@@ -42,6 +42,13 @@ public class User {
 
     public User() {}
 
+    public User(String username, String email, String password, boolean isMainUser) {
+        this.username = username;
+        this.email = email;
+        this.password = password;
+        this.isMainUser = isMainUser;
+    }
+
     public User(Long id, String username, String email, String password, boolean isMainUser, List<UserDocuments> documents, List<CreditCard> creditCards, List<FinancialInvestment> financialInvestments, List<InsurancePolicy> insurancePolicy, List<BankAccounts> bankAccounts) {
         this.id = id;
         this.username = username;
