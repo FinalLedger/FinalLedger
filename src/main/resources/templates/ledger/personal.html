@@ -55,7 +55,8 @@
     </div>
     <div class="mb-3">
       <label for="phoneNumber" class="form-label">Phone Number</label>
-      <input type="tel" th:field="*{phoneNumber}" class="form-control" id="phoneNumber">
+      <input type="text" placeholder="123-45-678" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"  th:field="*{phoneNumber}" class="form-control" id="phoneNumber">
+      <small>Format: 123-456-7890</small>
     </div>
     <div class="mb-3">
       <label for="birthPlace" class="form-label">Birth Place</label>
@@ -83,6 +84,7 @@
         <option th:value="LPR">Lawful Permanent Resident</option>
         <option th:value="visitor">Temporary Visitor</option>
         <option th:value="undocImmigrant">Undocumented Immigrant</option>
+        <option th:value="DoNotWishToAnswer">Do Not Wish To Answer</option>
       </select>
     </div>
     <div class="mb-3">
@@ -94,8 +96,15 @@
       <select name="militaryStatus" th:field="*{militaryStatus}" class="form-select" id="militaryStatus">
         <!--        <option selected>Select military status</option>-->
         <option th:value="activeDuty">Active-duty</option>
-        <option th:value="veteran">Veteran</option>
         <option th:value="honorableDischarge">Honorable Discharge</option>
+        <option th:value="generalDischarge">General Discharge</option>
+        <option th:value="entryLevelSeparation">Entry-Level Separation</option>
+        <option th:value="medicalDischarge">Medical Discharge</option>
+        <option th:value="otherThanHonorableDischarge">Other Than Honorable Discharge</option>
+        <option th:value="badConductDischarge">Bad Conduct Discharge</option>
+        <option th:value="dishonorableDischarge.">Dishonorable Discharge</option>
+        <option th:value="dismissal">Dismissal (Officer Discharge)</option>
+        <option th:value="noMilitaryService">No Military Service</option>
       </select>
     </div>
     <button type="submit" class="btn btn-primary">Submit</button>
