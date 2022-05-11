@@ -21,7 +21,7 @@ public class UserContacts {
     private String lastName;
 
     @Column(nullable = false, unique=true)
-    private int phoneNumber;
+    private String phoneNumber;
 
     @Column(nullable = false, unique=true)
     private String email;
@@ -31,7 +31,7 @@ public class UserContacts {
 
     public UserContacts() {}
 
-    public UserContacts(String relationship, String firstName, String lastName, int phoneNumber, String email, List<Address> address, User user) {
+    public UserContacts(String relationship, String firstName, String lastName, String phoneNumber, String email, List<Address> address, User user) {
         this.relationship = relationship;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -41,7 +41,7 @@ public class UserContacts {
         this.user = user;
     }
 
-    public UserContacts(Long id, String relationship, String firstName, String lastName, int phoneNumber, String email, List<Address> address, User user) {
+    public UserContacts(Long id, String relationship, String firstName, String lastName, String phoneNumber, String email, List<Address> address, User user) {
         this.id = id;
         this.relationship = relationship;
         this.firstName = firstName;
@@ -88,11 +88,11 @@ public class UserContacts {
         this.lastName = lastName;
     }
 
-    public int getPhoneNumber() {
+    public String getPhoneNumber() {
         return phoneNumber;
     }
 
-    public void setPhoneNumber(int phoneNumber) {
+    public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
 
