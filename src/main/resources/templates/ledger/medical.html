@@ -4,66 +4,115 @@
     <meta charset="UTF-8">
     <title>Ledger</title>
     <link th:replace="/partials/navbar :: bootstrap">
+    <link rel="stylesheet" th:href="@{/css/ledger.css}">
 </head>
 <body>
 <nav th:replace="/partials/navbar :: userNav"></nav>
 
 <div class="container">
-    <ul class="nav nav-tabs">
-        <li class="nav-item">
-            <a class="nav-link" href="/ledger/personal">Personal</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Medical</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="/ledger/contacts">Contacts</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="/ledger/documents">Documents</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="/ledger/financial">Financial</a>
-        </li>
-    </ul>
-    <br>
-    <form th:action="@{/ledger/medical}" th:method="post" th:object="${medical}">
-        <div class="mb-3">
-            <label for="willLocation" class="form-label">Will Location</label>
-            <input type="text" th:field="*{willLocation}" class="form-control" id="willLocation">
+    <div class="nav nav-tabs justify-content-between">
+        <ul class="nav">
+            <li class="nav-item">
+                <a class="nav-link" href="/ledger/personal">Personal</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">Medical</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/ledger/contacts">Contacts</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/ledger/documents">Documents</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/ledger/financial">Financial</a>
+            </li>
+        </ul>
+        <div class="d-flex align-items-center">
+            <button type="button" class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#formModal">
+                Enter info
+            </button>
         </div>
-        <div class="mb-3">
-            <label for="poaDocLocation" class="form-label">Power Of Attorney Document Location</label>
-            <input type="text" th:field="*{POADocLocation}" class="form-control" id="poaDocLocation">
+    </div>
+    <div id="infoView" class="container">
+        <br>
+        <div class="container">
+            <h6>Will Location</h6>
+            <hr>
+            <p>Data populates here</p>
+            <h6>POA Document Location</h6>
+            <hr>
+            <p>Data populates here</p>
+            <h6>DNR Order Location</h6>
+            <hr>
+            <p>Data populates here</p>
+            <h6>Blood Type</h6>
+            <hr>
+            <p>Data populates here</p>
+            <h6>Medical Conditions</h6>
+            <hr>
+            <p>Data populates here</p>
+            <h6>Health Insurance</h6>
+            <hr>
+            <p>Data populates here</p>
         </div>
-        <div class="mb-3">
-            <label for="dnrDocLocation" class="form-label">Do Not Resuscitate Document Location</label>
-            <input type="text" th:field="*{DNROrderLocation}" class="form-control" id="dnrDocLocation">
-        </div>
-        <div class="mb-3">
-            <label for="bloodType" class="form=label">Blood Type</label>
-            <select name="bloodType" th:field="*{bloodType}"  class="form-select" id="bloodType">
-<!--                <option selected>Select blood type</option>-->
-                <option th:value="ONegactive">O Negative</option>
-                <option th:value="OPositive">O Positive</option>
-                <option th:value="ANegative">A Negative</option>
-                <option th:value="APositive">A Positive</option>
-                <option th:value="BNegative">B Negative</option>
-                <option th:value="BPositive">B Positive</option>
-                <option th:value="ABNegative">AB Negative</option>
-                <option th:value="ABPositive">AB Positive</option>
-            </select>
-        </div>
-        <div class="mb-3">
-            <label for="medicalConditions" class="form-label">Medical Conditions</label>
-            <input type="text" th:field="*{medicalConditions}" class="form-control" id="medicalConditions">
-        </div>
-        <div class="mb-3">
-            <label for="healthInsurance" class="form-label">Health Insurance</label>
-            <input type="text" th:field="*{healthInsuranceName}" class="form-control" id="healthInsurance">
-        </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
-    </form>
+    </div>
 </div>
+<div class="modal fade" id="formModal" tabindex="-1" aria-labelledby="formModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="formModalLabel">Medical Info</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form th:action="@{/ledger/medical}" th:method="post" th:object="${medical}">
+                    <div class="mb-3">
+                        <label for="willLocation" class="form-label">Will Location</label>
+                        <input type="text" th:field="*{willLocation}" class="form-control" id="willLocation">
+                    </div>
+                    <div class="mb-3">
+                        <label for="poaDocLocation" class="form-label">Power Of Attorney Document Location</label>
+                        <input type="text" th:field="*{POADocLocation}" class="form-control" id="poaDocLocation">
+                    </div>
+                    <div class="mb-3">
+                        <label for="dnrDocLocation" class="form-label">Do Not Resuscitate Document Location</label>
+                        <input type="text" th:field="*{DNROrderLocation}" class="form-control" id="dnrDocLocation">
+                    </div>
+                    <div class="mb-3">
+                        <label for="bloodType" class="form=label">Blood Type</label>
+                        <select name="bloodType" th:field="*{bloodType}" class="form-select" id="bloodType">
+                            <option disabled th:value="disabled">Select blood type</option>
+                            <option th:value="ONegactive">O Negative</option>
+                            <option th:value="OPositive">O Positive</option>
+                            <option th:value="ANegative">A Negative</option>
+                            <option th:value="APositive">A Positive</option>
+                            <option th:value="BNegative">B Negative</option>
+                            <option th:value="BPositive">B Positive</option>
+                            <option th:value="ABNegative">AB Negative</option>
+                            <option th:value="ABPositive">AB Positive</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="medicalConditions" class="form-label">Medical Conditions</label>
+                        <input type="text" th:field="*{medicalConditions}" class="form-control" id="medicalConditions">
+                    </div>
+                    <div class="mb-3">
+                        <label for="healthInsurance" class="form-label">Health Insurance</label>
+                        <input type="text" th:field="*{healthInsuranceName}" class="form-control" id="healthInsurance">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
 </body>
 </html>
