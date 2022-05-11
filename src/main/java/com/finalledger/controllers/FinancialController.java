@@ -59,15 +59,39 @@ public class FinancialController {
         return "redirect:ledger/financial";
     }
     public String saveInsurancePolicyInformation(@ModelAttribute InsurancePolicy insurancePolicy){
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User persistUser = userDao.getById(user.getId());
+        insurancePolicy.setUser(persistUser);
+        ArrayList<InsurancePolicy> document = new ArrayList<>();
 
+        document.add(insurancePolicy);
+        userDao.save(persistUser);
 
-        return "redirect:/ledger/financial";
+        insurancePolicyDao.save(insurancePolicy);
+
+        return "redirect:ledger/financial";
     }
     public String saveBankAccountsInformation(@ModelAttribute BankAccounts bankAccounts){
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User persistUser = userDao.getById(user.getId());
+        bankAccounts.setUser(persistUser);
+        ArrayList<BankAccounts> document = new ArrayList<>();
+
+        document.add(bankAccounts);
+        userDao.save(persistUser);
+
+        bankAccountsDao.save(bankAccounts);
 
         return "redirect:/ledger/financial";
     }
     public String saveCreditCardInformation(@ModelAttribute CreditCard creditCard){
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User persistUser = userDao.getById(user.getId());
+        creditCard.setUser(persistUser);
+        ArrayList<CreditCard> document = new ArrayList<>();
+
+        document.add(creditCard);
+        userDao.save(persistUser);
 
         return "redirect:/ledger/financial";
     }

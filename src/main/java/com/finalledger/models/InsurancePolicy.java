@@ -22,6 +22,9 @@ public class InsurancePolicy {
     @Column(nullable = false, unique=true)
     private String beneficiary;
 
+    @OneToOne
+    private User user;
+
     @ManyToMany
     @JoinTable(
             name="users_policies",
@@ -31,20 +34,22 @@ public class InsurancePolicy {
 
     public InsurancePolicy(){}
 
-    public InsurancePolicy(Long id, String company, String contactInfo, Long currentValue, String beneficiary, List<User> users) {
+    public InsurancePolicy(Long id, String company, String contactInfo, Long currentValue, String beneficiary, User user, List<User> users) {
         this.id = id;
         this.company = company;
         this.contactInfo = contactInfo;
         this.currentValue = currentValue;
         this.beneficiary = beneficiary;
+        this.user = user;
         this.users = users;
     }
 
-    public InsurancePolicy(String company, String contactInfo, Long currentValue, String beneficiary, List<User> users) {
+    public InsurancePolicy(String company, String contactInfo, Long currentValue, String beneficiary, User user, List<User> users) {
         this.company = company;
         this.contactInfo = contactInfo;
         this.currentValue = currentValue;
         this.beneficiary = beneficiary;
+        this.user = user;
         this.users = users;
     }
 
@@ -86,6 +91,14 @@ public class InsurancePolicy {
 
     public void setBeneficiary(String beneficiary) {
         this.beneficiary = beneficiary;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public List<User> getUsers() {

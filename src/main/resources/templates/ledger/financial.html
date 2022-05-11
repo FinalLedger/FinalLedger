@@ -56,22 +56,22 @@
     <hr>
     <div class="container">
         <p>financial investments displayed here</p>
-        <form th:action="@{/ledger/financial}" th:method="post" th:object="${}">
+        <form th:action="@{/ledger/financial}" th:method="post" th:object="${finance}">
             <div class="mb-3">
                 <label for="investmentCompany" class="form-label">Company</label>
-                <input type="text" class="form-control" id="investmentCompany">
+                <input type="text" th:field="*{company}"  class="form-control" id="investmentCompany">
             </div>
             <div class="mb-3">
                 <label for="investmentContact" class="form-label">Contact Info</label>
-                <input type="text" class="form-control" id="investmentContact">
+                <input type="text" th:field="*{contact_info}"  class="form-control" id="investmentContact">
             </div>
             <div class="mb-3">
                 <label for="investmentValue" class="form-label">Current Value</label>
-                <input type="text" class="form-control" id="investmentValue">
+                <input type="text" th:field="*{current_value}" class="form-control" id="investmentValue">
             </div>
             <div class="mb-3">
                 <label for="investmentBeneficiary" class="form-label">Beneficiary</label>
-                <input type="text" class="form-control" id="investmentBeneficiary">
+                <input type="text" th:field="*{beneficiary}" class="form-control" id="investmentBeneficiary">
             </div>
             <button type="submit" class="btn btn-primary" id="investmentBtn">Submit</button>
         </form>
@@ -81,14 +81,14 @@
     <hr>
     <div class="container">
         <p>credit cards displayed here</p>
-        <form th:action="@{/ledger/financial}" method="post">
+        <form th:action="@{/ledger/financial}" th:method="post" th:object="${creditCard}">
             <div class="mb-3">
                 <label for="cardType" class="form-label">Type</label>
-                <input type="text" class="form-control" id="cardType">
+                <input type="text" th:field="*{type}" class="form-control" id="cardType">
             </div>
             <div class="mb-3">
                 <label for="cardIssuer" class="form-label">Issuer</label>
-                <input type="text" class="form-control" id="cardIssuer">
+                <input type="text" th:field="*{issuer}" class="form-control" id="cardIssuer">
             </div>
             <button type="submit" class="btn btn-primary" id="creditBtn">Submit</button>
         </form>
@@ -98,22 +98,22 @@
     <hr>
     <div class="container">
         <p>bank accounts displayed here</p>
-        <form th:action="@{/ledger/financial}" method="post">
+        <form th:action="@{/ledger/financial}" th:method="post" th:object="bankAccounts">
             <div class="mb-3">
                 <label for="bankCompany" class="form-label">Company</label>
-                <input type="text" class="form-control" id="bankCompany">
+                <input type="text" th:field="*{company}" class="form-control" id="bankCompany">
             </div>
             <div class="mb-3">
                 <label for="bankContact" class="form-label">Contact Info</label>
-                <input type="text" class="form-control" id="bankContact">
+                <input type="text" th:field="*{contactInfo}" class="form-control" id="bankContact">
             </div>
             <div class="mb-3">
                 <label for="bankChecking" class="form-label">Checking Account</label>
-                <input type="text" class="form-control" id="bankChecking">
+                <input type="text" th:field="*{checkingAccount}" class="form-control" id="bankChecking">
             </div>
             <div class="mb-3">
                 <label for="bankSavings" class="form-label">Savings Account</label>
-                <input type="text" class="form-control" id="bankSavings">
+                <input type="text" th:field="*{savingAccount}" class="form-control" id="bankSavings">
             </div>
             <button type="submit" class="btn btn-primary" id="bankBtn">Submit</button>
         </form>
