@@ -31,7 +31,7 @@
     <hr>
     <div class="container">
         <p>insurance policies displayed here and add button</p>
-        <form th:action="@{/ledger/financial}" th:method="post" th:object="${insurancePolicy}">
+        <form th:action="@{/ledger/insurancePolicy}" th:method="post" th:object="${insurancePolicy}">
             <div class="mb-3">
                 <label for="insuranceCompany" class="form-label">Company</label>
                 <input type="text" th:field="*{company}" class="form-control" id="insuranceCompany">
@@ -81,7 +81,7 @@
     <hr>
     <div class="container">
         <p>credit cards displayed here</p>
-        <form th:action="@{/ledger/financial}" th:method="post" th:object="${creditCard}">
+        <form th:action="@{/ledger/creditCard}" th:method="post" th:object="${creditCard}">
             <div class="mb-3">
                 <label for="cardType" class="form-label">Type</label>
                 <input type="text" th:field="*{type}" class="form-control" id="cardType">
@@ -98,7 +98,7 @@
     <hr>
     <div class="container">
         <p>bank accounts displayed here</p>
-        <form th:action="@{/ledger/financial}" th:method="post" th:object="bankAccounts">
+        <form th:action="@{/ledger/bankAccounts}" th:method="post" th:object="${bankAccounts}">
             <div class="mb-3">
                 <label for="bankCompany" class="form-label">Company</label>
                 <input type="text" th:field="*{company}" class="form-control" id="bankCompany">

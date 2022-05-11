@@ -17,7 +17,7 @@ public class FinancialInvestment {
     private String company;
 
     @Column(nullable = false)
-    private Long current_value;
+    private String current_value;
 
     @Column(nullable = false)
     private String beneficiary;
@@ -38,7 +38,7 @@ public class FinancialInvestment {
     public FinancialInvestment() {
     }
 
-    public FinancialInvestment(Long id, String company, Long current_value, String beneficiary, String contact_info, User user, List<User> users) {
+    public FinancialInvestment(Long id, String company, String current_value, String beneficiary, String contact_info, User user, List<User> users) {
         this.id = id;
         this.company = company;
         this.current_value = current_value;
@@ -48,7 +48,7 @@ public class FinancialInvestment {
         this.users = users;
     }
 
-    public FinancialInvestment(String company, Long current_value, String beneficiary, String contact_info, User user, List<User> users) {
+    public FinancialInvestment(String company, String current_value, String beneficiary, String contact_info, User user, List<User> users) {
         this.company = company;
         this.current_value = current_value;
         this.beneficiary = beneficiary;
@@ -73,11 +73,11 @@ public class FinancialInvestment {
         this.company = company;
     }
 
-    public Long getCurrent_value() {
+    public String getCurrent_value() {
         return current_value;
     }
 
-    public void setCurrent_value(Long current_value) {
+    public void setCurrent_value(String current_value) {
         this.current_value = current_value;
     }
 

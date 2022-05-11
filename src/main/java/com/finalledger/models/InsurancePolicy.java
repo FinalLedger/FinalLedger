@@ -17,7 +17,7 @@ public class InsurancePolicy {
     private String contactInfo;
 
     @Column(nullable = false)
-    private Long currentValue;
+    private String currentValue;
 
     @Column(nullable = false, unique=true)
     private String beneficiary;
@@ -34,7 +34,7 @@ public class InsurancePolicy {
 
     public InsurancePolicy(){}
 
-    public InsurancePolicy(Long id, String company, String contactInfo, Long currentValue, String beneficiary, User user, List<User> users) {
+    public InsurancePolicy(Long id, String company, String contactInfo, String currentValue, String beneficiary, User user, List<User> users) {
         this.id = id;
         this.company = company;
         this.contactInfo = contactInfo;
@@ -44,7 +44,7 @@ public class InsurancePolicy {
         this.users = users;
     }
 
-    public InsurancePolicy(String company, String contactInfo, Long currentValue, String beneficiary, User user, List<User> users) {
+    public InsurancePolicy(String company, String contactInfo, String currentValue, String beneficiary, User user, List<User> users) {
         this.company = company;
         this.contactInfo = contactInfo;
         this.currentValue = currentValue;
@@ -77,11 +77,11 @@ public class InsurancePolicy {
         this.contactInfo = contactInfo;
     }
 
-    public Long getCurrentValue() {
+    public String getCurrentValue() {
         return currentValue;
     }
 
-    public void setCurrentValue(Long currentValue) {
+    public void setCurrentValue(String currentValue) {
         this.currentValue = currentValue;
     }
 

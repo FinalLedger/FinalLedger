@@ -28,19 +28,15 @@ public class FinancialController {
     }
     @GetMapping("/ledger/financial")
     public String showFinancialForm(Model model, Principal principal){
+
         model.addAttribute("finance", new FinancialInvestment());
-        return principal == null ?  "redirect:/login" : "/ledger/financial";
-    }
-    public String showInsurancePolicyForm(Model model, Principal principal){
+
         model.addAttribute("insurancePolicy", new InsurancePolicy());
-        return principal == null ?  "redirect:/login" : "/ledger/financial";
-    }
-    public String showBankAccountsForm(Model model, Principal principal){
+
         model.addAttribute("bankAccounts", new BankAccounts());
-        return principal == null ?  "redirect:/login" : "/ledger/financial";
-    }
-    public String showCreditCardForm(Model model, Principal principal){
+
         model.addAttribute("creditCard", new CreditCard());
+
         return principal == null ?  "redirect:/login" : "/ledger/financial";
     }
 
@@ -56,8 +52,9 @@ public class FinancialController {
 
         financialInvestmentDao.save(finance);
 
-        return "redirect:ledger/financial";
+        return "redirect:/ledger/financial";
     }
+    @PostMapping("/ledger/insurancePolicy")
     public String saveInsurancePolicyInformation(@ModelAttribute InsurancePolicy insurancePolicy){
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         User persistUser = userDao.getById(user.getId());
@@ -69,8 +66,9 @@ public class FinancialController {
 
         insurancePolicyDao.save(insurancePolicy);
 
-        return "redirect:ledger/financial";
+        return "redirect:/ledger/financial";
     }
+    @PostMapping("/ledger/bankAccounts")
     public String saveBankAccountsInformation(@ModelAttribute BankAccounts bankAccounts){
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         User persistUser = userDao.getById(user.getId());
@@ -84,6 +82,7 @@ public class FinancialController {
 
         return "redirect:/ledger/financial";
     }
+    @PostMapping("/ledger/creditCard")
     public String saveCreditCardInformation(@ModelAttribute CreditCard creditCard){
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         User persistUser = userDao.getById(user.getId());
@@ -92,6 +91,8 @@ public class FinancialController {
 
         document.add(creditCard);
         userDao.save(persistUser);
+
+        creditCardDao.save(creditCard);
 
         return "redirect:/ledger/financial";
     }

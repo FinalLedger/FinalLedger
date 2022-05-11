@@ -16,11 +16,11 @@ public class BankAccounts {
     @Column(nullable = false)
     private String contactInfo;
 
-    @Column(nullable = false, unique=true)
-    private boolean checkingAccount;
+    @Column(nullable = false)
+    private String checkingAccount;
 
-    @Column(nullable = false, unique=true)
-    private boolean savingAccount;
+    @Column(nullable = false)
+    private String savingAccount;
 
     @OneToOne
     private User user;
@@ -34,7 +34,7 @@ public class BankAccounts {
 
     public BankAccounts(){}
 
-    public BankAccounts(Long id, String company, String contactInfo, boolean checkingAccount, boolean savingAccount, User user, List<User> users) {
+    public BankAccounts(Long id, String company, String contactInfo, String checkingAccount, String savingAccount, User user, List<User> users) {
         this.id = id;
         this.company = company;
         this.contactInfo = contactInfo;
@@ -44,7 +44,7 @@ public class BankAccounts {
         this.users = users;
     }
 
-    public BankAccounts(String company, String contactInfo, boolean checkingAccount, boolean savingAccount, User user, List<User> users) {
+    public BankAccounts(String company, String contactInfo, String checkingAccount, String savingAccount, User user, List<User> users) {
         this.company = company;
         this.contactInfo = contactInfo;
         this.checkingAccount = checkingAccount;
@@ -77,19 +77,19 @@ public class BankAccounts {
         this.contactInfo = contactInfo;
     }
 
-    public boolean isCheckingAccount() {
+    public String getCheckingAccount() {
         return checkingAccount;
     }
 
-    public void setCheckingAccount(boolean checkingAccount) {
+    public void setCheckingAccount(String checkingAccount) {
         this.checkingAccount = checkingAccount;
     }
 
-    public boolean isSavingAccount() {
+    public String getSavingAccount() {
         return savingAccount;
     }
 
-    public void setSavingAccount(boolean savingAccount) {
+    public void setSavingAccount(String savingAccount) {
         this.savingAccount = savingAccount;
     }
 
