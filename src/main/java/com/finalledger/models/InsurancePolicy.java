@@ -47,4 +47,52 @@ public class InsurancePolicy {
         this.beneficiary = beneficiary;
         this.users = users;
     }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getCompany() {
+        return company;
+    }
+
+    public void setCompany(String company) {
+        this.company = company;
+    }
+
+    public String getContactInfo() {
+        return contactInfo;
+    }
+
+    public void setContactInfo(String contactInfo) {
+        this.contactInfo = contactInfo;
+    }
+
+    public Long getCurrentValue() {
+        return currentValue;
+    }
+
+    public void setCurrentValue(Long currentValue) {
+        this.currentValue = currentValue;
+    }
+
+    public String getBeneficiary() {
+        return beneficiary;
+    }
+
+    public void setBeneficiary(String beneficiary) {
+        this.beneficiary = beneficiary;
+    }
+
+    public List<User> getUsers() {
+        return users;
+    }
+
+    public void setUsers(List<User> users) {
+        this.users = users;
+    }
 }

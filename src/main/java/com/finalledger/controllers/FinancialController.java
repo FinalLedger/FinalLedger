@@ -1,14 +1,15 @@
 package com.finalledger.controllers;
-import com.finalledger.models.BankAccounts;
-import com.finalledger.models.CreditCard;
-import com.finalledger.models.FinancialInvestment;
-import com.finalledger.models.InsurancePolicy;
+import com.finalledger.models.*;
 import com.finalledger.repositories.*;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+
+import java.security.Principal;
+import java.util.ArrayList;
 
 @Controller
 public class FinancialController {
@@ -26,25 +27,33 @@ public class FinancialController {
         this.creditCardDao = creditCardDao;
     }
     @GetMapping("/ledger/financial")
-    public String showFinancialForm(Model model){
+    public String showFinancialForm(Model model, Principal principal){
         model.addAttribute("finance", new FinancialInvestment());
-        return "ledger/financial";
+        return principal == null ?  "redirect:/login" : "/ledger/financial";
     }
-    public String showInsurancePolicyForm(Model model){
+    public String showInsurancePolicyForm(Model model, Principal principal){
         model.addAttribute("insurancePolicy", new InsurancePolicy());
-        return "/ledger/financial";
+        return principal == null ?  "redirect:/login" : "/ledger/financial";
     }
-    public String showBankAccountsForm(Model model){
+    public String showBankAccountsForm(Model model, Principal principal){
         model.addAttribute("bankAccounts", new BankAccounts());
-        return "/ledger/financial";
+        return principal == null ?  "redirect:/login" : "/ledger/financial";
     }
-    public String showCreditCardForm(Model model){
+    public String showCreditCardForm(Model model, Principal principal){
         model.addAttribute("creditCard", new CreditCard());
-        return "/ledger/financial";
+        return principal == null ?  "redirect:/login" : "/ledger/financial";
     }
 
     @PostMapping("/ledger/financial")
     public String saveFinancialInformation(@ModelAttribute FinancialInvestment finance){
+//        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+//        User persistUser = userDao.getById(user.getId());
+//        finance.setUsers(persistUser);
+//        ArrayList<FinancialInvestment> document = new ArrayList<>();
+//        document.add(finance);
+//        userDao.save(persistUser);
+//
+//        financialInvestmentDao.save(finance);
 
         return "redirect:ledger/financial";
     }
