@@ -10,6 +10,7 @@
 <br>
 <div class="container col-8">
     <h1 class="text-center">Register</h1>
+    <div th:if="${showErrorMsg}" class="alert alert-danger text-center" role="alert"><span th:text="${errorMsg}"></span></div>
     <form th:action="@{/register}" method="post" id="registerForm">
         <div class="mb-3">
             <label for="email" class="form-label">Email</label>
@@ -45,6 +46,7 @@
         </div>
         <input id="submitBtn" value="Register" type="submit">
     </form>
+    <p class="text-center">Already have an account? <a href="/login">Log in</a></p>
 </div>
 
 <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
