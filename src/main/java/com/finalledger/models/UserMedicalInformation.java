@@ -12,13 +12,13 @@ public class UserMedicalInformation {
     @Column(name = "id", nullable = false)
     private Long id;
 
-    @Column(nullable = false, unique=true)
+    @Column(nullable = false)
     private String willLocation;
 
-    @Column(nullable = false, unique=true)
+    @Column(nullable = false)
     private String POADocLocation;
 
-    @Column(nullable = false, unique=true)
+    @Column(nullable = false)
     private String DNROrderLocation;
 
     @Column(nullable = false)

@@ -21,7 +21,7 @@ public class UserPersonalInformation {
     private String primaryAddress;
 
     @Column(nullable = false, unique=true)
-    private int phoneNumber;
+    private String phoneNumber;
 
     @Column(nullable = false)
     private String birthPlace;
@@ -50,7 +50,7 @@ public class UserPersonalInformation {
     public UserPersonalInformation() {
     }
 
-    public UserPersonalInformation(String legalName, String maidenName, String primaryAddress, int phoneNumber, String birthPlace, String maritalStatus, String occupation, String citizenship, String religion, String militaryStatus, User user, List<Address> address) {
+    public UserPersonalInformation(String legalName, String maidenName, String primaryAddress, String phoneNumber, String birthPlace, String maritalStatus, String occupation, String citizenship, String religion, String militaryStatus, User user, List<Address> address) {
         this.legalName = legalName;
         this.maidenName = maidenName;
         this.primaryAddress = primaryAddress;
@@ -65,7 +65,7 @@ public class UserPersonalInformation {
         this.address = address;
     }
 
-    public UserPersonalInformation(Long id, String legalName, String maidenName, String primaryAddress, int phoneNumber, String birthPlace, String maritalStatus, String occupation, String citizenship, String religion, String militaryStatus, User user, List<Address> address) {
+    public UserPersonalInformation(Long id, String legalName, String maidenName, String primaryAddress, String phoneNumber, String birthPlace, String maritalStatus, String occupation, String citizenship, String religion, String militaryStatus, User user, List<Address> address) {
         this.id = id;
         this.legalName = legalName;
         this.maidenName = maidenName;
@@ -113,11 +113,11 @@ public class UserPersonalInformation {
         this.primaryAddress = primaryAddress;
     }
 
-    public int getPhoneNumber() {
+    public String getPhoneNumber() {
         return phoneNumber;
     }
 
-    public void setPhoneNumber(int phoneNumber) {
+    public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
 
