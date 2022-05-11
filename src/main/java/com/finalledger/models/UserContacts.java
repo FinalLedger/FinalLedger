@@ -20,41 +20,48 @@ public class UserContacts {
     @Column(nullable = false)
     private String lastName;
 
-    @Column(nullable = false, unique=true)
+    @Column(nullable = false, unique = true)
     private String phoneNumber;
 
-    @Column(nullable = false, unique=true)
+    @Column(nullable = false, unique = true)
     private String email;
+
+    @Column(nullable = false)
+    private String primaryAddress;
 
     @ManyToMany(cascade = CascadeType.ALL, mappedBy = "contactAddresses")
     private List<Address> address;
 
-    public UserContacts() {}
+    @OneToOne
+    @JoinColumn(name = "main_user_id")
 
-    public UserContacts(String relationship, String firstName, String lastName, String phoneNumber, String email, List<Address> address, User user) {
-        this.relationship = relationship;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.phoneNumber = phoneNumber;
-        this.email = email;
-        this.address = address;
-        this.user = user;
+    private User user;
+
+    public UserContacts() {
     }
 
-    public UserContacts(Long id, String relationship, String firstName, String lastName, String phoneNumber, String email, List<Address> address, User user) {
+    public UserContacts(Long id, String relationship, String firstName, String lastName, String phoneNumber, String email, String primaryAddress, List<Address> address, User user) {
         this.id = id;
         this.relationship = relationship;
         this.firstName = firstName;
         this.lastName = lastName;
         this.phoneNumber = phoneNumber;
         this.email = email;
+        this.primaryAddress = primaryAddress;
         this.address = address;
         this.user = user;
     }
 
-    @OneToOne
-    @JoinColumn(name = "main_user_id")
-    private User user;
+    public UserContacts(String relationship, String firstName, String lastName, String phoneNumber, String email, String primaryAddress, List<Address> address, User user) {
+        this.relationship = relationship;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.phoneNumber = phoneNumber;
+        this.email = email;
+        this.primaryAddress = primaryAddress;
+        this.address = address;
+        this.user = user;
+    }
 
     public Long getId() {
         return id;
@@ -102,6 +109,14 @@ public class UserContacts {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getPrimaryAddress() {
+        return primaryAddress;
+    }
+
+    public void setPrimaryAddress(String primaryAddress) {
+        this.primaryAddress = primaryAddress;
     }
 
     public List<Address> getAddress() {
