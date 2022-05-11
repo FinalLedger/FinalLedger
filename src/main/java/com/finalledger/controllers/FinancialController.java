@@ -46,14 +46,15 @@ public class FinancialController {
 
     @PostMapping("/ledger/financial")
     public String saveFinancialInformation(@ModelAttribute FinancialInvestment finance){
-//        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-//        User persistUser = userDao.getById(user.getId());
-//        finance.setUsers(persistUser);
-//        ArrayList<FinancialInvestment> document = new ArrayList<>();
-//        document.add(finance);
-//        userDao.save(persistUser);
-//
-//        financialInvestmentDao.save(finance);
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User persistUser = userDao.getById(user.getId());
+        finance.setUser(persistUser);
+        ArrayList<FinancialInvestment> document = new ArrayList<>();
+
+        document.add(finance);
+        userDao.save(persistUser);
+
+        financialInvestmentDao.save(finance);
 
         return "redirect:ledger/financial";
     }

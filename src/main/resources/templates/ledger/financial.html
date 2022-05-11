@@ -31,22 +31,22 @@
     <hr>
     <div class="container">
         <p>insurance policies displayed here and add button</p>
-        <form th:action="@{/ledger/financial}" method="post">
+        <form th:action="@{/ledger/financial}" th:method="post" th:object="${insurancePolicy}">
             <div class="mb-3">
                 <label for="insuranceCompany" class="form-label">Company</label>
-                <input type="text" class="form-control" id="insuranceCompany">
+                <input type="text" th:field="*{company}" class="form-control" id="insuranceCompany">
             </div>
             <div class="mb-3">
                 <label for="insuranceContact" class="form-label">Contact Info</label>
-                <input type="text" class="form-control" id="insuranceContact">
+                <input type="text" th:field="*{contactInfo}" class="form-control" id="insuranceContact">
             </div>
             <div class="mb-3">
                 <label for="insuranceValue" class="form-label">Current Value</label>
-                <input type="text" class="form-control" id="insuranceValue">
+                <input type="text" th:field="*{currentValue}" class="form-control" id="insuranceValue">
             </div>
             <div class="mb-3">
                 <label for="insuranceBeneficiary" class="form-label">Beneficiary</label>
-                <input type="text" class="form-control" id="insuranceBeneficiary">
+                <input type="text" th:field="*{beneficiary}" class="form-control" id="insuranceBeneficiary">
             </div>
             <button type="submit" class="btn btn-primary" id="insuranceBtn">Submit</button>
         </form>
@@ -56,7 +56,7 @@
     <hr>
     <div class="container">
         <p>financial investments displayed here</p>
-        <form th:action="@{/ledger/financial}" method="post">
+        <form th:action="@{/ledger/financial}" th:method="post" th:object="${financial}">
             <div class="mb-3">
                 <label for="investmentCompany" class="form-label">Company</label>
                 <input type="text" class="form-control" id="investmentCompany">

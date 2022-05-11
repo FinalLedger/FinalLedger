@@ -10,7 +10,7 @@ import java.util.List;
 public class FinancialInvestment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="id", nullable = false)
+    @Column(name = "id", nullable = false)
     private Long id;
 
     @Column(nullable = false)
@@ -19,35 +19,41 @@ public class FinancialInvestment {
     @Column(nullable = false)
     private Long current_value;
 
-    @Column(nullable = false, unique=true)
+    @Column(nullable = false)
     private String beneficiary;
 
     @Column(nullable = false)
     private String contact_info;
 
+    @OneToOne
+    private User user;
+
     @ManyToMany
     @JoinTable(
-            name="users_investment",
-            joinColumns={@JoinColumn(name="user_id")},
-            inverseJoinColumns={@JoinColumn(name="financial_investment_id")})
+            name = "users_investment",
+            joinColumns = {@JoinColumn(name = "user_id")},
+            inverseJoinColumns = {@JoinColumn(name = "financial_investment_id")})
     private List<User> users;
 
-    public FinancialInvestment(){}
+    public FinancialInvestment() {
+    }
 
-    public FinancialInvestment(Long id, String company, Long current_value, String beneficiary, String contact_info, List<User> users) {
+    public FinancialInvestment(Long id, String company, Long current_value, String beneficiary, String contact_info, User user, List<User> users) {
         this.id = id;
         this.company = company;
         this.current_value = current_value;
         this.beneficiary = beneficiary;
         this.contact_info = contact_info;
+        this.user = user;
         this.users = users;
     }
 
-    public FinancialInvestment(String company, Long current_value, String beneficiary, String contact_info, List<User> users) {
+    public FinancialInvestment(String company, Long current_value, String beneficiary, String contact_info, User user, List<User> users) {
         this.company = company;
         this.current_value = current_value;
         this.beneficiary = beneficiary;
         this.contact_info = contact_info;
+        this.user = user;
         this.users = users;
     }
 
@@ -89,6 +95,14 @@ public class FinancialInvestment {
 
     public void setContact_info(String contact_info) {
         this.contact_info = contact_info;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public List<User> getUsers() {
