@@ -82,9 +82,4 @@ $(document).ready(function () {
         }
     })
 
-    $("#registerForm").addEventListener("submit", function (e) {
-        // if username and/or email match any in our user table (userdao), prevent default and add error message
-    })
-
-
 })

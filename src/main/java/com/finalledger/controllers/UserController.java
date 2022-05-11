@@ -31,14 +31,22 @@ public class UserController {
     }
 
     @PostMapping("/register")
-    public String saveUser(@RequestParam(name = "username") String username, @RequestParam(name = "email") String email, @RequestParam(name = "password") String password, @RequestParam(name = "confirmPass") String confirmPass, @RequestParam(name = "accountType") boolean isMainUser) {
-//        if (!password.equals(confirmPass)) {
-//            System.out.println("Password does not match, please try again.");
-//            return "redirect:/register";
-//        }
-        String hash = passwordEncoder.encode(password);
-        User user = new User(username, email, hash, isMainUser);
-        userDao.save(user);
+    public String saveUser(Model model, @RequestParam(name = "username") String username, @RequestParam(name = "email") String email, @RequestParam(name = "password") String password, @RequestParam(name = "confirmPass") String confirmPass, @RequestParam(name = "accountType") boolean isMainUser) {
+        if (userDao.findByUsername(username) != null) {
+            boolean showErrorMsg = true;
+            model.addAttribute("showErrorMsg", showErrorMsg);
+            model.addAttribute("errorMsg", "An account with that username already exists.");
+            return "users/register";
+        } else if (userDao.findByEmail(email) != null) {
+            boolean showErrorMsg = true;
+            model.addAttribute("showErrorMsg", showErrorMsg);
+            model.addAttribute("errorMsg", "An account with that email already exists.");
+            return "users/register";
+        } else {
+            String hash = passwordEncoder.encode(password);
+            User user = new User(username, email, hash, isMainUser);
+            userDao.save(user);
+        }
         return "redirect:/login";
     }
 
