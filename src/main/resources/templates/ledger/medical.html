@@ -27,18 +27,18 @@
         </li>
     </ul>
     <br>
-    <form th:action="@{/ledger/medical}" th:method="post" th:object="${userMedicalInformation}">
+    <form th:action="@{/ledger/medical}" th:method="post" th:object="${medical}">
         <div class="mb-3">
             <label for="willLocation" class="form-label">Will Location</label>
             <input type="text" th:field="*{willLocation}" class="form-control" id="willLocation">
         </div>
         <div class="mb-3">
             <label for="poaDocLocation" class="form-label">POA Doc Location</label>
-            <input type="text" th:field="*{poaDocLocation}" class="form-control" id="poaDocLocation">
+            <input type="text" th:field="*{POADocLocation}" class="form-control" id="poaDocLocation">
         </div>
         <div class="mb-3">
             <label for="dnrDocLocation" class="form-label">DNR Doc Location</label>
-            <input type="text" th:field="*{dnrDocLocation}" class="form-control" id="dnrDocLocation">
+            <input type="text" th:field="*{DNROrderLocation}" class="form-control" id="dnrDocLocation">
         </div>
         <div class="mb-3">
             <label for="bloodType" class="form=label">Blood Type</label>
@@ -56,7 +56,7 @@
         </div>
         <div class="mb-3">
             <label for="healthInsurance" class="form-label">Health Insurance</label>
-            <input type="text" th:field="*{healthInsurance}" class="form-control" id="healthInsurance">
+            <input type="text" th:field="*{healthInsuranceName}" class="form-control" id="healthInsurance">
         </div>
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
