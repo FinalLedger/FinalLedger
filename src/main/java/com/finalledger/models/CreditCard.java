@@ -16,6 +16,9 @@ public class CreditCard {
     @Column(nullable=false)
     private String issuer;
 
+    @OneToOne
+    private User user;
+
     @ManyToMany
     @JoinTable(
             name="User_Credit_Cards",
@@ -25,16 +28,18 @@ public class CreditCard {
 
     public CreditCard(){}
 
-    public CreditCard(Long id, String type, String issuer, List<User> users) {
+    public CreditCard(Long id, String type, String issuer, User user, List<User> users) {
         this.id = id;
         this.type = type;
         this.issuer = issuer;
+        this.user = user;
         this.users = users;
-
     }
-    public CreditCard( String type, String issuer, List<User> users) {
+
+    public CreditCard(String type, String issuer, User user, List<User> users) {
         this.type = type;
         this.issuer = issuer;
+        this.user = user;
         this.users = users;
     }
 
@@ -60,6 +65,14 @@ public class CreditCard {
 
     public void setIssuer(String issuer) {
         this.issuer = issuer;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public List<User> getUsers() {
