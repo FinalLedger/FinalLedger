@@ -26,22 +26,31 @@ public class UserPersonalController {
     }
 
     @GetMapping("/ledger/personal")
-    public String showUserPersonalForm(Model model, Principal principal) {
-
+    public String showUserPersonalForm(Model model) {
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        if (user == null) {
+            return "redirect:/login";
+        }
+        PersonalInformation personalInfo = userPersonalDao.findByUserId(user.getId());
+        if (personalInfo == null) {
+            model.addAttribute("existingInfo", false);
+        } else {
+            model.addAttribute("existingInfo", true);
+            model.addAttribute("personalInfo", personalInfo);
+        }
         model.addAttribute("userPersonalInformation", new PersonalInformation());
-
-        return principal == null ?  "redirect:/login" : "/ledger/personal";
+        return "ledger/personal";
     }
 
     @GetMapping("/ledger/personal/{id}/edit")
-    public String editUserPersonalForm(@PathVariable long id,Model model, Principal principal){
+    public String editUserPersonalForm(@PathVariable long id, Model model, Principal principal) {
         model.addAttribute("editPersonal", userPersonalDao.getById(id));
 
-        return principal == null ?  "redirect:/login" : "/ledger/personal/edit";
+        return principal == null ? "redirect:/login" : "/ledger/personal/edit";
     }
 
     @PostMapping("/ledger/personal/{id}/edit")
-    public String updatePersonal(@PathVariable Long id,@RequestParam String legalName,@RequestParam String maidenName,@RequestParam String primaryAddress, @RequestParam String phoneNumber,@RequestParam String birthPlace,@RequestParam String maritalStatus,@RequestParam String occupation,@RequestParam String citizenship,@RequestParam String religion,@RequestParam String militaryStatus,@RequestParam User user){
+    public String updatePersonal(@PathVariable Long id, @RequestParam String legalName, @RequestParam String maidenName, @RequestParam String primaryAddress, @RequestParam String phoneNumber, @RequestParam String birthPlace, @RequestParam String maritalStatus, @RequestParam String occupation, @RequestParam String citizenship, @RequestParam String religion, @RequestParam String militaryStatus, @RequestParam User user) {
         PersonalInformation personalInformation = userPersonalDao.getById(id);
 
         personalInformation.setLegalName(legalName);
@@ -69,8 +78,9 @@ public class UserPersonalController {
 
         return "redirect:/ledger/personal";
     }
+
     @PostMapping("/ledger/personal/{id}/delete")
-    public String deletePersonal(@PathVariable Long id){
+    public String deletePersonal(@PathVariable Long id) {
         userPersonalDao.deleteById(id);
 
         return "redirect:/ledger/personal";
@@ -78,7 +88,7 @@ public class UserPersonalController {
 
 
     @PostMapping("/ledger/personal")
-    public String saveUserPersonalInformation(@ModelAttribute PersonalInformation userPersonalInformation){
+    public String saveUserPersonalInformation(@ModelAttribute PersonalInformation userPersonalInformation) {
 
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         User persistUser = userDao.getById(user.getId());

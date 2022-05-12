@@ -10,8 +10,7 @@
 </head>
 <body>
 <div>
-<nav th:replace="/partials/navbar :: userNav"></nav>
-
+    <nav th:replace="/partials/navbar :: userNav"></nav>
 </div>
 <div class="subheader"></div>
 
@@ -19,12 +18,12 @@
     <br>
     <h1>My Final Ledger</h1>
     <hr>
-<!--    <h1>-->
-<!--        <a href="" class="typewrite typewriter" data-period="2000"-->
-<!--           data-type='[ "Welcome to the Main Page", "Here you can access all content based on your account capabilities." ]'>-->
-<!--            <span class="wrap"></span>-->
-<!--        </a>-->
-<!--    </h1>-->
+    <!--    <h1>-->
+    <!--        <a href="" class="typewrite typewriter" data-period="2000"-->
+    <!--           data-type='[ "Welcome to the Main Page", "Here you can access all content based on your account capabilities." ]'>-->
+    <!--            <span class="wrap"></span>-->
+    <!--        </a>-->
+    <!--    </h1>-->
     <ul class="nav nav-tabs">
         <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="#">Personal</a>
@@ -58,34 +57,74 @@
             <div class="container">
                 <h6>Legal Name</h6>
                 <hr>
-                <p>Data populates here</p>
+                <p th:if="${!existingInfo}">No info has been added yet</p>
+                <div th:if="${existingInfo}">
+                    <p th:if="${personalInfo.getLegalName() == ''}">No info has been added yet</p>
+                    <p th:if="${personalInfo.getLegalName() != null}" th:text="${personalInfo.getLegalName()}">Legal Name</p>
+                </div>
                 <h6>Maiden Name</h6>
                 <hr>
-                <p>Data populates here</p>
+                <p th:if="${!existingInfo}">No info has been added yet</p>
+                <div th:if="${existingInfo}">
+                    <p th:if="${personalInfo.getMaidenName() == ''}">No info has been added yet</p>
+                    <p th:if="${personalInfo.getMaidenName() != null}" th:text="${personalInfo.getMaidenName()}">Maiden Name</p>
+                </div>
                 <h6>Primary Address</h6>
                 <hr>
-                <p>Data populates here</p>
+                <p th:if="${!existingInfo}">No info has been added yet</p>
+                <div th:if="${existingInfo}">
+                    <p th:if="${personalInfo.getPrimaryAddress() == ''}">No info has been added yet</p>
+                    <p th:if="${personalInfo.getPrimaryAddress() != null}" th:text="${personalInfo.getPrimaryAddress()}">Primary Address</p>
+                </div>
                 <h6>Phone Number</h6>
                 <hr>
-                <p>Data populates here</p>
+                <p th:if="${!existingInfo}">No info has been added yet</p>
+                <div th:if="${existingInfo}">
+                    <p th:if="${personalInfo.getPhoneNumber() == ''}">No info has been added yet</p>
+                    <p th:if="${personalInfo.getPhoneNumber() != null}" th:text="${personalInfo.getPhoneNumber()}">Phone Number</p>
+                </div>
                 <h6>Birth Place</h6>
                 <hr>
-                <p>Data populates here</p>
+                <p th:if="${!existingInfo}">No info has been added yet</p>
+                <div th:if="${existingInfo}">
+                    <p th:if="${personalInfo.getBirthPlace() == ''}">No info has been added yet</p>
+                    <p th:if="${personalInfo.getBirthPlace() != null}" th:text="${personalInfo.getBirthPlace()}">Birth Place</p>
+                </div>
                 <h6>Marital Status</h6>
                 <hr>
-                <p>Data populates here</p>
+                <p th:if="${!existingInfo}">No info has been added yet</p>
+                <div th:if="${existingInfo}">
+                    <p th:if="${personalInfo.getMaritalStatus() == ''}">No info has been added yet</p>
+                    <p th:if="${personalInfo.getMaritalStatus() != null}" th:text="${personalInfo.getMaritalStatus()}">Marital Status</p>
+                </div>
                 <h6>Occupation</h6>
                 <hr>
-                <p>Data populates here</p>
+                <p th:if="${!existingInfo}">No info has been added yet</p>
+                <div th:if="${existingInfo}">
+                    <p th:if="${personalInfo.getOccupation() == ''}">No info has been added yet</p>
+                    <p th:if="${personalInfo.getOccupation() != null}" th:text="${personalInfo.getOccupation()}">Occupation</p>
+                </div>
                 <h6>Citizenship</h6>
                 <hr>
-                <p>Data populates here</p>
+                <p th:if="${!existingInfo}">No info has been added yet</p>
+                <div th:if="${existingInfo}">
+                    <p th:if="${personalInfo.getCitizenship() == ''}">No info has been added yet</p>
+                    <p th:if="${personalInfo.getCitizenship() != null}" th:text="${personalInfo.getCitizenship()}">Citizenship</p>
+                </div>
                 <h6>Religion</h6>
                 <hr>
-                <p>Data populates here</p>
+                <p th:if="${!existingInfo}">No info has been added yet</p>
+                <div th:if="${existingInfo}">
+                    <p th:if="${personalInfo.getReligion() == ''}">No info has been added yet</p>
+                    <p th:if="${personalInfo.getReligion() != null}" th:text="${personalInfo.getReligion()}">Religion</p>
+                </div>
                 <h6>Military Status</h6>
                 <hr>
-                <p>Data populates here</p>
+                <p th:if="${!existingInfo}">No info has been added yet</p>
+                <div th:if="${existingInfo}">
+                    <p th:if="${personalInfo.getMilitaryStatus() == ''}">No info has been added yet</p>
+                    <p th:if="${personalInfo.getMilitaryStatus() != null}" th:text="${personalInfo.getMilitaryStatus()}">Military Status</p>
+                </div>
             </div>
         </div>
     </div>
@@ -126,10 +165,10 @@
                         <label for="maritalStatus" class="form-label">Marital Status</label>
                         <select name="maritalStatus" th:field="*{maritalStatus}" class="form-select" id="maritalStatus">
                             <option disabled th:value="disabled">Select marital status</option>
-                            <option th:value="single">Single</option>
-                            <option th:value="married">Married</option>
-                            <option th:value="divorced">Divorced</option>
-                            <option th:value="widowed">Widowed</option>
+                            <option th:value="Single">Single</option>
+                            <option th:value="Married">Married</option>
+                            <option th:value="Divorced">Divorced</option>
+                            <option th:value="Widowed">Widowed</option>
                         </select>
                     </div>
                     <div class="mb-3">
@@ -144,7 +183,7 @@
                             <option th:value="LPR">Lawful Permanent Resident</option>
                             <option th:value="visitor">Temporary Visitor</option>
                             <option th:value="undocImmigrant">Undocumented Immigrant</option>
-                            <option th:value="DoNotWishToAnswer">Do Not Wish To Answer</option>
+                            <option th:value="DNWTA">Do Not Wish To Answer</option>
                         </select>
                     </div>
                     <div class="mb-3">
@@ -156,16 +195,16 @@
                         <select name="militaryStatus" th:field="*{militaryStatus}" class="form-select"
                                 id="militaryStatus">
                             <option disabled th:value="disabled">Select military status</option>
+                            <option th:value="nonMilitary">No Military Service</option>
                             <option th:value="activeDuty">Active-duty</option>
                             <option th:value="honorableDischarge">Honorable Discharge</option>
                             <option th:value="generalDischarge">General Discharge</option>
                             <option th:value="entryLevelSeparation">Entry-Level Separation</option>
                             <option th:value="medicalDischarge">Medical Discharge</option>
-                            <option th:value="otherThanHonorableDischarge">Other Than Honorable Discharge</option>
-                            <option th:value="badConductDischarge">Bad Conduct Discharge</option>
+                            <option th:value="OTHD">Other Than Honorable Discharge</option>
+                            <option th:value="badConduct">Bad Conduct Discharge</option>
                             <option th:value="dishonorableDischarge.">Dishonorable Discharge</option>
                             <option th:value="dismissal">Dismissal (Officer Discharge)</option>
-                            <option th:value="noMilitaryService">No Military Service</option>
                         </select>
                     </div>
 
@@ -182,7 +221,6 @@
     <a href="#" class="btn btn-primary"> Back to top</a>
 </div>
 <br>
-</div>
 <div th:include="partials/footer :: footer"></div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
