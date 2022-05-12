@@ -7,6 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class FinalLedgerApplication {
 
     public static void main(String[] args) {
+
         SpringApplication.run(FinalLedgerApplication.class, args);
     }
 
