@@ -26,15 +26,26 @@ public class UserMedicalController {
 
     @GetMapping("/ledger/medical")
     public String showUserMedicalForm(Model model, Principal principal) {
+
         model.addAttribute("medical", new MedicalInformation());
+
         return principal == null ? "redirect:/login" : "/ledger/medical";
     }
 
     @PostMapping("/ledger/medical")
     public String saveMedicalInformation(@ModelAttribute MedicalInformation userMedicalInformation) {
+
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         User persistUser = userDao.getById(user.getId());
         userMedicalInformation.setUser(persistUser);
+
+        MedicalInformation existingInfoUser = userMedicalDao.findByUserId(persistUser.getId());
+
+        if (existingInfoUser != null) {
+
+            return "redirect:/ledger/medical";
+        }
+
         ArrayList<MedicalInformation> document = new ArrayList<>();
         document.add(userMedicalInformation);
         userDao.save(persistUser);

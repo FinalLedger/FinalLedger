@@ -5,4 +5,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface UserMedicalRepository extends JpaRepository<MedicalInformation, Long> {
 
+    MedicalInformation findByUserId (long id);
+
 }
