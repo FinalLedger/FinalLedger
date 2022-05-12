@@ -1,0 +1,11 @@
+.modal-body {
+    background: linear-gradient(to right, #8a898b, #aea5b6);
+}
+.modal-header {
+    background-color: #d6b4b4;
+}
+
+button.btn.btn-primary {
+    border: solid ghostwhite 2px;
+    background-color: #d6b4b4;
+}
