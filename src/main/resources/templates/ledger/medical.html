@@ -10,51 +10,59 @@
 <nav th:replace="/partials/navbar :: userNav"></nav>
 
 <div class="container">
-    <div class="nav nav-tabs justify-content-between">
-        <ul class="nav">
-            <li class="nav-item">
-                <a class="nav-link" href="/ledger/personal">Personal</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">Medical</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/ledger/contacts">Contacts</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/ledger/documents">Documents</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/ledger/financial">Financial</a>
-            </li>
-        </ul>
-        <div class="d-flex align-items-center">
-            <button type="button" class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#formModal">
-                Enter info
-            </button>
-        </div>
-    </div>
+    <br>
+    <h1>My Final Ledger</h1>
+    <hr>
+    <ul class="nav nav-tabs">
+        <li class="nav-item">
+            <a class="nav-link" href="/ledger/personal">Personal</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">Medical</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/ledger/contacts">Contacts</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/ledger/documents">Documents</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/ledger/financial">Financial</a>
+        </li>
+    </ul>
     <div id="infoView" class="container">
         <br>
         <div class="container">
-            <h6>Will Location</h6>
+            <div class="d-flex justify-content-between">
+                <h3>Medical</h3>
+                <div class="d-flex align-items-center">
+                    <button type="button" class="btn btn-sm btn-primary" data-bs-toggle="modal"
+                            data-bs-target="#formModal">
+                        Enter info
+                    </button>
+                </div>
+            </div>
             <hr>
-            <p>Data populates here</p>
-            <h6>POA Document Location</h6>
-            <hr>
-            <p>Data populates here</p>
-            <h6>DNR Order Location</h6>
-            <hr>
-            <p>Data populates here</p>
-            <h6>Blood Type</h6>
-            <hr>
-            <p>Data populates here</p>
-            <h6>Medical Conditions</h6>
-            <hr>
-            <p>Data populates here</p>
-            <h6>Health Insurance</h6>
-            <hr>
-            <p>Data populates here</p>
+            <div class="container">
+                <h6>Will Location</h6>
+                <hr>
+                <p>Data populates here</p>
+                <h6>POA Document Location</h6>
+                <hr>
+                <p>Data populates here</p>
+                <h6>DNR Order Location</h6>
+                <hr>
+                <p>Data populates here</p>
+                <h6>Blood Type</h6>
+                <hr>
+                <p>Data populates here</p>
+                <h6>Medical Conditions</h6>
+                <hr>
+                <p>Data populates here</p>
+                <h6>Health Insurance</h6>
+                <hr>
+                <p>Data populates here</p>
+            </div>
         </div>
     </div>
 </div>
