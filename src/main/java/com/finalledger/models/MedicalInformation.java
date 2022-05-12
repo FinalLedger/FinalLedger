@@ -4,8 +4,8 @@ package com.finalledger.models;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "user_medical")
-public class UserMedicalInformation {
+@Table(name = "medical_information")
+public class MedicalInformation {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -34,9 +34,9 @@ public class UserMedicalInformation {
     @JoinColumn(name = "main_user_id")
     private User user;
 
-    public UserMedicalInformation() {}
+    public MedicalInformation() {}
 
-    public UserMedicalInformation(String willLocation, String POADocLocation, String DNROrderLocation, String bloodType, String medicalConditions, String healthInsuranceName, User user) {
+    public MedicalInformation(String willLocation, String POADocLocation, String DNROrderLocation, String bloodType, String medicalConditions, String healthInsuranceName, User user) {
         this.willLocation = willLocation;
         this.POADocLocation = POADocLocation;
         this.DNROrderLocation = DNROrderLocation;
@@ -46,7 +46,7 @@ public class UserMedicalInformation {
         this.user = user;
     }
 
-    public UserMedicalInformation(Long id, String willLocation, String POADocLocation, String DNROrderLocation, String bloodType, String medicalConditions, String healthInsuranceName, User user) {
+    public MedicalInformation(Long id, String willLocation, String POADocLocation, String DNROrderLocation, String bloodType, String medicalConditions, String healthInsuranceName, User user) {
         this.id = id;
         this.willLocation = willLocation;
         this.POADocLocation = POADocLocation;

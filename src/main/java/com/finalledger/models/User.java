@@ -1,7 +1,6 @@
 package com.finalledger.models;
 
 import javax.persistence.*;
-import javax.print.Doc;
 import java.util.List;
 
 @Entity
@@ -26,7 +25,7 @@ public class User {
     private boolean isMainUser;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
-    private List<UserDocuments> documents;
+    private List<Documents> documents;
 
     @ManyToMany(cascade = CascadeType.ALL, mappedBy = "users")
     private List<CreditCard> creditCards;
@@ -49,7 +48,7 @@ public class User {
         this.isMainUser = isMainUser;
     }
 
-    public User(Long id, String username, String email, String password, boolean isMainUser, List<UserDocuments> documents, List<CreditCard> creditCards, List<FinancialInvestment> financialInvestments, List<InsurancePolicy> insurancePolicy, List<BankAccounts> bankAccounts) {
+    public User(Long id, String username, String email, String password, boolean isMainUser, List<Documents> documents, List<CreditCard> creditCards, List<FinancialInvestment> financialInvestments, List<InsurancePolicy> insurancePolicy, List<BankAccounts> bankAccounts) {
         this.id = id;
         this.username = username;
         this.email = email;
@@ -62,7 +61,7 @@ public class User {
         this.bankAccounts = bankAccounts;
     }
 
-    public User(String username, String email, String password, boolean isMainUser, List<UserDocuments> documents, List<CreditCard> creditCards, List<FinancialInvestment> financialInvestments, List<InsurancePolicy> insurancePolicy, List<BankAccounts> bankAccounts) {
+    public User(String username, String email, String password, boolean isMainUser, List<Documents> documents, List<CreditCard> creditCards, List<FinancialInvestment> financialInvestments, List<InsurancePolicy> insurancePolicy, List<BankAccounts> bankAccounts) {
         this.username = username;
         this.email = email;
         this.password = password;
@@ -128,11 +127,11 @@ public class User {
         isMainUser = mainUser;
     }
 
-    public List<UserDocuments> getDocuments() {
+    public List<Documents> getDocuments() {
         return documents;
     }
 
-    public void setDocuments(List<UserDocuments> documents) {
+    public void setDocuments(List<Documents> documents) {
         this.documents = documents;
     }
 

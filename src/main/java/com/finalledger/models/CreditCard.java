@@ -22,8 +22,8 @@ public class CreditCard {
     @ManyToMany
     @JoinTable(
             name="User_Credit_Cards",
-            joinColumns={@JoinColumn(name="user_id")},
-            inverseJoinColumns={@JoinColumn(name="card_id")})
+            joinColumns={@JoinColumn(name="card_id")},
+            inverseJoinColumns={@JoinColumn(name="user_id")})
     private List<User> users;
 
     public CreditCard(){}

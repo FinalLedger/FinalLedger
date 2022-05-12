@@ -1,7 +1,7 @@
 package com.finalledger.controllers;
 
 import com.finalledger.models.User;
-import com.finalledger.models.UserDocuments;
+import com.finalledger.models.Documents;
 import com.finalledger.repositories.UserDocumentsRepository;
 import com.finalledger.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Value;
@@ -33,14 +33,14 @@ public class UserDocumentController {
     @GetMapping("/ledger/documents")
     public String showUserDocuments(Model model, Principal principal){
 
-        model.addAttribute("documents", new UserDocuments());
+        model.addAttribute("documents", new Documents());
         model.addAttribute("fileStackAPI", fileStackAPIKey);
 
         return principal == null ? "redirect:/login" : "/ledger/documents";
     }
 
     @PostMapping("/ledger/documents")
-    public String saveUserDocuments (@ModelAttribute UserDocuments userDocument, @RequestParam(name = "title") String title, @RequestParam(name = "document_upload") String document_upload){
+    public String saveUserDocuments (@ModelAttribute Documents userDocument, @RequestParam(name = "title") String title, @RequestParam(name = "document_upload") String document_upload){
 
         // set the current user to the document
         User userLoggedIn = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
@@ -48,7 +48,7 @@ public class UserDocumentController {
 
         userDocument.setUser(persistUser);
 
-        ArrayList<UserDocuments> documents = new ArrayList<>();
+        ArrayList<Documents> documents = new ArrayList<>();
         documents.add(userDocument);
         persistUser.setDocuments(documents);
         userDao.save(persistUser);
