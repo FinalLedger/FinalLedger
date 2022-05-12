@@ -43,12 +43,14 @@ public class UserPersonalController {
     @PostMapping("/ledger/personal/{id}/edit")
     public String updatePersonal(@PathVariable Long id,@RequestParam String legalName,@RequestParam String maidenName,@RequestParam String primaryAddress, @RequestParam String phoneNumber,@RequestParam String birthPlace,@RequestParam String maritalStatus,@RequestParam String occupation,@RequestParam String citizenship,@RequestParam String religion,@RequestParam String militaryStatus,@RequestParam User user,@RequestParam List<Address> address){
         PersonalInformation personalInformation = userPersonalDao.getById(id);
+        personalInformation.setLegalName(legalName);
         personalInformation.setMaidenName(maidenName);
         personalInformation.setPrimaryAddress(primaryAddress);
         personalInformation.setPhoneNumber(phoneNumber);
         personalInformation.setBirthPlace(birthPlace);
         personalInformation.setMaritalStatus(maritalStatus);
         personalInformation.setOccupation(occupation);
+        personalInformation.setCitizenship(citizenship);
         personalInformation.setReligion(religion);
         personalInformation.setMilitaryStatus(militaryStatus);
         personalInformation.setUser(user);
