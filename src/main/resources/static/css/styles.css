@@ -113,7 +113,7 @@ input {
 .container {
     background-color: #fff;
     border-radius: 10px;
-    box-shadow: 0 14px 28px rgba(125, 17, 227, 0.58), 0 10px 10px rgb(230, 229, 232);
+    box-shadow: 0 14px 28px rgba(7, 6, 9, 0.58), 0 10px 10px rgb(230, 229, 232);
     position: relative;
     overflow: hidden;
     width: 768px;
@@ -371,4 +371,20 @@ font-weight:  bolder;
 .navbar a {
     color: #BD7979FF;
     font-weight: bolder;
+}
+.col-8 {
+    background: linear-gradient(to right, #8a898b, #aea5b6);
+}
+
+div#passwordHelp {
+    color:  #3e4245;
+}
+h1.text-center {
+    font-family: 'Luxurious Script',cursive;
+}
+
+
+
+p.text-center {
+    color: ghostwhite;
 }
