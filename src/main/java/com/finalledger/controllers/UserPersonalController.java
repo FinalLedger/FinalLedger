@@ -40,8 +40,6 @@ public class UserPersonalController {
         User persistUser = userDao.getById(user.getId());
         userPersonalInformation.setUser(persistUser);
 
-        System.out.println("userPersonalDao.findByUserId(persistUser.getId()) = " + userPersonalDao.findByUserId(persistUser.getId()));
-
         PersonalInformation existingInfoUser = userPersonalDao.findByUserId(persistUser.getId());
 
         if (existingInfoUser != null) {
