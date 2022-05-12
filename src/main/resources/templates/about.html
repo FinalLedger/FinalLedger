@@ -13,6 +13,8 @@
 </head>
 <body>
 <nav th:replace="/partials/navbar :: userNav"></nav>
+<div class="subheader"></div>
+<br>
 <h1 class="title">Final Ledger</h1><br>
 <h2 class="sec-title">More About Us</h2>
 <br>
@@ -131,6 +133,7 @@
     </div>
 </div>
 <button><a  class="btn-color" href="#top"> Top</a></button>
+<div th:include="partials/footer :: footer"></div>
 <div class="row" id="footer">
     <div class="col-12">
         <a href="/">Home</a> |

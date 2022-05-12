@@ -25,6 +25,7 @@ body {
 div#infoView {
     background: linear-gradient(to right, #8a898b, #aea5b6);
     box-shadow: 0 14px 28px rgb(7 6 9 / 58%), 0 10px 10px rgb(230 229 232);
+    margin-bottom: 5%;
 }
 /*a.nav-link {
     background-color: #FAEBD7;
@@ -44,8 +45,21 @@ div#infoView {
     color: #9e8686;
 }
 
-
-
+  .btn  {
+display: inline-block;
+}
+  .btn-center {
+      text-align: center;
+  }
+.btn-primary {
+    background: linear-gradient(to right, #8a898b, #aea5b6);
+    border: whitesmoke 3px;
+}
+.subheader {
+    width: 100%;
+    height: 5px;
+    background-color: silver;
+}
 /*temp nav bar  Delete*/
 
 .navbar {

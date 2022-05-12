@@ -179,7 +179,11 @@ a {
 .btn-primary {
     background: linear-gradient(to right, #8a898b, #aea5b6);
 }
-
+.subheader {
+    width: 100%;
+    height: 5px;
+    background-color: silver;
+}
 
 /*
 .box-one {
