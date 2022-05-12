@@ -25,36 +25,28 @@ public class FinancialInvestment {
     @Column(nullable = false)
     private String contact_info;
 
-    @OneToOne
+    @ManyToOne
+    @JoinColumn(name = "main_user_id")
     private User user;
-
-    @ManyToMany
-    @JoinTable(
-            name = "users_investment",
-            joinColumns = {@JoinColumn(name = "user_id")},
-            inverseJoinColumns = {@JoinColumn(name = "financial_investment_id")})
-    private List<User> users;
 
     public FinancialInvestment() {
     }
 
-    public FinancialInvestment(Long id, String company, String current_value, String beneficiary, String contact_info, User user, List<User> users) {
+    public FinancialInvestment(Long id, String company, String current_value, String beneficiary, String contact_info, User user) {
         this.id = id;
         this.company = company;
         this.current_value = current_value;
         this.beneficiary = beneficiary;
         this.contact_info = contact_info;
         this.user = user;
-        this.users = users;
     }
 
-    public FinancialInvestment(String company, String current_value, String beneficiary, String contact_info, User user, List<User> users) {
+    public FinancialInvestment(String company, String current_value, String beneficiary, String contact_info, User user) {
         this.company = company;
         this.current_value = current_value;
         this.beneficiary = beneficiary;
         this.contact_info = contact_info;
         this.user = user;
-        this.users = users;
     }
 
     public Long getId() {
@@ -103,13 +95,5 @@ public class FinancialInvestment {
 
     public void setUser(User user) {
         this.user = user;
-    }
-
-    public List<User> getUsers() {
-        return users;
-    }
-
-    public void setUsers(List<User> users) {
-        this.users = users;
     }
 }

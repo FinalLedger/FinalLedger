@@ -16,31 +16,23 @@ public class CreditCard {
     @Column(nullable=false)
     private String issuer;
 
-    @OneToOne
+    @ManyToOne
+    @JoinColumn(name = "main_user_id")
     private User user;
-
-    @ManyToMany
-    @JoinTable(
-            name="User_Credit_Cards",
-            joinColumns={@JoinColumn(name="card_id")},
-            inverseJoinColumns={@JoinColumn(name="user_id")})
-    private List<User> users;
 
     public CreditCard(){}
 
-    public CreditCard(Long id, String type, String issuer, User user, List<User> users) {
+    public CreditCard(Long id, String type, String issuer, User user) {
         this.id = id;
         this.type = type;
         this.issuer = issuer;
         this.user = user;
-        this.users = users;
     }
 
-    public CreditCard(String type, String issuer, User user, List<User> users) {
+    public CreditCard(String type, String issuer, User user) {
         this.type = type;
         this.issuer = issuer;
         this.user = user;
-        this.users = users;
     }
 
     public Long getId() {
@@ -73,13 +65,5 @@ public class CreditCard {
 
     public void setUser(User user) {
         this.user = user;
-    }
-
-    public List<User> getUsers() {
-        return users;
-    }
-
-    public void setUsers(List<User> users) {
-        this.users = users;
     }
 }

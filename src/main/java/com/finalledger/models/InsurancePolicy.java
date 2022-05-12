@@ -22,35 +22,27 @@ public class InsurancePolicy {
     @Column(nullable = false, unique=true)
     private String beneficiary;
 
-    @OneToOne
+    @ManyToOne
+    @JoinColumn(name = "main_user_id")
     private User user;
-
-    @ManyToMany
-    @JoinTable(
-            name="users_policies",
-            joinColumns={@JoinColumn(name="user_id")},
-            inverseJoinColumns={@JoinColumn(name="life_insurance_id")})
-    private List<User> users;
 
     public InsurancePolicy(){}
 
-    public InsurancePolicy(Long id, String company, String contactInfo, String currentValue, String beneficiary, User user, List<User> users) {
+    public InsurancePolicy(Long id, String company, String contactInfo, String currentValue, String beneficiary, User user) {
         this.id = id;
         this.company = company;
         this.contactInfo = contactInfo;
         this.currentValue = currentValue;
         this.beneficiary = beneficiary;
         this.user = user;
-        this.users = users;
     }
 
-    public InsurancePolicy(String company, String contactInfo, String currentValue, String beneficiary, User user, List<User> users) {
+    public InsurancePolicy(String company, String contactInfo, String currentValue, String beneficiary, User user) {
         this.company = company;
         this.contactInfo = contactInfo;
         this.currentValue = currentValue;
         this.beneficiary = beneficiary;
         this.user = user;
-        this.users = users;
     }
 
     public Long getId() {
@@ -99,13 +91,5 @@ public class InsurancePolicy {
 
     public void setUser(User user) {
         this.user = user;
-    }
-
-    public List<User> getUsers() {
-        return users;
-    }
-
-    public void setUsers(List<User> users) {
-        this.users = users;
     }
 }

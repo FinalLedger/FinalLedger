@@ -22,35 +22,27 @@ public class BankAccounts {
     @Column(nullable = false)
     private String savingAccount;
 
-    @OneToOne
+    @ManyToOne
+    @JoinColumn(name = "main_user_id")
     private User user;
-
-    @ManyToMany
-    @JoinTable(
-            name="user_accounts",
-            joinColumns={@JoinColumn(name="user_id")},
-            inverseJoinColumns={@JoinColumn(name="bank_id")})
-    private List<User> users;
 
     public BankAccounts(){}
 
-    public BankAccounts(Long id, String company, String contactInfo, String checkingAccount, String savingAccount, User user, List<User> users) {
+    public BankAccounts(Long id, String company, String contactInfo, String checkingAccount, String savingAccount, User user) {
         this.id = id;
         this.company = company;
         this.contactInfo = contactInfo;
         this.checkingAccount = checkingAccount;
         this.savingAccount = savingAccount;
         this.user = user;
-        this.users = users;
     }
 
-    public BankAccounts(String company, String contactInfo, String checkingAccount, String savingAccount, User user, List<User> users) {
+    public BankAccounts(String company, String contactInfo, String checkingAccount, String savingAccount, User user) {
         this.company = company;
         this.contactInfo = contactInfo;
         this.checkingAccount = checkingAccount;
         this.savingAccount = savingAccount;
         this.user = user;
-        this.users = users;
     }
 
     public Long getId() {
@@ -99,13 +91,5 @@ public class BankAccounts {
 
     public void setUser(User user) {
         this.user = user;
-    }
-
-    public List<User> getUsers() {
-        return users;
-    }
-
-    public void setUsers(List<User> users) {
-        this.users = users;
     }
 }
