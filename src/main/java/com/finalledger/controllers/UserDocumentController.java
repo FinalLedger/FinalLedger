@@ -1,5 +1,6 @@
 package com.finalledger.controllers;
 
+import com.finalledger.models.MedicalInformation;
 import com.finalledger.models.User;
 import com.finalledger.models.Documents;
 import com.finalledger.repositories.UserDocumentsRepository;
@@ -8,10 +9,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
 import java.util.ArrayList;
@@ -37,6 +35,13 @@ public class UserDocumentController {
         model.addAttribute("fileStackAPI", fileStackAPIKey);
 
         return principal == null ? "redirect:/login" : "/ledger/documents";
+    }
+
+    @PostMapping("/ledger/documents/{id}/delete")
+    public String updatePersonal(@PathVariable Long id){
+        userDocumentsDao.deleteById(id);
+
+        return "redirect:/ledger/documents";
     }
 
     @PostMapping("/ledger/documents")
