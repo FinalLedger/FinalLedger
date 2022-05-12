@@ -1,3 +1,3 @@
 # FinalLedger
 
-![Screenshot](finalLedgerDB.png)
+![Screenshot](final_ledger_db.png)
