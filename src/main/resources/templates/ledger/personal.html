@@ -10,74 +10,79 @@
 </head>
 <body>
 <nav th:replace="/partials/navbar :: userNav"></nav>
-<h1 style="display: flex; flex-direction: row">Final Ledger</h1>
-<br>
-<hr>
-<h1>
-    <a href="" class="typewrite typewriter" data-period="2000"
-       data-type='[ "Welcome to the Main Page", "Here you can access all content based on your account capabilities." ]'>
-        <span class="wrap"></span>
-    </a>
-</h1>
 
 <div class="container">
-    <div class="nav nav-tabs justify-content-between">
-        <ul class="nav">
-            <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">Personal</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/ledger/medical">Medical</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/ledger/contacts">Contacts</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/ledger/documents">Documents</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/ledger/financial">Financial</a>
-            </li>
-        </ul>
-        <div class="d-flex align-items-center">
-            <button type="button" class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#formModal">
-                Enter info
-            </button>
-        </div>
-    </div>
+    <br>
+    <h1>My Final Ledger</h1>
+    <hr>
+<!--    <h1>-->
+<!--        <a href="" class="typewrite typewriter" data-period="2000"-->
+<!--           data-type='[ "Welcome to the Main Page", "Here you can access all content based on your account capabilities." ]'>-->
+<!--            <span class="wrap"></span>-->
+<!--        </a>-->
+<!--    </h1>-->
+    <ul class="nav nav-tabs">
+        <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">Personal</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/ledger/medical">Medical</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/ledger/contacts">Contacts</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/ledger/documents">Documents</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/ledger/financial">Financial</a>
+        </li>
+    </ul>
     <div id="infoView" class="container">
         <br>
         <div class="container">
-            <h6>Legal Name</h6>
+            <div class="d-flex justify-content-between">
+                <h3>Personal</h3>
+                <div class="d-flex align-items-center">
+                    <button type="button" class="btn btn-sm btn-primary" data-bs-toggle="modal"
+                            data-bs-target="#formModal">
+                        Enter info
+                    </button>
+                </div>
+            </div>
             <hr>
-            <p>Data populates here</p>
-            <h6>Maiden Name</h6>
-            <hr>
-            <p>Data populates here</p>
-            <h6>Primary Address</h6>
-            <hr>
-            <p>Data populates here</p>
-            <h6>Phone Number</h6>
-            <hr>
-            <p>Data populates here</p>
-            <h6>Birth Place</h6>
-            <hr>
-            <p>Data populates here</p>
-            <h6>Marital Status</h6>
-            <hr>
-            <p>Data populates here</p>
-            <h6>Occupation</h6>
-            <hr>
-            <p>Data populates here</p>
-            <h6>Citizenship</h6>
-            <hr>
-            <p>Data populates here</p>
-            <h6>Religion</h6>
-            <hr>
-            <p>Data populates here</p>
-            <h6>Military Status</h6>
-            <hr>
-            <p>Data populates here</p>
+            <div class="container">
+                <h6>Legal Name</h6>
+                <hr>
+                <p>Data populates here</p>
+                <h6>Maiden Name</h6>
+                <hr>
+                <p>Data populates here</p>
+                <h6>Primary Address</h6>
+                <hr>
+                <p>Data populates here</p>
+                <h6>Phone Number</h6>
+                <hr>
+                <p>Data populates here</p>
+                <h6>Birth Place</h6>
+                <hr>
+                <p>Data populates here</p>
+                <h6>Marital Status</h6>
+                <hr>
+                <p>Data populates here</p>
+                <h6>Occupation</h6>
+                <hr>
+                <p>Data populates here</p>
+                <h6>Citizenship</h6>
+                <hr>
+                <p>Data populates here</p>
+                <h6>Religion</h6>
+                <hr>
+                <p>Data populates here</p>
+                <h6>Military Status</h6>
+                <hr>
+                <p>Data populates here</p>
+            </div>
         </div>
     </div>
 </div>
