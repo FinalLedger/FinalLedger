@@ -5,4 +5,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface UserPersonalRepository extends JpaRepository<PersonalInformation, Long> {
 
+    PersonalInformation findByUserId (long id);
+
 }

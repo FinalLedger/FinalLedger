@@ -27,21 +27,35 @@ public class UserPersonalController {
 
     @GetMapping("/ledger/personal")
     public String showUserPersonalForm(Model model, Principal principal) {
+
         model.addAttribute("userPersonalInformation", new PersonalInformation());
+
         return principal == null ?  "redirect:/login" : "/ledger/personal";
     }
 
     @PostMapping("/ledger/personal")
     public String saveUserPersonalInformation(@ModelAttribute PersonalInformation userPersonalInformation){
+
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         User persistUser = userDao.getById(user.getId());
         userPersonalInformation.setUser(persistUser);
+
+        System.out.println("userPersonalDao.findByUserId(persistUser.getId()) = " + userPersonalDao.findByUserId(persistUser.getId()));
+
+        PersonalInformation existingInfoUser = userPersonalDao.findByUserId(persistUser.getId());
+
+        if (existingInfoUser != null) {
+
+            return "redirect:/ledger/personal";
+
+        }
+
         ArrayList<PersonalInformation> document = new ArrayList<>();
         document.add(userPersonalInformation);
         userDao.save(persistUser);
 
         userPersonalDao.save(userPersonalInformation);
 
-        return"redirect:/ledger/personal";
+        return "redirect:/ledger/personal";
     }
 }
