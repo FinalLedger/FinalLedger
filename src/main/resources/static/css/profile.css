@@ -13,3 +13,28 @@ body {
  color: #BD7979FF;
  font-weight: bolder;
 }
+.footer {
+ position: fixed;
+ bottom: 0px;
+ left: 0px;
+ right: 0px;
+ margin-bottom: 0px;
+}
+
+
+
+/*Can be added to nav*/
+.bg-secondary {
+ background: linear-gradient(to right, #8a898b, #aea5b6);
+}
+.bg-secondary a:hover {
+ color: ghostwhite;
+}
+img {
+ height: 200px;
+ /*padding-top: 10px;*/
+ padding-top: 3vh;
+ /*
+ vertical-align: middle;
+ */
+}
