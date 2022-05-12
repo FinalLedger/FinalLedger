@@ -173,5 +173,11 @@ h2 {
 a {
     color: #BD7979FF;
 }
+.bg-secondary {
+    background: linear-gradient(to right, #8a898b, #aea5b6);
+}
+.btn-primary {
+    background: linear-gradient(to right, #8a898b, #aea5b6);
+}
 
-/*---------------------------*/
+
