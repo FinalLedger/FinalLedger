@@ -3,7 +3,8 @@ package com.finalledger.models;
 import javax.persistence.*;
 
 @Entity
-public class UserDocuments {
+@Table(name="documents")
+public class Documents {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,16 +21,16 @@ public class UserDocuments {
     @JoinColumn(name = "main_user_id")
     private User user;
 
-    public UserDocuments(){}
+    public Documents(){}
 
-    public UserDocuments(Long id, String title, String document_upload, User user){
+    public Documents(Long id, String title, String document_upload, User user){
         this.id= id;
         this.title = title;
         this.document_upload = document_upload;
         this.user = user;
     }
 
-    public UserDocuments(String title, String document_upload, User user){
+    public Documents(String title, String document_upload, User user){
         this.title = title;
         this.document_upload = document_upload;
         this.user = user;

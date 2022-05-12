@@ -1,9 +1,8 @@
 package com.finalledger.repositories;
 
-import com.finalledger.models.User;
-import com.finalledger.models.UserMedicalInformation;
+import com.finalledger.models.MedicalInformation;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface UserMedicalRepository extends JpaRepository<UserMedicalInformation, Long> {
+public interface UserMedicalRepository extends JpaRepository<MedicalInformation, Long> {
 
 }

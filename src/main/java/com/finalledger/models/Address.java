@@ -35,7 +35,7 @@ public class Address {
             joinColumns = {@JoinColumn(name = "address_id")},
             inverseJoinColumns = {@JoinColumn(name = "contact_id")}
     )
-    private List<UserContacts> contactAddresses;
+    private List<Contants> contactAddresses;
 
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(
@@ -43,11 +43,11 @@ public class Address {
             joinColumns = {@JoinColumn(name = "address_id")},
             inverseJoinColumns = {@JoinColumn(name = "personal_id")}
     )
-    private List<UserPersonalInformation> personalAddresses;
+    private List<PersonalInformation> personalAddresses;
 
     public Address() {}
 
-    public Address(String propertyType, String streetAddress, String streetAddress2, String city, String state, int zipcode, List<UserContacts> contactAddresses, List<UserPersonalInformation> personalAddresses) {
+    public Address(String propertyType, String streetAddress, String streetAddress2, String city, String state, int zipcode, List<Contants> contactAddresses, List<PersonalInformation> personalAddresses) {
         this.propertyType = propertyType;
         this.streetAddress = streetAddress;
         this.streetAddress2 = streetAddress2;
@@ -58,7 +58,7 @@ public class Address {
         this.personalAddresses = personalAddresses;
     }
 
-    public Address(Long id, String propertyType, String streetAddress, String streetAddress2, String city, String state, int zipcode, List<UserContacts> contactAddresses, List<UserPersonalInformation> personalAddresses) {
+    public Address(Long id, String propertyType, String streetAddress, String streetAddress2, String city, String state, int zipcode, List<Contants> contactAddresses, List<PersonalInformation> personalAddresses) {
         this.id = id;
         this.propertyType = propertyType;
         this.streetAddress = streetAddress;
@@ -126,19 +126,19 @@ public class Address {
         this.zipcode = zipcode;
     }
 
-    public List<UserContacts> getContactAddresses() {
+    public List<Contants> getContactAddresses() {
         return contactAddresses;
     }
 
-    public void setContactAddresses(List<UserContacts> contactAddresses) {
+    public void setContactAddresses(List<Contants> contactAddresses) {
         this.contactAddresses = contactAddresses;
     }
 
-    public List<UserPersonalInformation> getPersonalAddresses() {
+    public List<PersonalInformation> getPersonalAddresses() {
         return personalAddresses;
     }
 
-    public void setPersonalAddresses(List<UserPersonalInformation> personalAddresses) {
+    public void setPersonalAddresses(List<PersonalInformation> personalAddresses) {
         this.personalAddresses = personalAddresses;
     }
 }

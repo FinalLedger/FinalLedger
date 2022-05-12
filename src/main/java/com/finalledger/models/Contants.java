@@ -4,8 +4,8 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name = "user_contacts")
-public class UserContacts {
+@Table(name = "contacts")
+public class Contants {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
@@ -37,10 +37,10 @@ public class UserContacts {
 
     private User user;
 
-    public UserContacts() {
+    public Contants() {
     }
 
-    public UserContacts(Long id, String relationship, String firstName, String lastName, String phoneNumber, String email, String primaryAddress, List<Address> address, User user) {
+    public Contants(Long id, String relationship, String firstName, String lastName, String phoneNumber, String email, String primaryAddress, List<Address> address, User user) {
         this.id = id;
         this.relationship = relationship;
         this.firstName = firstName;
@@ -52,7 +52,7 @@ public class UserContacts {
         this.user = user;
     }
 
-    public UserContacts(String relationship, String firstName, String lastName, String phoneNumber, String email, String primaryAddress, List<Address> address, User user) {
+    public Contants(String relationship, String firstName, String lastName, String phoneNumber, String email, String primaryAddress, List<Address> address, User user) {
         this.relationship = relationship;
         this.firstName = firstName;
         this.lastName = lastName;

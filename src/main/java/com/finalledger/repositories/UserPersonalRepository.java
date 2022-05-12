@@ -1,9 +1,8 @@
 package com.finalledger.repositories;
 
-import com.finalledger.models.User;
-import com.finalledger.models.UserPersonalInformation;
+import com.finalledger.models.PersonalInformation;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface UserPersonalRepository extends JpaRepository<UserPersonalInformation, Long> {
+public interface UserPersonalRepository extends JpaRepository<PersonalInformation, Long> {
 
 }

@@ -4,8 +4,8 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name = "user_personal")
-public class UserPersonalInformation {
+@Table(name = "personal_information")
+public class PersonalInformation {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
@@ -47,10 +47,10 @@ public class UserPersonalInformation {
     @ManyToMany(cascade = CascadeType.ALL, mappedBy = "personalAddresses")
     private List<Address> address;
 
-    public UserPersonalInformation() {
+    public PersonalInformation() {
     }
 
-    public UserPersonalInformation(String legalName, String maidenName, String primaryAddress, String phoneNumber, String birthPlace, String maritalStatus, String occupation, String citizenship, String religion, String militaryStatus, User user, List<Address> address) {
+    public PersonalInformation(String legalName, String maidenName, String primaryAddress, String phoneNumber, String birthPlace, String maritalStatus, String occupation, String citizenship, String religion, String militaryStatus, User user, List<Address> address) {
         this.legalName = legalName;
         this.maidenName = maidenName;
         this.primaryAddress = primaryAddress;
@@ -65,7 +65,7 @@ public class UserPersonalInformation {
         this.address = address;
     }
 
-    public UserPersonalInformation(Long id, String legalName, String maidenName, String primaryAddress, String phoneNumber, String birthPlace, String maritalStatus, String occupation, String citizenship, String religion, String militaryStatus, User user, List<Address> address) {
+    public PersonalInformation(Long id, String legalName, String maidenName, String primaryAddress, String phoneNumber, String birthPlace, String maritalStatus, String occupation, String citizenship, String religion, String militaryStatus, User user, List<Address> address) {
         this.id = id;
         this.legalName = legalName;
         this.maidenName = maidenName;
