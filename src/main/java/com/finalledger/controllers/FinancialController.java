@@ -1,14 +1,15 @@
 package com.finalledger.controllers;
-import com.finalledger.models.BankAccounts;
-import com.finalledger.models.CreditCard;
-import com.finalledger.models.FinancialInvestment;
-import com.finalledger.models.InsurancePolicy;
+import com.finalledger.models.*;
 import com.finalledger.repositories.*;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+
+import java.security.Principal;
+import java.util.ArrayList;
 
 @Controller
 public class FinancialController {
@@ -26,38 +27,72 @@ public class FinancialController {
         this.creditCardDao = creditCardDao;
     }
     @GetMapping("/ledger/financial")
-    public String showFinancialForm(Model model){
+    public String showFinancialForm(Model model, Principal principal){
+
         model.addAttribute("finance", new FinancialInvestment());
-        return "ledger/financial";
-    }
-    public String showInsurancePolicyForm(Model model){
+
         model.addAttribute("insurancePolicy", new InsurancePolicy());
-        return "/ledger/financial";
-    }
-    public String showBankAccountsForm(Model model){
+
         model.addAttribute("bankAccounts", new BankAccounts());
-        return "/ledger/financial";
-    }
-    public String showCreditCardForm(Model model){
+
         model.addAttribute("creditCard", new CreditCard());
-        return "/ledger/financial";
+
+        return principal == null ?  "redirect:/login" : "/ledger/financial";
     }
 
     @PostMapping("/ledger/financial")
     public String saveFinancialInformation(@ModelAttribute FinancialInvestment finance){
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User persistUser = userDao.getById(user.getId());
+        finance.setUser(persistUser);
+        ArrayList<FinancialInvestment> document = new ArrayList<>();
 
-        return "redirect:ledger/financial";
+        document.add(finance);
+        userDao.save(persistUser);
+
+        financialInvestmentDao.save(finance);
+
+        return "redirect:/ledger/financial";
     }
+    @PostMapping("/ledger/insurancePolicy")
     public String saveInsurancePolicyInformation(@ModelAttribute InsurancePolicy insurancePolicy){
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User persistUser = userDao.getById(user.getId());
+        insurancePolicy.setUser(persistUser);
+        ArrayList<InsurancePolicy> document = new ArrayList<>();
 
+        document.add(insurancePolicy);
+        userDao.save(persistUser);
+
+        insurancePolicyDao.save(insurancePolicy);
 
         return "redirect:/ledger/financial";
     }
+    @PostMapping("/ledger/bankAccounts")
     public String saveBankAccountsInformation(@ModelAttribute BankAccounts bankAccounts){
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User persistUser = userDao.getById(user.getId());
+        bankAccounts.setUser(persistUser);
+        ArrayList<BankAccounts> document = new ArrayList<>();
+
+        document.add(bankAccounts);
+        userDao.save(persistUser);
+
+        bankAccountsDao.save(bankAccounts);
 
         return "redirect:/ledger/financial";
     }
+    @PostMapping("/ledger/creditCard")
     public String saveCreditCardInformation(@ModelAttribute CreditCard creditCard){
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User persistUser = userDao.getById(user.getId());
+        creditCard.setUser(persistUser);
+        ArrayList<CreditCard> document = new ArrayList<>();
+
+        document.add(creditCard);
+        userDao.save(persistUser);
+
+        creditCardDao.save(creditCard);
 
         return "redirect:/ledger/financial";
     }

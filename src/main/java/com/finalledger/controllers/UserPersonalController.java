@@ -32,7 +32,6 @@ public class UserPersonalController {
     @GetMapping("/ledger/personal")
     public String showUserPersonalForm(Model model, Principal principal) {
         model.addAttribute("userPersonalInformation", new UserPersonalInformation());
-//        return "/ledger/personal";
         return principal == null ?  "redirect:/login" : "/ledger/personal";
     }
 
