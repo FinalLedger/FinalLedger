@@ -31,7 +31,6 @@ public class MedicalInformation {
     private String healthInsuranceName;
 
     @OneToOne
-    @JoinColumn(name = "main_user_id")
     private User user;
 
     public MedicalInformation() {}

@@ -54,14 +54,14 @@ public class FinancialController {
     }
 
     @PostMapping("/ledger/financial/{id}/edit")
-    public String updateFianncial(@PathVariable long id,@RequestParam String company,@RequestParam String current_value, @RequestParam String beneficiary,@RequestParam String contact_info ,@RequestParam User user ,@RequestParam List <User> users){
+    public String updateFianncial(@PathVariable long id,@RequestParam String company,@RequestParam String current_value, @RequestParam String beneficiary,@RequestParam String contact_info ,@RequestParam User user ){
        FinancialInvestment financialInvestment = financialInvestmentDao.getById(id);
        financialInvestment.setCompany(company);
        financialInvestment.setCurrent_value(current_value);
        financialInvestment.setBeneficiary(beneficiary);
        financialInvestment.setContact_info(contact_info);
        financialInvestment.setUser(user);
-       financialInvestment.setUsers(users);
+
 
         return "redirect:/ledger/financial/";
     }
@@ -74,14 +74,14 @@ public class FinancialController {
     }
 
     @PostMapping("/ledger/insurancePolicy/{id}/edit")
-    public String editInsurancePolicyForm(@PathVariable long id,@RequestParam String company,@RequestParam String contactInfo,@RequestParam String currentValue, @RequestParam String beneficiary, @RequestParam User user, @RequestParam List<User>users){
+    public String editInsurancePolicyForm(@PathVariable long id,@RequestParam String company,@RequestParam String contactInfo,@RequestParam String currentValue, @RequestParam String beneficiary, @RequestParam User user){
         InsurancePolicy insurancePolicy = insurancePolicyDao.getById(id);
         insurancePolicy.setCompany(company);
         insurancePolicy.setContactInfo(contactInfo);
         insurancePolicy.setCurrentValue(currentValue);
         insurancePolicy.setBeneficiary(beneficiary);
         insurancePolicy.setUser(user);
-        insurancePolicy.setUsers(users);
+
 
         return "redirect:/ledger/financial/";
     }
@@ -92,13 +92,13 @@ public class FinancialController {
         return "redirect:/ledger/fianncial";
     }
     @PostMapping("ledger/bankAccounts/{id}/edit")
-    public String editBankAccountsForm(@PathVariable long id,@RequestParam  String contactsInfo,@RequestParam String checkingAccount,@RequestParam String savingAccount,@RequestParam User user,@RequestParam List<User> users){
+    public String editBankAccountsForm(@PathVariable long id,@RequestParam  String contactsInfo,@RequestParam String checkingAccount,@RequestParam String savingAccount,@RequestParam User user){
     BankAccounts bankAccounts = bankAccountsDao.getById(id);
     bankAccounts.setContactInfo(contactsInfo);
     bankAccounts.setCheckingAccount(checkingAccount);
     bankAccounts.setSavingAccount(savingAccount);
     bankAccounts.setUser(user);
-    bankAccounts.setUsers(users);
+
 
         return "redirect:/ledger/financial/";
     }
@@ -110,12 +110,12 @@ public class FinancialController {
     }
 
     @PostMapping("ledger/creditCard/{id}/edit")
-    public String editCreditCardForm(@PathVariable long id,@RequestParam  String type,@RequestParam  String issuer , @RequestParam User user,@RequestParam  List<User> users){
+    public String editCreditCardForm(@PathVariable long id,@RequestParam  String type,@RequestParam  String issuer , @RequestParam User user){
         CreditCard creditCard = creditCardDao.getById(id);
         creditCard.setType(type);
         creditCard.setIssuer(issuer);
         creditCard.setUser(user);
-        creditCard.setUsers(users);
+
 
         return "redirect:/ledger/financial/";
     }

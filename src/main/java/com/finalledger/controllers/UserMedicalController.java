@@ -40,16 +40,22 @@ public class UserMedicalController {
         return principal == null ?  "redirect:/login" : "/ledger/medical/edit";
     }
 
-    @PostMapping("/ledger/personal/{id}/edit")
-    public String updatePersonal(@PathVariable Long id, @RequestParam String willLocation,@RequestParam String POADocLocation,@RequestParam String DNROrderLocation,@RequestParam String bloodType, String medicalConditions,@RequestParam String healthInsuranceName,@RequestParam User user){
+    @PostMapping("/ledger/medical/{id}/edit")
+    public String updateMedical(@PathVariable Long id, @RequestParam String willLocation,@RequestParam String POADocLocation,@RequestParam String DNROrderLocation,@RequestParam String bloodType, String medicalConditions,@RequestParam String healthInsuranceName){
+
         MedicalInformation medicalInformation = userMedicalDao.getById(id);
+
         medicalInformation.setWillLocation(willLocation);
+
         medicalInformation.setPOADocLocation(POADocLocation);
+
         medicalInformation.setDNROrderLocation(DNROrderLocation);
+
         medicalInformation.setBloodType(bloodType);
+
         medicalInformation.setMedicalConditions(medicalConditions);
+
         medicalInformation.setHealthInsuranceName(healthInsuranceName);
-        medicalInformation.setUser(user);
 
         return "redirect:/ledger/medical";
     }
