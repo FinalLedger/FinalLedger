@@ -7,8 +7,16 @@ div#carousel {
     background: #100000;
     padding-top: 10%;
     font-size:0;
-    margin-bottom: 3rem;
+    /*margin-bottom: 3rem;*/
     overflow: hidden;
+}
+figure {
+    margin: 0 0 9rem;
+}
+.subheader {
+    width: 100%;
+    height: 5px;
+    background-color: silver;
 }
 figure#spinner {
     transform-style: preserve-3d;

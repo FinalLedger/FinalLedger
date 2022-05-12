@@ -9,6 +9,7 @@
 </head>
 <body>
     <nav th:replace="/partials/navbar :: visitorNav"></nav>
+    <div class="subheader"></div>
     <br>
     <th:block class="alert alert-dark alert-dismissible fade show" role="alert" sec:authorize="!isAuthenticated()" >
         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -87,8 +88,11 @@
     <div class="row back-top">
         <div>
             <a href="#" class="btn btn-primary"> Back to top</a>
+
         </div>
     </div>
+    <br>
+    <hr>
 
     <div th:include="partials/footer :: footer"></div>
     

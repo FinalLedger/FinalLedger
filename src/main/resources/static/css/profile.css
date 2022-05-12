@@ -20,7 +20,11 @@ body {
  right: 0px;
  margin-bottom: 0px;
 }
-
+.subheader {
+ width: 100%;
+ height: 5px;
+ background-color: silver;
+}
 
 
 /*Can be added to nav*/
