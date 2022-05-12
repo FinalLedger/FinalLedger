@@ -170,7 +170,9 @@ input {
     height: 100%;
     width: 50%;
 }
-
+.overlay-panel.overlay-right {
+position: inherit;
+}
 .overlay-right {
     right: 0;
 }
@@ -367,7 +369,16 @@ font-weight:  bolder;
 a.navbar-brand {
     font-family: 'Luxurious Script',cursive;
 }
-     /*----*/
+
+.footer {
+    position: fixed;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    margin-bottom: 0px;
+}
+
+/*----*/
 
 
 /*Temp Register*/
