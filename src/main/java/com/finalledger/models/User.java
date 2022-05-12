@@ -27,16 +27,16 @@ public class User {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
     private List<Documents> documents;
 
-    @ManyToMany(cascade = CascadeType.ALL, mappedBy = "users")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
     private List<CreditCard> creditCards;
 
-    @ManyToMany(cascade = CascadeType.ALL, mappedBy = "users")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
     private List<FinancialInvestment> financialInvestments;
 
-    @ManyToMany(cascade = CascadeType.ALL, mappedBy = "users")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
     private List<InsurancePolicy> insurancePolicy;
 
-    @ManyToMany(cascade = CascadeType.ALL, mappedBy = "users")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
     private List<BankAccounts> bankAccounts;
 
     public User() {}
