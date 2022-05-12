@@ -4,12 +4,11 @@ import com.finalledger.repositories.*;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
 import java.util.ArrayList;
+import java.util.List;
 
 @Controller
 public class FinancialController {
@@ -38,6 +37,94 @@ public class FinancialController {
         model.addAttribute("creditCard", new CreditCard());
 
         return principal == null ?  "redirect:/login" : "/ledger/financial";
+    }
+    @GetMapping("/ledger/financial/{id}/edit")
+    public String editFinancialForm(@PathVariable long id, Model model, Principal principal){
+
+        model.addAttribute("editFinance", financialInvestmentDao.getById(id));
+
+        model.addAttribute("editInsurancePolicy", insurancePolicyDao.getById(id));
+
+        model.addAttribute("editBankAccounts", bankAccountsDao.getById(id));
+
+        model.addAttribute("editCreditCard", creditCardDao.getById(id));
+
+
+        return principal == null ?  "redirect:/login" : "/ledger/financial";
+    }
+
+    @PostMapping("/ledger/financial/{id}/edit")
+    public String updateFianncial(@PathVariable long id,@RequestParam String company,@RequestParam String current_value, @RequestParam String beneficiary,@RequestParam String contact_info ,@RequestParam User user ,@RequestParam List <User> users){
+       FinancialInvestment financialInvestment = financialInvestmentDao.getById(id);
+       financialInvestment.setCompany(company);
+       financialInvestment.setCurrent_value(current_value);
+       financialInvestment.setBeneficiary(beneficiary);
+       financialInvestment.setContact_info(contact_info);
+       financialInvestment.setUser(user);
+       financialInvestment.setUsers(users);
+
+        return "redirect:/ledger/financial/";
+    }
+
+    @PostMapping("/ledger/financial/{id}/delete")
+    public String deleteFinancial(@PathVariable Long id){
+        financialInvestmentDao.deleteById(id);
+
+        return "redirect:/ledger/financial";
+    }
+
+    @PostMapping("/ledger/insurancePolicy/{id}/edit")
+    public String editInsurancePolicyForm(@PathVariable long id,@RequestParam String company,@RequestParam String contactInfo,@RequestParam String currentValue, @RequestParam String beneficiary, @RequestParam User user, @RequestParam List<User>users){
+        InsurancePolicy insurancePolicy = insurancePolicyDao.getById(id);
+        insurancePolicy.setCompany(company);
+        insurancePolicy.setContactInfo(contactInfo);
+        insurancePolicy.setCurrentValue(currentValue);
+        insurancePolicy.setBeneficiary(beneficiary);
+        insurancePolicy.setUser(user);
+        insurancePolicy.setUsers(users);
+
+        return "redirect:/ledger/financial/";
+    }
+    @PostMapping("/ledger/insurancePolicy/{id}/delete")
+    public String deleteInsurancePolicy(@PathVariable Long id){
+        insurancePolicyDao.deleteById(id);
+
+        return "redirect:/ledger/fianncial";
+    }
+    @PostMapping("ledger/bankAccounts/{id}/edit")
+    public String editBankAccountsForm(@PathVariable long id,@RequestParam  String contactsInfo,@RequestParam String checkingAccount,@RequestParam String savingAccount,@RequestParam User user,@RequestParam List<User> users){
+    BankAccounts bankAccounts = bankAccountsDao.getById(id);
+    bankAccounts.setContactInfo(contactsInfo);
+    bankAccounts.setCheckingAccount(checkingAccount);
+    bankAccounts.setSavingAccount(savingAccount);
+    bankAccounts.setUser(user);
+    bankAccounts.setUsers(users);
+
+        return "redirect:/ledger/financial/";
+    }
+    @PostMapping("/ledger/bankAccounts/{id}/delete")
+    public String deleteBankAccount(@PathVariable Long id){
+        bankAccountsDao.deleteById(id);
+
+        return "redirect:/ledger/financial";
+    }
+
+    @PostMapping("ledger/creditCard/{id}/edit")
+    public String editCreditCardForm(@PathVariable long id,@RequestParam  String type,@RequestParam  String issuer , @RequestParam User user,@RequestParam  List<User> users){
+        CreditCard creditCard = creditCardDao.getById(id);
+        creditCard.setType(type);
+        creditCard.setIssuer(issuer);
+        creditCard.setUser(user);
+        creditCard.setUsers(users);
+
+        return "redirect:/ledger/financial/";
+    }
+
+    @PostMapping("/ledger/creditCard/{id}/delete")
+    public String deleteCreditCard(@PathVariable Long id){
+        creditCardDao.deleteById(id);
+
+        return "redirect:/ledger/financial";
     }
 
     @PostMapping("/ledger/financial")

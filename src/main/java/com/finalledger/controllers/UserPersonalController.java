@@ -35,7 +35,7 @@ public class UserPersonalController {
 
     @GetMapping("/ledger/personal/{id}/edit")
     public String editUserPersonalForm(@PathVariable long id,Model model, Principal principal){
-        model.addAttribute("editPost", userPersonalDao.getById(id));
+        model.addAttribute("editPersonal", userPersonalDao.getById(id));
 
         return principal == null ?  "redirect:/login" : "/ledger/personal/edit";
     }
@@ -58,8 +58,12 @@ public class UserPersonalController {
 
         return "redirect:/ledger/personal";
     }
+    @PostMapping("/ledger/personal/{id}/delete")
+    public String deletePersonal(@PathVariable Long id){
+        userPersonalDao.deleteById(id);
 
-
+        return "redirect:/ledger/personal";
+    }
 
 
     @PostMapping("/ledger/personal")
