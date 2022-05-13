@@ -9,7 +9,7 @@ body {
     font-family: 'Montserrat', sans-serif;
     height: 100vh;
     margin: -20px 0 50px;
-    cursor: grabbing;
+  /*  cursor: grabbing;*/
 }
 
 nav {
@@ -17,7 +17,7 @@ nav {
     flex-direction: row;
 
     color: #7d11e3;
-    border: #212121 solid 3px;
+   /* border: #212121 solid 3px;*/
     width: 100%;
     height: 90px;
     text-align: center;
@@ -28,24 +28,17 @@ nav {
 
 }
 .nav-logo {
-text-align: left;
+    text-align: left;
     padding-left: 10px;
 }
-/*nav {
-    font-weight: bolder;
-    display: flex;
-    flex-direction: row;
-    text-decoration: none;
-    list-style: none;
-    font-family: 'Radio Canada', sans-serif;
-}*/
+
 h1 {
     font-weight: bold;
     margin: auto;
     text-align: end;
 }
 h1:hover {
-    color:purple;
+    background: linear-gradient(to right, #8a898b, #aea5b6);
     transition: ease-out 1s;
 }
 
@@ -72,26 +65,13 @@ a {
     margin: 15px 0;
 }
 
-/*button {
-    border-radius: 20px;
-    border: 1px solid silver;
-    background-color: #8a898b;
-    color: #FFFFFF;
-    font-size: 12px;
-    font-weight: bold;
-    padding: 12px 45px;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    transition: transform 80ms ease-in;
-    box-shadow: 0 10px 10px rgba(189, 121, 121, 0.58), 0 10px 10px rgb(230, 229, 223);
-}*/
 .button:hover {
     color: purple;
     transition: ease-out 1s;
 }
 
 form {
-   /* background-color: #FFFFFF;*/
+    /* background-color: #FFFFFF;*/
     background-color: #BD7979FF;
     display: flex;
     align-items: center;
@@ -171,7 +151,7 @@ input {
     width: 50%;
 }
 .overlay-panel.overlay-right {
-position: inherit;
+    position: inherit;
 }
 .overlay-right {
     right: 0;
@@ -198,98 +178,6 @@ position: inherit;
     margin-left: 23px;
 }
 
-
-/*.button {
-    position: relative;
-    padding: 1em 1.8em;
-    outline: none;
-    border: 1px solid #303030;
-    color: silver;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    font-size: 15px;
-    overflow: hidden;
-    border-radius: 20px;
-    cursor: crosshair;
-    font-weight: bold;
-    background-color: #b3cdd1 !important;
-    background-image: linear-gradient(315deg, #b3cdd1 0%, #9fa4c4 74%);
-}
-
-.button:hover {
-    box-shadow: 0 0 10px #ae00ff, 0 0 25px #001eff, 0 0 50px #ae00ff;
-    transition-delay: 0.6s;
-}
-
-.button span {
-    position: absolute;
-}
-
-.button span:nth-child(1) {
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 2px;
-    background: linear-gradient(90deg, transparent, #ae00ff);
-}
-
-.button:hover span:nth-child(1) {
-    left: 100%;
-    transition: 0.7s;
-}
-
-.button span:nth-child(3) {
-    bottom: 0;
-    right: -100%;
-    width: 100%;
-    height: 2px;
-    background: linear-gradient(90deg, transparent, #001eff);
-}
-
-.button:hover span:nth-child(3) {
-    right: 100%;
-    transition: 0.7s;
-    transition-delay: 0.35s;
-}
-
-.button span:nth-child(2) {
-    top: -100%;
-    right: 0;
-    width: 2px;
-    height: 100%;
-    background: linear-gradient(180deg, transparent, #ae00ff);
-}
-
-.button:hover span:nth-child(2) {
-    top: 100%;
-    transition: 0.7s;
-    transition-delay: 0.17s;
-}
-
-.button span:nth-child(4) {
-    bottom: -100%;
-    left: 0;
-    width: 2px;
-    height: 100%;
-    background: linear-gradient(360deg, transparent, #001eff);
-}
-
-.button:hover span:nth-child(4) {
-    bottom: 100%;
-    transition: 0.7s;
-    transition-delay: 0.52s;
-}
-
-.button:active {
-    background: #ae00af;
-    !*background: linear-gradient(to top right, #ae00af, #001eff);*!
-
-    background-image: linear-gradient(315deg, #b3cdd1 0%, #9fa4c4 74%);
-    background-color: #b3cdd1 !important;
-    box-shadow: 05px 5px 15px 5px grey;
-    transition: 0.1s;
-}*/
-
 .button:active span:nth-child(1)
 span:nth-child(2)
 span:nth-child(2)
@@ -312,7 +200,7 @@ span:nth-child(2) {
 
 }
 .img-one {
- margin: 0 0 0 233px;
+    margin: 0 0 0 233px;
     height: 200px;
     width: 200px;
 }
@@ -333,26 +221,17 @@ span:nth-child(2) {
     color: white;
     position:center;
 }
-/*About.html banner img's*/✅
-.card img {
-    height: 300px;
-    width:  250px;
-}
-.card-two {
-    position: center;
-    border: #212121 solid 3px;
-}
 
 /*Used For Color of typewrite for ABout Page*/  ✅
-.typewrite {
-    color: whitesmoke;
-}
+                                                .typewrite {
+                                                    color: whitesmoke;
+                                                }
 /*Used For Main age*/
 .typewriter {
-font-weight:  bolder;
+    font-weight:  bolder;
     font-size: large;
 }
-    /*Keep me, will consolidate*/
+/*Keep me, will consolidate*/
 .navbar {
     background-color: #121313 !important;
     background-image: linear-gradient(315deg, #b3cdd1 0%, #9fa4c4 74%);
@@ -411,3 +290,10 @@ input#submitBtn {
     margin-bottom: 10px;
 }
 
+.btn-primary {
+    background: linear-gradient(to right, rgb(138, 137, 139), rgb(174, 165, 182));
+    border-width: 3px;
+    border-style: initial;
+    border-color: whitesmoke;
+    border-image: initial;
+}
