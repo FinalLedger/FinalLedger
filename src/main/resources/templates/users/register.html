@@ -2,10 +2,10 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <meta charset="UTF-8">
-    <script src="https://accounts.google.com/gsi/client" async defer></script>
     <title>Register</title>
     <link rel="stylesheet" type="text/css" href="css/register.css">
     <link th:replace="/partials/navbar :: bootstrap">
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
 </head>
 <body>
 <nav th:replace="/partials/navbar :: visitorNav"></nav>
@@ -52,11 +52,11 @@
     <br>
     <hr>
     <div id="g_id_onload"
-         data-client_id="jasoncomstock11@gmail.com"
+         data-client_id="549436147051-47s9ccbtg0hsgodenhg3r6pn729cvt9q.apps.googleusercontent.com"
          data-context="signup"
          data-ux_mode="popup"
-         data-login_uri="/profile"
-         data-auto_select="true">
+         data-login_uri="/login"
+         data-auto_select="false">
     </div>
 
     <div class="g_id_signin"
