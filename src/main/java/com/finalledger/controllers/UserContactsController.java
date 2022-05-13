@@ -1,7 +1,7 @@
 package com.finalledger.controllers;
 
 import com.finalledger.models.User;
-import com.finalledger.models.Contants;
+import com.finalledger.models.Contacts;
 import com.finalledger.repositories.UserContactsRepository;
 import com.finalledger.repositories.UserRepository;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -26,16 +26,16 @@ public class UserContactsController {
 
     @GetMapping("/ledger/contacts")
     public String showUserContactsForm(Model model, Principal principal){
-        model.addAttribute("contacts", new Contants());
+        model.addAttribute("contacts", new Contacts());
         return principal == null ? "redirect:/login" : "/ledger/contacts";
     }
 
     @PostMapping("/ledger/contacts")
-    public String saveUserContactsInformation(@ModelAttribute Contants userContacts){
+    public String saveUserContactsInformation(@ModelAttribute Contacts userContacts){
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         User persistUser = userDao.getById(user.getId());
         userContacts.setUser(persistUser);
-        ArrayList<Contants> document = new ArrayList<>();
+        ArrayList<Contacts> document = new ArrayList<>();
         document.add(userContacts);
         userDao.save(persistUser);
 
