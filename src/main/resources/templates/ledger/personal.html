@@ -62,10 +62,12 @@
                 </div>
                 <!---------------------------------------------->
                 <div class="d-flex align-items-center">
-                    <button type="button" class="btn btn-sm btn-danger" data-bs-toggle="modal"
-                            data-bs-target="#deleteFormModal">
-                        Delete info
-                    </button>
+                    <form th:action="@{|/ledger/personal/${personalInfo.id}/delete|}" method="post" th:object="${personalInfo}">
+                        <button type="submit" class="btn btn-sm btn-danger" data-bs-toggle="modal">
+                            Delete info
+                        </button>
+                    </form>
+
                 </div>
             </div>
             <hr>
@@ -153,7 +155,7 @@
             </div>
             <div class="modal-body">
                 <form id="personalForm" th:action="@{/ledger/personal}" th:method="post"
-                      th:object="${userPersonalInformation}">
+                      th:object="${personalInfo}">
                     <div class="mb-3">
                         <label for="legalName" class="form-label">Legal Name</label>
                         <input type="text" th:field="*{legalName}" class="form-control" id="legalName">
@@ -233,90 +235,92 @@
     </div>
 </div>
 <!---------------------------------------------------------------------------------------------------------------->
-<div class="modal fade" id="editFormModal" tabindex="-1" aria-labelledby="formModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="editFormModalLabel">Personal Info</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <form id="editPersonalForm" th:action="@{|/ledger/personal/${personalInfo.id}|}" th:method="post"
-                      th:object="${personalInfo}">
-                    <div class="mb-3">
-                        <label for="legalName" class="form-label">Legal Name</label>
-                        <input type="text" th:field="*{legalName}" class="form-control" id="editLegalName">
-                    </div>
-                    <div class="mb-3">
-                        <label for="maidenName" class="form-label">Maiden Name</label>
-                        <input type="text" th:field="*{maidenName}" class="form-control" id="editMaidenName">
-                    </div>
-                    <div class="mb-3">
-                        <label for="primaryAddress" class="form-label">Primary Address</label>
-                        <input type="text" th:field="*{primaryAddress}" class="form-control" id="editPrimaryAddress">
-                    </div>
-                    <div class="mb-3">
-                        <label for="phoneNumber" class="form-label">Phone Number</label>
-                        <input type="text" placeholder="123-456-7890" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
-                               th:field="*{phoneNumber}" class="form-control" id="editPhoneNumber">
-                        <small>Format: 123-456-7890</small>
-                    </div>
-                    <div class="mb-3">
-                        <label for="birthPlace" class="form-label">Birth Place</label>
-                        <input type="text" th:field="*{birthPlace}" class="form-control" id="editBirthPlace">
-                    </div>
-                    <div class="mb-3">
-                        <label for="maritalStatus" class="form-label">Marital Status</label>
-                        <select name="maritalStatus" th:field="*{maritalStatus}" class="form-select" id="editMaritalStatus">
-                            <option disabled th:value="disabled">Select marital status</option>
-                            <option th:value="Single">Single</option>
-                            <option th:value="Married">Married</option>
-                            <option th:value="Divorced">Divorced</option>
-                            <option th:value="Widowed">Widowed</option>
-                        </select>
-                    </div>
-                    <div class="mb-3">
-                        <label for="occupation" class="form-label">Occupation</label>
-                        <input type="text" th:field="*{occupation}" class="form-control" id="editOccupation">
-                    </div>
-                    <div class="mb-3">
-                        <label for="citizenship" class="form-label">Citizenship</label>
-                        <select name="citizenship" th:field="*{citizenship}" class="form-select" id="editCitizenship">
-                            <option disabled th:value="disabled">Select citizenship status</option>
-                            <option th:value="citizen">US Citizen</option>
-                            <option th:value="LPR">Lawful Permanent Resident</option>
-                            <option th:value="visitor">Temporary Visitor</option>
-                            <option th:value="undocImmigrant">Undocumented Immigrant</option>
-                            <option th:value="DNWTA">Do Not Wish To Answer</option>
-                        </select>
-                    </div>
-                    <div class="mb-3">
-                        <label for="religion" class="form-label">Religion</label>
-                        <input type="text" th:field="*{religion}" class="form-control" id="editReligion">
-                    </div>
-                    <div class="mb-3">
-                        <label for="militaryStatus" class="form-label">Military Status</label>
-                        <select name="militaryStatus" th:field="*{militaryStatus}" class="form-select"
-                                id="editMilitaryStatus">
-                            <option disabled th:value="disabled">Select military status</option>
-                            <option th:value="nonMilitary">No Military Service</option>
-                            <option th:value="activeDuty">Active-duty</option>
-                            <option th:value="honorableDischarge">Honorable Discharge</option>
-                            <option th:value="generalDischarge">General Discharge</option>
-                            <option th:value="entryLevelSeparation">Entry-Level Separation</option>
-                            <option th:value="medicalDischarge">Medical Discharge</option>
-                            <option th:value="OTHD">Other Than Honorable Discharge</option>
-                            <option th:value="badConduct">Bad Conduct Discharge</option>
-                            <option th:value="dishonorableDischarge.">Dishonorable Discharge</option>
-                            <option th:value="dismissal">Dismissal (Officer Discharge)</option>
-                        </select>
-                    </div>
+<div th:if="${personalInfo != null}">
+    <div class="modal fade" id="editFormModal" tabindex="-1" aria-labelledby="formModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="editFormModalLabel">Personal Info</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="editPersonalForm" th:action="@{|/ledger/personal/${personalInfo.id}/edit|}" th:method="post"
+                          th:object="${personalInfo}">
+                        <div class="mb-3">
+                            <label for="legalName" class="form-label">Legal Name</label>
+                            <input type="text" name="legalName" th:field="*{legalName}" class="form-control" id="editLegalName">
+                        </div>
+                        <div class="mb-3">
+                            <label for="maidenName" class="form-label">Maiden Name</label>
+                            <input type="text" th:field="*{maidenName}" class="form-control" id="editMaidenName">
+                        </div>
+                        <div class="mb-3">
+                            <label for="primaryAddress" class="form-label">Primary Address</label>
+                            <input type="text" th:field="*{primaryAddress}" class="form-control" id="editPrimaryAddress">
+                        </div>
+                        <div class="mb-3">
+                            <label for="phoneNumber" class="form-label">Phone Number</label>
+                            <input type="text" placeholder="123-456-7890" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+                                   th:field="*{phoneNumber}" class="form-control" id="editPhoneNumber">
+                            <small>Format: 123-456-7890</small>
+                        </div>
+                        <div class="mb-3">
+                            <label for="birthPlace" class="form-label">Birth Place</label>
+                            <input type="text" th:field="*{birthPlace}" class="form-control" id="editBirthPlace">
+                        </div>
+                        <div class="mb-3">
+                            <label for="maritalStatus" class="form-label">Marital Status</label>
+                            <select name="maritalStatus" th:field="*{maritalStatus}" class="form-select" id="editMaritalStatus">
+                                <option disabled th:value="disabled">Select marital status</option>
+                                <option th:value="Single">Single</option>
+                                <option th:value="Married">Married</option>
+                                <option th:value="Divorced">Divorced</option>
+                                <option th:value="Widowed">Widowed</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="occupation" class="form-label">Occupation</label>
+                            <input type="text" th:field="*{occupation}" class="form-control" id="editOccupation">
+                        </div>
+                        <div class="mb-3">
+                            <label for="citizenship" class="form-label">Citizenship</label>
+                            <select name="citizenship" th:field="*{citizenship}" class="form-select" id="editCitizenship">
+                                <option disabled th:value="disabled">Select citizenship status</option>
+                                <option th:value="citizen">US Citizen</option>
+                                <option th:value="LPR">Lawful Permanent Resident</option>
+                                <option th:value="visitor">Temporary Visitor</option>
+                                <option th:value="undocImmigrant">Undocumented Immigrant</option>
+                                <option th:value="DNWTA">Do Not Wish To Answer</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="religion" class="form-label">Religion</label>
+                            <input type="text" th:field="*{religion}" class="form-control" id="editReligion">
+                        </div>
+                        <div class="mb-3">
+                            <label for="militaryStatus" class="form-label">Military Status</label>
+                            <select name="militaryStatus" th:field="*{militaryStatus}" class="form-select"
+                                    id="editMilitaryStatus">
+                                <option disabled th:value="disabled">Select military status</option>
+                                <option th:value="nonMilitary">No Military Service</option>
+                                <option th:value="activeDuty">Active-duty</option>
+                                <option th:value="honorableDischarge">Honorable Discharge</option>
+                                <option th:value="generalDischarge">General Discharge</option>
+                                <option th:value="entryLevelSeparation">Entry-Level Separation</option>
+                                <option th:value="medicalDischarge">Medical Discharge</option>
+                                <option th:value="OTHD">Other Than Honorable Discharge</option>
+                                <option th:value="badConduct">Bad Conduct Discharge</option>
+                                <option th:value="dishonorableDischarge.">Dishonorable Discharge</option>
+                                <option th:value="dismissal">Dismissal (Officer Discharge)</option>
+                            </select>
+                        </div>
 
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary">Submit</button>
-                    </div>
-                </form>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
