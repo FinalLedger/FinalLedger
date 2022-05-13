@@ -4,8 +4,7 @@
 
     <meta charset="UTF-8">
     <meta name="google-signin-client_id" th:content="${googleAPI}">
-    <script src="https://apis.google.com/js/platform.js" async defer></script>
-    <script src="https://accounts.google.com/gsi/client" async defer></script>
+<!--    <script src="https://apis.google.com/js/platform.js" async defer></script>-->
     <!--<link rel="stylesheet" href="../../static/css/styles.css">-->
     <link rel="stylesheet" type="text/css" href="css/login.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -34,23 +33,26 @@
                 <div>
                     <a href="#" class="social"><i class="fab fa fa-twitter fa-2x"></i></a>
                 </div>
-                <div id="g_id_onload"
-                     data-client_id="549436147051-47s9ccbtg0hsgodenhg3r6pn729cvt9q.apps.googleusercontent.com"
-                     data-context="signin"
-                     data-ux_mode="popup"
-                     data-login_uri="/profile"
-                     data-auto_select="false">
-                </div>
+                <form>
+                    <div id="g_id_onload"
+                         data-client_id="549436147051-47s9ccbtg0hsgodenhg3r6pn729cvt9q.apps.googleusercontent.com"
+                         data-context="signup"
+                         data-ux_mode="popup"
+                         data-login_uri="http://localhost:8080/register"
+                         data-auto_select="false">
+                    </div>
 
-                <div class="g_id_signin"
-                     data-type="standard"
-                     data-shape="pill"
-                     data-theme="filled_blue"
-                     data-text="signin_with"
-                     data-size="large"
-                     data-locale="en-US"
-                     data-logo_alignment="left">
-                </div>
+                    <div class="g_id_signin"
+                         data-type="standard"
+                         data-shape="pill"
+                         data-theme="filled_blue"
+                         data-text="signin_with"
+                         data-size="large"
+                         data-locale="en-US"
+                         data-logo_alignment="left">
+                    </div>
+                </form>
+
             </div>
 
             <div id="content"></div>

@@ -24,6 +24,9 @@ public class User {
     @Column(nullable = false)
     private boolean isMainUser;
 
+    @Column(nullable = true)
+    private String auth_provider;
+
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
     private List<Documents> documents;
 
