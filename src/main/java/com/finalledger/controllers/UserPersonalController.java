@@ -42,39 +42,42 @@ public class UserPersonalController {
         return "ledger/personal";
     }
 
-    @GetMapping("/ledger/personal/{id}/edit")
-    public String editUserPersonalForm(@PathVariable long id, Model model, Principal principal) {
-        model.addAttribute("editPersonal", userPersonalDao.getById(id));
-
-        return principal == null ? "redirect:/login" : "/ledger/personal/edit";
-    }
+//    @GetMapping("/ledger/personal/{id}/edit")
+//    public String editUserPersonalForm(@PathVariable long id, Model model, Principal principal) {
+//        model.addAttribute("editPersonal", userPersonalDao.getById(id));
+//
+//        return principal == null ? "redirect:/login" : "/ledger/personal/edit";
+//    }
 
     @PostMapping("/ledger/personal/{id}/edit")
-    public String updatePersonal(@PathVariable Long id, @RequestParam String legalName, @RequestParam String maidenName, @RequestParam String primaryAddress, @RequestParam String phoneNumber, @RequestParam String birthPlace, @RequestParam String maritalStatus, @RequestParam String occupation, @RequestParam String citizenship, @RequestParam String religion, @RequestParam String militaryStatus, @RequestParam User user) {
-        PersonalInformation personalInformation = userPersonalDao.getById(id);
+    public String updatePersonal(@PathVariable Long id, @RequestParam String legalName, @RequestParam String maidenName, @RequestParam String primaryAddress, @RequestParam String phoneNumber, @RequestParam String birthPlace, @RequestParam String maritalStatus, @RequestParam String occupation, @RequestParam String citizenship, @RequestParam String religion, @RequestParam String militaryStatus) {
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 
-        personalInformation.setLegalName(legalName);
+        PersonalInformation userPersonalInformation = userPersonalDao.getById(id);
 
-        personalInformation.setMaidenName(maidenName);
+        userPersonalInformation.setLegalName(legalName);
 
-        personalInformation.setPrimaryAddress(primaryAddress);
+        userPersonalInformation.setMaidenName(maidenName);
 
-        personalInformation.setPhoneNumber(phoneNumber);
+        userPersonalInformation.setPrimaryAddress(primaryAddress);
 
-        personalInformation.setBirthPlace(birthPlace);
+        userPersonalInformation.setPhoneNumber(phoneNumber);
 
-        personalInformation.setMaritalStatus(maritalStatus);
+        userPersonalInformation.setBirthPlace(birthPlace);
 
-        personalInformation.setOccupation(occupation);
+        userPersonalInformation.setMaritalStatus(maritalStatus);
 
-        personalInformation.setCitizenship(citizenship);
+        userPersonalInformation.setOccupation(occupation);
 
-        personalInformation.setReligion(religion);
+        userPersonalInformation.setCitizenship(citizenship);
 
-        personalInformation.setMilitaryStatus(militaryStatus);
+        userPersonalInformation.setReligion(religion);
 
-        personalInformation.setUser(user);
+        userPersonalInformation.setMilitaryStatus(militaryStatus);
 
+        userPersonalInformation.setUser(user);
+
+        userPersonalDao.save(userPersonalInformation);
 
         return "redirect:/ledger/personal";
     }
