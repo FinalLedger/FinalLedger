@@ -23,8 +23,10 @@ public class AuthenticationController {
 
         return "users/login";
     }
+
     @GetMapping("/logout")
     public ModelAndView logOut(HttpServletRequest request) {
+
         HttpSession session= request.getSession(false);
         SecurityContextHolder.clearContext();
         if(session != null) {

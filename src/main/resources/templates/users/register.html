@@ -2,6 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <meta charset="UTF-8">
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
     <title>Register</title>
     <link rel="stylesheet" type="text/css" href="css/styles.css">
     <link th:replace="/partials/navbar :: bootstrap">
@@ -49,6 +50,23 @@
     </form>
     <br>
     <hr>
+    <div id="g_id_onload"
+         data-client_id="jasoncomstock11@gmail.com"
+         data-context="signup"
+         data-ux_mode="popup"
+         data-login_uri="/profile"
+         data-auto_select="true">
+    </div>
+
+    <div class="g_id_signin"
+         data-type="standard"
+         data-shape="pill"
+         data-theme="filled_blue"
+         data-text="signin_with"
+         data-size="large"
+         data-locale="en-US"
+         data-logo_alignment="left">
+    </div>
     <p class="text-center">Already have an account? <a href="/login">Log in</a></p>
 </div>
 
