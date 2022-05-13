@@ -34,37 +34,37 @@ public class UserMedicalController {
         MedicalInformation medicalInfo = userMedicalDao.findByUserId(user.getId());
         if (medicalInfo == null) {
             model.addAttribute("existingInfo", false);
+            model.addAttribute("medicalInfo", new MedicalInformation());
         } else {
             model.addAttribute("existingInfo", true);
             model.addAttribute("medicalInfo", medicalInfo);
         }
-        model.addAttribute("medical", new MedicalInformation());
+
         return "ledger/medical";
     }
 
-    @GetMapping("/ledger/medical/{id}/edit")
-    public String editUserMedicalForm(@PathVariable long id, Model model, Principal principal){
-        model.addAttribute("editMedical", userMedicalDao.getById(id));
-
-        return principal == null ?  "redirect:/login" : "/ledger/medical/edit";
-    }
 
     @PostMapping("/ledger/medical/{id}/edit")
     public String updateMedical(@PathVariable Long id, @RequestParam String willLocation,@RequestParam String POADocLocation,@RequestParam String DNROrderLocation,@RequestParam String bloodType, String medicalConditions,@RequestParam String healthInsuranceName){
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 
-        MedicalInformation medicalInformation = userMedicalDao.getById(id);
+        MedicalInformation medicalInfo = userMedicalDao.getById(id);
 
-        medicalInformation.setWillLocation(willLocation);
+        medicalInfo.setWillLocation(willLocation);
 
-        medicalInformation.setPOADocLocation(POADocLocation);
+        medicalInfo.setPOADocLocation(POADocLocation);
 
-        medicalInformation.setDNROrderLocation(DNROrderLocation);
+        medicalInfo.setDNROrderLocation(DNROrderLocation);
 
-        medicalInformation.setBloodType(bloodType);
+        medicalInfo.setBloodType(bloodType);
 
-        medicalInformation.setMedicalConditions(medicalConditions);
+        medicalInfo.setMedicalConditions(medicalConditions);
 
-        medicalInformation.setHealthInsuranceName(healthInsuranceName);
+        medicalInfo.setHealthInsuranceName(healthInsuranceName);
+
+        medicalInfo.setUser(user);
+
+        userMedicalDao.save(medicalInfo);
 
         return "redirect:/ledger/medical";
     }
@@ -73,7 +73,7 @@ public class UserMedicalController {
     public String deleteMedical(@PathVariable Long id){
         userMedicalDao.deleteById(id);
 
-        return "redirect:/ledger/personal";
+        return "redirect:/ledger/medical";
     }
 
     @PostMapping("/ledger/medical")
