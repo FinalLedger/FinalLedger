@@ -26,11 +26,20 @@ public class UserMedicalController {
     }
 
     @GetMapping("/ledger/medical")
-    public String showUserMedicalForm(Model model, Principal principal) {
-
+    public String showUserMedicalForm(Model model) {
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        if (user == null) {
+            return "redirect:/login";
+        }
+        MedicalInformation medicalInfo = userMedicalDao.findByUserId(user.getId());
+        if (medicalInfo == null) {
+            model.addAttribute("existingInfo", false);
+        } else {
+            model.addAttribute("existingInfo", true);
+            model.addAttribute("medicalInfo", medicalInfo);
+        }
         model.addAttribute("medical", new MedicalInformation());
-
-        return principal == null ? "redirect:/login" : "/ledger/medical";
+        return "ledger/medical";
     }
 
     @GetMapping("/ledger/medical/{id}/edit")
