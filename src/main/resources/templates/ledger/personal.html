@@ -62,10 +62,12 @@
                 </div>
                 <!---------------------------------------------->
                 <div class="d-flex align-items-center">
-                    <button type="button" class="btn btn-sm btn-danger" data-bs-toggle="modal"
-                            data-bs-target="#deleteFormModal">
-                        Delete info
-                    </button>
+                    <form th:action="@{|/ledger/personal/${personalInfo.id}/delete|}" method="post" th:object="${personalInfo}">
+                        <button type="submit" class="btn btn-sm btn-danger" data-bs-toggle="modal">
+                            Delete info
+                        </button>
+                    </form>
+
                 </div>
             </div>
             <hr>
@@ -153,7 +155,7 @@
             </div>
             <div class="modal-body">
                 <form id="personalForm" th:action="@{/ledger/personal}" th:method="post"
-                      th:object="${userPersonalInformation}">
+                      th:object="${personalInfo}">
                     <div class="mb-3">
                         <label for="legalName" class="form-label">Legal Name</label>
                         <input type="text" th:field="*{legalName}" class="form-control" id="legalName">
@@ -233,6 +235,7 @@
     </div>
 </div>
 <!---------------------------------------------------------------------------------------------------------------->
+
 <div class="modal fade" id="editFormModal" tabindex="-1" aria-labelledby="formModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
@@ -241,11 +244,11 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form id="editPersonalForm" th:action="@{|/ledger/personal/${personalInfo.id}|}" th:method="post"
+                <form id="editPersonalForm" th:action="@{|/ledger/personal/${personalInfo.id}/edit|}" th:method="post"
                       th:object="${personalInfo}">
                     <div class="mb-3">
                         <label for="legalName" class="form-label">Legal Name</label>
-                        <input type="text" th:field="*{legalName}" class="form-control" id="editLegalName">
+                        <input type="text" name="legalName" th:field="*{legalName}" class="form-control" id="editLegalName">
                     </div>
                     <div class="mb-3">
                         <label for="maidenName" class="form-label">Maiden Name</label>

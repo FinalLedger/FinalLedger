@@ -34,11 +34,11 @@ public class UserPersonalController {
         PersonalInformation personalInfo = userPersonalDao.findByUserId(user.getId());
         if (personalInfo == null) {
             model.addAttribute("existingInfo", false);
+            model.addAttribute("personalInfo", new PersonalInformation());
         } else {
             model.addAttribute("existingInfo", true);
             model.addAttribute("personalInfo", personalInfo);
         }
-        model.addAttribute("userPersonalInformation", new PersonalInformation());
         return "ledger/personal";
     }
 
@@ -53,31 +53,31 @@ public class UserPersonalController {
     public String updatePersonal(@PathVariable Long id, @RequestParam String legalName, @RequestParam String maidenName, @RequestParam String primaryAddress, @RequestParam String phoneNumber, @RequestParam String birthPlace, @RequestParam String maritalStatus, @RequestParam String occupation, @RequestParam String citizenship, @RequestParam String religion, @RequestParam String militaryStatus) {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 
-        PersonalInformation userPersonalInformation = userPersonalDao.getById(id);
+        PersonalInformation personalInfo = userPersonalDao.getById(id);
 
-        userPersonalInformation.setLegalName(legalName);
+        personalInfo.setLegalName(legalName);
 
-        userPersonalInformation.setMaidenName(maidenName);
+        personalInfo.setMaidenName(maidenName);
 
-        userPersonalInformation.setPrimaryAddress(primaryAddress);
+        personalInfo.setPrimaryAddress(primaryAddress);
 
-        userPersonalInformation.setPhoneNumber(phoneNumber);
+        personalInfo.setPhoneNumber(phoneNumber);
 
-        userPersonalInformation.setBirthPlace(birthPlace);
+        personalInfo.setBirthPlace(birthPlace);
 
-        userPersonalInformation.setMaritalStatus(maritalStatus);
+        personalInfo.setMaritalStatus(maritalStatus);
 
-        userPersonalInformation.setOccupation(occupation);
+        personalInfo.setOccupation(occupation);
 
-        userPersonalInformation.setCitizenship(citizenship);
+        personalInfo.setCitizenship(citizenship);
 
-        userPersonalInformation.setReligion(religion);
+        personalInfo.setReligion(religion);
 
-        userPersonalInformation.setMilitaryStatus(militaryStatus);
+        personalInfo.setMilitaryStatus(militaryStatus);
 
-        userPersonalInformation.setUser(user);
+        personalInfo.setUser(user);
 
-        userPersonalDao.save(userPersonalInformation);
+        userPersonalDao.save(personalInfo);
 
         return "redirect:/ledger/personal";
     }
@@ -88,7 +88,6 @@ public class UserPersonalController {
 
         return "redirect:/ledger/personal";
     }
-
 
     @PostMapping("/ledger/personal")
     public String saveUserPersonalInformation(@ModelAttribute PersonalInformation userPersonalInformation) {
