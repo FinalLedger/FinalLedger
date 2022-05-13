@@ -5,7 +5,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "contacts")
-public class Contants {
+public class Contacts {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
@@ -20,10 +20,10 @@ public class Contants {
     @Column(nullable = false)
     private String lastName;
 
-    @Column(nullable = false, unique = true)
+    @Column(nullable = false)
     private String phoneNumber;
 
-    @Column(nullable = false, unique = true)
+    @Column(nullable = false)
     private String email;
 
     @Column(nullable = false)
@@ -37,10 +37,10 @@ public class Contants {
 
     private User user;
 
-    public Contants() {
+    public Contacts() {
     }
 
-    public Contants(Long id, String relationship, String firstName, String lastName, String phoneNumber, String email, String primaryAddress, List<Address> address, User user) {
+    public Contacts(Long id, String relationship, String firstName, String lastName, String phoneNumber, String email, String primaryAddress, List<Address> address, User user) {
         this.id = id;
         this.relationship = relationship;
         this.firstName = firstName;
@@ -52,7 +52,7 @@ public class Contants {
         this.user = user;
     }
 
-    public Contants(String relationship, String firstName, String lastName, String phoneNumber, String email, String primaryAddress, List<Address> address, User user) {
+    public Contacts(String relationship, String firstName, String lastName, String phoneNumber, String email, String primaryAddress, List<Address> address, User user) {
         this.relationship = relationship;
         this.firstName = firstName;
         this.lastName = lastName;

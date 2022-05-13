@@ -20,7 +20,7 @@ public class PersonalInformation {
     @Column(nullable = false)
     private String primaryAddress;
 
-    @Column(nullable = false, unique=true)
+    @Column(nullable = false)
     private String phoneNumber;
 
     @Column(nullable = false)

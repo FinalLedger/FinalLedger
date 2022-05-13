@@ -47,22 +47,46 @@
             <div class="container">
                 <h6>Will Location</h6>
                 <hr>
-                <p>Data populates here</p>
-                <h6>POA Document Location</h6>
+                <p th:if="${!existingInfo}">No info has been added yet.</p>
+                <div th:if="${existingInfo}">
+                    <p th:if="${medicalInfo.getWillLocation() == ''}">No info has been added yet.</p>
+                    <p th:if="${medicalInfo.getWillLocation() != null}" th:text="${medicalInfo.getWillLocation()}">Will Location</p>
+                </div>
+                <h6>Power Of Attorney Document Location</h6>
                 <hr>
-                <p>Data populates here</p>
-                <h6>DNR Order Location</h6>
+                <p th:if="${!existingInfo}">No info has been added yet.</p>
+                <div th:if="${existingInfo}">
+                    <p th:if="${medicalInfo.getPOADocLocation() == ''}">No info has been added yet.</p>
+                    <p th:if="${medicalInfo.getPOADocLocation() != null}" th:text="${medicalInfo.getPOADocLocation()}">POA Document Location</p>
+                </div>
+                <h6>Do Not Resuscitate Order Location</h6>
                 <hr>
-                <p>Data populates here</p>
+                <p th:if="${!existingInfo}">No info has been added yet.</p>
+                <div th:if="${existingInfo}">
+                    <p th:if="${medicalInfo.getDNROrderLocation() == ''}">No info has been added yet.</p>
+                    <p th:if="${medicalInfo.getDNROrderLocation() != null}" th:text="${medicalInfo.getDNROrderLocation()}">DNR Order Location</p>
+                </div>
                 <h6>Blood Type</h6>
                 <hr>
-                <p>Data populates here</p>
+                <p th:if="${!existingInfo}">No info has been added yet.</p>
+                <div th:if="${existingInfo}">
+                    <p th:if="${medicalInfo.getBloodType() == ''}">No info has been added yet.</p>
+                    <p th:if="${medicalInfo.getBloodType() != null}" th:text="${medicalInfo.getBloodType()}">Blood Type</p>
+                </div>
                 <h6>Medical Conditions</h6>
                 <hr>
-                <p>Data populates here</p>
+                <p th:if="${!existingInfo}">No info has been added yet.</p>
+                <div th:if="${existingInfo}">
+                    <p th:if="${medicalInfo.getMedicalConditions() == ''}">No info has been added yet.</p>
+                    <p th:if="${medicalInfo.getMedicalConditions() != null}" th:text="${medicalInfo.getMedicalConditions()}">Medical Conditions</p>
+                </div>
                 <h6>Health Insurance</h6>
                 <hr>
-                <p>Data populates here</p>
+                <p th:if="${!existingInfo}">No info has been added yet.</p>
+                <div th:if="${existingInfo}">
+                    <p th:if="${medicalInfo.getHealthInsuranceName() == ''}">No info has been added yet.</p>
+                    <p th:if="${medicalInfo.getHealthInsuranceName() != null}" th:text="${medicalInfo.getHealthInsuranceName()}">Health Insurance</p>
+                </div>
             </div>
         </div>
     </div>
@@ -92,7 +116,7 @@
                         <label for="bloodType" class="form=label">Blood Type</label>
                         <select name="bloodType" th:field="*{bloodType}" class="form-select" id="bloodType">
                             <option disabled th:value="disabled">Select blood type</option>
-                            <option th:value="ONegactive">O Negative</option>
+                            <option th:value="ONegative">O Negative</option>
                             <option th:value="OPositive">O Positive</option>
                             <option th:value="ANegative">A Negative</option>
                             <option th:value="APositive">A Positive</option>
