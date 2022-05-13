@@ -5,11 +5,13 @@
     <meta charset="UTF-8">
     <meta name="google-signin-client_id" th:content="${googleAPI}">
     <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
     <!--<link rel="stylesheet" href="../../static/css/styles.css">-->
     <link rel="stylesheet" type="text/css" href="css/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <title>Login</title>
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
 </head>
 <body>
 <nav th:replace="/partials/navbar :: visitorNav"></nav>
@@ -32,7 +34,23 @@
                 <div>
                     <a href="#" class="social"><i class="fab fa fa-twitter fa-2x"></i></a>
                 </div>
-                <div class="g-signin2 signIn" data-onsuccess="onSignIn"></div>
+                <div id="g_id_onload"
+                     data-client_id="jasoncomstock11@gmail.com"
+                     data-context="signin"
+                     data-ux_mode="popup"
+                     data-login_uri="/profile"
+                     data-auto_select="true">
+                </div>
+
+                <div class="g_id_signin"
+                     data-type="standard"
+                     data-shape="pill"
+                     data-theme="filled_blue"
+                     data-text="signin_with"
+                     data-size="large"
+                     data-locale="en-US"
+                     data-logo_alignment="left">
+                </div>
             </div>
 
             <div id="content"></div>

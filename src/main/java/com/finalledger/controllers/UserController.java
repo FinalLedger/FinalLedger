@@ -2,6 +2,7 @@ package com.finalledger.controllers;
 
 import com.finalledger.models.User;
 import com.finalledger.repositories.UserRepository;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,6 +18,9 @@ import java.security.Principal;
 @Controller
 public class UserController {
 
+    @Value("${googleAPI}")
+    public String googleAPIKey;
+
     private final UserRepository userDao;
     private final PasswordEncoder passwordEncoder;
 
@@ -26,7 +30,10 @@ public class UserController {
     }
 
     @GetMapping("/register")
-    public String showRegistrationForm() {
+    public String showRegistrationForm(Model model) {
+
+        model.addAttribute("googleAPI", googleAPIKey);
+
         return "users/register";
     }
 
