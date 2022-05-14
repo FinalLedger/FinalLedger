@@ -5,7 +5,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "contacts")
-public class Contacts {
+public class Contact {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
@@ -32,15 +32,14 @@ public class Contacts {
     @ManyToMany(cascade = CascadeType.ALL, mappedBy = "contactAddresses")
     private List<Address> address;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "main_user_id")
-
     private User user;
 
-    public Contacts() {
+    public Contact() {
     }
 
-    public Contacts(Long id, String relationship, String firstName, String lastName, String phoneNumber, String email, String primaryAddress, List<Address> address, User user) {
+    public Contact(Long id, String relationship, String firstName, String lastName, String phoneNumber, String email, String primaryAddress, List<Address> address, User user) {
         this.id = id;
         this.relationship = relationship;
         this.firstName = firstName;
@@ -52,7 +51,7 @@ public class Contacts {
         this.user = user;
     }
 
-    public Contacts(String relationship, String firstName, String lastName, String phoneNumber, String email, String primaryAddress, List<Address> address, User user) {
+    public Contact(String relationship, String firstName, String lastName, String phoneNumber, String email, String primaryAddress, List<Address> address, User user) {
         this.relationship = relationship;
         this.firstName = firstName;
         this.lastName = lastName;

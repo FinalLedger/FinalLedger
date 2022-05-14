@@ -44,7 +44,31 @@
             </div>
             <hr>
             <div class="container">
-                <p>List of contacts will appear here as cards</p>
+                <p th:if="${!existingList}">No contacts have been added yet.</p>
+                <div th:if="${existingList}">
+                    <div th:each="contact : ${contactsList}">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title" th:text="${contact.getFirstName() + ' ' + contact.getLastName()}">Contact First Name + Last Name</h5>
+                                <h6 class="card-subtitle mb-2 text-muted" th:text="${contact.getRelationship()}">Relationship</h6>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item">
+                                        <h6>Email</h6>
+                                        <p th:text="${contact.getEmail()}">Email</p>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <h6>Phone Number</h6>
+                                        <p th:text="${contact.getPhoneNumber()}">Phone Number</p>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <h6>Address</h6>
+                                        <p th:text="${contact.getPrimaryAddress()}">Address</p>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -57,7 +81,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form th:action="@{/ledger/contacts}" th:method="post" th:object="${contacts}">
+                <form th:action="@{/ledger/contacts}" th:method="post" th:object="${newContact}">
                     <div class="mb-3">
                         <label for="firstName" class="form-label">First Name</label>
                         <input type="text" th:field="*{firstName}" class="form-control" id="firstName">

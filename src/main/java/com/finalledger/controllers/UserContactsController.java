@@ -1,7 +1,7 @@
 package com.finalledger.controllers;
 
 import com.finalledger.models.User;
-import com.finalledger.models.Contacts;
+import com.finalledger.models.Contact;
 import com.finalledger.repositories.UserContactsRepository;
 import com.finalledger.repositories.UserRepository;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import java.security.Principal;
 import java.util.ArrayList;
+import java.util.List;
 
 @Controller
 public class UserContactsController {
@@ -25,22 +26,29 @@ public class UserContactsController {
     }
 
     @GetMapping("/ledger/contacts")
-    public String showUserContactsForm(Model model, Principal principal){
-        model.addAttribute("contacts", new Contacts());
-        return principal == null ? "redirect:/login" : "/ledger/contacts";
+    public String showUserContactsForm(Model model){
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        if (user == null) {
+            return "redirect:/login";
+        }
+        List<Contact> contactsList = user.getContacts();
+        if (contactsList.isEmpty()) {
+            model.addAttribute("existingList", false);
+        } else {
+            model.addAttribute("existingList", true);
+            model.addAttribute("contactsList", contactsList);
+        }
+        model.addAttribute("newContact", new Contact());
+        return "ledger/contacts";
     }
 
     @PostMapping("/ledger/contacts")
-    public String saveUserContactsInformation(@ModelAttribute Contacts userContacts){
+    public String saveUserContactsInformation(@ModelAttribute Contact newContact){
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        User persistUser = userDao.getById(user.getId());
-        userContacts.setUser(persistUser);
-        ArrayList<Contacts> document = new ArrayList<>();
-        document.add(userContacts);
-        userDao.save(persistUser);
-
-        userContactDao.save(userContacts);
-
+        newContact.setUser(user);
+        List<Contact> usersContacts = user.getContacts();
+        usersContacts.add(newContact);
+        userContactDao.save(newContact);
         return "redirect:/ledger/contacts";
     }
 

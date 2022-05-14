@@ -1,6 +1,6 @@
 package com.finalledger.controllers;
 
-import com.finalledger.models.User;
+import com.finalledger.models.*;
 import com.finalledger.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.swing.*;
 import java.security.Principal;
+import java.util.ArrayList;
 
 @Controller
 public class UserController {
@@ -51,7 +52,7 @@ public class UserController {
             return "users/register";
         } else {
             String hash = passwordEncoder.encode(password);
-            User user = new User(username, email, hash, isMainUser);
+            User user = new User(username, email, hash, isMainUser, new ArrayList<Contact>(), new ArrayList<Documents>(), new ArrayList<CreditCard>(), new ArrayList<FinancialInvestment>(), new ArrayList<InsurancePolicy>(), new ArrayList<BankAccounts>());
             userDao.save(user);
         }
         return "redirect:/login";
