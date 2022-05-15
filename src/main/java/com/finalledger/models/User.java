@@ -1,6 +1,7 @@
 package com.finalledger.models;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -30,7 +31,6 @@ public class User {
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user", fetch = FetchType.EAGER)
     private List<Contact> contacts;
-
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
     private List<Documents> documents;
@@ -143,13 +143,13 @@ public class User {
         isMainUser = mainUser;
     }
 
-
     public AuthenticationProvider getAuthProvider() {
         return authProvider;
     }
 
     public void setAuthProvider(AuthenticationProvider authProvider) {
         this.authProvider = authProvider;
+    }
 
     public List<Contact> getContacts() {
         return contacts;
@@ -157,7 +157,6 @@ public class User {
 
     public void setContacts(List<Contact> contacts) {
         this.contacts = contacts;
-
     }
 
     public List<Documents> getDocuments() {
