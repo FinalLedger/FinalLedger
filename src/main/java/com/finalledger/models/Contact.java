@@ -62,6 +62,18 @@ public class Contact {
         this.user = user;
     }
 
+    public Contact(Contact copy) {
+        id = copy.id;
+        relationship = copy.relationship;
+        firstName = copy.firstName;
+        lastName = copy.lastName;
+        phoneNumber = copy.phoneNumber;
+        email = copy.email;
+        primaryAddress = copy.primaryAddress;
+        address = copy.address;
+        user = copy.user;
+    }
+
     public Long getId() {
         return id;
     }
