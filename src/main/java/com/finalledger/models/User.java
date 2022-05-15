@@ -24,8 +24,13 @@ public class User {
     @Column(nullable = false)
     private boolean isMainUser;
 
+    @Enumerated(EnumType.STRING)
+    @Column(name = "auth_provider")
+    private AuthenticationProvider authProvider;
+
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user", fetch = FetchType.EAGER)
     private List<Contact> contacts;
+
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
     private List<Documents> documents;
@@ -51,12 +56,14 @@ public class User {
         this.isMainUser = isMainUser;
     }
 
-    public User(Long id, String username, String email, String password, boolean isMainUser, List<Contact> contacts, List<Documents> documents, List<CreditCard> creditCards, List<FinancialInvestment> financialInvestments, List<InsurancePolicy> insurancePolicy, List<BankAccounts> bankAccounts) {
+
+    public User(Long id, String username, String email, String password, boolean isMainUser, AuthenticationProvider authProvider, List<Contact> contacts, List<Documents> documents, List<CreditCard> creditCards, List<FinancialInvestment> financialInvestments, List<InsurancePolicy> insurancePolicy, List<BankAccounts> bankAccounts) {
         this.id = id;
         this.username = username;
         this.email = email;
         this.password = password;
         this.isMainUser = isMainUser;
+        this.authProvider = authProvider;
         this.contacts = contacts;
         this.documents = documents;
         this.creditCards = creditCards;
@@ -65,11 +72,13 @@ public class User {
         this.bankAccounts = bankAccounts;
     }
 
-    public User(String username, String email, String password, boolean isMainUser, List<Contact> contacts, List<Documents> documents, List<CreditCard> creditCards, List<FinancialInvestment> financialInvestments, List<InsurancePolicy> insurancePolicy, List<BankAccounts> bankAccounts) {
+
+    public User(String username, String email, String password, boolean isMainUser, AuthenticationProvider authProvider, List<Contact> contacts,List<Documents> documents, List<CreditCard> creditCards, List<FinancialInvestment> financialInvestments, List<InsurancePolicy> insurancePolicy, List<BankAccounts> bankAccounts) {
         this.username = username;
         this.email = email;
         this.password = password;
         this.isMainUser = isMainUser;
+        this.authProvider = authProvider;
         this.contacts = contacts;
         this.documents = documents;
         this.creditCards = creditCards;
@@ -84,6 +93,7 @@ public class User {
         email = copy.email;
         password = copy.password;
         isMainUser = copy.isMainUser;
+        authProvider = copy.authProvider;
         contacts = copy.contacts;
         documents = copy.documents;
         creditCards = copy.creditCards;
@@ -133,12 +143,21 @@ public class User {
         isMainUser = mainUser;
     }
 
+
+    public AuthenticationProvider getAuthProvider() {
+        return authProvider;
+    }
+
+    public void setAuthProvider(AuthenticationProvider authProvider) {
+        this.authProvider = authProvider;
+
     public List<Contact> getContacts() {
         return contacts;
     }
 
     public void setContacts(List<Contact> contacts) {
         this.contacts = contacts;
+
     }
 
     public List<Documents> getDocuments() {
