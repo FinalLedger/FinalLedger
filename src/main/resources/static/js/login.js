@@ -1,14 +1,26 @@
-function onSignIn(googleUser) {
+function decodeJwtResponse(credential) {
 
-    var profile = googleUser.getBasicProfile()
+    var base64Url = credential.split('.')[1];
+    var base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+    var jsonPayload = decodeURIComponent(atob(base64).split('').map(function(c) {
+        return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+    }).join(''));
+    console.log(jsonPayload);
 
-    console.log('User is ' + JSON.stringify(profile));
+    return JSON.parse(jsonPayload);
+}
 
-    var element = document.querySelector('#content');
-    element.innerText = googleUser.getBasicProfile().getName();
+function handleCredentialResponse(response) {
+    // decodeJwtResponse() is a custom function defined by you to decode the credential response.
+    const responsePayload = decodeJwtResponse(response.credential);
 
-    var image = document.createElement('img')
-    image.setAttribute('src', profile.getImageUrl())
+    console.log("ID: " + responsePayload.sub);
+    console.log('Full Name: ' + responsePayload.name);
+    console.log('Given Name: ' + responsePayload.given_name);
+    console.log('Family Name: ' + responsePayload.family_name);
+    console.log("Image URL: " + responsePayload.picture);
+    console.log("Email: " + responsePayload.email);
+
 }
 
 function signOut() {

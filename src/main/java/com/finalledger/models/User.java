@@ -24,8 +24,9 @@ public class User {
     @Column(nullable = false)
     private boolean isMainUser;
 
-    @Column(nullable = true)
-    private String auth_provider;
+    @Enumerated(EnumType.STRING)
+    @Column(name = "auth_provider")
+    private AuthenticationProvider authProvider;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
     private List<Documents> documents;
@@ -51,12 +52,13 @@ public class User {
         this.isMainUser = isMainUser;
     }
 
-    public User(Long id, String username, String email, String password, boolean isMainUser, List<Documents> documents, List<CreditCard> creditCards, List<FinancialInvestment> financialInvestments, List<InsurancePolicy> insurancePolicy, List<BankAccounts> bankAccounts) {
+    public User(Long id, String username, String email, String password, boolean isMainUser, AuthenticationProvider authProvider, List<Documents> documents, List<CreditCard> creditCards, List<FinancialInvestment> financialInvestments, List<InsurancePolicy> insurancePolicy, List<BankAccounts> bankAccounts) {
         this.id = id;
         this.username = username;
         this.email = email;
         this.password = password;
         this.isMainUser = isMainUser;
+        this.authProvider = authProvider;
         this.documents = documents;
         this.creditCards = creditCards;
         this.financialInvestments = financialInvestments;
@@ -64,11 +66,12 @@ public class User {
         this.bankAccounts = bankAccounts;
     }
 
-    public User(String username, String email, String password, boolean isMainUser, List<Documents> documents, List<CreditCard> creditCards, List<FinancialInvestment> financialInvestments, List<InsurancePolicy> insurancePolicy, List<BankAccounts> bankAccounts) {
+    public User(String username, String email, String password, boolean isMainUser, AuthenticationProvider authProvider, List<Documents> documents, List<CreditCard> creditCards, List<FinancialInvestment> financialInvestments, List<InsurancePolicy> insurancePolicy, List<BankAccounts> bankAccounts) {
         this.username = username;
         this.email = email;
         this.password = password;
         this.isMainUser = isMainUser;
+        this.authProvider = authProvider;
         this.documents = documents;
         this.creditCards = creditCards;
         this.financialInvestments = financialInvestments;
@@ -82,6 +85,7 @@ public class User {
         email = copy.email;
         password = copy.password;
         isMainUser = copy.isMainUser;
+        authProvider = copy.authProvider;
         documents = copy.documents;
         creditCards = copy.creditCards;
         financialInvestments = copy.financialInvestments;
@@ -128,6 +132,14 @@ public class User {
 
     public void setMainUser(boolean mainUser) {
         isMainUser = mainUser;
+    }
+
+    public AuthenticationProvider getAuthProvider() {
+        return authProvider;
+    }
+
+    public void setAuthProvider(AuthenticationProvider authProvider) {
+        this.authProvider = authProvider;
     }
 
     public List<Documents> getDocuments() {
