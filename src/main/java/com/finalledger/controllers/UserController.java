@@ -52,7 +52,7 @@ public class UserController {
             return "users/register";
         } else {
             String hash = passwordEncoder.encode(password);
-            User user = new User(username, email, hash, isMainUser, new ArrayList<Contact>(), new ArrayList<Documents>(), new ArrayList<CreditCard>(), new ArrayList<FinancialInvestment>(), new ArrayList<InsurancePolicy>(), new ArrayList<BankAccounts>());
+            User user = new User(username, email, hash, isMainUser);
             userDao.save(user);
         }
         return "redirect:/login";
