@@ -35,7 +35,7 @@ public class Address {
             joinColumns = {@JoinColumn(name = "address_id")},
             inverseJoinColumns = {@JoinColumn(name = "contact_id")}
     )
-    private List<Contacts> contactAddresses;
+    private List<Contact> contactAddresses;
 
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(
@@ -47,7 +47,7 @@ public class Address {
 
     public Address() {}
 
-    public Address(String propertyType, String streetAddress, String streetAddress2, String city, String state, int zipcode, List<Contacts> contactAddresses, List<PersonalInformation> personalAddresses) {
+    public Address(String propertyType, String streetAddress, String streetAddress2, String city, String state, int zipcode, List<Contact> contactAddresses, List<PersonalInformation> personalAddresses) {
         this.propertyType = propertyType;
         this.streetAddress = streetAddress;
         this.streetAddress2 = streetAddress2;
@@ -58,7 +58,7 @@ public class Address {
         this.personalAddresses = personalAddresses;
     }
 
-    public Address(Long id, String propertyType, String streetAddress, String streetAddress2, String city, String state, int zipcode, List<Contacts> contactAddresses, List<PersonalInformation> personalAddresses) {
+    public Address(Long id, String propertyType, String streetAddress, String streetAddress2, String city, String state, int zipcode, List<Contact> contactAddresses, List<PersonalInformation> personalAddresses) {
         this.id = id;
         this.propertyType = propertyType;
         this.streetAddress = streetAddress;
@@ -126,11 +126,11 @@ public class Address {
         this.zipcode = zipcode;
     }
 
-    public List<Contacts> getContactAddresses() {
+    public List<Contact> getContactAddresses() {
         return contactAddresses;
     }
 
-    public void setContactAddresses(List<Contacts> contactAddresses) {
+    public void setContactAddresses(List<Contact> contactAddresses) {
         this.contactAddresses = contactAddresses;
     }
 
