@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ledger</title>
+    <link th:replace="/partials/navbar :: bootstrap">
+    <link rel="stylesheet" th:href="@{/css/ledger.css}">
+</head>
+<body>
+<nav th:replace="/partials/navbar :: userNav"></nav>
+<div class="subheader"></div>
+
+<div class="container">
+    <br>
+    <h1>My Final Ledger</h1>
+    <hr>
+    <ul class="nav nav-tabs">
+        <li class="nav-item">
+            <a class="nav-link" href="/ledger/personal">Personal</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/ledger/medical">Medical</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/ledger/contacts">Contacts</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/ledger/documents">Documents</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/ledger/financial">Financial</a>
+        </li>
+    </ul>
+    <div id="infoView" class="container">
+        <br>
+        <div class="container">
+            <h3>Edit Contact</h3>
+            <hr>
+            <div class="container">
+                <form id="editContactForm" th:action="@{|/ledger/contacts/${editContact.id}/edit|}" th:method="post"
+                      th:object="${editContact}">
+                    <div class="mb-3">
+                        <label for="editFirstName" class="form-label">First Name</label>
+                        <input type="text" th:field="*{firstName}" class="form-control" id="editFirstName">
+                    </div>
+                    <div class="mb-3">
+                        <label for="editLastName" class="form-label">Last Name</label>
+                        <input type="text" th:field="*{lastName}" class="form-control" id="editLastName">
+                    </div>
+                    <div class="mb-3">
+                        <label for="editRelationship" class="form-label">Relationship</label>
+                        <input type="text" th:field="*{relationship}" class="form-control" id="editRelationship">
+                    </div>
+                    <div class="mb-3">
+                        <label for="editPhoneNumber" class="form-label">Phone Number</label>
+                        <input type="text" placeholder="123-456-7890" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+                               th:field="*{phoneNumber}"
+                               class="form-control" id="editPhoneNumber">
+                        <small>Format: 123-456-7890</small>
+                    </div>
+                    <div class="mb-3">
+                        <label for="editEmail" class="form-label">Email</label>
+                        <input type="email" th:field="*{email}" class="form-control" id="editEmail">
+                    </div>
+                    <div class="mb-3">
+                        <label for="editAddress" class="form-label">Address</label>
+                        <input type="text" th:field="*{primaryAddress}" class="form-control" id="editAddress">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
