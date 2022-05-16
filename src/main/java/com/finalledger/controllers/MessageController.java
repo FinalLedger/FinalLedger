@@ -1,6 +1,5 @@
 package com.finalledger.controllers;
 
-import com.finalledger.models.Contact;
 import com.finalledger.models.Message;
 import com.finalledger.models.SiteContact;
 import com.finalledger.models.User;
@@ -15,7 +14,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import java.time.ZonedDateTime;
 import java.util.List;
 
 @Controller
@@ -74,8 +72,6 @@ public class MessageController {
         List<Message> sentMessages = messageDao.findAllBySender_info(u.getId());
 
         List<SiteContact> contactList = siteContactDao.findContactsByOwner_userIs(u.getId());
-
-
 
         if (contactList.size() == 0){
             model.addAttribute("hasContacts", false);

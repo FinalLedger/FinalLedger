@@ -1,6 +1,5 @@
 package com.finalledger.repositories;
 
-import com.finalledger.models.Contact;
 import com.finalledger.models.SiteContact;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
