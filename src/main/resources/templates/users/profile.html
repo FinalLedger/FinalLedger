@@ -30,7 +30,7 @@
                 <div th:style="${messagingDisplay == true ? 'display:block' : 'display:none'}">
 
                     <h3 style="font-weight: bold; color: #1777F2; font-family: 'Montserrat', sans-serif; font-size: 45px">
-                        Send <span th:text="${user.username}" !/> a message!</h3>
+                        Send <span th:text="${user.username}" !/></span> a message!</h3>
                     <form th:action="@{/messages/send}" th:method="POST" th:object="${message}">
 
                         <input id="sendmessagetoID" name="sendmessagetoID" th:value="${profileID}" type="hidden">
@@ -52,7 +52,7 @@
                 <th:block th:each="user : ${userList}">
                     <form th:method="post" th:action="@{/messages/addcontact}">
                         <input id="contactHidden" name="contactHidden" th:value="${profileID}" type="hidden">
-                        <button style="margin-top: 48px; margin-right: 5px" type="submit" class="btn btn-secondary">
+                        <button type="submit" class="btn btn-secondary">
                             <span th:text="${user.getUsername()}"></span>  <span th:text="'Add to contacts!'"></span>
                         </button>
                     </form>

@@ -46,7 +46,7 @@ public class ProfileController {
 
             return "users/profile";
         }
-        return "user/profile";
+        return "users/profile";
     }
 
     @GetMapping("/profile/{id}")
