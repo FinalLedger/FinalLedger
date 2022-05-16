@@ -1,5 +1,5 @@
 package com.finalledger.models;
 
-public enum AuthenticationProvider {
+public enum AuthenticationType {
     DATABASE, GOOGLE
 }
