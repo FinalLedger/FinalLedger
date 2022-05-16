@@ -33,102 +33,214 @@
     </ul>
     <div id="infoView" class="container">
         <br>
+        <!--------------------------------------------------------------------------------------------------------------------------------->
         <div class="container">
             <div class="d-flex justify-content-between">
                 <h3>Insurance Policies</h3>
-                <div class="d-flex align-items-center">
+                <div th:if="${!existingList}" class="d-flex align-items-center">
                     <button type="button" class="btn btn-sm btn-primary" data-bs-toggle="modal"
-                            data-bs-target="#insuranceModal">Enter info
+                            data-bs-target="#insuranceModal">
+                        Enter info
                     </button>
+                </div>
+                <div th:if="${existingList}" class="d-flex align-items-center justify-content-end">
+                    <button type="button" class="btn btn-sm btn-warning me-2" data-bs-toggle="modal"
+                            data-bs-target="#editInsuranceModal">
+                        Edit
+                    </button>
+<!--                    <form th:action="@{|/ledger/financial/${insurancePolicyList.id}/delete|}" method="post" th:object="${insurancePolicyList}">-->
+<!--                        <button type="submit" class="btn btn-sm btn-danger" data-bs-toggle="modal">-->
+<!--                            Delete-->
+<!--                        </button>-->
+<!--                    </form>-->
                 </div>
             </div>
             <hr>
+        <!--------------------------------------------------------------------------------------------------------------------------------->
             <div class="container">
                 <h5>Company</h5>
                 <hr>
-                <p>Data will populate here</p>
-                <h5>Contact Info</h5>
-                <hr>
-                <p>Data will populate here</p>
-                <h5>Current Value</h5>
-                <hr>
-                <p>Data will populate here</p>
-                <h5>Beneficiary</h5>
-                <hr>
-                <p>Data will populate here</p>
+                <p th:if="${!existingList}">No info has been added yet.</p>
+                <div th:if="${existingList}">
+                    <div th:each="insurance : ${insurancePolicyList}">
+<!--                        <p th:if="${insurance.getCompany() != ''}">No info has been added yet.</p>-->
+                        <p th:if="${insurance.getCompany() != ''}"
+                           th:text="${insurance.getCompany()}">Company</p>
+                    </div>
+<!--                </div>-->
+<!--                <h5>Contact Information</h5>-->
+<!--                <hr>-->
+<!--                <p th:if="${!existingList}">No info has been added yet.</p>-->
+<!--                <div th:if="${existingList}">-->
+<!--                    <p th:if="${insurancePolicy.getContactInfo() == ''}">No info has been added yet.</p>-->
+<!--                    <p th:if="${insurancePolicy.getContactInfo()!= null}" th:text="${insurancePolicy.getContactInfo()}">Contact Information</p>-->
+<!--                </div>-->
+<!--                <h5>Current Value</h5>-->
+<!--                <hr>-->
+<!--                <p th:if="${!existingList}">No info has been added yet.</p>-->
+<!--                <div th:if="${existingList}">-->
+<!--                    <p th:if="${insurancePolicy.getCurrentValue() == ''}">No info has been added yet.</p>-->
+<!--                    <p th:if="${insurancePolicy.getCurrentValue() != null}" th:text="${insurancePolicy.getCurrentValue()}">Current Value</p>-->
+<!--                </div>-->
+<!--                <h5>Beneficiary</h5>-->
+<!--                <hr>-->
+<!--                <p th:if="${!existingList}">No info has been added yet.</p>-->
+<!--                <div th:if="${existingList}">-->
+<!--                    <p th:if="${insurancePolicy.getBeneficiary() == ''}">No info has been added yet.</p>-->
+<!--                    <p th:if="${insurancePolicy.getBeneficiary() != null}" th:text="${insurancePolicy.getBeneficiary()}">Beneficiary</p>-->
+<!--                </div>-->
             </div>
-        </div>
-        <div class="container">
-            <div class="d-flex justify-content-between">
-                <h3>Financial Investments</h3>
-                <div class="d-flex align-items-center">
-                    <button type="button" class="btn btn-sm btn-primary" data-bs-toggle="modal"
-                            data-bs-target="#financialModal">Enter info
-                    </button>
-                </div>
-            </div>
-            <hr>
-            <div class="container">
-                <h5>Company</h5>
-                <hr>
-                <p>Data will populate here</p>
-                <h5>Contact Info</h5>
-                <hr>
-                <p>Data will populate here</p>
-                <h5>Current Value</h5>
-                <hr>
-                <p>Data will populate here</p>
-                <h5>Beneficiary</h5>
-                <hr>
-                <p>Data will populate here</p>
-            </div>
-        </div>
-        <div class="container">
-            <div class="d-flex justify-content-between">
-                <h3>Credit Cards</h3>
-                <div class="d-flex align-items-center">
-                    <button type="button" class="btn btn-sm btn-primary" data-bs-toggle="modal"
-                            data-bs-target="#creditModal">Enter info
-                    </button>
-                </div>
-            </div>
-            <hr>
-            <div class="container">
-                <h5>Type</h5>
-                <hr>
-                <p>Data will populate here</p>
-                <h5>Issuer</h5>
-                <hr>
-                <p>Data will populate here</p>
-            </div>
-        </div>
-        <div class="container">
-            <div class="d-flex justify-content-between">
-                <h3>Bank Accounts</h3>
-                <div class="d-flex align-items-center">
-                    <button type="button" class="btn btn-sm btn-primary" data-bs-toggle="modal"
-                            data-bs-target="#bankModal">Enter info
-                    </button>
-                </div>
-            </div>
-            <hr>
-            <div class="container">
-                <h5>Company</h5>
-                <hr>
-                <p>Data will populate here</p>
-                <h5>Contact Info</h5>
-                <hr>
-                <p>Data will populate here</p>
-                <h5>Checking Account</h5>
-                <hr>
-                <p>Data will populate here</p>
-                <h5>Savings Account</h5>
-                <hr>
-                <p>Data will populate here</p>
             </div>
         </div>
     </div>
 </div>
+        <!--------------------------------------------------------------------------------------------------------------------------------->
+<!--        <div class="container">-->
+<!--            <div class="d-flex justify-content-between">-->
+<!--                <h3>Financial Investment</h3>-->
+<!--                <div th:if="${!existingInfo}" class="d-flex align-items-center">-->
+<!--                    <button type="button" class="btn btn-sm btn-primary" data-bs-toggle="modal"-->
+<!--                            data-bs-target="#financialModall">-->
+<!--                        Enter info-->
+<!--                    </button>-->
+<!--                </div>-->
+<!--                <div th:if="${existingInfo}" class="d-flex align-items-center justify-content-end">-->
+<!--                    <button type="button" class="btn btn-sm btn-warning me-2" data-bs-toggle="modal"-->
+<!--                            data-bs-target="#editInsuranceModal">-->
+<!--                        Edit-->
+<!--                    </button>-->
+<!--                    <form th:action="@{|/ledger/financial/${financeInfo.id}/delete|}" method="post" th:object="${financeInfo}">-->
+<!--                        <button type="submit" class="btn btn-sm btn-danger" data-bs-toggle="modal">-->
+<!--                            Delete-->
+<!--                        </button>-->
+<!--                    </form>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <hr>-->
+<!--            <div class="container">-->
+<!--                <h5>Company</h5>-->
+<!--                <hr>-->
+<!--                <p th:if="${!existingInfo}">No info has been added yet.</p>-->
+<!--                <div th:if="${existingInfo}">-->
+<!--                    <p th:if="${financeInfo.getCompany() == ''}">No info has been added yet.</p>-->
+<!--                    <p th:if="${financeInfo.getCompany() != null}" th:text="${financeInfo.getCompany()}">Company</p>-->
+<!--                </div>-->
+<!--                <h5>Current Value</h5>-->
+<!--                <hr>-->
+<!--                <p th:if="${!existingInfo}">No info has been added yet.</p>-->
+<!--                <div th:if="${existingInfo}">-->
+<!--                    <p th:if="${financeInfo.getCurrent_value() == ''}">No info has been added yet.</p>-->
+<!--                    <p th:if="${financeInfo.getCurrent_value() != null}" th:text="${financeInfo.getCurrent_value()}">Current Value</p>-->
+<!--                </div>-->
+<!--                <h5>Beneficiary</h5>-->
+<!--                <hr>-->
+<!--                <p th:if="${!existingInfo}">No info has been added yet.</p>-->
+<!--                <div th:if="${existingInfo}">-->
+<!--                    <p th:if="${financeInfo.getBeneficiary() == ''}">No info has been added yet.</p>-->
+<!--                    <p th:if="${financeInfo.getBeneficiary() != null}" th:text="${financeInfo.getBeneficiary()}">Beneficiary</p>-->
+<!--                </div>-->
+<!--                <h5>Contact Information</h5>-->
+<!--                <hr>-->
+<!--                <p th:if="${!existingInfo}">No info has been added yet.</p>-->
+<!--                <div th:if="${existingInfo}">-->
+<!--                    <p th:if="${financeInfo.getContact_info() == ''}">No info has been added yet.</p>-->
+<!--                    <p th:if="${financeInfo.getContact_info() != null}" th:text="${financeInfo.getContact_info()}">Contact Information</p>-->
+<!--                </div>-->
+<!--            </div>-->
+            <!--------------------------------------------------------------------------------------------------------------------------------->
+<!--            <div class="container">-->
+<!--                <div class="d-flex justify-content-between">-->
+<!--                    <h3>Insurance Policies</h3>-->
+<!--                    <div th:if="${!existingInfo}" class="d-flex align-items-center">-->
+<!--                        <button type="button" class="btn btn-sm btn-primary" data-bs-toggle="modal"-->
+<!--                                data-bs-target="#formModal">-->
+<!--                            Enter info-->
+<!--                        </button>-->
+<!--                    </div>-->
+<!--                    <div th:if="${existingInfo}" class="d-flex align-items-center justify-content-end">-->
+<!--                        <button type="button" class="btn btn-sm btn-warning me-2" data-bs-toggle="modal"-->
+<!--                                data-bs-target="#editFormModal">-->
+<!--                            Edit-->
+<!--                        </button>-->
+<!--                        <form th:action="@{|/ledger/financial/${financeInfo.id}/delete|}" method="post" th:object="${financeInfo}">-->
+<!--                            <button type="submit" class="btn btn-sm btn-danger" data-bs-toggle="modal">-->
+<!--                                Delete-->
+<!--                            </button>-->
+<!--                        </form>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                -->
+<!--        <div class="container">-->
+<!--            <div class="d-flex justify-content-between">-->
+<!--                <h3>Financial Investments</h3>-->
+<!--                <div class="d-flex align-items-center">-->
+<!--                    <button type="button" class="btn btn-sm btn-primary" data-bs-toggle="modal"-->
+<!--                            data-bs-target="#financialModal">Enter info-->
+<!--                    </button>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <hr>-->
+<!--            <div class="container">-->
+<!--                <h5>Company</h5>-->
+<!--                <hr>-->
+<!--                <p>Data will populate here</p>-->
+<!--                <h5>Contact Info</h5>-->
+<!--                <hr>-->
+<!--                <p>Data will populate here</p>-->
+<!--                <h5>Current Value</h5>-->
+<!--                <hr>-->
+<!--                <p>Data will populate here</p>-->
+<!--                <h5>Beneficiary</h5>-->
+<!--                <hr>-->
+<!--                <p>Data will populate here</p>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        <div class="container">-->
+<!--            <div class="d-flex justify-content-between">-->
+<!--                <h3>Credit Cards</h3>-->
+<!--                <div class="d-flex align-items-center">-->
+<!--                    <button type="button" class="btn btn-sm btn-primary" data-bs-toggle="modal"-->
+<!--                            data-bs-target="#creditModal">Enter info-->
+<!--                    </button>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <hr>-->
+<!--            <div class="container">-->
+<!--                <h5>Type</h5>-->
+<!--                <hr>-->
+<!--                <p>Data will populate here</p>-->
+<!--                <h5>Issuer</h5>-->
+<!--                <hr>-->
+<!--                <p>Data will populate here</p>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        <div class="container">-->
+<!--            <div class="d-flex justify-content-between">-->
+<!--                <h3>Bank Accounts</h3>-->
+<!--                <div class="d-flex align-items-center">-->
+<!--                    <button type="button" class="btn btn-sm btn-primary" data-bs-toggle="modal"-->
+<!--                            data-bs-target="#bankModal">Enter info-->
+<!--                    </button>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <hr>-->
+<!--            <div class="container">-->
+<!--                <h5>Company</h5>-->
+<!--                <hr>-->
+<!--                <p>Data will populate here</p>-->
+<!--                <h5>Contact Info</h5>-->
+<!--                <hr>-->
+<!--                <p>Data will populate here</p>-->
+<!--                <h5>Checking Account</h5>-->
+<!--                <hr>-->
+<!--                <p>Data will populate here</p>-->
+<!--                <h5>Savings Account</h5>-->
+<!--                <hr>-->
+<!--                <p>Data will populate here</p>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
 
 <div class="modal fade" id="insuranceModal" tabindex="-1" aria-labelledby="insuranceModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
@@ -138,7 +250,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form th:action="@{/ledger/insurancePolicy}" th:method="post" th:object="${insurancePolicy}">
+                <form th:action="@{/ledger/financial}" th:method="post" th:object="${newInsurance}">
                     <div class="mb-3">
                         <label for="insuranceCompany" class="form-label">Company</label>
                         <input type="text" th:field="*{company}" class="form-control" id="insuranceCompany">
@@ -164,100 +276,100 @@
         </div>
     </div>
 </div>
-<div class="modal fade" id="financialModal" tabindex="-1" aria-labelledby="financialModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="financialModalLabel">Financial Investments</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <form th:action="@{/ledger/financial}" th:method="post" th:object="${finance}">
-                    <div class="mb-3">
-                        <label for="investmentCompany" class="form-label">Company</label>
-                        <input type="text" th:field="*{company}" class="form-control" id="investmentCompany">
-                    </div>
-                    <div class="mb-3">
-                        <label for="investmentContact" class="form-label">Contact Info</label>
-                        <input type="text" th:field="*{contact_info}" class="form-control" id="investmentContact">
-                    </div>
-                    <div class="mb-3">
-                        <label for="investmentValue" class="form-label">Current Value</label>
-                        <input type="text" th:field="*{current_value}" class="form-control" id="investmentValue">
-                    </div>
-                    <div class="mb-3">
-                        <label for="investmentBeneficiary" class="form-label">Beneficiary</label>
-                        <input type="text" th:field="*{beneficiary}" class="form-control" id="investmentBeneficiary">
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary">Submit</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="modal fade" id="creditModal" tabindex="-1" aria-labelledby="creditModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="creditModalLabel">Credit Cards</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <form th:action="@{/ledger/creditCard}" th:method="post" th:object="${creditCard}">
-                    <div class="mb-3">
-                        <label for="cardType" class="form-label">Type</label>
-                        <input type="text" th:field="*{type}" class="form-control" id="cardType">
-                    </div>
-                    <div class="mb-3">
-                        <label for="cardIssuer" class="form-label">Issuer</label>
-                        <input type="text" th:field="*{issuer}" class="form-control" id="cardIssuer">
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary">Submit</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="modal fade" id="bankModal" tabindex="-1" aria-labelledby="bankModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="bankModalLabel">Bank Account</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <form th:action="@{/ledger/bankAccounts}" th:method="post" th:object="${bankAccounts}">
-                    <div class="mb-3">
-                        <label for="bankCompany" class="form-label">Company</label>
-                        <input type="text" th:field="*{company}" class="form-control" id="bankCompany">
-                    </div>
-                    <div class="mb-3">
-                        <label for="bankContact" class="form-label">Contact Info</label>
-                        <input type="text" th:field="*{contactInfo}" class="form-control" id="bankContact">
-                    </div>
-                    <div class="mb-3">
-                        <label for="bankChecking" class="form-label">Checking Account</label>
-                        <input type="text" th:field="*{checkingAccount}" class="form-control" id="bankChecking">
-                    </div>
-                    <div class="mb-3">
-                        <label for="bankSavings" class="form-label">Savings Account</label>
-                        <input type="text" th:field="*{savingAccount}" class="form-control" id="bankSavings">
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary">Submit</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
+<!--<div class="modal fade" id="financialModal" tabindex="-1" aria-labelledby="financialModalLabel" aria-hidden="true">-->
+<!--    <div class="modal-dialog modal-lg">-->
+<!--        <div class="modal-content">-->
+<!--            <div class="modal-header">-->
+<!--                <h5 class="modal-title" id="financialModalLabel">Financial Investments</h5>-->
+<!--                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>-->
+<!--            </div>-->
+<!--            <div class="modal-body">-->
+<!--                <form th:action="@{/ledger/financial}" th:method="post" th:object="${financeInfo}">-->
+<!--                    <div class="mb-3">-->
+<!--                        <label for="investmentCompany" class="form-label">Company</label>-->
+<!--                        <input type="text" th:field="*{company}" class="form-control" id="investmentCompany">-->
+<!--                    </div>-->
+<!--                    <div class="mb-3">-->
+<!--                        <label for="investmentContact" class="form-label">Contact Info</label>-->
+<!--                        <input type="text" th:field="*{contact_info}" class="form-control" id="investmentContact">-->
+<!--                    </div>-->
+<!--                    <div class="mb-3">-->
+<!--                        <label for="investmentValue" class="form-label">Current Value</label>-->
+<!--                        <input type="text" th:field="*{current_value}" class="form-control" id="investmentValue">-->
+<!--                    </div>-->
+<!--                    <div class="mb-3">-->
+<!--                        <label for="investmentBeneficiary" class="form-label">Beneficiary</label>-->
+<!--                        <input type="text" th:field="*{beneficiary}" class="form-control" id="investmentBeneficiary">-->
+<!--                    </div>-->
+<!--                    <div class="modal-footer">-->
+<!--                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>-->
+<!--                        <button type="submit" class="btn btn-primary">Submit</button>-->
+<!--                    </div>-->
+<!--                </form>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
+<!--<div class="modal fade" id="creditModal" tabindex="-1" aria-labelledby="creditModalLabel" aria-hidden="true">-->
+<!--    <div class="modal-dialog modal-lg">-->
+<!--        <div class="modal-content">-->
+<!--            <div class="modal-header">-->
+<!--                <h5 class="modal-title" id="creditModalLabel">Credit Cards</h5>-->
+<!--                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>-->
+<!--            </div>-->
+<!--            <div class="modal-body">-->
+<!--                <form th:action="@{/ledger/creditCard}" th:method="post" th:object="${creditCard}">-->
+<!--                    <div class="mb-3">-->
+<!--                        <label for="cardType" class="form-label">Type</label>-->
+<!--                        <input type="text" th:field="*{type}" class="form-control" id="cardType">-->
+<!--                    </div>-->
+<!--                    <div class="mb-3">-->
+<!--                        <label for="cardIssuer" class="form-label">Issuer</label>-->
+<!--                        <input type="text" th:field="*{issuer}" class="form-control" id="cardIssuer">-->
+<!--                    </div>-->
+<!--                    <div class="modal-footer">-->
+<!--                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>-->
+<!--                        <button type="submit" class="btn btn-primary">Submit</button>-->
+<!--                    </div>-->
+<!--                </form>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
+<!--<div class="modal fade" id="bankModal" tabindex="-1" aria-labelledby="bankModalLabel" aria-hidden="true">-->
+<!--    <div class="modal-dialog modal-lg">-->
+<!--        <div class="modal-content">-->
+<!--            <div class="modal-header">-->
+<!--                <h5 class="modal-title" id="bankModalLabel">Bank Account</h5>-->
+<!--                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>-->
+<!--            </div>-->
+<!--            <div class="modal-body">-->
+<!--                <form th:action="@{/ledger/bankAccounts}" th:method="post" th:object="${bankAccounts}">-->
+<!--                    <div class="mb-3">-->
+<!--                        <label for="bankCompany" class="form-label">Company</label>-->
+<!--                        <input type="text" th:field="*{company}" class="form-control" id="bankCompany">-->
+<!--                    </div>-->
+<!--                    <div class="mb-3">-->
+<!--                        <label for="bankContact" class="form-label">Contact Info</label>-->
+<!--                        <input type="text" th:field="*{contactInfo}" class="form-control" id="bankContact">-->
+<!--                    </div>-->
+<!--                    <div class="mb-3">-->
+<!--                        <label for="bankChecking" class="form-label">Checking Account</label>-->
+<!--                        <input type="text" th:field="*{checkingAccount}" class="form-control" id="bankChecking">-->
+<!--                    </div>-->
+<!--                    <div class="mb-3">-->
+<!--                        <label for="bankSavings" class="form-label">Savings Account</label>-->
+<!--                        <input type="text" th:field="*{savingAccount}" class="form-control" id="bankSavings">-->
+<!--                    </div>-->
+<!--                    <div class="modal-footer">-->
+<!--                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>-->
+<!--                        <button type="submit" class="btn btn-primary">Submit</button>-->
+<!--                    </div>-->
+<!--                </form>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"

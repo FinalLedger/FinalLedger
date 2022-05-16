@@ -1,5 +1,8 @@
 package com.finalledger.models;
 
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+
 import javax.annotation.Resource;
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -33,19 +36,25 @@ public class User {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user", fetch = FetchType.EAGER, orphanRemoval = true)
     private List<Contact> contacts;
 
+    @Fetch(FetchMode.SELECT)
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user", orphanRemoval = true)
     private List<Documents> documents;
-
+    
+    @Fetch(FetchMode.SELECT)
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user", orphanRemoval = true)
     private List<CreditCard> creditCards;
-
+  
+    @Fetch(FetchMode.SELECT)
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user", orphanRemoval = true)
     private List<FinancialInvestment> financialInvestments;
-
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user", orphanRemoval = true)
+  
+    @Fetch(FetchMode.SELECT)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user", orphanRemoval = true, fetch = FetchType.EAGER)
     private List<InsurancePolicy> insurancePolicy;
-
+    
+    @Fetch(FetchMode.SELECT)
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user", orphanRemoval = true)
+
     private List<BankAccounts> bankAccounts;
 
     public User() {}
