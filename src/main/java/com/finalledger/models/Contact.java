@@ -32,7 +32,7 @@ public class Contact {
     @ManyToMany(cascade = CascadeType.ALL, mappedBy = "contactAddresses")
     private List<Address> address;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "main_user_id")
     private User user;
 

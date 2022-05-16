@@ -30,22 +30,22 @@ public class User {
     @Column(name = "auth_type")
     private AuthenticationType authType;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user", fetch = FetchType.EAGER)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user", fetch = FetchType.EAGER, orphanRemoval = true)
     private List<Contact> contacts;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user", orphanRemoval = true)
     private List<Documents> documents;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user", orphanRemoval = true)
     private List<CreditCard> creditCards;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user", orphanRemoval = true)
     private List<FinancialInvestment> financialInvestments;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user", orphanRemoval = true)
     private List<InsurancePolicy> insurancePolicy;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user", orphanRemoval = true)
     private List<BankAccounts> bankAccounts;
 
     public User() {}
