@@ -94,10 +94,12 @@ a[rel~=nofollow]:hover {
     font-weight:700;
     color:#008461
 }
+
 .translations-list-container .translations-list .translations-list-item a {
-    display:inline-block;
-    color:#008461;
-    border:2px solid #008461;
-    border-radius:4px;
-    padding:4px 8px
+    display: inline-block;
+    color: ghostwhite;
+    border: 2px solid silver;
+    border-radius: 4px;
+    padding: 4px 8px;
+    background: linear-gradient(to right, #8a898b, #aea5b6);
 }
