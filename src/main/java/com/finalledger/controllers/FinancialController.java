@@ -58,7 +58,7 @@ public class FinancialController {
             model.addAttribute("existingList", true);
             model.addAttribute("insurancePolicyList", insurancePolicyList);
         }
-            model.addAttribute("newInsurance", new InsurancePolicy());
+        model.addAttribute("newInsurance", new InsurancePolicy());
         return "ledger/financial";
     }
 
@@ -147,16 +147,16 @@ public class FinancialController {
         return "redirect:/ledger/financial";
     }
     @PostMapping("/ledger/insurancePolicy")
-    public String saveInsurancePolicyInformation(@ModelAttribute InsurancePolicy insurancePolicy){
+    public String saveInsurancePolicyInformation(@ModelAttribute InsurancePolicy newInsurance){
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         User persistUser = userDao.getById(user.getId());
-        insurancePolicy.setUser(persistUser);
+        newInsurance.setUser(persistUser);
         ArrayList<InsurancePolicy> document = new ArrayList<>();
 
-        document.add(insurancePolicy);
+        document.add(newInsurance);
         userDao.save(persistUser);
 
-        insurancePolicyDao.save(insurancePolicy);
+        insurancePolicyDao.save(newInsurance);
 
         return "redirect:/ledger/financial";
     }
