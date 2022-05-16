@@ -80,24 +80,52 @@ public class FinancialController {
         financialInvestmentDao.deleteById(id);
         return "redirect:/ledger/financial";
     }
+    @GetMapping("/ledger/insurancePolicy/{id}/edit")
+    public String showEditInsurancePolicy(@PathVariable long id, Model model) {
+        InsurancePolicy editInsurance = insurancePolicyDao.getById(id);
+        model.addAttribute("editInsurance", editInsurance);
+        return "ledger/financial";
+    }
+    @PostMapping("/ledger/insurancePolicy")
+    public String saveInsurancePolicyInformation(@ModelAttribute InsurancePolicy newInsurance){
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User persistUser = userDao.getById(user.getId());
+        newInsurance.setUser(persistUser);
+        ArrayList<InsurancePolicy> insurancePolicyList = new ArrayList<>();
 
+        insurancePolicyList.add(newInsurance);
+        userDao.save(persistUser);
+
+        insurancePolicyDao.save(newInsurance);
+
+        return "redirect:/ledger/financial";
+    }
     @PostMapping("/ledger/insurancePolicy/{id}/edit")
     public String editInsurancePolicyForm(@PathVariable long id,@RequestParam String company,@RequestParam String contactInfo,@RequestParam String currentValue, @RequestParam String beneficiary){
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        InsurancePolicy insurancePolicy = insurancePolicyDao.getById(id);
-        insurancePolicy.setCompany(company);
-        insurancePolicy.setContactInfo(contactInfo);
-        insurancePolicy.setCurrentValue(currentValue);
-        insurancePolicy.setBeneficiary(beneficiary);
-        insurancePolicy.setUser(user);
-        insurancePolicyDao.save(insurancePolicy);
-        return "redirect:/ledger/financial/";
+//        List<InsurancePolicy> insurancePolicyList = user.getInsurancePolicy();
+        InsurancePolicy newInsurance = insurancePolicyDao.getById(id);
+        newInsurance.setCompany(company);
+        newInsurance.setContactInfo(contactInfo);
+        newInsurance.setCurrentValue(currentValue);
+        newInsurance.setBeneficiary(beneficiary);
+        newInsurance.setUser(user);
+        insurancePolicyDao.save(newInsurance);
+//        for (InsurancePolicy insurancePolicy : insurancePolicyList) {
+//            if (insurancePolicy.getId() == id) {
+//                int index = insurancePolicyList.indexOf(insurancePolicy);
+//                insurancePolicyList.set(index, editInsurance);
+//            }
+//        }
+        return "redirect:/ledger/financial";
     }
+
     @PostMapping("/ledger/insurancePolicy/{id}/delete")
     public String deleteInsurancePolicy(@PathVariable Long id){
         insurancePolicyDao.deleteById(id);
         return "redirect:/ledger/fianncial";
     }
+
     @PostMapping("ledger/bankAccounts/{id}/edit")
     public String editBankAccountsForm(@PathVariable long id,@RequestParam  String contactsInfo,@RequestParam String checkingAccount,@RequestParam String savingAccount){
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
@@ -123,7 +151,7 @@ public class FinancialController {
         creditCard.setIssuer(issuer);
         creditCard.setUser(user);
         creditCardDao.save(creditCard);
-        return "redirect:/ledger/financial/";
+        return "redirect:/ledger/financial";
     }
 
     @PostMapping("/ledger/creditCard/{id}/delete")
@@ -146,20 +174,7 @@ public class FinancialController {
 
         return "redirect:/ledger/financial";
     }
-    @PostMapping("/ledger/insurancePolicy")
-    public String saveInsurancePolicyInformation(@ModelAttribute InsurancePolicy newInsurance){
-        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        User persistUser = userDao.getById(user.getId());
-        newInsurance.setUser(persistUser);
-        ArrayList<InsurancePolicy> document = new ArrayList<>();
 
-        document.add(newInsurance);
-        userDao.save(persistUser);
-
-        insurancePolicyDao.save(newInsurance);
-
-        return "redirect:/ledger/financial";
-    }
     @PostMapping("/ledger/bankAccounts")
     public String saveBankAccountsInformation(@ModelAttribute BankAccounts bankAccounts){
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
