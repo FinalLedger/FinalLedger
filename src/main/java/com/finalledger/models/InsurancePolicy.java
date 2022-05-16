@@ -22,7 +22,7 @@ public class InsurancePolicy {
     @Column(nullable = false, unique=true)
     private String beneficiary;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "main_user_id")
     private User user;
 
