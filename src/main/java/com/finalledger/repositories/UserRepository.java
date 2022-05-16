@@ -4,7 +4,8 @@ import com.finalledger.models.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.query.Param;
+
+import javax.annotation.Resource;
 
 public interface UserRepository extends JpaRepository<User, Long> {
 
@@ -13,7 +14,8 @@ public interface UserRepository extends JpaRepository<User, Long> {
     User findByEmail(String email);
 
     @Modifying
-    @Query(value = "UPDATE User u SET u.authProvider = ?2 WHERE u.username = ?1")
-    User getUserByUsername(@Param("username") String username);
+    @Query(value = "UPDATE User u SET u.authType = ?2 WHERE u.username = ?1")
+    public void updateAuthenticationType(String username, Resource.AuthenticationType authType);
 
+    User getUserByUsername(String username);
 }

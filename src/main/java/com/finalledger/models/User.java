@@ -1,5 +1,6 @@
 package com.finalledger.models;
 
+import javax.annotation.Resource;
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -26,8 +27,8 @@ public class User {
     private boolean isMainUser;
 
     @Enumerated(EnumType.STRING)
-    @Column(name = "auth_provider")
-    private AuthenticationProvider authProvider;
+    @Column(name = "auth_type")
+    private AuthenticationType authType;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user", fetch = FetchType.EAGER)
     private List<Contact> contacts;
@@ -57,13 +58,13 @@ public class User {
     }
 
 
-    public User(Long id, String username, String email, String password, boolean isMainUser, AuthenticationProvider authProvider, List<Contact> contacts, List<Documents> documents, List<CreditCard> creditCards, List<FinancialInvestment> financialInvestments, List<InsurancePolicy> insurancePolicy, List<BankAccounts> bankAccounts) {
+    public User(Long id, String username, String email, String password, boolean isMainUser, AuthenticationType authType, List<Contact> contacts, List<Documents> documents, List<CreditCard> creditCards, List<FinancialInvestment> financialInvestments, List<InsurancePolicy> insurancePolicy, List<BankAccounts> bankAccounts) {
         this.id = id;
         this.username = username;
         this.email = email;
         this.password = password;
         this.isMainUser = isMainUser;
-        this.authProvider = authProvider;
+        this.authType = authType;
         this.contacts = contacts;
         this.documents = documents;
         this.creditCards = creditCards;
@@ -73,12 +74,12 @@ public class User {
     }
 
 
-    public User(String username, String email, String password, boolean isMainUser, AuthenticationProvider authProvider, List<Contact> contacts,List<Documents> documents, List<CreditCard> creditCards, List<FinancialInvestment> financialInvestments, List<InsurancePolicy> insurancePolicy, List<BankAccounts> bankAccounts) {
+    public User(String username, String email, String password, boolean isMainUser, AuthenticationType authType, List<Contact> contacts, List<Documents> documents, List<CreditCard> creditCards, List<FinancialInvestment> financialInvestments, List<InsurancePolicy> insurancePolicy, List<BankAccounts> bankAccounts) {
         this.username = username;
         this.email = email;
         this.password = password;
         this.isMainUser = isMainUser;
-        this.authProvider = authProvider;
+        this.authType = authType;
         this.contacts = contacts;
         this.documents = documents;
         this.creditCards = creditCards;
@@ -93,7 +94,7 @@ public class User {
         email = copy.email;
         password = copy.password;
         isMainUser = copy.isMainUser;
-        authProvider = copy.authProvider;
+        authType = copy.authType;
         contacts = copy.contacts;
         documents = copy.documents;
         creditCards = copy.creditCards;
@@ -143,12 +144,12 @@ public class User {
         isMainUser = mainUser;
     }
 
-    public AuthenticationProvider getAuthProvider() {
-        return authProvider;
+    public AuthenticationType getAuthType() {
+        return authType;
     }
 
-    public void setAuthProvider(AuthenticationProvider authProvider) {
-        this.authProvider = authProvider;
+    public void setAuthType(AuthenticationType authType) {
+        this.authType = authType;
     }
 
     public List<Contact> getContacts() {

@@ -2,6 +2,8 @@ package com.finalledger.security;
 
 import com.finalledger.security.oauth.CustomOAuth2User;
 import com.finalledger.security.oauth.CustomOAuth2UserService;
+import com.finalledger.security.oauth.DatabaseLoginSuccessHandler;
+import com.finalledger.security.oauth.OAuthLoginSuccessHandler;
 import com.finalledger.services.UserDetailsLoader;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.security.oauth2.client.servlet.OAuth2ClientAutoConfiguration;
@@ -58,6 +60,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .formLogin()
                 .loginPage("/login")
                 .usernameParameter("email")
+                .passwordParameter("password")
+                .successHandler(databaseLoginSuccessHandler)
                 .defaultSuccessUrl("/profile") // user's home page
                 .permitAll()
 
@@ -83,22 +87,18 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .userInfoEndpoint()
                 .userService(oAuth2UserService)
                 .and()
-                .successHandler(new AuthenticationSuccessHandler() {
-                    @Override
-                    public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException, ServletException {
-
-                        CustomOAuth2User oAuth2User = (CustomOAuth2User) authentication.getPrincipal();
-
-                        usersLoader.processOAuthPostLogin(oAuth2User.getEmail());
-
-                        response.sendRedirect("/profile");
-                    }
-                })
+                .successHandler(oauthLoginSuccessHandler)
 
         ;
     }
 
     @Autowired
     private CustomOAuth2UserService oAuth2UserService;
+
+    @Autowired
+    private OAuthLoginSuccessHandler oauthLoginSuccessHandler;
+
+    @Autowired
+    private DatabaseLoginSuccessHandler databaseLoginSuccessHandler;
 
 }
