@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.transaction.Transactional;
 import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
@@ -36,7 +37,6 @@ public class UserContactsController {
             model.addAttribute("existingList", true);
             model.addAttribute("contactsList", contactsList);
         }
-        model.addAttribute("editContact", new Contact());
         model.addAttribute("newContact", new Contact());
         return "ledger/contacts";
     }
@@ -60,6 +60,8 @@ public class UserContactsController {
 
     @PostMapping("/ledger/contacts/{id}/edit")
     public String editContact(@PathVariable long id, @RequestParam String firstName, @RequestParam String lastName, @RequestParam String relationship, @RequestParam String phoneNumber, @RequestParam String email, @RequestParam String primaryAddress, @ModelAttribute Contact editContact) {
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        List<Contact> userContacts = user.getContacts();
         Contact updatedContact = userContactDao.getById(id);
         updatedContact.setFirstName(firstName);
         updatedContact.setLastName(lastName);
@@ -68,13 +70,22 @@ public class UserContactsController {
         updatedContact.setEmail(email);
         updatedContact.setPrimaryAddress(primaryAddress);
         userContactDao.save(updatedContact);
-        // contact being updated in the database but not on the user's contact list
+        for (Contact contact : userContacts) {
+            if (contact.getId() == id) {
+                int index = userContacts.indexOf(contact);
+                userContacts.set(index, updatedContact);
+            }
+        }
         return "redirect:/ledger/contacts";
     }
 
     @PostMapping("/ledger/contacts/{id}/delete")
     public String deleteContact(@PathVariable long id) {
-        // doesnt work
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        List<Contact> userContacts = user.getContacts();
+        Contact deletedContact = userContactDao.getById(id);
+        userContacts.removeIf(contact -> contact.getId() == id);
+        deletedContact.setUser(null);
         userContactDao.deleteById(id);
         return "redirect:/ledger/contacts";
     }

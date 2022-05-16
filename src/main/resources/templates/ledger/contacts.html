@@ -77,14 +77,12 @@
                                     <p th:text="${contact.getPrimaryAddress()}">Address</p>
                                 </li>
                                 <li class="list-group-item d-flex justify-content-end">
-                                    <a th:id="${contact.id}" th:href="@{/ledger/contacts/{id}/edit(id = ${contact.id})}" type="button" class="btn btn-sm btn-warning me-2">
+                                    <a th:href="@{/ledger/contacts/{id}/edit(id = ${contact.id})}"
+                                       type="button" class="btn btn-sm btn-warning me-2">
                                         Edit
                                     </a>
-                                    <form th:action="@{|/ledger/contacts/${contact.id}/delete|}" method="post"
-                                          th:object="${contact}">
-                                        <button type="submit" class="btn btn-sm btn-danger"
-                                                data-bs-toggle="modal"
-                                                data-bs-target="#deleteContactModal">
+                                    <form th:action="@{|/ledger/contacts/${contact.id}/delete|}" method="post">
+                                        <button type="submit" class="btn btn-sm btn-danger">
                                             Delete
                                         </button>
                                     </form>
@@ -132,52 +130,6 @@
                     <div class="mb-3">
                         <label for="address" class="form-label">Address</label>
                         <input type="text" th:field="*{primaryAddress}" class="form-control" id="address">
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary">Submit</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="modal fade" id="editContactModal" tabindex="-1" aria-labelledby="editContactModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="editContactModalLabel">Edit Contact</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <form id="editContactForm" th:action="@{|/ledger/contact/${editContact.id}/editform|}" th:method="post"
-                      th:object="${editContact}">
-                    <div class="mb-3">
-                        <label for="editFirstName" class="form-label">First Name</label>
-                        <input type="text" th:field="*{firstName}" class="form-control" id="editFirstName">
-                    </div>
-                    <div class="mb-3">
-                        <label for="editLastName" class="form-label">Last Name</label>
-                        <input type="text" th:field="*{lastName}" class="form-control" id="editLastName">
-                    </div>
-                    <div class="mb-3">
-                        <label for="editRelationship" class="form-label">Relationship</label>
-                        <input type="text" th:field="*{relationship}" class="form-control" id="editRelationship">
-                    </div>
-                    <div class="mb-3">
-                        <label for="editPhoneNumber" class="form-label">Phone Number</label>
-                        <input type="text" placeholder="123-456-7890" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
-                               th:field="*{phoneNumber}"
-                               class="form-control" id="editPhoneNumber">
-                        <small>Format: 123-456-7890</small>
-                    </div>
-                    <div class="mb-3">
-                        <label for="editEmail" class="form-label">Email</label>
-                        <input type="email" th:field="*{email}" class="form-control" id="editEmail">
-                    </div>
-                    <div class="mb-3">
-                        <label for="editAddress" class="form-label">Address</label>
-                        <input type="text" th:field="*{primaryAddress}" class="form-control" id="editAddress">
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
