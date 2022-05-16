@@ -1,6 +1,11 @@
 package com.finalledger.models;
 
+
 import com.fasterxml.jackson.annotation.JsonBackReference;
+
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+
 
 import javax.annotation.Resource;
 import javax.persistence.*;
@@ -33,22 +38,28 @@ public class User {
     @Column(name = "auth_type")
     private AuthenticationType authType;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user", fetch = FetchType.EAGER)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user", fetch = FetchType.EAGER, orphanRemoval = true)
     private List<Contact> contacts;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
+    @Fetch(FetchMode.SELECT)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user", orphanRemoval = true)
     private List<Documents> documents;
-
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
+    
+    @Fetch(FetchMode.SELECT)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user", orphanRemoval = true)
     private List<CreditCard> creditCards;
-
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
+  
+    @Fetch(FetchMode.SELECT)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user", orphanRemoval = true)
     private List<FinancialInvestment> financialInvestments;
-
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
+  
+    @Fetch(FetchMode.SELECT)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user", orphanRemoval = true, fetch = FetchType.EAGER)
     private List<InsurancePolicy> insurancePolicy;
+    
+    @Fetch(FetchMode.SELECT)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user", orphanRemoval = true)
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
     private List<BankAccounts> bankAccounts;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "owner_user")
