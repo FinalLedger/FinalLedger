@@ -1,8 +1,11 @@
 package com.finalledger.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.annotation.Resource;
 import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 @Entity
@@ -48,6 +51,28 @@ public class User {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
     private List<BankAccounts> bankAccounts;
 
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "owner_user")
+    @JsonBackReference
+
+    private Collection<SiteContact> contactListOwner;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "added_user_id")
+    @JsonBackReference
+
+    private Collection<SiteContact> contactListEntity;
+
+//   below > user to messages relationship mapped out
+
+    @OneToMany(mappedBy="sender_info")
+    @JsonBackReference
+
+    private Collection<Message> senders;
+
+    @OneToMany(mappedBy="receiver_info")
+    @JsonBackReference
+
+    private Collection<Message> receivers;
+
     public User() {}
 
     public User(String username, String email, String password, boolean isMainUser) {
@@ -57,8 +82,7 @@ public class User {
         this.isMainUser = isMainUser;
     }
 
-
-    public User(Long id, String username, String email, String password, boolean isMainUser, AuthenticationType authType, List<Contact> contacts, List<Documents> documents, List<CreditCard> creditCards, List<FinancialInvestment> financialInvestments, List<InsurancePolicy> insurancePolicy, List<BankAccounts> bankAccounts) {
+    public User(Long id, String username, String email, String password, boolean isMainUser, AuthenticationType authType, List<Contact> contacts, List<Documents> documents, List<CreditCard> creditCards, List<FinancialInvestment> financialInvestments, List<InsurancePolicy> insurancePolicy, List<BankAccounts> bankAccounts, Collection<SiteContact> contactListOwner, Collection<SiteContact> contactListEntity, Collection<Message> senders, Collection<Message> receivers) {
         this.id = id;
         this.username = username;
         this.email = email;
@@ -71,10 +95,13 @@ public class User {
         this.financialInvestments = financialInvestments;
         this.insurancePolicy = insurancePolicy;
         this.bankAccounts = bankAccounts;
+        this.contactListOwner = contactListOwner;
+        this.contactListEntity = contactListEntity;
+        this.senders = senders;
+        this.receivers = receivers;
     }
 
-
-    public User(String username, String email, String password, boolean isMainUser, AuthenticationType authType, List<Contact> contacts, List<Documents> documents, List<CreditCard> creditCards, List<FinancialInvestment> financialInvestments, List<InsurancePolicy> insurancePolicy, List<BankAccounts> bankAccounts) {
+    public User(String username, String email, String password, boolean isMainUser, AuthenticationType authType, List<Contact> contacts, List<Documents> documents, List<CreditCard> creditCards, List<FinancialInvestment> financialInvestments, List<InsurancePolicy> insurancePolicy, List<BankAccounts> bankAccounts, Collection<SiteContact> contactListOwner, Collection<SiteContact> contactListEntity, Collection<Message> senders, Collection<Message> receivers) {
         this.username = username;
         this.email = email;
         this.password = password;
@@ -86,6 +113,10 @@ public class User {
         this.financialInvestments = financialInvestments;
         this.insurancePolicy = insurancePolicy;
         this.bankAccounts = bankAccounts;
+        this.contactListOwner = contactListOwner;
+        this.contactListEntity = contactListEntity;
+        this.senders = senders;
+        this.receivers = receivers;
     }
 
     public User(User copy) {
@@ -101,7 +132,10 @@ public class User {
         financialInvestments = copy.financialInvestments;
         insurancePolicy = copy.insurancePolicy;
         bankAccounts = copy.bankAccounts;
-
+        contactListOwner = copy.contactListOwner;
+        contactListEntity = copy.contactListEntity;
+        senders = copy.senders;
+        receivers = copy.receivers;
     }
 
     public Long getId() {
@@ -198,5 +232,37 @@ public class User {
 
     public void setBankAccounts(List<BankAccounts> bankAccounts) {
         this.bankAccounts = bankAccounts;
+    }
+
+    public Collection<SiteContact> getContactListOwner() {
+        return contactListOwner;
+    }
+
+    public void setContactListOwner(Collection<SiteContact> contactListOwner) {
+        this.contactListOwner = contactListOwner;
+    }
+
+    public Collection<SiteContact> getContactListEntity() {
+        return contactListEntity;
+    }
+
+    public void setContactListEntity(Collection<SiteContact> contactListEntity) {
+        this.contactListEntity = contactListEntity;
+    }
+
+    public Collection<Message> getSenders() {
+        return senders;
+    }
+
+    public void setSenders(Collection<Message> senders) {
+        this.senders = senders;
+    }
+
+    public Collection<Message> getReceivers() {
+        return receivers;
+    }
+
+    public void setReceivers(Collection<Message> receivers) {
+        this.receivers = receivers;
     }
 }
