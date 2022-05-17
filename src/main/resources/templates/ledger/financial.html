@@ -58,8 +58,8 @@
                             </div>
                             <ul class="list-group list-group-flush">
                                 <li th:if="${insurance.getContactInfo() != ''}" class="list-group-item">
-                                    <h6>Contact Info</h6>
-                                    <p th:text="${insurance.getContactInfo()}">Contact Info</p>
+                                    <h6>Contact Information</h6>
+                                    <p th:text="${insurance.getContactInfo()}">Contact Information</p>
                                 </li>
                                 <li th:if="${insurance.getCurrentValue() != ''}" class="list-group-item">
                                     <h6>Current Value</h6>
@@ -108,7 +108,7 @@
                                 <p th:text="${financial.getCurrentValue()}">Current Value</p>
                             </li>
                             <li th:if="${financial.getContactInfo() != ''}" class="list-group-item">
-                                <h6>Current Value</h6>
+                                <h6>Contact Information</h6>
                                 <p th:text="${financial.getContactInfo() }">Contact Information</p>
                             </li>
                             <li th:if="${financial.getBeneficiary() != ''}" class="list-group-item">
@@ -150,7 +150,7 @@
                         </div>
                         <ul class="list-group list-group-flush">
                             <li th:if="${bank.getContactInfo()!= ''}" class="list-group-item">
-                                <h6>Contact Info</h6>
+                                <h6>Contact Information</h6>
                                 <p th:text="${bank.getContactInfo()}">Contact Information</p>
                             </li>
                             <li th:if="${bank.getCheckingAccount() != ''}" class="list-group-item">
@@ -227,7 +227,7 @@
                         <input type="text" th:field="*{company}" class="form-control" id="insuranceCompany">
                     </div>
                     <div class="mb-3">
-                        <label for="insuranceContact" class="form-label">Contact Info</label>
+                        <label for="insuranceContact" class="form-label">Contact Information</label>
                         <input type="text" th:field="*{contactInfo}" class="form-control" id="insuranceContact">
                     </div>
                     <div class="mb-3">
@@ -263,7 +263,7 @@
                         <input type="text" th:field="*{company}" class="form-control" id="investmentCompany">
                     </div>
                     <div class="mb-3">
-                        <label for="investmentContact" class="form-label">Contact Info</label>
+                        <label for="investmentContact" class="form-label">Contact Information</label>
                         <input type="text" th:field="*{contactInfo}" class="form-control" id="investmentContact">
                     </div>
                     <div class="mb-3">
