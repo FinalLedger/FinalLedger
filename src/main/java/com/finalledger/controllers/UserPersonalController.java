@@ -39,15 +39,23 @@ public class UserPersonalController {
             model.addAttribute("existingInfo", true);
             model.addAttribute("personalInfo", personalInfo);
         }
+        model.addAttribute("isGuestUser", false);
         return "ledger/personal";
     }
 
-//    @GetMapping("/ledger/personal/{id}/edit")
-//    public String editUserPersonalForm(@PathVariable long id, Model model, Principal principal) {
-//        model.addAttribute("editPersonal", userPersonalDao.getById(id));
-//
-//        return principal == null ? "redirect:/login" : "/ledger/personal/edit";
-//    }
+    @GetMapping("/ledger/{id}/personal")
+    public String showConnectionPersonal(@PathVariable long id, Model model) {
+        PersonalInformation personalInfo = userPersonalDao.findByUserId(id);
+        if (personalInfo == null) {
+            model.addAttribute("existingInfo", false);
+        } else {
+            model.addAttribute("existingInfo", true);
+            model.addAttribute("personalInfo", personalInfo);
+        }
+        model.addAttribute("mainUserId", id);
+        model.addAttribute("isGuestUser", true);
+        return "ledger/personal";
+    }
 
     @PostMapping("/ledger/personal/{id}/edit")
     public String updatePersonal(@PathVariable Long id, @RequestParam String legalName, @RequestParam String maidenName, @RequestParam String primaryAddress, @RequestParam String phoneNumber, @RequestParam String birthPlace, @RequestParam String maritalStatus, @RequestParam String occupation, @RequestParam String citizenship, @RequestParam String religion, @RequestParam String militaryStatus) {
