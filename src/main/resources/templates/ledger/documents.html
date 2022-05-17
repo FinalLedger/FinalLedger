@@ -54,8 +54,9 @@
                                     th:text="${document.getTitle()}">
                                     Document Title</h5>
                                 <h5 th:if="${document.getTitle() == ''}" class="card-title text-muted">Untitled</h5>
-                                <p th:if="${document.getDocument_upload() != ''}"
-                                   th:text="${document.getDocument_upload()}">Doc upload string</p>
+                                <a th:if="${document.getDocument_upload() != ''}"
+                                   th:href="${document.getDocument_upload()}"
+                                   th:text="${document.getDocument_upload()}" target="_blank">Doc upload string</a>
                             </div>
                             <ul class="list-group list-group-flush">
                                 <li class="list-group-item d-flex justify-content-end">
