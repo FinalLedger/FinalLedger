@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ledger</title>
+    <link th:replace="/partials/navbar :: bootstrap">
+    <link rel="stylesheet" th:href="@{/css/ledger.css}">
+</head>
+<body>
+<nav th:replace="/partials/navbar :: userNav"></nav>
+<div class="subheader"></div>
+
+<div class="container">
+    <br>
+    <h1>My Final Ledger</h1>
+    <hr>
+    <ul class="nav nav-tabs">
+        <li class="nav-item">
+            <a class="nav-link" href="/ledger/personal">Personal</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/ledger/medical">Medical</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/ledger/contacts">Contacts</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/ledger/documents">Documents</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/ledger/financial">Financial</a>
+        </li>
+    </ul>
+    <div id="infoView" class="container">
+        <br>
+        <div class="container">
+            <h3>Edit Insurance</h3>
+            <hr>
+            <div class="container">
+                <form id="editInsuranceForm" th:action="@{|/ledger/insurancePolicy/${editInsurance.id}/edit|}"
+                      th:method="post"
+                      th:object="${editInsurance}">
+                    <div class="mb-3">
+                        <label for="editInsuranceCompany" class="form-label">Company</label>
+                        <input type="text" th:field="*{company}" class="form-control" id="editInsuranceCompany">
+                    </div>
+                    <div class="mb-3">
+                        <label for="editInsuranceContact" class="form-label">Contact Info</label>
+                        <input type="text" th:field="*{contactInfo}" class="form-control" id="editInsuranceContact">
+                    </div>
+                    <div class="mb-3">
+                        <label for="editInsuranceValue" class="form-label">Current Value</label>
+                        <input type="text" th:field="*{currentValue}" class="form-control" id="editInsuranceValue">
+                    </div>
+                    <div class="mb-3">
+                        <label for="editInsuranceBeneficiary" class="form-label">Beneficiary</label>
+                        <input type="text" th:field="*{beneficiary}" class="form-control" id="editInsuranceBeneficiary">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+        </div>
+        <br>
+    </div>
+</div>
