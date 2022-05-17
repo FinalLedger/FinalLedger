@@ -24,6 +24,7 @@ window.addEventListener('DOMContentLoaded', function () {
     };
 
     function uploadDoc() {
+      
         client.picker(options).open();
     }
 

@@ -1,4 +1,4 @@
-package com.finalledger.security;
+package com.finalledger.config;
 
 import com.finalledger.security.oauth.CustomOAuth2User;
 import com.finalledger.security.oauth.CustomOAuth2UserService;
