@@ -11,7 +11,9 @@ body {
     margin: -20px 0 50px;
     /*  cursor: grabbing;*/
 }
-
+.S9gUrf-YoZ4jf, .S9gUrf-YoZ4jf * {
+    z-index: 1000;
+}
 nav {
     display: flex;
     flex-direction: row;
@@ -41,6 +43,14 @@ h1:hover {
     background: linear-gradient(to right, #8a898b, #aea5b6);
     transition: ease-out 1s;
 }
+/*Login*/
+.form-header {
+    font-family: sans-serif;
+    color: whitesmoke;
+    background-image: linear-gradient(to right, #8a898b, #aea5b6);
+    border-radius: 5px;
+    padding: 5px 10px 5px 10px;
+}
 
 p {
     font-size: 14px;
@@ -53,9 +63,16 @@ p:hover {
     font-weight: bolder;
     transition: ease-out .5ms;
 }
-
+.btn-login {
+    margin: 5px 5px 5px 5px;
+    height: 40px;
+    background-image: linear-gradient(to right, #8a898b, #aea5b6);
+    width: 90px;
+    color: ghostwhite;
+}
 span {
     font-size: 12px;
+    margin-bottom: 2vw;
 }
 
 a {
@@ -81,7 +98,16 @@ form {
     height: 100%;
     text-align: center;
 }
-
+/*Fixes Google Sign In Bug*/
+form#form-two {
+    position: absolute;
+    top: 0;
+    right: 4.2vw;
+    z-index: 100000;
+}
+button:not(:disabled) {
+    border: solid ghostwhite;
+}
 input {
     background-color: #eee;
     border: none;
