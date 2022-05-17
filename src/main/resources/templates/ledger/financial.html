@@ -44,15 +44,22 @@
                     </button>
                 </div>
                 <div th:if="${existingList}" class="d-flex align-items-center justify-content-end">
-                    <button type="button" class="btn btn-sm btn-warning me-2" data-bs-toggle="modal"
-                            data-bs-target="#editInsuranceModal">
-                        Edit
-                    </button>
-                    <!--                    <form th:action="@{|/ledger/financial/${insurancePolicyList.id}/delete|}" method="post" th:object="${insurancePolicyList}">-->
-                    <!--                        <button type="submit" class="btn btn-sm btn-danger" data-bs-toggle="modal">-->
-                    <!--                            Delete-->
-                    <!--                        </button>-->
-                    <!--                    </form>-->
+                    <div th:each=" insurance : ${insurancePolicyList}">
+                    <a th:href="@{/ledger/insurancePolicy/{id}/edit(id = ${insurance.id})}"
+                         type="button" class="btn btn-sm btn-warning me-2">
+                            Edit
+                    </a>
+                        <form th:action="@{|/ledger/insurancePolicy/${insurance.id}/delete|}" method="post">
+                            <button type="submit" class="btn btn-sm btn-danger">
+                                Delete
+                            </button>
+                        </form>
+                    </div>
+<!--                                        <form th:action="@{|/ledger/financial/${insurancePolicyList.id}/delete|}" method="post" th:object="${insurancePolicyList}">-->
+<!--                                            <button type="submit" class="btn btn-sm btn-danger" data-bs-toggle="modal">-->
+<!--                                                Delete-->
+<!--                                            </button>-->
+<!--                                        </form>-->
                 </div>
             </div>
             <hr>

@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 @Controller
 public class FinancialController {
@@ -84,15 +85,22 @@ public class FinancialController {
     public String showEditInsurancePolicy(@PathVariable long id, Model model) {
         InsurancePolicy editInsurance = insurancePolicyDao.getById(id);
         model.addAttribute("editInsurance", editInsurance);
-        return "ledger/financial";
+        return "ledger/insurancePolicy-edit";
     }
     @PostMapping("/ledger/insurancePolicy")
     public String saveInsurancePolicyInformation(@ModelAttribute InsurancePolicy newInsurance){
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         User persistUser = userDao.getById(user.getId());
         newInsurance.setUser(persistUser);
-        ArrayList<InsurancePolicy> insurancePolicyList = new ArrayList<>();
 
+        InsurancePolicy existingInfoUser = insurancePolicyDao.findByUserId(persistUser.getId());
+        if (existingInfoUser != null) {
+
+            return "redirect:/ledger/financial";
+
+        }
+
+        ArrayList<InsurancePolicy> insurancePolicyList = new ArrayList<>();
         insurancePolicyList.add(newInsurance);
         userDao.save(persistUser);
 
@@ -103,27 +111,32 @@ public class FinancialController {
     @PostMapping("/ledger/insurancePolicy/{id}/edit")
     public String editInsurancePolicyForm(@PathVariable long id,@RequestParam String company,@RequestParam String contactInfo,@RequestParam String currentValue, @RequestParam String beneficiary){
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-//        List<InsurancePolicy> insurancePolicyList = user.getInsurancePolicy();
+        List<InsurancePolicy> insurancePolicyList = user.getInsurancePolicy();
         InsurancePolicy newInsurance = insurancePolicyDao.getById(id);
         newInsurance.setCompany(company);
         newInsurance.setContactInfo(contactInfo);
         newInsurance.setCurrentValue(currentValue);
         newInsurance.setBeneficiary(beneficiary);
-        newInsurance.setUser(user);
+//        newInsurance.setUser(user);
         insurancePolicyDao.save(newInsurance);
-//        for (InsurancePolicy insurancePolicy : insurancePolicyList) {
-//            if (insurancePolicy.getId() == id) {
-//                int index = insurancePolicyList.indexOf(insurancePolicy);
-//                insurancePolicyList.set(index, editInsurance);
-//            }
-//        }
+        for (InsurancePolicy insurancePolicy : insurancePolicyList) {
+            if (insurancePolicy.getId() == id) {
+                int index = insurancePolicyList.indexOf(insurancePolicy);
+                insurancePolicyList.set(index, newInsurance);
+            }
+        }
         return "redirect:/ledger/financial";
     }
 
     @PostMapping("/ledger/insurancePolicy/{id}/delete")
     public String deleteInsurancePolicy(@PathVariable Long id){
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        List<InsurancePolicy> insuranceList = user.getInsurancePolicy();
+        InsurancePolicy deletedInsurance = insurancePolicyDao.getById(id);
+        insuranceList.removeIf(insurance -> Objects.equals(insurance.getId(), id));
+        deletedInsurance.setUser(null);
         insurancePolicyDao.deleteById(id);
-        return "redirect:/ledger/fianncial";
+        return "redirect:/ledger/financial";
     }
 
     @PostMapping("ledger/bankAccounts/{id}/edit")
