@@ -185,8 +185,68 @@ a {
     background-color: silver;
 }
 
+
+
 /*
-.box-one {
-    height: ;
-    width: ;
-}*/
+@media (max-width: 575px) {
+    p {
+        color: turquoise;
+    }
+    #ledger-h1, #row-1, #row-2, #row-3 {
+        margin-top: 5em;
+        margin-bottom: 5em;
+        text-align: center;
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+
+!*Small devices (landscape phones, 576px and up)*!
+@media (min-width: 576px) {
+    p {
+        color: rebeccapurple;
+    }
+}
+
+!*!Medium devices (tablets, 768px and up)*!
+@media (min-width: !*768px*! 600px) {
+    body {
+        width: fit-content;
+    }
+    p {
+        color: blue;
+        font-size: 4vw;
+    }
+    .landing-container {
+      !* width:  80%;*!
+    }
+
+    #ledger-h1, #row-1, #row-2, #row-3 {
+        margin-top: 5em;
+        margin-bottom: 5em;
+        text-align: center;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #boxLogo {
+        height: 84vw;
+        width: 131vw;
+    }
+}
+
+!*!Large devices (desktops, 992px and up)*!
+@media (min-width: 992px) {
+    p {
+        color: red;
+    }
+}
+
+!*Extra large devices (large desktops, 1200px and up)*!
+@media (min-width: 1200px) {
+    p {
+        color: green;
+    }
+}
+*/
