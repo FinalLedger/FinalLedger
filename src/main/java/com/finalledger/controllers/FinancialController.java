@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 @Controller
 public class FinancialController {
@@ -94,14 +95,18 @@ public class FinancialController {
     public String showEditInsurancePolicy(@PathVariable long id, Model model) {
         InsurancePolicy editInsurance = insurancePolicyDao.getById(id);
         model.addAttribute("editInsurance", editInsurance);
+
         return "ledger/insurance_edit";
+
     }
     @PostMapping("/ledger/insurancePolicy")
     public String saveInsurancePolicyInformation(@ModelAttribute InsurancePolicy newInsurance){
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+
         newInsurance.setUser(user);
         List<InsurancePolicy> insuranceList = user.getInsurancePolicy();
         insuranceList.add(newInsurance);
+
         insurancePolicyDao.save(newInsurance);
         return "redirect:/ledger/financial";
     }
@@ -114,6 +119,7 @@ public class FinancialController {
         newInsurance.setContactInfo(contactInfo);
         newInsurance.setCurrentValue(currentValue);
         newInsurance.setBeneficiary(beneficiary);
+
         insurancePolicyDao.save(newInsurance);
         for (InsurancePolicy insurancePolicy : insurancePolicyList) {
             if (insurancePolicy.getId() == id) {
@@ -127,9 +133,11 @@ public class FinancialController {
     @PostMapping("/ledger/insurancePolicy/{id}/delete")
     public String deleteInsurancePolicy(@PathVariable Long id){
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+
         List<InsurancePolicy> insurancePolicyList = user.getInsurancePolicy();
         InsurancePolicy deletedInsurance = insurancePolicyDao.getById(id);
         insurancePolicyList.removeIf(insurancePolicy -> insurancePolicy.getId() == id);
+
         deletedInsurance.setUser(null);
         insurancePolicyDao.deleteById(id);
         return "redirect:/ledger/financial";
