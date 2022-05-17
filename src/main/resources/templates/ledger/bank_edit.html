@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ledger</title>
+    <link th:replace="/partials/navbar :: bootstrap">
+    <link rel="stylesheet" th:href="@{/css/ledger.css}">
+</head>
+<body>
+<nav th:replace="/partials/navbar :: userNav"></nav>
+<div class="subheader"></div>
+
+<div class="container">
+    <br>
+    <h1>My Final Ledger</h1>
+    <hr>
+    <ul class="nav nav-tabs">
+        <li class="nav-item">
+            <a class="nav-link" href="/ledger/personal">Personal</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/ledger/medical">Medical</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/ledger/contacts">Contacts</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/ledger/documents">Documents</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/ledger/financial">Financial</a>
+        </li>
+    </ul>
+    <div id="infoView" class="container">
+        <br>
+        <div class="container">
+            <h3>Edit Bank Account</h3>
+            <hr>
+            <div class="container">
+                <form id="editBankForm" th:action="@{|/ledger/bankAccounts/${editBank.id}/edit|}"
+                      th:method="post"
+                      th:object="${editBank}">
+                    <div class="mb-3">
+                        <label for="editBankCompany" class="form-label">Company</label>
+                        <input type="text" th:field="*{company}" class="form-control" id="editBankCompany">
+                    </div>
+                    <div class="mb-3">
+                        <label for="editBankContact" class="form-label">Contact Info</label>
+                        <input type="text" th:field="*{contactInfo}" class="form-control" id="editBankContact">
+                    </div>
+                    <div class="mb-3">
+                        <label for="editBankChecking" class="form-label">Checking Account</label>
+                        <input type="text" th:field="*{checkingAccount}" class="form-control" id="editBankChecking">
+                    </div>
+                    <div class="mb-3">
+                        <label for="editBankSaving" class="form-label">Saving Account</label>
+                        <input type="text" th:field="*{savingAccount}" class="form-control" id="editBankSaving">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+        </div>
+        <br>
+    </div>
+</div>
