@@ -50,7 +50,8 @@
                     <div class="col" th:each="document : ${userDocs}">
                         <div class="card">
                             <div class="card-body">
-                                <h5 th:if="${document.getTitle() != ''}" class="card-title" th:text="${document.getTitle()}">
+                                <h5 th:if="${document.getTitle() != ''}" class="card-title"
+                                    th:text="${document.getTitle()}">
                                     Document Title</h5>
                                 <h5 th:if="${document.getTitle() == ''}" class="card-title text-muted">Untitled</h5>
                                 <p th:if="${document.getDocument_upload() != ''}"
@@ -82,18 +83,16 @@
                 <h5>You can upload (image files, pdf files, video files and text files)</h5>
                 <hr>
                 <form th:action="@{/ledger/documents}" th:method="post" th:object="${userDocument}">
-
                     <label for="title">Title</label>
                     <input id="title" name="title" type="text" th:field="*{title}" placeholder="Name of your Document">
-
-                    <div class="form-group">
+                    <div>
                         <label for="uploadDoc">
                             <input id="uploadDoc" name="document_upload" value="replaceMe" th:field="*{document_upload}"
                                    type="hidden">
                         </label>
-                        <div id="buttonUpload" onclick="uploadDoc()" class="form-control-file btn btn3">Upload
-                            documents
-                        </div>
+                        <button id="buttonUpload" type="button" class="btn btn-primary">
+                            Upload documents
+                        </button>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -112,6 +111,6 @@
         integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
         crossorigin="anonymous"></script>
 <script src="//static.filestackapi.com/filestack-js/3.x.x/filestack.min.js"></script>
-<script th:src="@{/js/documents.js}"></script>
+<script th:inline="javascript" th:src="@{/js/documents.js}"></script>
 </body>
 </html>
