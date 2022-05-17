@@ -23,7 +23,7 @@ window.addEventListener('DOMContentLoaded', function () {
     };
 
     function uploadDoc() {
-        $(document).off('focusin.modal');
+        // $(document).off('focusin.modal');
         client.picker(options).open();
     }
 

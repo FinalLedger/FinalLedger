@@ -7,6 +7,7 @@ import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 public interface UserRepository extends JpaRepository<User, Long> {
 

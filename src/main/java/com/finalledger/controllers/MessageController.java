@@ -38,20 +38,20 @@ public class MessageController {
         return "draftmessage";
     }
 
-    @PostMapping("/messages/addcontact")
-    public String addContact (@RequestParam(name="contactHidden") long addID){
-
-        SiteContact addedContact = new SiteContact();
-        User addthisUserID = userDao.getOne(addID);
-        User contactlistOwner = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-
-        addedContact.setOwner_user(contactlistOwner);
-        addedContact.setAdded_user_id(addthisUserID);
-        siteContactDao.save(addedContact);
-
-        return "redirect:/messages";
-
-    }
+//    @PostMapping("/messages/addcontact")
+//    public String addContact (@RequestParam(name="contactHidden") long addID){
+//
+//        SiteContact addedContact = new SiteContact();
+//        User addthisUserID = userDao.getOne(addID);
+//        User contactlistOwner = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+//
+//        addedContact.setOwner_user(contactlistOwner);
+//        addedContact.setAdded_user_id(addthisUserID);
+//        siteContactDao.save(addedContact);
+//
+//        return "redirect:/profile";
+//
+//    }
 
     @PostMapping("/messages/send")
     public String sendMessage(@ModelAttribute Message message, @RequestParam(name="sendmessagetoID") long senttoID){
