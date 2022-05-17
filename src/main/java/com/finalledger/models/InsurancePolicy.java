@@ -19,7 +19,7 @@ public class InsurancePolicy {
     @Column(nullable = false)
     private String currentValue;
 
-    @Column(nullable = false, unique=true)
+    @Column(nullable = false)
     private String beneficiary;
 
     @ManyToOne(fetch = FetchType.LAZY)

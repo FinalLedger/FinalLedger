@@ -27,39 +27,49 @@ public class FinancialController {
         this.creditCardDao = creditCardDao;
     }
     @GetMapping("/ledger/financial")
-    public String showFinancialForm(Model model, Principal principal) {
+    public String showFinancialForm(Model model) {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         if (user == null) {
             return "redirect:/login";
         }
-        FinancialInvestment financeInfo = financialInvestmentDao.findByUserId(user.getId());
-        InsurancePolicy insurancePolicy = insurancePolicyDao.findByUserId(user.getId());
-        BankAccounts bankAccounts = bankAccountsDao.findByUserId(user.getId());
-        CreditCard creditCard = creditCardDao.findByUserId(user.getId());
-//        if (financeInfo == null || insurancePolicy == null || bankAccounts == null || creditCard == null) {
-//        if (insurancePolicy == null) {
-//            model.addAttribute("existingInfo", false);
-////            model.addAttribute("financeInfo", new FinancialInvestment());
-//            model.addAttribute("insurancePolicy", new InsurancePolicy());
-////            model.addAttribute("bankAccounts", new BankAccounts());
-////            model.addAttribute("creditCard", new CreditCard());
-//        } else {
-//            model.addAttribute("existingInfo", true);
-////            model.addAttribute("financeInfo", financeInfo);
-//            model.addAttribute("insurancePolicy", new InsurancePolicy());
-////            model.addAttribute("bankAccounts", new BankAccounts());
-////            model.addAttribute("creditCard", new CreditCard());
-//        }
-//        return "ledger/financial";
-//    }
-        List<InsurancePolicy> insurancePolicyList = user.getInsurancePolicy();
-        if (insurancePolicyList.isEmpty()) {
-            model.addAttribute("existingList", false);
-        }else{
-            model.addAttribute("existingList", true);
-            model.addAttribute("insurancePolicyList", insurancePolicyList);
+        List<InsurancePolicy> insuranceList = user.getInsurancePolicy();
+        if (insuranceList.isEmpty()) {
+            model.addAttribute("existingInsurance", false);
+        } else {
+            model.addAttribute("existingInsurance", true);
+            model.addAttribute("insuranceList", insuranceList);
         }
         model.addAttribute("newInsurance", new InsurancePolicy());
+
+
+//        FinancialInvestment financeInfo = financialInvestmentDao.findByUserId(user.getId());
+//        InsurancePolicy insurancePolicy = insurancePolicyDao.findByUserId(user.getId());
+//        BankAccounts bankAccounts = bankAccountsDao.findByUserId(user.getId());
+//        CreditCard creditCard = creditCardDao.findByUserId(user.getId());
+////        if (financeInfo == null || insurancePolicy == null || bankAccounts == null || creditCard == null) {
+////        if (insurancePolicy == null) {
+////            model.addAttribute("existingInfo", false);
+//////            model.addAttribute("financeInfo", new FinancialInvestment());
+////            model.addAttribute("insurancePolicy", new InsurancePolicy());
+//////            model.addAttribute("bankAccounts", new BankAccounts());
+//////            model.addAttribute("creditCard", new CreditCard());
+////        } else {
+////            model.addAttribute("existingInfo", true);
+//////            model.addAttribute("financeInfo", financeInfo);
+////            model.addAttribute("insurancePolicy", new InsurancePolicy());
+//////            model.addAttribute("bankAccounts", new BankAccounts());
+//////            model.addAttribute("creditCard", new CreditCard());
+////        }
+////        return "ledger/financial";
+////    }
+//        List<InsurancePolicy> insurancePolicyList = user.getInsurancePolicy();
+//        if (insurancePolicyList.isEmpty()) {
+//            model.addAttribute("existingList", false);
+//        }else{
+//            model.addAttribute("existingList", true);
+//            model.addAttribute("insurancePolicyList", insurancePolicyList);
+//        }
+//        model.addAttribute("newInsurance", new InsurancePolicy());
         return "ledger/financial";
     }
 
@@ -85,31 +95,23 @@ public class FinancialController {
     public String showEditInsurancePolicy(@PathVariable long id, Model model) {
         InsurancePolicy editInsurance = insurancePolicyDao.getById(id);
         model.addAttribute("editInsurance", editInsurance);
-        return "ledger/insurancePolicy-edit";
+
+        return "ledger/insurance_edit";
+
     }
     @PostMapping("/ledger/insurancePolicy")
     public String saveInsurancePolicyInformation(@ModelAttribute InsurancePolicy newInsurance){
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        User persistUser = userDao.getById(user.getId());
-        newInsurance.setUser(persistUser);
 
-        InsurancePolicy existingInfoUser = insurancePolicyDao.findByUserId(persistUser.getId());
-        if (existingInfoUser != null) {
-
-            return "redirect:/ledger/financial";
-
-        }
-
-        ArrayList<InsurancePolicy> insurancePolicyList = new ArrayList<>();
-        insurancePolicyList.add(newInsurance);
-        userDao.save(persistUser);
+        newInsurance.setUser(user);
+        List<InsurancePolicy> insuranceList = user.getInsurancePolicy();
+        insuranceList.add(newInsurance);
 
         insurancePolicyDao.save(newInsurance);
-
         return "redirect:/ledger/financial";
     }
     @PostMapping("/ledger/insurancePolicy/{id}/edit")
-    public String editInsurancePolicyForm(@PathVariable long id,@RequestParam String company,@RequestParam String contactInfo,@RequestParam String currentValue, @RequestParam String beneficiary){
+    public String editInsurancePolicyForm(@PathVariable long id, @RequestParam String company, @RequestParam String contactInfo, @RequestParam String currentValue, @RequestParam String beneficiary, @ModelAttribute InsurancePolicy editInsurance) {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         List<InsurancePolicy> insurancePolicyList = user.getInsurancePolicy();
         InsurancePolicy newInsurance = insurancePolicyDao.getById(id);
@@ -117,7 +119,7 @@ public class FinancialController {
         newInsurance.setContactInfo(contactInfo);
         newInsurance.setCurrentValue(currentValue);
         newInsurance.setBeneficiary(beneficiary);
-//        newInsurance.setUser(user);
+
         insurancePolicyDao.save(newInsurance);
         for (InsurancePolicy insurancePolicy : insurancePolicyList) {
             if (insurancePolicy.getId() == id) {
@@ -131,9 +133,11 @@ public class FinancialController {
     @PostMapping("/ledger/insurancePolicy/{id}/delete")
     public String deleteInsurancePolicy(@PathVariable Long id){
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        List<InsurancePolicy> insuranceList = user.getInsurancePolicy();
+
+        List<InsurancePolicy> insurancePolicyList = user.getInsurancePolicy();
         InsurancePolicy deletedInsurance = insurancePolicyDao.getById(id);
-        insuranceList.removeIf(insurance -> Objects.equals(insurance.getId(), id));
+        insurancePolicyList.removeIf(insurancePolicy -> insurancePolicy.getId() == id);
+
         deletedInsurance.setUser(null);
         insurancePolicyDao.deleteById(id);
         return "redirect:/ledger/financial";

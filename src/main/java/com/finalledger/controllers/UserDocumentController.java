@@ -11,8 +11,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.transaction.Transactional;
 import java.security.Principal;
 import java.util.ArrayList;
+import java.util.List;
 
 @Controller
 public class UserDocumentController {
@@ -29,36 +31,42 @@ public class UserDocumentController {
     }
 
     @GetMapping("/ledger/documents")
-    public String showUserDocuments(Model model, Principal principal){
-
-        model.addAttribute("documents", new Documents());
+    public String showUserDocuments(Model model) {
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        if (user == null) {
+            return "redirect:/login";
+        }
+        List<Documents> userDocs = user.getDocuments();
+        if (userDocs.isEmpty()) {
+            model.addAttribute("existingList", false);
+        } else {
+            model.addAttribute("existingList", true);
+            model.addAttribute("userDocs", userDocs);
+        }
+        model.addAttribute("userDocument", new Documents());
         model.addAttribute("fileStackAPI", fileStackAPIKey);
-
-        return principal == null ? "redirect:/login" : "/ledger/documents";
+        return "ledger/documents";
     }
 
     @PostMapping("/ledger/documents/{id}/delete")
-    public String updatePersonal(@PathVariable Long id){
+    public String updatePersonal(@PathVariable long id) {
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        List<Documents> userDocs = user.getDocuments();
+        Documents deletedDoc = userDocumentsDao.getById(id);
+        userDocs.removeIf(document -> document.getId() == id);
+        deletedDoc.setUser(null);
         userDocumentsDao.deleteById(id);
-
         return "redirect:/ledger/documents";
     }
 
     @PostMapping("/ledger/documents")
-    public String saveUserDocuments (@ModelAttribute Documents userDocument, @RequestParam(name = "title") String title, @RequestParam(name = "document_upload") String document_upload){
-
-        // set the current user to the document
-        User userLoggedIn = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        User persistUser = userDao.getById(userLoggedIn.getId());
-
-        userDocument.setUser(persistUser);
-
-        ArrayList<Documents> documents = new ArrayList<>();
-        documents.add(userDocument);
-        persistUser.setDocuments(documents);
-        userDao.save(persistUser);
-
-        return("redirect:/ledger/documents");
+    public String saveUserDocuments (@ModelAttribute Documents userDocument) {
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        userDocument.setUser(user);
+        List<Documents> userDocs = user.getDocuments();
+        userDocs.add(userDocument);
+        userDocumentsDao.save(userDocument);
+        return "redirect:/ledger/documents";
     }
 
 }

@@ -37,75 +37,52 @@
         <div class="container">
             <div class="d-flex justify-content-between">
                 <h3>Insurance Policies</h3>
-                <div th:if="${!existingList}" class="d-flex align-items-center">
+                <div class="d-flex align-items-center">
                     <button type="button" class="btn btn-sm btn-primary" data-bs-toggle="modal"
                             data-bs-target="#insuranceModal">
                         Enter info
                     </button>
                 </div>
-                <div th:if="${existingList}" class="d-flex align-items-center justify-content-end">
-                    <div th:each=" insurance : ${insurancePolicyList}">
-                    <a th:href="@{/ledger/insurancePolicy/{id}/edit(id = ${insurance.id})}"
-                         type="button" class="btn btn-sm btn-warning me-2">
-                            Edit
-                    </a>
-                        <form th:action="@{|/ledger/insurancePolicy/${insurance.id}/delete|}" method="post">
-                            <button type="submit" class="btn btn-sm btn-danger">
-                                Delete
-                            </button>
-                        </form>
-                    </div>
-<!--                                        <form th:action="@{|/ledger/financial/${insurancePolicyList.id}/delete|}" method="post" th:object="${insurancePolicyList}">-->
-<!--                                            <button type="submit" class="btn btn-sm btn-danger" data-bs-toggle="modal">-->
-<!--                                                Delete-->
-<!--                                            </button>-->
-<!--                                        </form>-->
-                </div>
+
             </div>
             <hr>
             <!--------------------------------------------------------------------------------------------------------------------------------->
             <div class="container">
-                <h5>Company</h5>
-                <hr>
-                <p th:if="${!existingList}">No info has been added yet.</p>
-                <div th:if="${existingList}">
-                    <div th:each="insurance : ${insurancePolicyList}">
-                        <p th:if="${insurance.getCompany() == ''}">No info has been added yet.</p>
-                        <p th:if="${insurance.getCompany() != null}"
-                           th:text="${insurance.getCompany()}">Company</p>
-                    </div>
-                </div>
-                <h5>Contact Information</h5>
-                <hr>
-                <p th:if="${!existingList}">No info has been added yet.</p>
-                <div th:if="${existingList}">
-                    <div th:each="insurance : ${insurancePolicyList}">
-                        <p th:if="${insurance.getContactInfo() == ''}">No info has been added yet.</p>
-                        <p th:if="${insurance.getContactInfo()!= null}" th:text="${insurance.getContactInfo()}">Contact Information</p>
-                    </div>
-                </div>
-                <h5>Current Value</h5>
-                <hr>
-                <p th:if="${!existingList}">No info has been added yet.</p>
-                <div th:if="${existingList}">
-                    <div th:each="insurance : ${insurancePolicyList}">
-                        <p th:if="${insurance.getCurrentValue() == ''}">No info has been added yet.</p>
-                        <p th:if="${insurance.getCurrentValue() != null}" th:text="${insurance.getCurrentValue()}">Current Value</p>
-                    </div>
-                </div>
-                <h5>Beneficiary</h5>
-                <hr>
-                <p th:if="${!existingList}">No info has been added yet.</p>
-                <div th:if="${existingList}">
-                    <div th:each="insurance : ${insurancePolicyList}">
-                        <p th:if="${insurance.getBeneficiary() == ''}">No info has been added yet.</p>
-                        <p th:if="${insurance.getBeneficiary() != null}" th:text="${insurance.getBeneficiary()}">Beneficiary</p>
+                <p th:if="${!existingInsurance}">No info has been added yet.</p>
+                <div th:if="${existingInsurance}" class="row row-cols-1 row-cols-md-3 g-4">
+                    <div class="col" th:each="insurance : ${insuranceList}">
+                        <div class="card h-100">
+                            <div class="card-body">
+                                <h5 th:if="${insurance.getCompany() != ''}" class="card-title" th:text="${insurance.getCompany()}">Company</h5>
+                                <h5 th:if="${insurance.getCompany() == ''}" class="card-title text-muted">Unnamed</h5>
+                            </div>
+                            <ul class="list-group list-group-flush">
+                                <li th:if="${insurance.getContactInfo() != ''}" class="list-group-item">
+                                    <h6>Contact Info</h6>
+                                    <p th:text="${insurance.getContactInfo()}">Contact Info</p>
+                                </li>
+                                <li th:if="${insurance.getCurrentValue() != ''}" class="list-group-item">
+                                    <h6>Current Value</h6>
+                                    <p th:text="${insurance.getCurrentValue()}">Current Value</p>
+                                </li>
+                                <li th:if="${insurance.getBeneficiary() != ''}" class="list-group-item">
+                                    <h6>Beneficiary</h6>
+                                    <p th:text="${insurance.getBeneficiary()}">Beneficiary</p>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-end">
+                                    <a th:href="@{|/ledger/insurancePolicy/${insurance.id}/edit|}" type="button" class="btn btn-sm btn-warning me-2">Edit</a>
+                                    <form th:action="@{|/ledger/insurancePolicy/${insurance.id}/delete|}" method="post">
+                                        <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+                                    </form>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
+        <br>
     </div>
-</div>
 </div>
 <!------------------------------------------------------ Enter Insurance Info --------------------------------------------------------------------------->
 <div class="modal fade" id="insuranceModal" tabindex="-1" aria-labelledby="insuranceModalLabel" aria-hidden="true">
@@ -142,41 +119,7 @@
         </div>
     </div>
 </div>
-<!-------------------------------------------------------- Edit Insurance Info------------------------------------------------------------------------>
-<div class="modal fade" id="editInsuranceModal" tabindex="-1" aria-labelledby="editInsuranceModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="editInsuranceModalLabel">Insurance Policies</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <form th:action="@{|/ledger/insurancePolicy/${newInsurance.id}/edit|}" th:method="post" th:object="${newInsurance}">
-                    <div class="mb-3">
-                        <label for="editInsuranceCompany" class="form-label">Company</label>
-                        <input type="text" th:field="*{company}" class="form-control" id="editInsuranceCompany">
-                    </div>
-                    <div class="mb-3">
-                        <label for="editInsuranceContact" class="form-label">Contact Info</label>
-                        <input type="text" th:field="*{contactInfo}" class="form-control" id="editInsuranceContact">
-                    </div>
-                    <div class="mb-3">
-                        <label for="editInsuranceValue" class="form-label">Current Value</label>
-                        <input type="text" th:field="*{currentValue}" class="form-control" id="editInsuranceValue">
-                    </div>
-                    <div class="mb-3">
-                        <label for="editInsuranceBeneficiary" class="form-label">Beneficiary</label>
-                        <input type="text" th:field="*{beneficiary}" class="form-control" id="editInsuranceBeneficiary">
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary">Submit</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
+
 <!--------------------------------------------------------------------------------------------------------------------------------->
 <!--        <div class="container">-->
 <!--            <div class="d-flex justify-content-between">-->

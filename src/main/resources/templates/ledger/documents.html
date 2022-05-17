@@ -37,16 +37,38 @@
             <div class="d-flex justify-content-between">
                 <h3>Documents</h3>
                 <div class="d-flex align-items-center">
-                    <button type="button" class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#formModal">
+                    <button type="button" class="btn btn-sm btn-primary" data-bs-toggle="modal"
+                            data-bs-target="#formModal">
                         Upload Document
                     </button>
                 </div>
             </div>
             <hr>
             <div class="container">
-                <p>Documents will populate here</p>
+                <p th:if="${!existingList}">No documents have been added yet.</p>
+                <div class="row row-cols-1 row-cols-md-3 g-4" th:if="${existingList}">
+                    <div class="col" th:each="document : ${userDocs}">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 th:if="${document.getTitle() != ''}" class="card-title" th:text="${document.getTitle()}">
+                                    Document Title</h5>
+                                <h5 th:if="${document.getTitle() == ''}" class="card-title text-muted">Untitled</h5>
+                                <p th:if="${document.getDocument_upload() != ''}"
+                                   th:text="${document.getDocument_upload()}">Doc upload string</p>
+                            </div>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item d-flex justify-content-end">
+                                    <form th:action="@{|/ledger/documents/${document.id}/delete|}" method="post">
+                                        <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+                                    </form>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
+        <br>
     </div>
 </div>
 <div class="modal fade" id="formModal" tabindex="-1" aria-labelledby="formModalLabel" aria-hidden="true">
@@ -59,7 +81,7 @@
             <div class="modal-body">
                 <h5>You can upload (image files, pdf files, video files and text files)</h5>
                 <hr>
-                <form th:action="@{/ledger/documents}" th:method="post" th:object="${documents}">
+                <form th:action="@{/ledger/documents}" th:method="post" th:object="${userDocument}">
 
                     <label for="title">Title</label>
                     <input id="title" name="title" type="text" th:field="*{title}" placeholder="Name of your Document">
