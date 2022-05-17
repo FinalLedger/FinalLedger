@@ -2,7 +2,8 @@
 
 window.addEventListener('DOMContentLoaded', function () {
 
-    const apikey = /*[[${fileStackAPI}]]*/ 'Api Key';
+    // const apikey = /*[[${fileStackAPI}]]*/ 'Api Key';
+    let apikey = document.querySelector('meta').content;
     const client = filestack.init(apikey);
 
     const options = {
@@ -23,7 +24,7 @@ window.addEventListener('DOMContentLoaded', function () {
     };
 
     function uploadDoc() {
-        // $(document).off('focusin.modal');
+      
         client.picker(options).open();
     }
 
