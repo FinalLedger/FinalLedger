@@ -7,14 +7,19 @@
     <link rel="stylesheet" th:href="@{/css/ledger.css}">
 </head>
 <body>
-<nav th:replace="/partials/navbar :: userNav"></nav>
+<div th:if="${!isGuestUser}">
+    <nav th:replace="/partials/navbar :: userNav"></nav>
+</div>
+<div th:if="${isGuestUser}">
+    <nav th:replace="/partials/navbar :: guestNav"></nav>
+</div>
 <div class="subheader"></div>
 
 <div class="container">
     <br>
     <h1>My Final Ledger</h1>
     <hr>
-    <ul class="nav nav-tabs">
+    <ul th:if="${!isGuestUser}" class="nav nav-tabs">
         <li class="nav-item">
             <a class="nav-link" href="/ledger/personal">Personal</a>
         </li>
@@ -31,16 +36,35 @@
             <a class="nav-link" href="/ledger/financial">Financial</a>
         </li>
     </ul>
+    <ul th:if="${isGuestUser}" class="nav nav-tabs">
+        <li class="nav-item">
+            <a class="nav-link" th:href="@{|/ledger/${mainUserId}/personal|}">Personal</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" th:href="@{|/ledger/${mainUserId}/medical|}">Medical</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">Contacts</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" th:href="@{|/ledger/${mainUserId}/documents|}">Documents</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" th:href="@{|/ledger/${mainUserId}/financial|}">Financial</a>
+        </li>
+    </ul>
     <div id="infoView" class="container">
         <br>
         <div class="container">
             <div class="d-flex justify-content-between">
                 <h3>Contacts</h3>
-                <div class="d-flex align-items-center">
-                    <button type="button" class="btn btn-sm btn-primary" data-bs-toggle="modal"
-                            data-bs-target="#formModal">
-                        Add contact
-                    </button>
+                <div th:if="${!isGuestUser}">
+                    <div class="d-flex align-items-center">
+                        <button type="button" class="btn btn-sm btn-primary" data-bs-toggle="modal"
+                                data-bs-target="#formModal">
+                            Add contact
+                        </button>
+                    </div>
                 </div>
             </div>
             <hr>
@@ -76,7 +100,7 @@
                                     <h6>Address</h6>
                                     <p th:text="${contact.getPrimaryAddress()}">Address</p>
                                 </li>
-                                <li class="list-group-item d-flex justify-content-end">
+                                <li th:if="${!isGuestUser}" class="list-group-item d-flex justify-content-end">
                                     <a th:href="@{|/ledger/contacts/${contact.id}/edit|}"
                                        type="button" class="btn btn-sm btn-warning me-2">
                                         Edit
@@ -96,7 +120,7 @@
         <br>
     </div>
 </div>
-<div class="modal fade" id="formModal" tabindex="-1" aria-labelledby="formModalLabel" aria-hidden="true">
+<div th:if="${!isGuestUser}" class="modal fade" id="formModal" tabindex="-1" aria-labelledby="formModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">

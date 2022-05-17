@@ -39,10 +39,23 @@ public class UserMedicalController {
             model.addAttribute("existingInfo", true);
             model.addAttribute("medicalInfo", medicalInfo);
         }
-
+        model.addAttribute("isGuestUser", false);
         return "ledger/medical";
     }
 
+    @GetMapping("/ledger/{id}/medical")
+    public String showConnectionMedical(@PathVariable long id, Model model) {
+        MedicalInformation medicalInfo = userMedicalDao.findByUserId(id);
+        if (medicalInfo == null) {
+            model.addAttribute("existingInfo", false);
+        } else {
+            model.addAttribute("existingInfo", true);
+            model.addAttribute("medicalInfo", medicalInfo);
+        }
+        model.addAttribute("mainUserId", id);
+        model.addAttribute("isGuestUser", true);
+        return "ledger/medical";
+    }
 
     @PostMapping("/ledger/medical/{id}/edit")
     public String updateMedical(@PathVariable Long id, @RequestParam String willLocation,@RequestParam String POADocLocation,@RequestParam String DNROrderLocation,@RequestParam String bloodType, String medicalConditions,@RequestParam String healthInsuranceName){
