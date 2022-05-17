@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title><!DOCTYPE html>
+        <html xmlns:th="http://www.thymeleaf.org" lang="en">
+        <head>
+        <meta charset="UTF-8">
+        <title>Ledger</title>
+    <link th:replace="/partials/navbar :: bootstrap">
+    <link rel="stylesheet" th:href="@{/css/ledger.css}">
+</head>
+<body>
+<nav th:replace="/partials/navbar :: userNav"></nav>
+<div class="subheader"></div>
+
+<div class="container">
+    <br>
+    <h1>My Final Ledger</h1>
+    <hr>
+    <ul class="nav nav-tabs">
+        <li class="nav-item">
+            <a class="nav-link" href="/ledger/personal">Personal</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/ledger/medical">Medical</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/ledger/contacts">Contacts</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/ledger/documents">Documents</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/ledger/financial">Financial</a>
+        </li>
+    </ul>
+    <div id="infoView" class="container">
+        <br>
+        <div class="container">
+            <h3>Edit Credit Card</h3>
+            <hr>
+            <div class="container">
+                <form id="editCreditCardForm" th:action="@{|/ledger/creditCard/${editCreditCard.id}/edit|}"
+                      th:method="post"
+                      th:object="${editCreditCard}">
+                    <div class="mb-3">
+                        <label for="editCreditType" class="form-label">Credit Card Type</label>
+                        <input type="text" th:field="*{type}" class="form-control" id="editCreditType">
+                    </div>
+                    <div class="mb-3">
+                        <label for="editCreditIssuer" class="form-label">Credit Card Issuer</label>
+                        <input type="text" th:field="*{issuer}" class="form-control" id="editCreditIssuer">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+        </div>
+        <br>
+    </div>
+</div>
+
+</body>
+</html>
