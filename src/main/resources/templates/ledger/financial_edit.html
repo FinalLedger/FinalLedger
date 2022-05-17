@@ -25,7 +25,7 @@
             <a class="nav-link" href="/ledger/contacts">Contacts</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link"  href="/ledger/documents">Documents</a>
+            <a class="nav-link" href="/ledger/documents">Documents</a>
         </li>
         <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="/ledger/financial">Financial</a>
@@ -37,20 +37,20 @@
             <h3>Edit Insurance</h3>
             <hr>
             <div class="container">
-                <form id="editInsuranceForm" th:action="@{|/ledger/insurancePolicy/${editInsurance.id}/edit|}"
+                <form id="editFinanceForm" th:action="@{|/ledger/financial/${editFinance.id}/edit|}"
                       th:method="post"
-                      th:object="${editInsurance}">
+                      th:object="${editFinance}">
                     <div class="mb-3">
-                        <label for="editInsuranceCompany" class="form-label">Company</label>
-                        <input type="text" th:field="*{company}" class="form-control" id="editInsuranceCompany">
+                        <label for="editFinanceCompany" class="form-label">Company</label>
+                        <input type="text" th:field="*{company}" class="form-control" id="editFinanceCompany">
                     </div>
                     <div class="mb-3">
-                        <label for="editInsuranceContact" class="form-label">Contact Info</label>
-                        <input type="text" th:field="*{contactInfo}" class="form-control" id="editInsuranceContact">
+                        <label for="editFinanceContact" class="form-label">Contact Info</label>
+                        <input type="text" th:field="*{contactInfo}" class="form-control" id="editFinanceContact">
                     </div>
                     <div class="mb-3">
-                        <label for="editInsuranceValue" class="form-label">Current Value</label>
-                        <input type="text" th:field="*{currentValue}" class="form-control" id="editInsuranceValue">
+                        <label for="editFinanceValue" class="form-label">Current Value</label>
+                        <input type="text" th:field="*{currentValue}" class="form-control" id="editFinanceValue">
                     </div>
                     <div class="mb-3">
                         <label for="editInsuranceBeneficiary" class="form-label">Beneficiary</label>
