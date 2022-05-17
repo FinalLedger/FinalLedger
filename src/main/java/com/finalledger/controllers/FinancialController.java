@@ -41,6 +41,26 @@ public class FinancialController {
         }
         model.addAttribute("newInsurance", new InsurancePolicy());
 
+        List<FinancialInvestment> financialInvestmentList = user.getFinancialInvestments();
+        if (financialInvestmentList.isEmpty()) {
+            model.addAttribute("existingInvestment", false);
+        } else {
+            model.addAttribute("existingInvestment", true);
+            model.addAttribute("financialInvestmentList", financialInvestmentList);
+        }
+        model.addAttribute("newFinance", new FinancialInvestment());
+
+        List<BankAccounts> bankAccountsList = user.getBankAccounts();
+        if (bankAccountsList.isEmpty()) {
+            model.addAttribute("existingBankAccount", false);
+        } else {
+            model.addAttribute("existingBankAccount", true);
+            model.addAttribute("bankAccountsList", bankAccountsList);
+        }
+        model.addAttribute("newBankAccount", new BankAccounts());
+
+
+
 
 //        FinancialInvestment financeInfo = financialInvestmentDao.findByUserId(user.getId());
 //        InsurancePolicy insurancePolicy = insurancePolicyDao.findByUserId(user.getId());
@@ -73,24 +93,6 @@ public class FinancialController {
         return "ledger/financial";
     }
 
-    @PostMapping("/ledger/financial/{id}/edit")
-    public String updateFinancial(@PathVariable long id,@RequestParam String company,@RequestParam String current_value, @RequestParam String beneficiary,@RequestParam String contact_info){
-        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        FinancialInvestment financeInfo = financialInvestmentDao.getById(id);
-        financeInfo.setCompany(company);
-        financeInfo.setCurrent_value(current_value);
-        financeInfo.setBeneficiary(beneficiary);
-        financeInfo.setContact_info(contact_info);
-        financeInfo.setUser(user);
-        financialInvestmentDao.save(financeInfo);
-        return "redirect:/ledger/financial/";
-    }
-
-    @PostMapping("/ledger/financial/{id}/delete")
-    public String deleteFinancial(@PathVariable Long id){
-        financialInvestmentDao.deleteById(id);
-        return "redirect:/ledger/financial";
-    }
     @GetMapping("/ledger/insurancePolicy/{id}/edit")
     public String showEditInsurancePolicy(@PathVariable long id, Model model) {
         InsurancePolicy editInsurance = insurancePolicyDao.getById(id);
@@ -110,6 +112,7 @@ public class FinancialController {
         insurancePolicyDao.save(newInsurance);
         return "redirect:/ledger/financial";
     }
+
     @PostMapping("/ledger/insurancePolicy/{id}/edit")
     public String editInsurancePolicyForm(@PathVariable long id, @RequestParam String company, @RequestParam String contactInfo, @RequestParam String currentValue, @RequestParam String beneficiary, @ModelAttribute InsurancePolicy editInsurance) {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
@@ -142,23 +145,121 @@ public class FinancialController {
         insurancePolicyDao.deleteById(id);
         return "redirect:/ledger/financial";
     }
+//<----------------------------------------------------------- Financial Info ------------------------------------------------------------------->
+    @GetMapping("/ledger/financial/{id}/edit")
+    public String showEditFinancial(@PathVariable long id, Model model) {
+        FinancialInvestment editFinance = financialInvestmentDao.getById(id);
+        model.addAttribute("editFinance", editFinance);
+
+        return "ledger/financial_edit";
+    }
+
+    @PostMapping("/ledger/financial")
+    public String saveFinancialInformation(@ModelAttribute FinancialInvestment newFinance){
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+//        User persistUser = userDao.getById(user.getId());
+        newFinance.setUser(user);
+        List<FinancialInvestment> financialInvestmentList = user.getFinancialInvestments();
+
+        financialInvestmentList.add(newFinance);
+//        userDao.save(persistUser);
+
+        financialInvestmentDao.save(newFinance);
+
+        return "redirect:/ledger/financial";
+    }
+
+    @PostMapping("/ledger/financial/{id}/edit")
+    public String updateFinancial(@PathVariable long id,@RequestParam String company,@RequestParam String currentValue, @RequestParam String beneficiary,@RequestParam String contactInfo){
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        List<FinancialInvestment> financialInvestmentsList = user.getFinancialInvestments();
+        FinancialInvestment newFinanceInfo = financialInvestmentDao.getById(id);
+        newFinanceInfo.setCompany(company);
+        newFinanceInfo.setCurrentValue(currentValue);
+        newFinanceInfo.setBeneficiary(beneficiary);
+        newFinanceInfo.setContactInfo(contactInfo);
+
+        financialInvestmentDao.save(newFinanceInfo);
+        for (FinancialInvestment finance : financialInvestmentsList) {
+            if (finance.getId() == id) {
+                int index = financialInvestmentsList.indexOf(finance);
+                financialInvestmentsList.set(index, newFinanceInfo);
+            }
+        }
+        return "redirect:/ledger/financial/";
+    }
+
+    @PostMapping("/ledger/financial/{id}/delete")
+    public String deleteFinancial(@PathVariable Long id){
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+
+        List<FinancialInvestment>  financialInvestmentsList = user.getFinancialInvestments();
+        FinancialInvestment deletedFinancial = financialInvestmentDao.getById(id);
+        financialInvestmentsList.removeIf(insurancePolicy -> insurancePolicy.getId() == id);
+
+        deletedFinancial.setUser(null);
+        financialInvestmentDao.deleteById(id);
+
+        return "redirect:/ledger/financial";
+    }
+    //<----------------------------------------------------------- Bank Account Info ------------------------------------------------------------------->
+    @GetMapping("/ledger/bankAccounts/{id}/edit")
+    public String showEditBank(@PathVariable long id, Model model) {
+        BankAccounts editBank = bankAccountsDao.getById(id);
+        model.addAttribute("editBank", editBank);
+
+        return "ledger/bank_edit";
+    }
+
+    @PostMapping("/ledger/bankAccounts")
+    public String saveBankAccountsInformation(@ModelAttribute BankAccounts newBankAccount){
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+//        User persistUser = userDao.getById(user.getId());
+        newBankAccount.setUser(user);
+        List<BankAccounts> bankAccountsList = user.getBankAccounts();
+
+        bankAccountsList.add(newBankAccount);
+//        userDao.save(persistUser);
+
+        bankAccountsDao.save(newBankAccount);
+
+        return "redirect:/ledger/financial";
+    }
 
     @PostMapping("ledger/bankAccounts/{id}/edit")
     public String editBankAccountsForm(@PathVariable long id,@RequestParam  String contactsInfo,@RequestParam String checkingAccount,@RequestParam String savingAccount){
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        BankAccounts bankAccounts = bankAccountsDao.getById(id);
-        bankAccounts.setContactInfo(contactsInfo);
-        bankAccounts.setCheckingAccount(checkingAccount);
-        bankAccounts.setSavingAccount(savingAccount);
-        bankAccounts.setUser(user);
-        bankAccountsDao.save(bankAccounts);
+        List<BankAccounts> bankAccountsList = user.getBankAccounts();
+        BankAccounts newBankAccounts = bankAccountsDao.getById(id);
+        newBankAccounts.setContactInfo(contactsInfo);
+        newBankAccounts.setCheckingAccount(checkingAccount);
+        newBankAccounts.setSavingAccount(savingAccount);
+
+        bankAccountsDao.save(newBankAccounts);
+        for (BankAccounts bank : bankAccountsList) {
+            if (bank.getId() == id) {
+                int index = bankAccountsList.indexOf(bank);
+                bankAccountsList.set(index, newBankAccounts);
+            }
+        }
         return "redirect:/ledger/financial/";
+
     }
     @PostMapping("/ledger/bankAccounts/{id}/delete")
     public String deleteBankAccount(@PathVariable Long id){
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+
+        List<BankAccounts>  bankAccountsList = user.getBankAccounts();
+        BankAccounts deletedBank = bankAccountsDao.getById(id);
+        bankAccountsList.removeIf(insurancePolicy -> insurancePolicy.getId() == id);
+
+        deletedBank.setUser(null);
+
         bankAccountsDao.deleteById(id);
         return "redirect:/ledger/financial";
     }
+
+    //<----------------------------------------------------------- Credit Card Info ------------------------------------------------------------------->
 
     @PostMapping("ledger/creditCard/{id}/edit")
     public String editCreditCardForm(@PathVariable long id,@RequestParam  String type,@RequestParam  String issuer){
@@ -177,35 +278,6 @@ public class FinancialController {
         return "redirect:/ledger/financial";
     }
 
-    @PostMapping("/ledger/financial")
-    public String saveFinancialInformation(@ModelAttribute FinancialInvestment finance){
-        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        User persistUser = userDao.getById(user.getId());
-        finance.setUser(persistUser);
-        ArrayList<FinancialInvestment> document = new ArrayList<>();
-
-        document.add(finance);
-        userDao.save(persistUser);
-
-        financialInvestmentDao.save(finance);
-
-        return "redirect:/ledger/financial";
-    }
-
-    @PostMapping("/ledger/bankAccounts")
-    public String saveBankAccountsInformation(@ModelAttribute BankAccounts bankAccounts){
-        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        User persistUser = userDao.getById(user.getId());
-        bankAccounts.setUser(persistUser);
-        ArrayList<BankAccounts> document = new ArrayList<>();
-
-        document.add(bankAccounts);
-        userDao.save(persistUser);
-
-        bankAccountsDao.save(bankAccounts);
-
-        return "redirect:/ledger/financial";
-    }
     @PostMapping("/ledger/creditCard")
     public String saveCreditCardInformation(@ModelAttribute CreditCard creditCard){
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();

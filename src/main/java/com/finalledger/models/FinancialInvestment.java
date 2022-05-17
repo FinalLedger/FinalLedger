@@ -17,13 +17,13 @@ public class FinancialInvestment {
     private String company;
 
     @Column(nullable = false)
-    private String current_value;
+    private String currentValue;
 
     @Column(nullable = false)
     private String beneficiary;
 
     @Column(nullable = false)
-    private String contact_info;
+    private String contactInfo;
 
     @ManyToOne
     @JoinColumn(name = "main_user_id")
@@ -32,20 +32,20 @@ public class FinancialInvestment {
     public FinancialInvestment() {
     }
 
-    public FinancialInvestment(Long id, String company, String current_value, String beneficiary, String contact_info, User user) {
+    public FinancialInvestment(Long id, String company, String currentValue, String beneficiary, String contactInfo, User user) {
         this.id = id;
         this.company = company;
-        this.current_value = current_value;
+        this.currentValue = currentValue;
         this.beneficiary = beneficiary;
-        this.contact_info = contact_info;
+        this.contactInfo = contactInfo;
         this.user = user;
     }
 
-    public FinancialInvestment(String company, String current_value, String beneficiary, String contact_info, User user) {
+    public FinancialInvestment(String company, String currentValue, String beneficiary, String contactInfo, User user) {
         this.company = company;
-        this.current_value = current_value;
+        this.currentValue = currentValue;
         this.beneficiary = beneficiary;
-        this.contact_info = contact_info;
+        this.contactInfo = contactInfo;
         this.user = user;
     }
 
@@ -65,12 +65,12 @@ public class FinancialInvestment {
         this.company = company;
     }
 
-    public String getCurrent_value() {
-        return current_value;
+    public String getCurrentValue() {
+        return currentValue;
     }
 
-    public void setCurrent_value(String current_value) {
-        this.current_value = current_value;
+    public void setCurrentValue(String currentValue) {
+        this.currentValue = currentValue;
     }
 
     public String getBeneficiary() {
@@ -81,12 +81,12 @@ public class FinancialInvestment {
         this.beneficiary = beneficiary;
     }
 
-    public String getContact_info() {
-        return contact_info;
+    public String getContactInfo() {
+        return contactInfo;
     }
 
-    public void setContact_info(String contact_info) {
-        this.contact_info = contact_info;
+    public void setContactInfo(String contactInfo) {
+        this.contactInfo = contactInfo;
     }
 
     public User getUser() {
