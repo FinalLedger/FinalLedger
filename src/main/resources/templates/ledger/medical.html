@@ -7,12 +7,7 @@
     <link rel="stylesheet" th:href="@{/css/ledger.css}">
 </head>
 <body>
-<div th:if="${!isGuestUser}">
-    <nav th:replace="/partials/navbar :: userNav"></nav>
-</div>
-<div th:if="${isGuestUser}">
-    <nav th:replace="/partials/navbar :: guestNav"></nav>
-</div>
+<nav th:replace="/partials/navbar :: userNav"></nav>
 <div class="subheader"></div>
 
 <div class="container">
@@ -73,7 +68,7 @@
                         </button>
                         <form th:action="@{|/ledger/medical/${medicalInfo.id}/delete|}" method="post" th:object="${medicalInfo}">
                             <button type="submit" class="btn btn-sm btn-danger" data-bs-toggle="modal">
-                                Delete
+                                Reset
                             </button>
                         </form>
                     </div>
@@ -82,42 +77,41 @@
             <hr>
             <div class="container">
                 <h5>Will Location</h5>
-                <hr>
                 <p th:if="${!existingInfo}">No info has been added yet.</p>
                 <div th:if="${existingInfo}">
                     <p th:if="${medicalInfo.getWillLocation() == ''}">No info has been added yet.</p>
                     <p th:if="${medicalInfo.getWillLocation() != null}" th:text="${medicalInfo.getWillLocation()}">Will Location</p>
                 </div>
-                <h5>Power Of Attorney Document Location</h5>
                 <hr>
+                <h5>Power Of Attorney Document Location</h5>
                 <p th:if="${!existingInfo}">No info has been added yet.</p>
                 <div th:if="${existingInfo}">
                     <p th:if="${medicalInfo.getPOADocLocation() == ''}">No info has been added yet.</p>
                     <p th:if="${medicalInfo.getPOADocLocation() != null}" th:text="${medicalInfo.getPOADocLocation()}">POA Document Location</p>
                 </div>
-                <h5>Do Not Resuscitate Order Location</h5>
                 <hr>
+                <h5>Do Not Resuscitate Order Location</h5>
                 <p th:if="${!existingInfo}">No info has been added yet.</p>
                 <div th:if="${existingInfo}">
                     <p th:if="${medicalInfo.getDNROrderLocation() == ''}">No info has been added yet.</p>
                     <p th:if="${medicalInfo.getDNROrderLocation() != null}" th:text="${medicalInfo.getDNROrderLocation()}">DNR Order Location</p>
                 </div>
-                <h5>Blood Type</h5>
                 <hr>
+                <h5>Blood Type</h5>
                 <p th:if="${!existingInfo}">No info has been added yet.</p>
                 <div th:if="${existingInfo}">
                     <p th:if="${medicalInfo.getBloodType() == ''}">No info has been added yet.</p>
                     <p th:if="${medicalInfo.getBloodType() != null}" th:text="${medicalInfo.getBloodType()}">Blood Type</p>
                 </div>
-                <h5>Medical Conditions</h5>
                 <hr>
+                <h5>Medical Conditions</h5>
                 <p th:if="${!existingInfo}">No info has been added yet.</p>
                 <div th:if="${existingInfo}">
                     <p th:if="${medicalInfo.getMedicalConditions() == ''}">No info has been added yet.</p>
                     <p th:if="${medicalInfo.getMedicalConditions() != null}" th:text="${medicalInfo.getMedicalConditions()}">Medical Conditions</p>
                 </div>
-                <h5>Health Insurance</h5>
                 <hr>
+                <h5>Health Insurance</h5>
                 <p th:if="${!existingInfo}">No info has been added yet.</p>
                 <div th:if="${existingInfo}">
                     <p th:if="${medicalInfo.getHealthInsuranceName() == ''}">No info has been added yet.</p>
