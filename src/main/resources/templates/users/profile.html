@@ -29,10 +29,12 @@
 
             <div th:if="${trustedUsers != null}">
                 <th:block th:each="user : ${trustedUsers}">
-                    <p><span th:text="${user.getAdded_user_id().getUsername()}"></span></p>
+                    <p class="text-center"></p>
                     <form th:action="@{/contact/profile}" method="get">
 <!--                        <button type="submit" class="btn btn-sm btn-primary">View Ledger</button>-->
-                        <a th:href="@{|/ledger/${user.getAdded_user_id().getId()}/personal|}" type="submit" class="btn btn-sm btn-primary">View Ledger</a>
+                        <a th:href="@{|/ledger/${user.getAdded_user_id().getId()}/personal|}"
+                           type="submit" class="btn btn-sm btn-primary">
+                            View <span th:text="${user.getAdded_user_id().getUsername()}"></span> 's Ledger</a>
                     </form>
                 </th:block>
             </div>
