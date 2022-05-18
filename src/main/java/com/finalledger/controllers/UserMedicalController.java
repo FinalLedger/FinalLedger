@@ -1,7 +1,5 @@
 package com.finalledger.controllers;
 
-import com.finalledger.models.Address;
-import com.finalledger.models.PersonalInformation;
 import com.finalledger.models.User;
 import com.finalledger.models.MedicalInformation;
 import com.finalledger.repositories.UserMedicalRepository;
@@ -11,9 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.security.Principal;
 import java.util.ArrayList;
-import java.util.List;
 
 @Controller
 public class UserMedicalController {

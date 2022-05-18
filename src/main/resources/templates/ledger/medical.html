@@ -147,14 +147,14 @@
                         <label for="bloodType" class="form=label">Blood Type</label>
                         <select name="bloodType" th:field="*{bloodType}" class="form-select" id="bloodType">
                             <option disabled th:value="disabled">Select blood type</option>
-                            <option th:value="ONegative">O Negative</option>
-                            <option th:value="OPositive">O Positive</option>
-                            <option th:value="ANegative">A Negative</option>
-                            <option th:value="APositive">A Positive</option>
-                            <option th:value="BNegative">B Negative</option>
-                            <option th:value="BPositive">B Positive</option>
-                            <option th:value="ABNegative">AB Negative</option>
-                            <option th:value="ABPositive">AB Positive</option>
+                            <option th:value="O_Negative">O Negative</option>
+                            <option th:value="O_Positive">O Positive</option>
+                            <option th:value="A_Negative">A Negative</option>
+                            <option th:value="A_Positive">A Positive</option>
+                            <option th:value="B_Negative">B Negative</option>
+                            <option th:value="B_Positive">B Positive</option>
+                            <option th:value="AB_Negative">AB Negative</option>
+                            <option th:value="AB_Positive">AB Positive</option>
                         </select>
                     </div>
                     <div class="mb-3">
@@ -186,37 +186,37 @@
                 <form th:action="@{|/ledger/medical/${medicalInfo.id}/edit|}" th:method="post" th:object="${medicalInfo}">
                     <div class="mb-3">
                         <label for="willLocation" class="form-label">Will Location</label>
-                        <input type="text" th:field="*{willLocation}" class="form-control" id="willLocation">
+                        <input type="text" th:field="*{willLocation}" class="form-control" id="editWillLocation">
                     </div>
                     <div class="mb-3">
                         <label for="poaDocLocation" class="form-label">Power Of Attorney Document Location</label>
-                        <input type="text" th:field="*{POADocLocation}" class="form-control" id="poaDocLocation">
+                        <input type="text" th:field="*{POADocLocation}" class="form-control" id="editPoaDocLocation">
                     </div>
                     <div class="mb-3">
                         <label for="dnrDocLocation" class="form-label">Do Not Resuscitate Document Location</label>
-                        <input type="text" th:field="*{DNROrderLocation}" class="form-control" id="dnrDocLocation">
+                        <input type="text" th:field="*{DNROrderLocation}" class="form-control" id="editDnrDocLocation">
                     </div>
                     <div class="mb-3">
                         <label for="bloodType" class="form=label">Blood Type</label>
-                        <select name="bloodType" th:field="*{bloodType}" class="form-select" id="bloodType">
+                        <select name="bloodType" th:field="*{bloodType}" class="form-select" id="editBloodType">
                             <option disabled th:value="disabled">Select blood type</option>
-                            <option th:value="ONegative">O Negative</option>
-                            <option th:value="OPositive">O Positive</option>
-                            <option th:value="ANegative">A Negative</option>
-                            <option th:value="APositive">A Positive</option>
-                            <option th:value="BNegative">B Negative</option>
-                            <option th:value="BPositive">B Positive</option>
-                            <option th:value="ABNegative">AB Negative</option>
-                            <option th:value="ABPositive">AB Positive</option>
+                            <option th:value="O_Negative">O Negative</option>
+                            <option th:value="O_Positive">O Positive</option>
+                            <option th:value="A_Negative">A Negative</option>
+                            <option th:value="A_Positive">A Positive</option>
+                            <option th:value="B_Negative">B Negative</option>
+                            <option th:value="B_Positive">B Positive</option>
+                            <option th:value="AB_Negative">AB Negative</option>
+                            <option th:value="AB_Positive">AB Positive</option>
                         </select>
                     </div>
                     <div class="mb-3">
                         <label for="medicalConditions" class="form-label">Medical Conditions</label>
-                        <input type="text" th:field="*{medicalConditions}" class="form-control" id="medicalConditions">
+                        <input type="text" th:field="*{medicalConditions}" class="form-control" id="editMedicalConditions">
                     </div>
                     <div class="mb-3">
                         <label for="healthInsurance" class="form-label">Health Insurance</label>
-                        <input type="text" th:field="*{healthInsuranceName}" class="form-control" id="healthInsurance">
+                        <input type="text" th:field="*{healthInsuranceName}" class="form-control" id="editHealthInsurance">
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
