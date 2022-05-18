@@ -1,6 +1,5 @@
 package com.finalledger.models;
 
-
 import javax.persistence.*;
 
 @Entity

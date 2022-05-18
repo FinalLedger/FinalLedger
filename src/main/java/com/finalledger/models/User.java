@@ -1,15 +1,11 @@
 package com.finalledger.models;
 
-
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 
-
-import javax.annotation.Resource;
 import javax.persistence.*;
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
@@ -33,10 +29,6 @@ public class User {
 
     @Column(nullable = false)
     private boolean isMainUser;
-
-    @Enumerated(EnumType.STRING)
-    @Column(name = "auth_type")
-    private AuthenticationType authType;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user", fetch = FetchType.EAGER, orphanRemoval = true)
     private List<Contact> contacts;
@@ -93,13 +85,12 @@ public class User {
         this.isMainUser = isMainUser;
     }
 
-    public User(Long id, String username, String email, String password, boolean isMainUser, AuthenticationType authType, List<Contact> contacts, List<Documents> documents, List<CreditCard> creditCards, List<FinancialInvestment> financialInvestments, List<InsurancePolicy> insurancePolicy, List<BankAccounts> bankAccounts, Collection<SiteContact> contactListOwner, Collection<SiteContact> contactListEntity, Collection<Message> senders, Collection<Message> receivers) {
+    public User(Long id, String username, String email, String password, boolean isMainUser, List<Contact> contacts, List<Documents> documents, List<CreditCard> creditCards, List<FinancialInvestment> financialInvestments, List<InsurancePolicy> insurancePolicy, List<BankAccounts> bankAccounts, Collection<SiteContact> contactListOwner, Collection<SiteContact> contactListEntity, Collection<Message> senders, Collection<Message> receivers) {
         this.id = id;
         this.username = username;
         this.email = email;
         this.password = password;
         this.isMainUser = isMainUser;
-        this.authType = authType;
         this.contacts = contacts;
         this.documents = documents;
         this.creditCards = creditCards;
@@ -112,12 +103,11 @@ public class User {
         this.receivers = receivers;
     }
 
-    public User(String username, String email, String password, boolean isMainUser, AuthenticationType authType, List<Contact> contacts, List<Documents> documents, List<CreditCard> creditCards, List<FinancialInvestment> financialInvestments, List<InsurancePolicy> insurancePolicy, List<BankAccounts> bankAccounts, Collection<SiteContact> contactListOwner, Collection<SiteContact> contactListEntity, Collection<Message> senders, Collection<Message> receivers) {
+    public User(String username, String email, String password, boolean isMainUser, List<Contact> contacts, List<Documents> documents, List<CreditCard> creditCards, List<FinancialInvestment> financialInvestments, List<InsurancePolicy> insurancePolicy, List<BankAccounts> bankAccounts, Collection<SiteContact> contactListOwner, Collection<SiteContact> contactListEntity, Collection<Message> senders, Collection<Message> receivers) {
         this.username = username;
         this.email = email;
         this.password = password;
         this.isMainUser = isMainUser;
-        this.authType = authType;
         this.contacts = contacts;
         this.documents = documents;
         this.creditCards = creditCards;
@@ -136,7 +126,6 @@ public class User {
         email = copy.email;
         password = copy.password;
         isMainUser = copy.isMainUser;
-        authType = copy.authType;
         contacts = copy.contacts;
         documents = copy.documents;
         creditCards = copy.creditCards;
@@ -187,14 +176,6 @@ public class User {
 
     public void setMainUser(boolean mainUser) {
         isMainUser = mainUser;
-    }
-
-    public AuthenticationType getAuthType() {
-        return authType;
-    }
-
-    public void setAuthType(AuthenticationType authType) {
-        this.authType = authType;
     }
 
     public List<Contact> getContacts() {
