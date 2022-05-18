@@ -38,24 +38,18 @@ public class ProfileController {
         if (user.isMainUser()){
             mainUserMessage = "Main User";
         } else {
-            mainUserMessage = "Guest User";
+            mainUserMessage = "Basic User";
         }
 
         List <User> userList = userDao.findAll();
         Collection<SiteContact> trustedUserList = siteContactDao.findContactsByOwner_userIs(persistUser.getId());
-        System.out.println("Sanity test");
 
+        System.out.println("Sanity test");
         System.out.println(trustedUserList);
 
         trustedUserList.forEach(contact ->{
             System.out.println("contact = " + contact.getAdded_user_id().getUsername());
         });
-
-//        boolean contactAlready = !siteContactDao.findByOwner_userAndAdded_user_idExists(id, persistUser.getId()).isEmpty();
-
-//        model.addAttribute("contactAlready", contactAlready);
-
-
 
         model.addAttribute("messagingDisplay", false);
         model.addAttribute("message", new Message());
@@ -63,7 +57,6 @@ public class ProfileController {
         model.addAttribute("user", user);
         model.addAttribute("userList", userList);
         model.addAttribute("trustedUsers", trustedUserList);
-
 
         return "users/profile";
     }
@@ -109,5 +102,4 @@ public class ProfileController {
         return "redirect:/profile";
 
     }
-
 }
