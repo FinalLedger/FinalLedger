@@ -1,8 +1,10 @@
 package com.finalledger.controllers;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.context.SecurityContextHolder;
 
+import org.springframework.security.oauth2.client.registration.ClientRegistrationRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,8 +21,8 @@ public class AuthenticationController {
     private static String authorizationRequestBaseUri = "oauth2/authorization";
     Map<String, String> oauth2AuthenticationUrls = new HashMap<>();
 
-//    @Autowired
-//    private ClientRegistrationRepository clientRegistrationRepository;
+    @Autowired
+    private ClientRegistrationRepository clientRegistrationRepository;
 
     @Value("${googleAPI}")
     public String googleAPIKey;
