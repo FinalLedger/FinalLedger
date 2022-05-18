@@ -45,6 +45,7 @@ public class UserPersonalController {
 
     @GetMapping("/ledger/{id}/personal")
     public String showConnectionPersonal(@PathVariable long id, Model model) {
+        User mainUser = userDao.getUserById(id);
         PersonalInformation personalInfo = userPersonalDao.findByUserId(id);
         if (personalInfo == null) {
             model.addAttribute("existingInfo", false);
@@ -53,6 +54,7 @@ public class UserPersonalController {
             model.addAttribute("personalInfo", personalInfo);
         }
         model.addAttribute("mainUserId", id);
+        model.addAttribute("mainUserName", mainUser.getUsername());
         model.addAttribute("isGuestUser", true);
         return "ledger/personal";
     }

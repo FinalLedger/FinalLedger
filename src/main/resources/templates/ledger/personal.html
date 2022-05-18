@@ -19,7 +19,8 @@
 
 <div class="container">
     <br>
-    <h1>My Final Ledger</h1>
+    <h1 th:if="${!isGuestUser}">My Final Ledger</h1>
+    <h1 th:if="${isGuestUser}"><span th:text="${mainUserName}">username</span>'s Final Ledger</h1>
     <hr>
     <ul th:if="${!isGuestUser}" class="nav nav-tabs">
         <li class="nav-item">

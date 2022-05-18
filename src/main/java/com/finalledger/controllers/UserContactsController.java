@@ -46,14 +46,14 @@ public class UserContactsController {
     public String showConnectionContacts(@PathVariable long id, Model model) {
         User mainUser = userDao.getUserById(id);
         List<Contact> contactsList = mainUser.getContacts();
-        // below throws error
         if (contactsList.isEmpty()) {
-            model.addAttribute("existingInfo", false);
+            model.addAttribute("existingList", false);
         } else {
-            model.addAttribute("existingInfo", true);
+            model.addAttribute("existingList", true);
             model.addAttribute("contactsList", contactsList);
         }
         model.addAttribute("mainUserId", id);
+        model.addAttribute("mainUserName", mainUser.getUsername());
         model.addAttribute("isGuestUser", true);
         return "ledger/contacts";
     }
