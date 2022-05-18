@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import java.security.Principal;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
@@ -101,5 +101,23 @@ public class ProfileController {
 
         return "redirect:/profile";
 
+    }
+
+    @GetMapping("/contactSearch")
+    public String contactSearch(Model model) {
+
+        model.addAttribute("contactSearch", new User());
+
+        return "redirect:/profile";
+    }
+
+    @PostMapping("/contactSearch")
+    public String lectureSearch(Model model, String email) {
+
+        User foundEmail = userDao.findByEmail(email);
+
+        model.addAttribute("foundEmail",  foundEmail);
+
+        return "redirect:/profile";
     }
 }
