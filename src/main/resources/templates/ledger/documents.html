@@ -12,9 +12,10 @@
 
 <div class="container">
     <br>
-    <h1>My Final Ledger</h1>
+    <h1 th:if="${!isGuestUser}">My Final Ledger</h1>
+    <h1 th:if="${isGuestUser}"><span th:text="${mainUserName}">username</span>'s Final Ledger</h1>
     <hr>
-    <ul class="nav nav-tabs">
+    <ul th:if="${!isGuestUser}" class="nav nav-tabs">
         <li class="nav-item">
             <a class="nav-link" href="/ledger/personal">Personal</a>
         </li>
@@ -31,16 +32,35 @@
             <a class="nav-link" href="/ledger/financial">Financial</a>
         </li>
     </ul>
+    <ul th:if="${isGuestUser}" class="nav nav-tabs">
+        <li class="nav-item">
+            <a class="nav-link" th:href="@{|/ledger/${mainUserId}/personal|}">Personal</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" th:href="@{|/ledger/${mainUserId}/medical|}">Medical</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" th:href="@{|/ledger/${mainUserId}/contacts|}">Contacts</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">Documents</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" th:href="@{|/ledger/${mainUserId}/financial|}">Financial</a>
+        </li>
+    </ul>
     <div id="infoView" class="container">
         <br>
         <div class="container">
             <div class="d-flex justify-content-between">
                 <h3>Documents</h3>
-                <div class="d-flex align-items-center">
-                    <button type="button" class="btn btn-sm btn-primary" data-bs-toggle="modal"
-                            data-bs-target="#formModal">
-                        Upload Document
-                    </button>
+                <div th:if="${!isGuestUser}">
+                    <div class="d-flex align-items-center">
+                        <button type="button" class="btn btn-sm btn-primary" data-bs-toggle="modal"
+                                data-bs-target="#formModal">
+                            Upload Document
+                        </button>
+                    </div>
                 </div>
             </div>
             <hr>
@@ -55,10 +75,9 @@
                                     Document Title</h5>
                                 <h5 th:if="${document.getTitle() == ''}" class="card-title text-muted">Untitled</h5>
                                 <a th:if="${document.getDocument_upload() != ''}"
-                                   th:href="${document.getDocument_upload()}"
-                                   th:text="${document.getDocument_upload()}" target="_blank">Doc upload string</a>
+                                   th:href="${document.getDocument_upload()}" target="_blank">View Document</a>
                             </div>
-                            <ul class="list-group list-group-flush">
+                            <ul th:if="${!isGuestUser}" class="list-group list-group-flush">
                                 <li class="list-group-item d-flex justify-content-end">
                                     <form th:action="@{|/ledger/documents/${document.id}/delete|}" method="post">
                                         <button type="submit" class="btn btn-sm btn-danger">Delete</button>
@@ -73,7 +92,7 @@
         <br>
     </div>
 </div>
-<div class="modal fade" id="formModal" tabindex="-1" aria-labelledby="formModalLabel" aria-hidden="true">
+<div th:if="${!isGuestUser}" class="modal fade" id="formModal" tabindex="-1" aria-labelledby="formModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">

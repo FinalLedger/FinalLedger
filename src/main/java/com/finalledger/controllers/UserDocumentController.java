@@ -45,6 +45,24 @@ public class UserDocumentController {
         }
         model.addAttribute("userDocument", new Documents());
         model.addAttribute("fileStackAPI", fileStackAPIKey);
+        model.addAttribute("isGuestUser", false);
+        return "ledger/documents";
+    }
+
+    @GetMapping("/ledger/{id}/documents")
+    public String showConnectionContacts(@PathVariable long id, Model model) {
+        User mainUser = userDao.getUserById(id);
+        List<Documents> userDocs = mainUser.getDocuments();
+        if (userDocs.isEmpty()) {
+            model.addAttribute("existingList", false);
+        } else {
+            model.addAttribute("existingList", true);
+            model.addAttribute("userDocs", userDocs);
+        }
+        model.addAttribute("mainUserId", id);
+        model.addAttribute("mainUserName", mainUser.getUsername());
+        model.addAttribute("isGuestUser", true);
+        model.addAttribute("fileStackAPI", fileStackAPIKey);
         return "ledger/documents";
     }
 
