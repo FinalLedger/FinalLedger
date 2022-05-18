@@ -214,11 +214,11 @@
                         <label for="citizenship" class="form-label">Citizenship</label>
                         <select name="citizenship" th:field="*{citizenship}" class="form-select" id="citizenship">
                             <option disabled th:value="disabled">Select citizenship status</option>
-                            <option th:value="citizen">US Citizen</option>
-                            <option th:value="LPR">Lawful Permanent Resident</option>
-                            <option th:value="visitor">Temporary Visitor</option>
-                            <option th:value="undocImmigrant">Undocumented Immigrant</option>
-                            <option th:value="DNWTA">Do Not Wish To Answer</option>
+                            <option th:value="US_Citizen">US Citizen</option>
+                            <option th:value="Lawful_Permanent_Resident">Lawful Permanent Resident</option>
+                            <option th:value="Visitor">Temporary Visitor</option>
+                            <option th:value="Undocumented_Immigrant">Undocumented Immigrant</option>
+                            <option th:value="Do_Not_Wish_To_Answer">Do Not Wish To Answer</option>
                         </select>
                     </div>
                     <div class="mb-3">
@@ -230,16 +230,16 @@
                         <select name="militaryStatus" th:field="*{militaryStatus}" class="form-select"
                                 id="militaryStatus">
                             <option disabled th:value="disabled">Select military status</option>
-                            <option th:value="nonMilitary">No Military Service</option>
-                            <option th:value="activeDuty">Active-duty</option>
-                            <option th:value="honorableDischarge">Honorable Discharge</option>
-                            <option th:value="generalDischarge">General Discharge</option>
-                            <option th:value="entryLevelSeparation">Entry-Level Separation</option>
-                            <option th:value="medicalDischarge">Medical Discharge</option>
-                            <option th:value="OTHD">Other Than Honorable Discharge</option>
-                            <option th:value="badConduct">Bad Conduct Discharge</option>
-                            <option th:value="dishonorableDischarge.">Dishonorable Discharge</option>
-                            <option th:value="dismissal">Dismissal (Officer Discharge)</option>
+                            <option th:value="Non-Military">No Military Service</option>
+                            <option th:value="Active_Duty">Active-duty</option>
+                            <option th:value="Honorable_Discharge">Honorable Discharge</option>
+                            <option th:value="General_Discharge">General Discharge</option>
+                            <option th:value="Entry_Level_Separation">Entry-Level Separation</option>
+                            <option th:value="Medical_Discharge">Medical Discharge</option>
+                            <option th:value="Other_Than_Honorable_Discharge">Other Than Honorable Discharge</option>
+                            <option th:value="Bad_Conduct">Bad Conduct Discharge</option>
+                            <option th:value="Dishonorable_Discharge.">Dishonorable Discharge</option>
+                            <option th:value="Dismissal">Dismissal (Officer Discharge)</option>
                         </select>
                     </div>
 
