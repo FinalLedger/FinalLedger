@@ -20,8 +20,8 @@ public class AuthenticationController {
     private static String authorizationRequestBaseUri = "oauth2/authorization";
     Map<String, String> oauth2AuthenticationUrls = new HashMap<>();
 
-    @Autowired
-    private ClientRegistrationRepository clientRegistrationRepository;
+//    @Autowired
+//    private ClientRegistrationRepository clientRegistrationRepository;
 
     @Value("${googleAPI}")
     public String googleAPIKey;
