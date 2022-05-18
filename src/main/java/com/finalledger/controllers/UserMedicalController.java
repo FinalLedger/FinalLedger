@@ -45,6 +45,7 @@ public class UserMedicalController {
 
     @GetMapping("/ledger/{id}/medical")
     public String showConnectionMedical(@PathVariable long id, Model model) {
+        User mainUser = userDao.getUserById(id);
         MedicalInformation medicalInfo = userMedicalDao.findByUserId(id);
         if (medicalInfo == null) {
             model.addAttribute("existingInfo", false);
@@ -53,6 +54,7 @@ public class UserMedicalController {
             model.addAttribute("medicalInfo", medicalInfo);
         }
         model.addAttribute("mainUserId", id);
+        model.addAttribute("mainUserName", mainUser.getUsername());
         model.addAttribute("isGuestUser", true);
         return "ledger/medical";
     }
