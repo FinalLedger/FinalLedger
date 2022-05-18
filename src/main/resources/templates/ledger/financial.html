@@ -12,9 +12,10 @@
 
 <div class="container">
     <br>
-    <h1>My Final Ledger</h1>
+    <h1 th:if="${!isGuestUser}">My Final Ledger</h1>
+    <h1 th:if="${isGuestUser}"><span th:text="${mainUserName}">username</span>'s Final Ledger</h1>
     <hr>
-    <ul class="nav nav-tabs">
+    <ul th:if="${!isGuestUser}" class="nav nav-tabs">
         <li class="nav-item">
             <a class="nav-link" href="/ledger/personal">Personal</a>
         </li>
@@ -31,29 +32,48 @@
             <a class="nav-link active" aria-current="page" href="#">Financial</a>
         </li>
     </ul>
-<!-------------------------------------------------------Insurance---------------------------------------------------------------->
+    <ul th:if="${isGuestUser}" class="nav nav-tabs">
+        <li class="nav-item">
+            <a class="nav-link" th:href="@{|/ledger/${mainUserId}/personal|}">Personal</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" th:href="@{|/ledger/${mainUserId}/medical|}">Medical</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" th:href="@{|/ledger/${mainUserId}/contacts|}">Contacts</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" th:href="@{|/ledger/${mainUserId}/documents|}">Documents</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">Financial</a>
+        </li>
+    </ul>
+    <!-------------------------------------------------------Insurance---------------------------------------------------------------->
     <div id="infoView" class="container">
         <br>
         <div class="container">
             <div class="d-flex justify-content-between">
                 <h3>Insurance Policies</h3>
-                <div class="d-flex align-items-center">
-                    <button type="button" class="btn btn-sm btn-primary" data-bs-toggle="modal"
-                            data-bs-target="#insuranceModal">
-                        Enter info
-                    </button>
+                <div th:if="${!isGuestUser}">
+                    <div class="d-flex align-items-center">
+                        <button type="button" class="btn btn-sm btn-primary" data-bs-toggle="modal"
+                                data-bs-target="#insuranceModal">
+                            Enter info
+                        </button>
+                    </div>
                 </div>
-
             </div>
             <hr>
-<!------------------------------------------------------------------------------------------------------------------>
+            <!------------------------------------------------------------------------------------------------------------------>
             <div class="container">
                 <p th:if="${!existingInsurance}">No info has been added yet.</p>
                 <div th:if="${existingInsurance}" class="row row-cols-1 row-cols-md-3 g-4">
                     <div class="col" th:each="insurance : ${insuranceList}">
                         <div class="card h-100">
                             <div class="card-body">
-                                <h5 th:if="${insurance.getCompany() != ''}" class="card-title" th:text="${insurance.getCompany()}">Company</h5>
+                                <h5 th:if="${insurance.getCompany() != ''}" class="card-title"
+                                    th:text="${insurance.getCompany()}">Company</h5>
                                 <h5 th:if="${insurance.getCompany() == ''}" class="card-title text-muted">Unnamed</h5>
                             </div>
                             <ul class="list-group list-group-flush">
@@ -69,8 +89,9 @@
                                     <h6>Beneficiary</h6>
                                     <p th:text="${insurance.getBeneficiary()}">Beneficiary</p>
                                 </li>
-                                <li class="list-group-item d-flex justify-content-end">
-                                    <a th:href="@{|/ledger/insurancePolicy/${insurance.id}/edit|}" type="button" class="btn btn-sm btn-warning me-2">Edit</a>
+                                <li th:if="${!isGuestUser}" class="list-group-item d-flex justify-content-end">
+                                    <a th:href="@{|/ledger/insurancePolicy/${insurance.id}/edit|}" type="button"
+                                       class="btn btn-sm btn-warning me-2">Edit</a>
                                     <form th:action="@{|/ledger/insurancePolicy/${insurance.id}/delete|}" method="post">
                                         <button type="submit" class="btn btn-sm btn-danger">Delete</button>
                                     </form>
@@ -81,107 +102,117 @@
                 </div>
             </div>
         </div>
-<!-----------------------------------------------------Financial Investment------------------------------------------------------------->
+        <!-----------------------------------------------------Financial Investment------------------------------------------------------------->
         <div class="container">
             <div class="d-flex justify-content-between">
                 <h3>Financial Investment</h3>
-                <div class="d-flex align-items-center">
-                    <button type="button" class="btn btn-sm btn-primary" data-bs-toggle="modal"
-                            data-bs-target="#financialInvestmentModal">
-                        Enter info
-                    </button>
+                <div th:if="${!isGuestUser}">
+                    <div class="d-flex align-items-center">
+                        <button type="button" class="btn btn-sm btn-primary" data-bs-toggle="modal"
+                                data-bs-target="#financialInvestmentModal">
+                            Enter info
+                        </button>
+                    </div>
                 </div>
             </div>
             <hr>
-        <div class="container">
-            <p th:if="${!existingInvestment}">No info has been added yet.</p>
-            <div th:if="${existingInvestment}" class="row row-cols-1 row-cols-md-3 g-4">
-                <div class="col" th:each="financial : ${financialInvestmentList}">
-                    <div class="card h-100">
-                        <div class="card-body">
-                            <h5 th:if="${financial.getCompany() != ''}" class="card-title" th:text="${financial.getCompany()}">Company</h5>
-                            <h5 th:if="${financial.getCompany() == ''}" class="card-title text-muted">Unnamed</h5>
+            <div class="container">
+                <p th:if="${!existingInvestment}">No info has been added yet.</p>
+                <div th:if="${existingInvestment}" class="row row-cols-1 row-cols-md-3 g-4">
+                    <div class="col" th:each="financial : ${financialInvestmentList}">
+                        <div class="card h-100">
+                            <div class="card-body">
+                                <h5 th:if="${financial.getCompany() != ''}" class="card-title"
+                                    th:text="${financial.getCompany()}">Company</h5>
+                                <h5 th:if="${financial.getCompany() == ''}" class="card-title text-muted">Unnamed</h5>
+                            </div>
+                            <ul class="list-group list-group-flush">
+                                <li th:if="${financial.getCurrentValue() != ''}" class="list-group-item">
+                                    <h6>Current Value</h6>
+                                    <p th:text="${financial.getCurrentValue()}">Current Value</p>
+                                </li>
+                                <li th:if="${financial.getContactInfo() != ''}" class="list-group-item">
+                                    <h6>Contact Information</h6>
+                                    <p th:text="${financial.getContactInfo() }">Contact Information</p>
+                                </li>
+                                <li th:if="${financial.getBeneficiary() != ''}" class="list-group-item">
+                                    <h6>Beneficiary</h6>
+                                    <p th:text="${financial.getBeneficiary()}">Beneficiary</p>
+                                </li>
+                                <li th:if="${!isGuestUser}" class="list-group-item d-flex justify-content-end">
+                                    <a th:href="@{|/ledger/financial/${financial.id}/edit|}" type="button"
+                                       class="btn btn-sm btn-warning me-2">Edit</a>
+                                    <form th:action="@{|/ledger/financial/${financial.id}/delete|}" method="post">
+                                        <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+                                    </form>
+                                </li>
+                            </ul>
                         </div>
-                        <ul class="list-group list-group-flush">
-                            <li th:if="${financial.getCurrentValue() != ''}" class="list-group-item">
-                                <h6>Current Value</h6>
-                                <p th:text="${financial.getCurrentValue()}">Current Value</p>
-                            </li>
-                            <li th:if="${financial.getContactInfo() != ''}" class="list-group-item">
-                                <h6>Contact Information</h6>
-                                <p th:text="${financial.getContactInfo() }">Contact Information</p>
-                            </li>
-                            <li th:if="${financial.getBeneficiary() != ''}" class="list-group-item">
-                                <h6>Beneficiary</h6>
-                                <p th:text="${financial.getBeneficiary()}">Beneficiary</p>
-                            </li>
-                            <li class="list-group-item d-flex justify-content-end">
-                                <a th:href="@{|/ledger/financial/${financial.id}/edit|}" type="button" class="btn btn-sm btn-warning me-2">Edit</a>
-                                <form th:action="@{|/ledger/financial/${financial.id}/delete|}" method="post">
-                                    <button type="submit" class="btn btn-sm btn-danger">Delete</button>
-                                </form>
-                            </li>
-                        </ul>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-<!----------------------------------------------------------Bank Accounts-------------------------------------------------------->
+        <!----------------------------------------------------------Bank Accounts-------------------------------------------------------->
         <div class="container">
             <div class="d-flex justify-content-between">
                 <h3>Bank Accounts</h3>
-                <div class="d-flex align-items-center">
-                    <button type="button" class="btn btn-sm btn-primary" data-bs-toggle="modal"
-                            data-bs-target="#bankAccountModal">
-                        Enter info
-                    </button>
+                <div th:if="${!isGuestUser}">
+                    <div class="d-flex align-items-center">
+                        <button type="button" class="btn btn-sm btn-primary" data-bs-toggle="modal"
+                                data-bs-target="#bankAccountModal">
+                            Enter info
+                        </button>
+                    </div>
                 </div>
             </div>
             <hr>
-        <div class="container">
-            <p th:if="${!existingBankAccount}">No info has been added yet.</p>
-            <div th:if="${existingBankAccount}" class="row row-cols-1 row-cols-md-3 g-4">
-                <div class="col" th:each="bank : ${bankAccountsList}">
-                    <div class="card h-100">
-                        <div class="card-body">
-                            <h5 th:if="${bank.getContactInfo()!= ''}" class="card-title" th:text="${bank.getCompany()}">Company</h5>
-                            <h5 th:if="${bank.getContactInfo() == ''}" class="card-title text-muted">Unnamed</h5>
+            <div class="container">
+                <p th:if="${!existingBankAccount}">No info has been added yet.</p>
+                <div th:if="${existingBankAccount}" class="row row-cols-1 row-cols-md-3 g-4">
+                    <div class="col" th:each="bank : ${bankAccountsList}">
+                        <div class="card h-100">
+                            <div class="card-body">
+                                <h5 th:if="${bank.getContactInfo()!= ''}" class="card-title"
+                                    th:text="${bank.getCompany()}">Company</h5>
+                                <h5 th:if="${bank.getContactInfo() == ''}" class="card-title text-muted">Unnamed</h5>
+                            </div>
+                            <ul class="list-group list-group-flush">
+                                <li th:if="${bank.getContactInfo()!= ''}" class="list-group-item">
+                                    <h6>Contact Information</h6>
+                                    <p th:text="${bank.getContactInfo()}">Contact Information</p>
+                                </li>
+                                <li th:if="${bank.getCheckingAccount() != ''}" class="list-group-item">
+                                    <h6>Checking Account</h6>
+                                    <p th:text="${bank.getCheckingAccount() }">Checking Account</p>
+                                </li>
+                                <li th:if="${bank.getSavingAccount() != ''}" class="list-group-item">
+                                    <h6>Saving Account</h6>
+                                    <p th:text="${bank.getSavingAccount()}">Saving Account</p>
+                                </li>
+                                <li th:if="${!isGuestUser}" class="list-group-item d-flex justify-content-end">
+                                    <a th:href="@{|/ledger/bankAccounts/${bank.id}/edit|}" type="button"
+                                       class="btn btn-sm btn-warning me-2">Edit</a>
+                                    <form th:action="@{|/ledger/bankAccounts/${bank.id}/delete|}" method="post">
+                                        <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+                                    </form>
+                                </li>
+                            </ul>
                         </div>
-                        <ul class="list-group list-group-flush">
-                            <li th:if="${bank.getContactInfo()!= ''}" class="list-group-item">
-                                <h6>Contact Information</h6>
-                                <p th:text="${bank.getContactInfo()}">Contact Information</p>
-                            </li>
-                            <li th:if="${bank.getCheckingAccount() != ''}" class="list-group-item">
-                                <h6>Checking Account</h6>
-                                <p th:text="${bank.getCheckingAccount() }">Checking Account</p>
-                            </li>
-                            <li th:if="${bank.getSavingAccount() != ''}" class="list-group-item">
-                                <h6>Saving Account</h6>
-                                <p th:text="${bank.getSavingAccount()}">Saving Account</p>
-                            </li>
-                            <li class="list-group-item d-flex justify-content-end">
-                                <a th:href="@{|/ledger/bankAccounts/${bank.id}/edit|}" type="button" class="btn btn-sm btn-warning me-2">Edit</a>
-                                <form th:action="@{|/ledger/bankAccounts/${bank.id}/delete|}" method="post">
-                                    <button type="submit" class="btn btn-sm btn-danger">Delete</button>
-                                </form>
-                            </li>
-                        </ul>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-<!----------------------------------------------------------------Credit Card------------------------------------------------>
+        <!----------------------------------------------------------------Credit Card------------------------------------------------>
         <div class="container">
             <div class="d-flex justify-content-between">
                 <h3>Credit Card</h3>
-                <div class="d-flex align-items-center">
-                    <button type="button" class="btn btn-sm btn-primary" data-bs-toggle="modal"
-                            data-bs-target="#creditCardModal">
-                        Enter info
-                    </button>
+                <div th:if="${!isGuestUser}">
+                    <div class="d-flex align-items-center">
+                        <button type="button" class="btn btn-sm btn-primary" data-bs-toggle="modal"
+                                data-bs-target="#creditCardModal">
+                            Enter info
+                        </button>
+                    </div>
                 </div>
             </div>
             <hr>
@@ -191,7 +222,8 @@
                     <div class="col" th:each="credit : ${creditCardList}">
                         <div class="card h-100">
                             <div class="card-body">
-                                <h5 th:if="${credit.getType()!= ''}" class="card-title" th:text="${credit.getType()}">Type</h5>
+                                <h5 th:if="${credit.getType()!= ''}" class="card-title" th:text="${credit.getType()}">
+                                    Type</h5>
                                 <h5 th:if="${credit.getType() == ''}" class="card-title text-muted">Unnamed</h5>
                             </div>
                             <ul class="list-group list-group-flush">
@@ -199,8 +231,9 @@
                                     <h6>Credit Card Issuer</h6>
                                     <p th:text="${credit.getIssuer()}">Credit Card Issuer</p>
                                 </li>
-                                <li class="list-group-item d-flex justify-content-end">
-                                    <a th:href="@{|/ledger/creditCard/${credit.id}/edit|}" type="button" class="btn btn-sm btn-warning me-2">Edit</a>
+                                <li th:if="${!isGuestUser}" class="list-group-item d-flex justify-content-end">
+                                    <a th:href="@{|/ledger/creditCard/${credit.id}/edit|}" type="button"
+                                       class="btn btn-sm btn-warning me-2">Edit</a>
                                     <form th:action="@{|/ledger/creditCard/${credit.id}/delete|}" method="post">
                                         <button type="submit" class="btn btn-sm btn-danger">Delete</button>
                                     </form>
@@ -211,9 +244,12 @@
                 </div>
             </div>
         </div>
+        <br>
     </div>
+</div>
 <!------------------------------------------------------ Insurance Info --------------------------------------------------------------------------->
-<div class="modal fade" id="insuranceModal" tabindex="-1" aria-labelledby="insuranceModalLabel" aria-hidden="true">
+<div th:if="${!isGuestUser}" class="modal fade" id="insuranceModal" tabindex="-1"
+     aria-labelledby="insuranceModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
@@ -247,9 +283,10 @@
         </div>
     </div>
 </div>
-</div>
 <!------------------------------------------------------ Financial Info --------------------------------------------------------------------------->
-<div class="modal fade" id="financialInvestmentModal" tabindex="-1" aria-labelledby="financialInvestmentModalLabel" aria-hidden="true">
+<div th:if="${!isGuestUser}" class="modal fade" id="financialInvestmentModal" tabindex="-1"
+     aria-labelledby="financialInvestmentModalLabel"
+     aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
@@ -284,7 +321,8 @@
     </div>
 </div>
 <!---------------------------------------------------------- Bank Account Info ---------------------------------------------------------------------->
-<div class="modal fade" id="bankAccountModal" tabindex="-1" aria-labelledby="bankAccountModalLabel" aria-hidden="true">
+<div th:if="${!isGuestUser}" class="modal fade" id="bankAccountModal" tabindex="-1"
+     aria-labelledby="bankAccountModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
@@ -319,32 +357,33 @@
     </div>
 </div>
 <!---------------------------------------------------------- Credit Card Info ---------------------------------------------------------------------->
-    <div class="modal fade" id="creditCardModal" tabindex="-1" aria-labelledby="creditCardModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="creditCardModalLabel">Credit Card</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <form th:action="@{/ledger/creditCard}" th:method="post" th:object="${newCreditCard}">
-                        <div class="mb-3">
-                            <label for="credCardType" class="form-label">Credit Card Type</label>
-                            <input type="text" th:field="*{type}" class="form-control" id="credCardType">
-                        </div>
-                        <div class="mb-3">
-                            <label for="credIssuer" class="form-label">Credit Card Issuer</label>
-                            <input type="text" th:field="*{issuer}" class="form-control" id="credIssuer">
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="submit" class="btn btn-primary">Submit</button>
-                        </div>
-                    </form>
-                </div>
+<div th:if="${!isGuestUser}" class="modal fade" id="creditCardModal" tabindex="-1"
+     aria-labelledby="creditCardModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="creditCardModalLabel">Credit Card</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form th:action="@{/ledger/creditCard}" th:method="post" th:object="${newCreditCard}">
+                    <div class="mb-3">
+                        <label for="credCardType" class="form-label">Credit Card Type</label>
+                        <input type="text" th:field="*{type}" class="form-control" id="credCardType">
+                    </div>
+                    <div class="mb-3">
+                        <label for="credIssuer" class="form-label">Credit Card Issuer</label>
+                        <input type="text" th:field="*{issuer}" class="form-control" id="credIssuer">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
+</div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
         crossorigin="anonymous"></script>
