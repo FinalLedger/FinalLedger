@@ -9,12 +9,7 @@
     <link rel="stylesheet" th:href="@{/css/ledger.css}">
 </head>
 <body>
-<div th:if="${!isGuestUser}">
-    <nav th:replace="/partials/navbar :: userNav"></nav>
-</div>
-<div th:if="${isGuestUser}">
-    <nav th:replace="/partials/navbar :: guestNav"></nav>
-</div>
+<nav th:replace="/partials/navbar :: userNav"></nav>
 <div class="subheader"></div>
 
 <div class="container">
@@ -73,9 +68,10 @@
                                 data-bs-target="#editFormModal">
                             Edit
                         </button>
-                        <form th:action="@{|/ledger/personal/${personalInfo.id}/delete|}" method="post" th:object="${personalInfo}">
+                        <form th:action="@{|/ledger/personal/${personalInfo.id}/delete|}" method="post"
+                              th:object="${personalInfo}">
                             <button type="submit" class="btn btn-sm btn-danger" data-bs-toggle="modal">
-                                Delete
+                                Reset
                             </button>
                         </form>
                     </div>
@@ -84,81 +80,91 @@
             <hr>
             <div class="container">
                 <h5>Legal Name</h5>
-                <hr>
                 <p th:if="${!existingInfo}">No info has been added yet</p>
                 <div th:if="${existingInfo}">
                     <p th:if="${personalInfo.getLegalName() == ''}">No info has been added yet</p>
-                    <p th:if="${personalInfo.getLegalName() != null}" th:text="${personalInfo.getLegalName()}">Legal Name</p>
+                    <p th:if="${personalInfo.getLegalName() != null}" th:text="${personalInfo.getLegalName()}">Legal
+                        Name</p>
                 </div>
-                <h5>Maiden Name</h5>
                 <hr>
+                <h5>Maiden Name</h5>
                 <p th:if="${!existingInfo}">No info has been added yet</p>
                 <div th:if="${existingInfo}">
                     <p th:if="${personalInfo.getMaidenName() == ''}">No info has been added yet</p>
-                    <p th:if="${personalInfo.getMaidenName() != null}" th:text="${personalInfo.getMaidenName()}">Maiden Name</p>
+                    <p th:if="${personalInfo.getMaidenName() != null}" th:text="${personalInfo.getMaidenName()}">Maiden
+                        Name</p>
                 </div>
-                <h5>Primary Address</h5>
                 <hr>
+                <h5>Primary Address</h5>
                 <p th:if="${!existingInfo}">No info has been added yet</p>
                 <div th:if="${existingInfo}">
                     <p th:if="${personalInfo.getPrimaryAddress() == ''}">No info has been added yet</p>
-                    <p th:if="${personalInfo.getPrimaryAddress() != null}" th:text="${personalInfo.getPrimaryAddress()}">Primary Address</p>
+                    <p th:if="${personalInfo.getPrimaryAddress() != null}"
+                       th:text="${personalInfo.getPrimaryAddress()}">Primary Address</p>
                 </div>
-                <h5>Phone Number</h5>
                 <hr>
+                <h5>Phone Number</h5>
                 <p th:if="${!existingInfo}">No info has been added yet</p>
                 <div th:if="${existingInfo}">
                     <p th:if="${personalInfo.getPhoneNumber() == ''}">No info has been added yet</p>
-                    <p th:if="${personalInfo.getPhoneNumber() != null}" th:text="${personalInfo.getPhoneNumber()}">Phone Number</p>
+                    <p th:if="${personalInfo.getPhoneNumber() != null}" th:text="${personalInfo.getPhoneNumber()}">Phone
+                        Number</p>
                 </div>
-                <h5>Birth Place</h5>
                 <hr>
+                <h5>Birth Place</h5>
                 <p th:if="${!existingInfo}">No info has been added yet</p>
                 <div th:if="${existingInfo}">
                     <p th:if="${personalInfo.getBirthPlace() == ''}">No info has been added yet</p>
-                    <p th:if="${personalInfo.getBirthPlace() != null}" th:text="${personalInfo.getBirthPlace()}">Birth Place</p>
+                    <p th:if="${personalInfo.getBirthPlace() != null}" th:text="${personalInfo.getBirthPlace()}">Birth
+                        Place</p>
                 </div>
-                <h5>Marital Status</h5>
                 <hr>
+                <h5>Marital Status</h5>
                 <p th:if="${!existingInfo}">No info has been added yet</p>
                 <div th:if="${existingInfo}">
                     <p th:if="${personalInfo.getMaritalStatus() == ''}">No info has been added yet</p>
-                    <p th:if="${personalInfo.getMaritalStatus() != null}" th:text="${personalInfo.getMaritalStatus()}">Marital Status</p>
+                    <p th:if="${personalInfo.getMaritalStatus() != null}" th:text="${personalInfo.getMaritalStatus()}">
+                        Marital Status</p>
                 </div>
-                <h5>Occupation</h5>
                 <hr>
+                <h5>Occupation</h5>
                 <p th:if="${!existingInfo}">No info has been added yet</p>
                 <div th:if="${existingInfo}">
                     <p th:if="${personalInfo.getOccupation() == ''}">No info has been added yet</p>
-                    <p th:if="${personalInfo.getOccupation() != null}" th:text="${personalInfo.getOccupation()}">Occupation</p>
+                    <p th:if="${personalInfo.getOccupation() != null}" th:text="${personalInfo.getOccupation()}">
+                        Occupation</p>
                 </div>
-                <h5>Citizenship</h5>
                 <hr>
+                <h5>Citizenship</h5>
                 <p th:if="${!existingInfo}">No info has been added yet</p>
                 <div th:if="${existingInfo}">
                     <p th:if="${personalInfo.getCitizenship() == ''}">No info has been added yet</p>
-                    <p th:if="${personalInfo.getCitizenship() != null}" th:text="${personalInfo.getCitizenship()}">Citizenship</p>
+                    <p th:if="${personalInfo.getCitizenship() != null}" th:text="${personalInfo.getCitizenship()}">
+                        Citizenship</p>
                 </div>
-                <h5>Religion</h5>
                 <hr>
+                <h5>Religion</h5>
                 <p th:if="${!existingInfo}">No info has been added yet</p>
                 <div th:if="${existingInfo}">
                     <p th:if="${personalInfo.getReligion() == ''}">No info has been added yet</p>
-                    <p th:if="${personalInfo.getReligion() != null}" th:text="${personalInfo.getReligion()}">Religion</p>
+                    <p th:if="${personalInfo.getReligion() != null}" th:text="${personalInfo.getReligion()}">
+                        Religion</p>
                 </div>
-                <h5>Military Status</h5>
                 <hr>
+                <h5>Military Status</h5>
                 <p th:if="${!existingInfo}">No info has been added yet</p>
                 <div th:if="${existingInfo}">
                     <p th:if="${personalInfo.getMilitaryStatus() == ''}">No info has been added yet</p>
-                    <p th:if="${personalInfo.getMilitaryStatus() != null}" th:text="${personalInfo.getMilitaryStatus()}">Military Status</p>
+                    <p th:if="${personalInfo.getMilitaryStatus() != null}"
+                       th:text="${personalInfo.getMilitaryStatus()}">Military Status</p>
                 </div>
             </div>
         </div>
         <br>
     </div>
 </div>
-<div th:if="${!isGuestUser}" class="modal fade" id="formModal" tabindex="-1" aria-labelledby="formModalLabel" aria-hidden="true">
+<div th:if="${!isGuestUser}" class="modal fade" id="formModal" tabindex="-1" aria-labelledby="formModalLabel"
+     aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
@@ -247,7 +253,8 @@
     </div>
 </div>
 <!---------------------------------------------------------------------------------------------------------------->
-<div th:if="${!isGuestUser}" class="modal fade" id="editFormModal" tabindex="-1" aria-labelledby="formModalLabel" aria-hidden="true">
+<div th:if="${!isGuestUser}" class="modal fade" id="editFormModal" tabindex="-1" aria-labelledby="formModalLabel"
+     aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
@@ -259,7 +266,8 @@
                       th:object="${personalInfo}">
                     <div class="mb-3">
                         <label for="legalName" class="form-label">Legal Name</label>
-                        <input type="text" name="legalName" th:field="*{legalName}" class="form-control" id="editLegalName">
+                        <input type="text" name="legalName" th:field="*{legalName}" class="form-control"
+                               id="editLegalName">
                     </div>
                     <div class="mb-3">
                         <label for="maidenName" class="form-label">Maiden Name</label>
@@ -281,7 +289,8 @@
                     </div>
                     <div class="mb-3">
                         <label for="maritalStatus" class="form-label">Marital Status</label>
-                        <select name="maritalStatus" th:field="*{maritalStatus}" class="form-select" id="editMaritalStatus">
+                        <select name="maritalStatus" th:field="*{maritalStatus}" class="form-select"
+                                id="editMaritalStatus">
                             <option disabled th:value="disabled">Select marital status</option>
                             <option th:value="Single">Single</option>
                             <option th:value="Married">Married</option>

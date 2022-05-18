@@ -67,38 +67,44 @@ public class FinancialController {
             model.addAttribute("creditCardList", creditCardList);
         }
         model.addAttribute("newCreditCard", new CreditCard());
+        model.addAttribute("isGuestUser", false);
+        return "ledger/financial";
+    }
 
-
-
-
-//        FinancialInvestment financeInfo = financialInvestmentDao.findByUserId(user.getId());
-//        InsurancePolicy insurancePolicy = insurancePolicyDao.findByUserId(user.getId());
-//        BankAccounts bankAccounts = bankAccountsDao.findByUserId(user.getId());
-//        CreditCard creditCard = creditCardDao.findByUserId(user.getId());
-////        if (financeInfo == null || insurancePolicy == null || bankAccounts == null || creditCard == null) {
-////        if (insurancePolicy == null) {
-////            model.addAttribute("existingInfo", false);
-//////            model.addAttribute("financeInfo", new FinancialInvestment());
-////            model.addAttribute("insurancePolicy", new InsurancePolicy());
-//////            model.addAttribute("bankAccounts", new BankAccounts());
-//////            model.addAttribute("creditCard", new CreditCard());
-////        } else {
-////            model.addAttribute("existingInfo", true);
-//////            model.addAttribute("financeInfo", financeInfo);
-////            model.addAttribute("insurancePolicy", new InsurancePolicy());
-//////            model.addAttribute("bankAccounts", new BankAccounts());
-//////            model.addAttribute("creditCard", new CreditCard());
-////        }
-////        return "ledger/financial";
-////    }
-//        List<InsurancePolicy> insurancePolicyList = user.getInsurancePolicy();
-//        if (insurancePolicyList.isEmpty()) {
-//            model.addAttribute("existingList", false);
-//        }else{
-//            model.addAttribute("existingList", true);
-//            model.addAttribute("insurancePolicyList", insurancePolicyList);
-//        }
-//        model.addAttribute("newInsurance", new InsurancePolicy());
+    @GetMapping("/ledger/{id}/financial")
+    public String showConnectionFinancial(@PathVariable long id, Model model) {
+        User mainUser = userDao.getUserById(id);
+        List<InsurancePolicy> insuranceList = mainUser.getInsurancePolicy();
+        if (insuranceList.isEmpty()) {
+            model.addAttribute("existingInsurance", false);
+        } else {
+            model.addAttribute("existingInsurance", true);
+            model.addAttribute("insuranceList", insuranceList);
+        }
+        List<FinancialInvestment> financialInvestmentList = mainUser.getFinancialInvestments();
+        if (financialInvestmentList.isEmpty()) {
+            model.addAttribute("existingInvestment", false);
+        } else {
+            model.addAttribute("existingInvestment", true);
+            model.addAttribute("financialInvestmentList", financialInvestmentList);
+        }
+        List<BankAccounts> bankAccountsList = mainUser.getBankAccounts();
+        if (bankAccountsList.isEmpty()) {
+            model.addAttribute("existingBankAccount", false);
+        } else {
+            model.addAttribute("existingBankAccount", true);
+            model.addAttribute("bankAccountsList", bankAccountsList);
+        }
+        List<CreditCard> creditCardList = mainUser.getCreditCards();
+        if (creditCardList.isEmpty()) {
+            model.addAttribute("existingCreditCard", false);
+        } else {
+            model.addAttribute("existingCreditCard", true);
+            model.addAttribute("creditCardList", creditCardList);
+        }
+        model.addAttribute("mainUserId", id);
+        model.addAttribute("mainUserName", mainUser.getUsername());
+        model.addAttribute("isGuestUser", true);
         return "ledger/financial";
     }
 
