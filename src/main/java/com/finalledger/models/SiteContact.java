@@ -3,6 +3,7 @@ package com.finalledger.models;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name="site_contacts")
@@ -24,6 +25,7 @@ public class SiteContact {
     @JsonManagedReference
 
     private User owner_user;
+
 
     public long getId() {
         return id;
@@ -48,4 +50,5 @@ public class SiteContact {
     public void setOwner_user(User owner_user) {
         this.owner_user = owner_user;
     }
+
 }
