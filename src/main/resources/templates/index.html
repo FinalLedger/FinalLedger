@@ -8,7 +8,7 @@
     <link rel="stylesheet" type="text/css" href="/css/indexStyle.css"/>
 </head>
 <body>
-    <nav th:replace="/partials/navbar :: visitorNav"></nav>
+    <nav th:replace="partials/navbar :: visitorNav"></nav>
     <div class="subheader"></div>
     <br>
     <th:block class="alert alert-dark alert-dismissible fade show" role="alert" sec:authorize="!isAuthenticated()" >
