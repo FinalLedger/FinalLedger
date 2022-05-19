@@ -1,13 +1,12 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="en"
-      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
           integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <title>Final Ledger Landing Page</title>
     <link rel="stylesheet" type="text/css" href="/css/indexStyle.css"/>
-    <title>My Account</title>
+    <title>My Profile</title>
 </head>
 <body>
 <nav th:replace="/partials/navbar :: userNav"></nav>
@@ -15,7 +14,7 @@
 <div class="container">
     <div class="row">
         <br>
-        <h2>My Account</h2>
+        <h2>My Profile</h2>
         <hr>
     </div>
     <br>
@@ -58,6 +57,32 @@
             </div>
         </div>
     </div>
+
+<!--    <div class="row">-->
+<!--        <div class="col-2 a-left"></div>-->
+<!--        <div class="col-10 a-right">-->
+<!--            <h2>Search for a Connection</h2>-->
+<!--            <form th:object="${foundEmail}" method="post">-->
+<!--                <div>-->
+<!--                    <label for="email">Search by Email for a Contact: </label>-->
+<!--                    <input type="text" id="email" name="email" th:field="*{}"-->
+<!--                           th:type="submit" value="Search" >-->
+<!--                </div>-->
+<!--            </form>-->
+
+<!--            <table>-->
+<!--                <tr>-->
+<!--                    <th>Contact</th>-->
+<!--                    <th>Email</th>-->
+<!--                </tr>-->
+<!--                <tr th:each="contact : ${contactSearch}">-->
+<!--                    <td><span th:text="${contact.getUsername()}" ></span></td>-->
+<!--                    <td><span th:text="${contact.getEmail()}" ></span></td>-->
+<!--                </tr>-->
+
+<!--            </table>-->
+<!--        </div>-->
+<!--    </div>-->
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
