@@ -98,13 +98,7 @@ form {
     height: 100%;
     text-align: center;
 }
-/*Fixes Google Sign In Bug*/
-form#form-two {
-    position: absolute;
-    top: 0;
-    right: 4.2vw;
-    z-index: 100000;
-}
+
 button:not(:disabled) {
     border: solid ghostwhite;
 }
@@ -148,10 +142,7 @@ input {
     height: 100%;
 }
 
-
 .overlay {
-    /*background: purple;*/
-    /*background: -webkit-linear-gradient(to right, #d12bff, #7d11e3);*/
     background: linear-gradient(to right, #8a898b, #aea5b6);
     background-repeat: no-repeat;
     background-size: cover;
@@ -162,7 +153,6 @@ input {
     height: 100%;
     width: 70%;
 }
-
 
 .overlay-panel {
     position: absolute;
@@ -183,22 +173,9 @@ input {
     right: 0;
 }
 
-
 .social-container {
     margin: 50px 0;
 }
-
-.social-container a {
-    border: 1px solid #DDDDDD;
-    border-radius: 50%;
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    margin: 0 5px;
-    height: 40px;
-    width: 40px;
-}
-
 
 .landing-container.h2 {
     margin-left: 23px;

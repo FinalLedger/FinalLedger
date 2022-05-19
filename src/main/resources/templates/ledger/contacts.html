@@ -7,12 +7,7 @@
     <link rel="stylesheet" th:href="@{/css/ledger.css}">
 </head>
 <body>
-<div th:if="${!isGuestUser}">
-    <nav th:replace="/partials/navbar :: userNav"></nav>
-</div>
-<div th:if="${isGuestUser}">
-    <nav th:replace="/partials/navbar :: guestNav"></nav>
-</div>
+<nav th:replace="/partials/navbar :: userNav"></nav>
 <div class="subheader"></div>
 
 <div class="container">
@@ -121,7 +116,8 @@
         <br>
     </div>
 </div>
-<div th:if="${!isGuestUser}" class="modal fade" id="formModal" tabindex="-1" aria-labelledby="formModalLabel" aria-hidden="true">
+<div th:if="${!isGuestUser}" class="modal fade" id="formModal" tabindex="-1" aria-labelledby="formModalLabel"
+     aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
