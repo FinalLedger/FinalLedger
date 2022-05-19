@@ -43,7 +43,7 @@ public class ProfileController {
 
         List <User> userList = userDao.findAll();
         Collection<SiteContact> trustedUserList = siteContactDao.findContactsByOwner_userIs(persistUser.getId());
-
+//        Collection<User> trustedUserList = siteContactDao.findAllByOwner_userIs(persistUser); //delete later -kh
         System.out.println("Sanity test");
         System.out.println(trustedUserList);
 
