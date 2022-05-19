@@ -1,4 +1,5 @@
-/*first carousel*/
+/*
+!*first carousel*!
 body {
     background-color:#333;
 }
@@ -7,7 +8,7 @@ div#carousel {
     background: #100000;
     padding-top: 10%;
     font-size:0;
-    /*margin-bottom: 3rem;*/
+    !*margin-bottom: 3rem;*!
     overflow: hidden;
 }
 figure {
@@ -68,7 +69,7 @@ base {
     color: whitesmoke;
     text-decoration: none;
 }
-/*about page banner img's*/
+!*about page banner img's*!
 .card img {
     height: 300px;
     width:  250px;
@@ -76,9 +77,9 @@ base {
 }
 .card-two {
     position: center;
-    /*
+    !*
     box-shadow: 0 0 8px #0a0a0a, 0 0 8px rgba(125, 17, 227, 0.58), 0 0 8px #ae00ff;
-    */
+    *!
 
 
 
@@ -87,7 +88,7 @@ base {
 .card {
 
     text-align: center;
-    /*border: solid purple 4px;*/
+    !*border: solid purple 4px;*!
 }
 
 .card-two {
@@ -137,4 +138,4 @@ color: silver;
 span.wrap {
     color: silver;
     font-size: larger;
-}
+}*/
