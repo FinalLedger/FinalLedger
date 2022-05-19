@@ -22,7 +22,7 @@ public class BankAccounts {
     @Column(nullable = false)
     private String savingAccount;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "main_user_id")
     private User user;
 

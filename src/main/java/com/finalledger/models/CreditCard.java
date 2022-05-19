@@ -16,7 +16,7 @@ public class CreditCard {
     @Column(nullable=false)
     private String issuer;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "main_user_id")
     private User user;
 
