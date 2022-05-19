@@ -5,7 +5,7 @@
     <title>Title</title>
 </head>
 <body>
-<nav th:replace="/partials/navbar :: userNav"></nav>
+<nav th:replace="partials/navbar :: userNav"></nav>
 
 <form th:action="@{/messages/send}" th:method="post" th:object="${message}">
     Message Body:
