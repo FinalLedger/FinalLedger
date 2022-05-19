@@ -1,6 +1,5 @@
 /*first carousel*/
 body {
-    background-color:#333;
 }
 div#carousel {
     perspective: 1200px;
@@ -13,11 +12,11 @@ div#carousel {
 figure {
     margin: 0 0 9rem;
 }
-.subheader {
+/*.subheader {
     width: 100%;
     height: 5px;
-    background-color: silver;
-}
+    background-color: silver;*/
+
 figure#spinner {
     transform-style: preserve-3d;
     height: 300px;
@@ -54,10 +53,6 @@ div#carousel ~ span {
     line-height: 0; }
 div#carousel ~ span:hover { color: #888; cursor: pointer; }
 
-base {
-
-    box-shadow: 0 0 8px #ae00ff, 0 0 8px #001eff, 0 0 8px #ae00ff;
-}
 
 .typewriter {
     font-weight:  bolder;
@@ -74,15 +69,7 @@ base {
     width:  250px;
     box-shadow: 5px 5px 15px 5px grey;
 }
-.card-two {
-    position: center;
-    /*
-    box-shadow: 0 0 8px #0a0a0a, 0 0 8px rgba(125, 17, 227, 0.58), 0 0 8px #ae00ff;
-    */
 
-
-
-}
 
 .card {
 
@@ -91,7 +78,8 @@ base {
 }
 
 .card-two {
-background-color: antiquewhite;
+background-color: #fff;
+    position: center;
 }
 #span-left{
     float: left;
@@ -101,14 +89,14 @@ background-color: antiquewhite;
 }
 
 .header-text{
-    background-color: #212121;
+    background-color: #404d60;
     text-align: left;
 }
 .btn-color {
     background-color: #b3cdd1 !important;
-    background-image: linear-gradient(315deg, #b3cdd1 0%, #9fa4c4 74%);
+    background: linear-gradient(to right, #172a43, #1f6570);
 }
-.navbar {
+/*.navbar {
     background-color: #b3cdd1 !important;
     background-image: linear-gradient(315deg, #b3cdd1 0%, #9fa4c4 74%);
 
@@ -116,25 +104,28 @@ background-color: antiquewhite;
 }
 .navbar a {
     color: #BD7979FF;
-}
+}*/
 #footer {
     padding: 1.5em;
     text-align: center;
     border: 2px solid black;
-    background-color: #b3cdd1 !important;
+    /* background-color: #b3cdd1 !important; */
     background-image: linear-gradient(315deg, #b3cdd1 0%, #9fa4c4 74%);
 }
 .title {
     font-family: 'Luxurious Script',cursive;
 }
+h1, h1 {
+    background-color: #172a43;
+}
 h1.title {
-    color: antiquewhite;
+    color: #fff;
 text-align: center
 }
 h2.sec-title {
-color: silver;
+    color: #172a43;
 }
 span.wrap {
-    color: silver;
+    color: #fff;
     font-size: larger;
 }
