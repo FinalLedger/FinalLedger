@@ -34,15 +34,15 @@ public class User {
     private List<Contact> contacts;
 
     @Fetch(FetchMode.SELECT)
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user", orphanRemoval = true)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user", orphanRemoval = true,fetch = FetchType.EAGER)
     private List<Documents> documents;
     
     @Fetch(FetchMode.SELECT)
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user", orphanRemoval = true)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user", orphanRemoval = true,fetch = FetchType.EAGER)
     private List<CreditCard> creditCards;
   
     @Fetch(FetchMode.SELECT)
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user", orphanRemoval = true)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user", orphanRemoval = true,fetch = FetchType.EAGER)
     private List<FinancialInvestment> financialInvestments;
   
     @Fetch(FetchMode.SELECT)
@@ -50,8 +50,7 @@ public class User {
     private List<InsurancePolicy> insurancePolicy;
     
     @Fetch(FetchMode.SELECT)
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user", orphanRemoval = true)
-
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user", orphanRemoval = true, fetch = FetchType.EAGER)
     private List<BankAccounts> bankAccounts;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "owner_user")
