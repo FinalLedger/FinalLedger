@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" name="fileStackAPI" th:content="${fileStackAPI}">
     <title>Register</title>
-    <link rel="stylesheet" type="text/css" href="css/register.css">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/register.css}">
 
-    <link rel="stylesheet" type="text/css" href="css/navbar.css">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/navbar.css}">
     <link th:replace="partials/navbar :: bootstrap">
 
 </head>
@@ -16,24 +16,24 @@
 <div class="container col-8">
     <h1 class="text-center">Register</h1>
     <div th:if="${showErrorMsg}" class="alert alert-danger text-center" role="alert"><span th:text="${errorMsg}"></span></div>
-    <form th:action="@{/register}" method="post" id="registerForm">
+    <form th:action="@{/register}" th:method="post" id="registerForm" th:object="${user}">
         <div class="mb-3">
             <label for="email" class="form-label">Email</label>
-            <input id="email" name="email" class="form-control" type="text" required>
+            <input id="email" th:field="*{email}" name="email" class="form-control" type="text" required>
         </div>
         <div class="mb-3">
             <label for="username" class="form-label">Username</label>
-            <input id="username" name="username" class="form-control" type="text" required>
+            <input id="username" th:field="*{username}" name="username" class="form-control" type="text" required>
         </div>
         <div class="mb-3">
             <label for="password" class="form-label">Password</label>
-            <input id="password" name="password" class="form-control" type="password" required>
-            <div id="passwordHelp" class="form-text">Your password must:<br>
-                <span id="8char">Be at least 8 characters long</span><br>
-                <span id="uppercase">Include at least one uppercase letter</span><br>
-                <span id="lowercase">Include at least one lowercase letter</span><br>
-                <span id="num">Include at least one number</span><br>
-                <span id="special">Include at least one special character</span>
+            <input id="password" th:field="*{password}" name="password" class="form-control" type="password" required>
+            <div id="passwordHelp" class="form-text">Your password must include at least one of each:<br>
+                <span id="8char">8 characters</span>&nbsp;
+                <span id="uppercase">Uppercase letters</span>&nbsp;
+                <span id="lowercase">Lowercase letters</span>&nbsp;
+                <span id="num">Numbers</span>&nbsp;
+                <span id="special">Special characters</span>&nbsp;
             </div>
         </div>
         <div class="mb-3">
@@ -42,12 +42,10 @@
             <div id="confirmPassMsg" class="form-text"></div>
         </div>
         <div class="mb-3">
-            <label for="accountType" class="form-label">Account Type</label>
-            <select name="accountType" id="accountType" class="form-select" required>
-                <option selected disabled value="">Select account type</option>
-                <option value="false">Basic Account</option>
-                <option value="true">Full Account</option>
-            </select>
+            <label for="profilePicUrl" class="form-label">Upload Profile Picture</label>
+            <input id="profilePicUrl" name="profilePicUrl" value="replaceMe" th:field="*{profilePicUrl}" type="hidden">
+            <br>
+            <button id="buttonUpload" type="button" class="btn btn-primary">Upload Picture</button>
         </div>
         <input id="submitBtn" value="Register" type="submit">
     </form>
@@ -58,6 +56,7 @@
 
 <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
         crossorigin="anonymous"></script>
+<script src="//static.filestackapi.com/filestack-js/3.x.x/filestack.min.js"></script>
 <script th:src="@{/js/register.js}"></script>
 </body>
 </html>
