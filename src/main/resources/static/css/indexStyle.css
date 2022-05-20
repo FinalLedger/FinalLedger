@@ -23,7 +23,7 @@ body {
     font-family: 'Luxurious Script',cursive;
 }
 
-#ledger-h1, #row-1 , #row-2 , #row-3{
+#ledger-h1, #row-1 , #row-2 , #row-3, #row-4{
     margin-top: 5em;
     margin-bottom: 5em;
     text-align: center;
@@ -63,9 +63,9 @@ hr{
 a{
     text-align: center;
 }
-img{
-    clip-path: circle();
-}
+/*img{*/
+/*    clip-path: circle();*/
+/*}*/
 .user-type{
     margin-bottom: 2em;
 }
@@ -78,6 +78,9 @@ img{
 }
 #invite-field, #form-button {
     width: 30%;
+    text-align: center;
+}
+img{
     text-align: center;
 }
 /*----------------------*/
