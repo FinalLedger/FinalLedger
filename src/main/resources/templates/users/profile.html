@@ -43,6 +43,8 @@
 
     <br><br>
 
+<!--    THIS SHOWS ALL USERS IN DATABASE TO ADD AS A CONNECTION-->
+
     <div class="row">
         <div class="col-2 a-left"></div>
         <div class="col-10 a-right">
@@ -60,31 +62,34 @@
         </div>
     </div>
 
-<!--    <div class="row">-->
-<!--        <div class="col-2 a-left"></div>-->
-<!--        <div class="col-10 a-right">-->
-<!--            <h2>Search for a Connection</h2>-->
-<!--            <form th:object="${foundEmail}" method="post">-->
+<!--        THIS WILL SEARCH FOR CONTACTS BY EMAIL ONCE IT IS FINISHED   -->
+
+<!--        <div class="row">-->
+<!--            <div class="col-2 a-left"></div>-->
+<!--            <div class="col-10 a-right">-->
+<!--                <h2>Search for a Connection</h2>-->
 <!--                <div>-->
-<!--                    <label for="email">Search by Email for a Contact: </label>-->
-<!--                    <input type="text" id="email" name="email" th:field="*{}"-->
-<!--                           th:type="submit" value="Search" >-->
+<!--                    <form th:action="@{/search}" method="post">-->
+<!--                        <label for="email">Search for a Contact by Email Address</label>-->
+<!--                        <input type="text" name="email" id="email" placeholder="Search by Email">-->
+<!--                        <button type="submit" class="btn btn-blue"> Search</button>-->
+<!--                    </form>-->
 <!--                </div>-->
-<!--            </form>-->
 
-<!--            <table>-->
-<!--                <tr>-->
-<!--                    <th>Contact</th>-->
-<!--                    <th>Email</th>-->
-<!--                </tr>-->
-<!--                <tr th:each="contact : ${contactSearch}">-->
-<!--                    <td><span th:text="${contact.getUsername()}" ></span></td>-->
-<!--                    <td><span th:text="${contact.getEmail()}" ></span></td>-->
-<!--                </tr>-->
 
-<!--            </table>-->
+<!--                <div>-->
+<!--                    <div class="col-md-6" th:each="email : ${searchedValue}">-->
+<!--                        <form th:method="post" th:action="@{/profile/addcontact}">-->
+<!--                            <input id="contactHidden" name="contactHidden" th:value="${searchedValue}" type="hidden">-->
+<!--                            <button type="submit" class="btn btn-secondary">-->
+<!--                                <span>Add <span th:value="${user.getEmail()}"></span> to contacts!</span>-->
+<!--                            </button>-->
+<!--                        </form>-->
+<!--                    </div>-->
+<!--                </div>-->
+
+<!--            </div>-->
 <!--        </div>-->
-<!--    </div>-->
 </div>
 <div class="footer">
     <div th:include="partials/footer :: footer"></div>
