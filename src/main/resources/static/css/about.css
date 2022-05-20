@@ -79,9 +79,9 @@ div#carousel ~ span:hover { color: #888; cursor: pointer; }
 }
 
 .card-two {
-/*background-color: #fff;*/
+background-color: #fff;
     position: center;
-    background-color: #FAEBD7;
+    /*background-color: #FAEBD7;*/
 }
 #span-left{
     float: left;
