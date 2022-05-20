@@ -31,10 +31,16 @@ a#title-nav {
     right: 0;
     margin-bottom: 0;
 }
-/*Footer*/
 .bg-secondary {
-    background-color: #172a43;
+    background-image: linear-gradient(315deg,#1f6570 0%,#172a43 74%);
 }
+button:not(:disabled) {
+    border: solid #1f6570;
+}
+/*Footer*/
+/*.bg-secondary {
+    background-color: #172a43;
+}*/
 button:not(:disabled) {
     border: solid #1f6570;
 }
