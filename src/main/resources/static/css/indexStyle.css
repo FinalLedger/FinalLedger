@@ -1,5 +1,11 @@
+
+html {
+    width: fit-content;
+}
+
 body {
     background-color: #fff;
+
 }
 .landing-container-text{
     color: whitesmoke;
