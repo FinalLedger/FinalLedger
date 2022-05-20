@@ -17,9 +17,7 @@ body {
 
 
 }
-.S9gUrf-YoZ4jf, .S9gUrf-YoZ4jf * {
-    z-index: 1000;
-}
+
 nav {
     display: flex;
     flex-direction: row;
@@ -28,8 +26,8 @@ nav {
     color: #7d11e3;
     */
     /* border: #212121 solid 3px;*/
-    width: 100%;
-    height: 90px;
+    /*width: 100%;*/
+    /*height: 90px;*/
     text-align: center;
     position: center;
     justify-content: space-between;
@@ -85,7 +83,7 @@ a {
     color: #333;
     font-size: 14px;
     text-decoration: none;
-    margin: 15px 0;
+    /*margin: 15px 0;*/
 }
 
 .button:hover {
