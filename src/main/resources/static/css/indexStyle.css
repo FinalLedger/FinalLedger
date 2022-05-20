@@ -180,6 +180,10 @@ a {
 .btn-primary {
     background-image: linear-gradient(315deg,#1f6570 0%,#172a43 74%);
 }
+.btn-secondary {
+    color: #fff;
+    background-color: #172a43;
+}
 .subheader {
     width: 100%;
     height: 5px;
