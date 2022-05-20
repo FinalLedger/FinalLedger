@@ -1,13 +1,15 @@
-
-
-
-
 p {
     margin-bottom: 0.5rem;
+}
+.card-title{
+    color: black;
 }
 
 .card-body {
     padding-bottom: 0.5rem;
+}
+label.form-label,small{
+    color: whitesmoke;
 }
 
 #infoView {
@@ -33,6 +35,9 @@ button.btn.btn-primary {
     border: solid ghostwhite 2px;
     background-color: #172a43;
 }
+button.btn-close{
+    color: white;
+}
 body {
     background-color: #FAEBD7;
 }
@@ -53,11 +58,11 @@ div#infoView {
 .nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
 
     color: ghostwhite;
-    background-color: #d6b4b4 ;
+    background-color: #404D60 ;
 }
 
 .nav-tabs .nav-link {
-    color: #9e8686;
+    color: #1F6570;
 }
 
 .btn  {

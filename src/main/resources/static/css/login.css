@@ -12,7 +12,7 @@ body {
     height: 100vh;
     margin: -20px 0 50px;
     /*  cursor: grabbing;*/
-    background-color: #404d60;
+    background-color: #FAEBD7;
 
 }
 .S9gUrf-YoZ4jf, .S9gUrf-YoZ4jf * {
@@ -32,8 +32,6 @@ nav {
     position: center;
     justify-content: space-between;
     font-weight: bolder;
-
-
 }
 .nav-logo {
     text-align: left;
@@ -233,9 +231,9 @@ span:nth-child(2) {
 }
 
 /*Used For Color of typewrite for ABout Page*/  ✅
-                                                .typewrite {
-                                                    color: whitesmoke;
-                                                }
+/*                                                .typewrite {*/
+/*                                                    color: whitesmoke;*/
+/*                                                }*/
 /*Used For Main age*/
 .typewriter {
     font-weight:  bolder;

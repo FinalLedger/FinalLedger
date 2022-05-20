@@ -86,21 +86,18 @@ public class ProfileController {
 
     }
 
-    @GetMapping("/contactSearch")
-    public String contactSearch(Model model) {
+    @PostMapping("/search")
+    public String searchIndex(Model model, @RequestParam(name = "email") String searchedValue) {
 
-        model.addAttribute("contactSearch", new User());
+        List <User> foundEmail = userDao.searchByEmail(searchedValue);
+        System.out.println("foundEmail = " + foundEmail);
+        System.out.println("searchedValue = " + searchedValue);
 
-        return "redirect:/profile";
-    }
-
-    @PostMapping("/contactSearch")
-    public String lectureSearch(Model model, String email) {
-
-        User foundEmail = userDao.findByEmail(email);
-
-        model.addAttribute("foundEmail",  foundEmail);
+        if(foundEmail != null) {
+            model.addAttribute("searchedEmail", foundEmail);
+        }
 
         return "redirect:/profile";
     }
+
 }
