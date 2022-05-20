@@ -17,7 +17,6 @@
 <nav th:replace="partials/navbar :: userNav"></nav>
 <div class="subheader"></div>
 <br>
-<h1 class="title">Final Ledger</h1><br>
 <h2 class="sec-title">More About Us</h2>
 <br>
 <hr>
@@ -33,7 +32,6 @@
 <span class="ss-icon" onclick="galleryspin('-')" id="span-left">&lt;</span>
 <span class="ss-icon" onclick="galleryspin('')" id="span-right">&gt;</span>
 
-
 <!--Profiles-->
 
 <!--Profile 1-->
@@ -41,7 +39,7 @@
 <!--        <a href="" class="typewrite" data-period="2000" data-type='[ "Hey There, Im Therman." ]'>-->
         <p class="typewrite" data-period="2000" data-type='[ "Therman Haynes" ]'>
             <span class="wrap"></span>
-        </a>
+        </p>
     </h1>
 
     <div class="card ">
@@ -51,7 +49,7 @@
                 <h5 class="card-title">Therman Haynes</h5>
 <!--                <a href="" class="typewrite" data-period="2000" data-type='[ "Im just a guy who likes all aspects of I.T." ]'>-->
 <!--                    <span class="wrap"></span>-->
-                </a>
+<!--                </a>-->
                 <br>
                 <a href="https://github.com/Therman116220" class="btn btn-primary btn-color">Github</a>
                 <a href="https://www.linkedin.com/in/therman-haynes-4349b0198/" class="btn btn-primary btn-color">Linkedin</a>
@@ -63,9 +61,9 @@
 
     <h1>
 <!--        <a href="" class="typewrite" data-period="2000" data-type='[ "Hi, Im Jack." ]'>-->
-        <a href="" class="typewrite" data-period="2000" data-type='[ "Ranchaya Sambath" ]'>
+        <p class="typewrite" data-period="2000" data-type='[ "Ranchaya Sambath" ]'>
             <span class="wrap"></span>
-        </a>
+        </p>
     </h1>
 
     <div class="card ">
@@ -75,7 +73,7 @@
             <h5 class="card-title">Ranchaya Sambath</h5>
 <!--            <a href="" class="typewrite" data-period="2000" data-type='[ "Im a coder who loves to develop" ]'>-->
 <!--                <span class="wrap"></span>-->
-            </a>
+<!--            </a>-->
             <br>
             <a href="https://github.com/ranchayasambath" class="btn btn-primary btn-color">Github</a>
             <a href="https://www.linkedin.com/in/ranchaya-sambath-1a3928180/" class="btn btn-primary btn-color">Linkedin</a>
@@ -85,9 +83,9 @@
 <!--Profile 3-->
         <h1 class="header-text">
 <!--            <a href="" class="typewrite" data-period="2000" data-type='[ "Hi, Im  Jason." ]'>-->
-                <a href="" class="typewrite" data-period="2000" data-type='[ "Jason Comstock" ]'>
+                <p class="typewrite" data-period="2000" data-type='[ "Jason Comstock" ]'>
                 <span class="wrap"></span>
-            </a>
+            </p>
         </h1>
 
         <div class="card ">
@@ -97,7 +95,7 @@
                     <h5 class="card-title">Jason Comstock</h5>
 <!--                    <a href="" class="typewrite" data-period="2000" data-type='[ "A Marine with a passion for Back-end Development, Databases and Cyber-Security" ]'>-->
 <!--                        <span class="wrap"></span>-->
-                    </a>
+<!--                    </a>-->
                     <br>
                     <a href="https://github.com/JMComstock" class="btn btn-primary btn-color">Github</a>
                     <a href="https://www.linkedin.com/in/jasonmcomstock/" class="btn btn-primary btn-color">Linkedin</a>
@@ -110,9 +108,9 @@
         <div>
             <h1 class="header-text">
 <!--                <a href="" class="typewrite" data-period="2000" data-type='[ "Hello, Im Kat." ]'>-->
-                <a href="" class="typewrite" data-period="2000" data-type='[ "Kat Rodriguez" ]'>
+                <p class="typewrite" data-period="2000" data-type='[ "Kat Rodriguez" ]'>
                     <span class="wrap"></span>
-                </a>
+                </p>
             </h1>
 
             <div class="card ">
@@ -122,7 +120,7 @@
                         <h5 class="card-title">Kat Rodriguez </h5>
 <!--                        <a href="" class="typewrite" data-period="2000" data-type='[ "Im a full stack developer, who is very flexible in my capabilities." ]'>-->
 <!--                            <span class="wrap"></span>-->
-                        </a>
+<!--                        </a>-->
                         <br>
                         <a href="https://github.com/katrodriguez96" class="btn btn-primary btn-color">Github</a>
                         <a href="https://www.linkedin.com/in/kathryn-rodriguez96/" class="btn btn-primary btn-color">Linkedin</a>
@@ -131,7 +129,7 @@
             </div>
     </div>
 <button><a class="btn-color" href="#top"> Top</a></button>
-<div th:include="partials/footer :: footer"></div>
+<div class="fixed-bottom" th:include="partials/footer :: footer"></div>
 <script th:src="@{/js/about.js}"></script>
 </body>
 </html>

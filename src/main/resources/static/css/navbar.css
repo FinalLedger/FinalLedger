@@ -15,7 +15,7 @@ a.navbar-brand {
     font-family: 'Luxurious Script',cursive;
 }
 /*Navbar */
-a#title-nav {
+a.title-nav {
     color: #fff;
 }
 .subheader {
