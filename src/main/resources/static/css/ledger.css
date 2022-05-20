@@ -35,6 +35,9 @@ button.btn.btn-primary {
     border: solid ghostwhite 2px;
     background-color: #172a43;
 }
+button.btn-close{
+    color: white;
+}
 body {
     background-color: #FAEBD7;
 }
