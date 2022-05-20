@@ -12,7 +12,7 @@ body {
     height: 100vh;
     margin: -20px 0 50px;
     /*  cursor: grabbing;*/
-    background-color: #FAEBD7;
+    background-color: #FAEBD7 !important;
 
 }
 .S9gUrf-YoZ4jf, .S9gUrf-YoZ4jf * {
