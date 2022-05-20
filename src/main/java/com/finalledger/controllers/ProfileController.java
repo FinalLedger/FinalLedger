@@ -34,16 +34,8 @@ public class ProfileController {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         User persistUser = userDao.getById(user.getId());
 
-        String mainUserMessage;
-        if (user.isMainUser()){
-            mainUserMessage = "Main User";
-        } else {
-            mainUserMessage = "Basic User";
-        }
-
         List <User> userList = userDao.findAll();
         Collection<SiteContact> trustedUserList = siteContactDao.findContactsByOwner_userIs(persistUser.getId());
-//        Collection<User> trustedUserList = siteContactDao.findAllByOwner_userIs(persistUser); //delete later -kh
         System.out.println("Sanity test");
         System.out.println(trustedUserList);
 
@@ -53,7 +45,6 @@ public class ProfileController {
 
         model.addAttribute("messagingDisplay", false);
         model.addAttribute("message", new Message());
-        model.addAttribute("mainUserMessage", mainUserMessage);
         model.addAttribute("user", user);
         model.addAttribute("userList", userList);
         model.addAttribute("trustedUsers", trustedUserList);
@@ -67,20 +58,12 @@ public class ProfileController {
         User user = userDao.getOne(id);
         User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 
-        String mainUserMessage;
-        if (user.isMainUser()){
-            mainUserMessage = "Main User";
-        } else {
-            mainUserMessage = "Guest";
-        }
-
         boolean contactAlready = !siteContactDao.findByOwner_userAndAdded_user_idExists(id, currentUser.getId()).isEmpty();
 
         model.addAttribute("contactAlready", contactAlready);
         model.addAttribute("message", new Message());
         model.addAttribute("profileID", id);
         model.addAttribute("messagingDisplay", true);
-        model.addAttribute("mentorMessage", mainUserMessage);
         model.addAttribute("user", user);
 
         return "users/profile";

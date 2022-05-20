@@ -27,8 +27,8 @@ public class User {
     @Column(nullable = false)
     private String password;
 
-    @Column(nullable = false)
-    private boolean isMainUser;
+    @Column
+    private String profilePicUrl;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user", fetch = FetchType.EAGER, orphanRemoval = true)
     private List<Contact> contacts;
@@ -77,19 +77,19 @@ public class User {
 
     public User() {}
 
-    public User(String username, String email, String password, boolean isMainUser) {
+    public User(String username, String email, String password, String profilePicUrl) {
         this.username = username;
         this.email = email;
         this.password = password;
-        this.isMainUser = isMainUser;
+        this.profilePicUrl = profilePicUrl;
     }
 
-    public User(Long id, String username, String email, String password, boolean isMainUser, List<Contact> contacts, List<Documents> documents, List<CreditCard> creditCards, List<FinancialInvestment> financialInvestments, List<InsurancePolicy> insurancePolicy, List<BankAccounts> bankAccounts, Collection<SiteContact> contactListOwner, Collection<SiteContact> contactListEntity, Collection<Message> senders, Collection<Message> receivers) {
+    public User(Long id, String username, String email, String password, String profilePicUrl, List<Contact> contacts, List<Documents> documents, List<CreditCard> creditCards, List<FinancialInvestment> financialInvestments, List<InsurancePolicy> insurancePolicy, List<BankAccounts> bankAccounts, Collection<SiteContact> contactListOwner, Collection<SiteContact> contactListEntity, Collection<Message> senders, Collection<Message> receivers) {
         this.id = id;
         this.username = username;
         this.email = email;
         this.password = password;
-        this.isMainUser = isMainUser;
+        this.profilePicUrl = profilePicUrl;
         this.contacts = contacts;
         this.documents = documents;
         this.creditCards = creditCards;
@@ -102,11 +102,11 @@ public class User {
         this.receivers = receivers;
     }
 
-    public User(String username, String email, String password, boolean isMainUser, List<Contact> contacts, List<Documents> documents, List<CreditCard> creditCards, List<FinancialInvestment> financialInvestments, List<InsurancePolicy> insurancePolicy, List<BankAccounts> bankAccounts, Collection<SiteContact> contactListOwner, Collection<SiteContact> contactListEntity, Collection<Message> senders, Collection<Message> receivers) {
+    public User(String username, String email, String password, String profilePicUrl, List<Contact> contacts, List<Documents> documents, List<CreditCard> creditCards, List<FinancialInvestment> financialInvestments, List<InsurancePolicy> insurancePolicy, List<BankAccounts> bankAccounts, Collection<SiteContact> contactListOwner, Collection<SiteContact> contactListEntity, Collection<Message> senders, Collection<Message> receivers) {
         this.username = username;
         this.email = email;
         this.password = password;
-        this.isMainUser = isMainUser;
+        this.profilePicUrl = profilePicUrl;
         this.contacts = contacts;
         this.documents = documents;
         this.creditCards = creditCards;
@@ -124,7 +124,7 @@ public class User {
         username = copy.username;
         email = copy.email;
         password = copy.password;
-        isMainUser = copy.isMainUser;
+        profilePicUrl = copy.profilePicUrl;
         contacts = copy.contacts;
         documents = copy.documents;
         creditCards = copy.creditCards;
@@ -169,12 +169,12 @@ public class User {
         this.password = password;
     }
 
-    public boolean isMainUser() {
-        return isMainUser;
+    public String getProfilePicUrl() {
+        return profilePicUrl;
     }
 
-    public void setMainUser(boolean mainUser) {
-        isMainUser = mainUser;
+    public void setProfilePicUrl(String profilePicUrl) {
+        this.profilePicUrl = profilePicUrl;
     }
 
     public List<Contact> getContacts() {
