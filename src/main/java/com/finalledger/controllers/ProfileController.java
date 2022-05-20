@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.Locale;
 
 @Controller
 public class ProfileController {
@@ -86,18 +87,51 @@ public class ProfileController {
 
     }
 
-    @PostMapping("/search")
-    public String searchIndex(Model model, @RequestParam(name = "email") String searchedValue) {
+    @GetMapping("/search")
+    public String searchIndex(Model model, @RequestParam String searchedValue) {
 
-        List <User> foundEmail = userDao.searchByEmail(searchedValue);
-        System.out.println("foundEmail = " + foundEmail);
-        System.out.println("searchedValue = " + searchedValue);
+//        PROFILE STUFF
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User persistUser = userDao.getById(user.getId());
 
-        if(foundEmail != null) {
-            model.addAttribute("searchedEmail", foundEmail);
+        List <User> userList = userDao.findAll();
+        Collection<SiteContact> trustedUserList = siteContactDao.findContactsByOwner_userIs(persistUser.getId());
+        System.out.println("Sanity test");
+        System.out.println(trustedUserList);
+
+        trustedUserList.forEach(contact ->{
+            System.out.println("contact = " + contact.getAdded_user_id().getUsername());
+        });
+
+        model.addAttribute("messagingDisplay", false);
+        model.addAttribute("message", new Message());
+        model.addAttribute("user", user);
+        model.addAttribute("userList", userList);
+        model.addAttribute("trustedUsers", trustedUserList);
+
+
+//        SEARCH STUFF
+        model.addAttribute("searchedValue", searchedValue.toLowerCase(Locale.ROOT));
+        List <User> foundEmails = userDao.findAll();
+        List <User> filteredList = new ArrayList<>();
+
+        for (int i = 0; i < foundEmails.size(); i ++) {
+            User userEmail = foundEmails.get(i);
+            String email = userEmail.getEmail();
+
+            if (email.toLowerCase().contains(searchedValue.toLowerCase())) {
+                filteredList.add(userEmail);
+            }
         }
 
-        return "redirect:/profile";
+        model.addAttribute("searchedEmails", filteredList);
+
+        System.out.println("foundEmail = " + foundEmails);
+        System.out.println("searchedValue = " + searchedValue);
+        System.out.println("filterdList = " + filteredList);
+
+        return "users/profile";
+
     }
 
 }
