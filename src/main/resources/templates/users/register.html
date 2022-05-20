@@ -28,6 +28,7 @@
         <div class="mb-3">
             <label for="password" class="form-label">Password</label>
             <input id="password" th:field="*{password}" name="password" class="form-control" type="password" required>
+        </div>
             <div id="passwordHelp" class="form-text">Your password must include at least one of each:<br>
                 <span id="8char">8 characters</span>&nbsp;
                 <span id="uppercase">Uppercase letters</span>&nbsp;
@@ -35,7 +36,7 @@
                 <span id="num">Numbers</span>&nbsp;
                 <span id="special">Special characters</span>&nbsp;
             </div>
-        </div>
+<!--        </div>-->
         <div class="mb-3">
             <label for="confirmPass" class="form-label">Confirm Password</label>
             <input id="confirmPass" name="confirmPass" class="form-control" type="password" required>
