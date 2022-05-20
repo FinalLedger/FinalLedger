@@ -30,7 +30,9 @@ a#title-nav {
     bottom: 0;
     left: 0;
     right: 0;
+    /*
     margin-bottom: 0;
+    */
 }
 .d-flex.justify-content-around.border-top.border-dark.bg-secondary {
    /* position: absolute;
