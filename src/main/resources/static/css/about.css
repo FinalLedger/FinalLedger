@@ -3,9 +3,10 @@ body{
     background-color: #fff;
 }
 div#carousel {
-    perspective: 1200px;
+    perspective: 2000px;
     background: #100000;
-    padding-top: 10%;
+    padding-top: 2.5%;
+    padding-bottom: 1.5%;
     font-size:0;
     /*margin-bottom: 3rem;*/
     overflow: hidden;
@@ -13,10 +14,6 @@ div#carousel {
 figure {
     margin: 0 0 9rem;
 }
-/*.subheader {
-    width: 100%;
-    height: 5px;
-    background-color: silver;*/
 
 figure#spinner {
     transform-style: preserve-3d;
@@ -30,8 +27,7 @@ figure#spinner img {
     transform-origin: 50% 50% -500px;
     outline:1px solid transparent;
 }
-figure#spinner img:nth-child(1) { transform:rotateY(0deg);
-}
+figure#spinner img:nth-child(1) { transform:rotateY(0deg); }
 figure#spinner img:nth-child(2) { transform: rotateY(-45deg); }
 figure#spinner img:nth-child(3) { transform: rotateY(-90deg); }
 figure#spinner img:nth-child(4) { transform: rotateY(-135deg); }
