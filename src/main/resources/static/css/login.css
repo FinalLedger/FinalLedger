@@ -12,7 +12,7 @@ body {
     height: 100vh;
     margin: -20px 0 50px;
     /*  cursor: grabbing;*/
-    background-color: #FAEBD7;
+    background-color: #fff !important;
 
 }
 .S9gUrf-YoZ4jf, .S9gUrf-YoZ4jf * {
@@ -324,3 +324,9 @@ input#submitBtn {
 button:not(:disabled) {
     border: solid ghostwhite;
 }
+
+    .d-flex.justify-content-around.border-top.border-dark.bg-secondary {
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+    }
