@@ -5,7 +5,9 @@
 * {
     box-sizing: border-box;
 }
-
+html {
+    width: fit-content;
+}
 body {
 
     font-family: 'Montserrat', sans-serif;
@@ -14,9 +16,8 @@ body {
     /*  cursor: grabbing;*/
 
     background-color: #fff !important;
-
-
 }
+
 
 nav {
     display: flex;
