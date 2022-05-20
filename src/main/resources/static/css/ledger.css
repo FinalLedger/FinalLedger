@@ -36,10 +36,10 @@ button.btn.btn-primary {
     background-color: #172a43;
 }
 button.btn-close{
-    color: white;
+    color: #fff;
 }
 body {
-    background-color: #FAEBD7;
+    background-color: #fff;
 }
 div#infoView {
     background: linear-gradient(to right, #172a43, #1f6570);
@@ -86,6 +86,9 @@ background-color: #172a43;
     width: 100%;
     height: 5px;
     background-color: silver;
+}
+.bg-light {
+ background-color: #000000 !important;
 }
 /*temp nav bar  Delete*/
 
