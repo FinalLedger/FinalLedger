@@ -32,9 +32,9 @@ a#title-nav {
     margin-bottom: 0;
 }
 .d-flex.justify-content-around.border-top.border-dark.bg-secondary {
-    position: absolute;
+   /* position: absolute;
     bottom: 0;
-    width: 100%;
+    width: 100%;*/
 
 }
 .bg-secondary {
