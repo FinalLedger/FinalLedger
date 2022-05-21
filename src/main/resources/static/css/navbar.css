@@ -1,58 +1,108 @@
-.navbar {
 
-    background-image: linear-gradient(315deg,#1f6570 0%,#172a43 74%);
+@media screen and (max-width:767px) {
+    #bigNav{
+        display: none;
+    }
+    .navbarSmall {
+        background-image: linear-gradient(315deg,#1f6570 0%,#172a43 74%);
+        /*display: flex;*/
+        text-align: center;
+        overflow: hidden;
+        background-color: #333;
+        position: relative;
+    }
+    /* Hide the links inside the navigation menu (except for logo/home) */
+    .navbarSmall #myLinks {
+        display: none;
+    }
+    /* Style navigation menu links */
+    .navbarSmall a {
+        color: white;
+        padding: 14px 16px;
+        text-decoration: none;
+        font-size: 17px;
+        display: block;
+    }
+    /* Style the hamburger menu */
+    .navbarSmall a.icon {
+        background: black;
+        display: block;
+        position: absolute;
+        right: 0;
+        top: 0;
+    }
+    /* Add a grey background color on mouse-over */
+    .navbarSmall a:hover {
+        background-color: #ddd;
+        color: black;
+    }
+    /* Style the active link (or home/logo) */
+    .active {
+        background-color: #04AA6D;
+        color: white;
+    }
+    .smallNavTitle{
+        font-family: 'Luxurious Script',cursive;
+    }
 
 }
-.navbar a {
-    font-weight: bolder;
-    color: #fff;
-}
-.navbar-light .navbar-brand {
-    color: rgb(255, 255, 255);
-  /*  font-family: 'Luxurious Script',cursive;*/
-}
-a.navbar-brand {
-    font-family: 'Luxurious Script',cursive;
-}
-/*Navbar */
-a.title-nav {
-    color: #fff;
-}
-.subheader {
-    width: 100%;
-    height: 5px;
-    background-color: #1f6570;
+/*@media screen and (min-width: 375px){*/
+/*}*/
+@media screen and (min-width: 768px){
+
+    #navSmall{
+        display: none;
+    }
+    .navbar {
+        background-image: linear-gradient(315deg,#1f6570 0%,#172a43 74%);
+    }
+    .navbar a {
+        font-weight: bolder;
+        color: #fff;
+    }
+    .navbar-light .navbar-brand {
+        color: rgb(255, 255, 255);
+        /*  font-family: 'Luxurious Script',cursive;*/
+    }
+    a.navbar-brand {
+        font-family: 'Luxurious Script',cursive;
+    }
+    /*Navbar */
+    a.title-nav {
+        color: #fff;
+    }
+    .subheader {
+        width: 100%;
+        height: 5px;
+        background-color: #1f6570;
+    }
+
+    .footer {
+        /*    position: fixed;*/
+        position: inherit;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        /*
+        margin-bottom: 0;
+        */
+    }
+
+    .bg-secondary {
+        background-image: linear-gradient(315deg,#1f6570 0%,#172a43 74%);
+    }
+    button:not(:disabled) {
+        border: solid #1f6570;
+    }
+    /*Footer*/
+    /*.bg-secondary {
+        background-color: #172a43;
+    }*/
+    button:not(:disabled) {
+        border: solid #1f6570;
+    }
+    button.btn.button {
+        color: white;
+    }
 }
 
-.footer {
-/*    position: fixed;*/
-    position: inherit;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    /*
-    margin-bottom: 0;
-    */
-}
-.d-flex.justify-content-around.border-top.border-dark.bg-secondary {
-   /* position: absolute;
-    bottom: 0;
-    width: 100%;*/
-
-}
-.bg-secondary {
-    background-image: linear-gradient(315deg,#1f6570 0%,#172a43 74%);
-}
-button:not(:disabled) {
-    border: solid #1f6570;
-}
-/*Footer*/
-/*.bg-secondary {
-    background-color: #172a43;
-}*/
-button:not(:disabled) {
-    border: solid #1f6570;
-}
-button.btn.button {
-    color: white;
-}

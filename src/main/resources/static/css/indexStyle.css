@@ -52,21 +52,21 @@ hr{
     width: 90em;
     margin: auto;
 }
-.a-left{
+.navbar > .a-left{
     height: auto;
     width: 25em;
 }
-.a-right{
+.navbar > .a-right{
     border: solid black 2px;
     height:auto;
     width: 50em;
     padding-bottom: 10em;
 }
-.a-right > h2,form{
+.navbar > .a-right > h2,form{
     margin-top: .5em;
     text-align: center;
 }
-a{
+.navbar > a{
     text-align: center;
 }
 /*img{*/
