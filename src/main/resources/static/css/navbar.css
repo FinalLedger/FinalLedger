@@ -1,4 +1,6 @@
-
+a.nav-link{
+    color: white;
+}
 @media screen and (max-width:767px) {
     #bigNav{
         display: none;
@@ -25,7 +27,7 @@
     }
     /* Style the hamburger menu */
     .navbarSmall a.icon {
-        background: black;
+        /*background: black;*/
         display: block;
         position: absolute;
         right: 0;
@@ -33,7 +35,7 @@
     }
     /* Add a grey background color on mouse-over */
     .navbarSmall a:hover {
-        background-color: #ddd;
+        /*background-color: #ddd;*/
         color: black;
     }
     /* Style the active link (or home/logo) */
@@ -44,7 +46,10 @@
     .smallNavTitle{
         font-family: 'Luxurious Script',cursive;
     }
-
+    #myLinks{
+        background: hsla(0,0%,50%,.1);
+        backdrop-filter: blur(.1em);
+    }
 }
 /*@media screen and (min-width: 375px){*/
 /*}*/
@@ -105,4 +110,6 @@
         color: white;
     }
 }
+
+
 
