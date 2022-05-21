@@ -15,13 +15,27 @@
     <a class="nav-link" href="/logout">Logout</a>
 </nav>
 
-<nav th:fragment="visitorNav" class="navbar navbar-expand-lg navbar-light bg-light justify-content-around">
+<div th:fragment="visitorNav" class="navbar navbar-expand-lg navbar-light bg-light justify-content-around" id="bigNav">
     <a class="nav-link" href="/">Home</a>
     <a class="nav-link" href="/about">About</a>
     <a class="navbar-brand me-0 title-nav" href="/ledger/personal">Final Ledger</a>
     <a class="nav-link" href="/login" id="loginNav"> Login</a>
     <a class="nav-link" href="/register" id="signUpNav">Sign up</a>
-</nav>
+</div>
 
+<div th:fragment="visitorNavSmall" class="navbarSmall" id="navSmall">
+    <a class="smallNavTitle" href="/ledger/personal">Final Ledger</a>
+    <!-- Navigation links (hidden by default) -->
+    <div id="myLinks">
+        <a class="nav-link" href="/">Home</a>
+        <a class="nav-link" href="/about">About</a>
+        <a class="nav-link" href="/login" id="loginNav2"> Login</a>
+        <a class="nav-link" href="/register" id="signUpNav2">Sign up</a>
+    </div>
+    <!-- "Hamburger menu" / "Bar icon" to toggle the navigation links -->
+    <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+        <i class="fa fa-bars"></i>
+    </a>
+</div>
 </body>
 </html>
