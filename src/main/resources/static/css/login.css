@@ -33,7 +33,9 @@ nav {
 }
 /*Left Side Text*/
 h1 {
+    /*
     font-weight: bold;
+    */
     margin: auto;
     text-align: start;
 }
@@ -92,7 +94,7 @@ form {
     padding: 0 50px;
     height: 100%;
     text-align: center;
-    /*margin: 0 0 0 32%;*/
+   /* margin: 0 0 0 32%;*/
 }
 
 button:not(:disabled) {
@@ -285,14 +287,110 @@ button:not(:disabled) {
     border: solid ghostwhite;
 }
 
-.d-flex.justify-content-around.border-top.border-dark.bg-secondary {
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-}
+
+    .d-flex.justify-content-around.border-top.border-dark.bg-secondary {
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+    }
+
+  @media screen and (min-width: 300px) and (max-width: 500px) {
+
+
+      .footer {
+
+          position: inherit;
+          bottom: 0;
+          left: 0;
+          right: 0;
+
+
+      }
+
+      .bg-secondary {
+          background-image: linear-gradient(315deg,#1f6570 0%,#172a43 74%);
+      }
+      button:not(:disabled) {
+          border: solid #1f6570;
+      }
+
+      button:not(:disabled) {
+          border: solid #1f6570;
+      }
+      button.btn.button {
+          color: white;
+      }
+     /* form {
+          width: 40%;
+          height: 50%;
+      }*/
+      /*Test me*/
+     /*Login Position*/
+      form {
+       /*   padding: 0px 10px 53px 28px;
+          margin: 58px 0px 0px 97px;
+          height: 80%;
+          width: 61%;*/
+          width: 100%;
+          margin: 20vw 0 0 0;
+          padding: 0 0;
+      }
+
+      /*Login Header Position*/
+      .form-header {
+           font-family: sans-serif;
+           color: whitesmoke;
+           border-radius: 5px;
+           padding: 0px 0vw 5px 10px;
+           z-index: 1;
+       }
+
+
+      .h1, h1 {
+          font-size: calc(1.075rem + 1.5vw);
+          text-align: start;
+          margin: 0px 0px 42vw -7px;
+          font-weight: 200 !important;
+      }
+      .page-text {
+          margin: 0 0 17vh 0;
+      }
+      .overlay-container.d-flex {
+          padding: 0 0 0px 5px;
+      }
+      .overlay-container {
+          position: absolute;
+          top: 0px;
+          left: 100%;
+          width: 100%;
+          height: 51%;
+      }
+      div {
+          padding: 1px 2vw 0px 0px;
+          margin: 0px 0 0 0;
+      }
+      label {
+          display: inline-block;
+          text-align-last: center;
+      }
+      .overlay {
+          background: linear-gradient(to right, #172a43, #1f6570);
+          background-repeat: no-repeat;
+          background-size: cover;
+          background-position: 0 0;
+          color: #FFFFFF;
+          position: relative;
+          left: -106.5%;
+          height: 100%;
+          width: 85.5%;
+          margin: 0 0 0 10.9vw;
+      }
+  }
 #final_ledger{
     color: white;
 }
 .bg-secondary{
     background-image: linear-gradient(315deg,#1f6570 0%,#172a43 74%);
 }
+
+
