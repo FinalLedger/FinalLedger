@@ -161,4 +161,6 @@ div#container {
 input#submitBtn {
     margin-bottom: 10px;
 }
-
+#final_ledger{
+    color: white;
+}
