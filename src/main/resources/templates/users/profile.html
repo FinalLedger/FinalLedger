@@ -25,7 +25,7 @@
     </div>
     <br>
     <div class="row">
-        <div class="row col-4 a-left justify-content-center">
+        <div class="row col-md-4 a-md-left justify-content-center">
             <img class="circular circular-img mb-3" th:src="${user.getProfilePicUrl()}"
                  alt="profile image">
             <h3 class="d-flex username row justify-content-center" th:text="${user.username.toUpperCase()}"></h3>
@@ -34,8 +34,8 @@
             <a href="/logout">Logout</a>
         </div>
 
-<!--        THIS SHOWS ALL THE USERS ADDED AS A CONNECTION       -->
-        <div class="col-8 a-right">
+        <!--        THIS SHOWS ALL THE USERS ADDED AS A CONNECTION       -->
+        <div class="col-md-8 a-md-right">
             <h2>My Connections</h2>
             <hr>
             <div th:if="${trustedUsers != null}">
@@ -53,12 +53,12 @@
     <!--        THIS WILL SEARCH FOR CONTACTS BY EMAIL ONCE IT IS FINISHED   -->
 
     <div class="row">
-        <div class="row col-4 a-left justify-content-center">
+        <div class="row col-md-4 a-md-left justify-content-center">
             <img hidden class="circular circular-img mb-3 hiddenElement" th:src="${user.getProfilePicUrl()}"
                  alt="profile image">
             <h3 class="d-flex username row justify-content-center hiddenElement"></h3>
         </div>
-        <div class="col-8 a-right">
+        <div class="col-md-8 a-md-right">
             <h2>Search for a Connection</h2>
             <hr>
             <div >
@@ -72,7 +72,7 @@
 
             <br>
 
-    <!--         SEARCHED USERS BY EMAIL WILL APPEAR HERE                   -->
+            <!--         SEARCHED USERS BY EMAIL WILL APPEAR HERE                   -->
 
             <div>
                 <div class="d-flex col" th:if="${searchedEmails != null}">
