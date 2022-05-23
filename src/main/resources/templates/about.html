@@ -132,7 +132,12 @@
             </div>
     </div>
 <button><a class="btn-color" href="#top"> Top</a></button>
-<div class="fixed-bottom" th:include="partials/footer :: footer"></div>
+<!--<div class="fixed-bottom" th:include="partials/footer :: footer"></div>-->
+<div id="drop">
+    <footer th:replace="partials/footer :: footer">
+    </footer>
+</div>
 <script th:src="@{/js/about.js}"></script>
+<script th:src="@{/js/navbar.js}"></script>
 </body>
 </html>

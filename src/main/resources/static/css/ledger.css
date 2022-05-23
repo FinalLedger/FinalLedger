@@ -98,10 +98,10 @@ background-color: #172a43;
 
 
 #footer{
-    padding: 1.5em;
-    text-align: center;
+    /*padding: 1.5em;*/
+    /*text-align: center;*/
     border: 2px solid black;
-    background-color: #b3cdd1 !important;
+    /*background-color: #b3cdd1 !important;*/
     background: linear-gradient(to right, #172a43, #1f6570);
     color: #fff;
 }
@@ -110,4 +110,8 @@ link.active {
     color: ghostwhite;
     background-color: #404d60;
 }
+.bg-secondary{
+    background-image: linear-gradient(315deg,#1f6570 0%,#172a43 74%);
+}
+
 /*--- NavBar Styling---*/

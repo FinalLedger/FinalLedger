@@ -96,7 +96,7 @@ background-color: #fff;
 }
 
 #footer {
-    padding: 1.5em;
+    /*padding: 1.5em;*/
     text-align: center;
     border: 2px solid black;
     /* background-color: #b3cdd1 !important; */
@@ -118,4 +118,7 @@ h2.sec-title {
 span.wrap {
     color: #fff;
     font-size: larger;
+}
+.bg-secondary{
+    background-image: linear-gradient(315deg,#1f6570 0%,#172a43 74%);
 }

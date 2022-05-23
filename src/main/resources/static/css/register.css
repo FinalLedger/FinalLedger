@@ -164,3 +164,6 @@ input#submitBtn {
 #final_ledger{
     color: white;
 }
+.bg-secondary{
+    background-image: linear-gradient(315deg,#1f6570 0%,#172a43 74%);
+}
