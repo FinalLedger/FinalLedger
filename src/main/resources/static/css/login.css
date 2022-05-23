@@ -290,3 +290,6 @@ button:not(:disabled) {
         bottom: 0;
         width: 100%;
     }
+    #final_ledger{
+        color: white;
+    }
