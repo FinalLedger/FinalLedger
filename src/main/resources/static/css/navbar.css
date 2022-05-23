@@ -2,8 +2,11 @@ a.nav-link{
     color: white;
 }
 @media screen and (max-width:767px) {
-    #bigNav{
+    #bigNav,#userNavBig,.img-one{
         display: none;
+    }
+    .footer{
+        font-size: .7em;
     }
     .navbarSmall {
         background-image: linear-gradient(315deg,#1f6570 0%,#172a43 74%);
@@ -14,11 +17,11 @@ a.nav-link{
         position: relative;
     }
     /* Hide the links inside the navigation menu (except for logo/home) */
-    .navbarSmall #myLinks {
+    .navbarSmall .myLinks {
         display: none;
     }
     /* Style navigation menu links */
-    .navbarSmall a {
+    .navbarSmall a  {
         color: white;
         padding: 14px 16px;
         text-decoration: none;
@@ -26,7 +29,7 @@ a.nav-link{
         display: block;
     }
     /* Style the hamburger menu */
-    .navbarSmall a.icon {
+    .navbarSmall a.icon  {
         /*background: black;*/
         display: block;
         position: absolute;
@@ -46,15 +49,16 @@ a.nav-link{
     .smallNavTitle{
         font-family: 'Luxurious Script',cursive;
     }
-    #myLinks{
+    .myLinks{
         background: hsla(0,0%,50%,.1);
         backdrop-filter: blur(.1em);
     }
+
 }
 
 @media screen and (min-width: 768px){
 
-    #navSmall{
+    #navSmall, #mobileFooter,#userNavMobile{
         display: none;
     }
     .navbar {
@@ -82,12 +86,10 @@ a.nav-link{
     }
 
     .footer {
-
         position: inherit;
         bottom: 0;
         left: 0;
         right: 0;
-
     }
 
     .bg-secondary {
@@ -103,6 +105,7 @@ a.nav-link{
     button.btn.button {
         color: white;
     }
+
 }
 
 
