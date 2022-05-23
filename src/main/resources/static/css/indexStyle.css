@@ -43,14 +43,6 @@
         text-align: center;
     }
 
-    /*#footer{
-        padding: 1.5em;
-        text-align: center;
-        border: 2px solid black;
-        background-color: #b3cdd1 !important;
-        background-image: linear-gradient(315deg, #b3cdd1 0%, #9fa4c4 74%);
-        color: #BD7979FF;
-    }*/
     /*-- profile styling --*/
     hr {
         width: 90em;
@@ -176,12 +168,7 @@
         box-shadow: 5px 5px 15px 5px black;
     }
 
-    /*!*Index Navbar*!
-    .navbar {
-        background-color: #b3cdd1 !important;
-        background-image: linear-gradient(315deg, #b3cdd1 0%, #9fa4c4 74%);
 
-    }*/
     .navbar a {
         color: #fff;
     }

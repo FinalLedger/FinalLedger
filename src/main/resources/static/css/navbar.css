@@ -51,8 +51,7 @@ a.nav-link{
         backdrop-filter: blur(.1em);
     }
 }
-/*@media screen and (min-width: 375px){*/
-/*}*/
+
 @media screen and (min-width: 768px){
 
     #navSmall{
@@ -67,7 +66,7 @@ a.nav-link{
     }
     .navbar-light .navbar-brand {
         color: rgb(255, 255, 255);
-        /*  font-family: 'Luxurious Script',cursive;*/
+
     }
     a.navbar-brand {
         font-family: 'Luxurious Script',cursive;
@@ -83,14 +82,12 @@ a.nav-link{
     }
 
     .footer {
-        /*    position: fixed;*/
+
         position: inherit;
         bottom: 0;
         left: 0;
         right: 0;
-        /*
-        margin-bottom: 0;
-        */
+
     }
 
     .bg-secondary {
@@ -99,10 +96,7 @@ a.nav-link{
     button:not(:disabled) {
         border: solid #1f6570;
     }
-    /*Footer*/
-    /*.bg-secondary {
-        background-color: #172a43;
-    }*/
+
     button:not(:disabled) {
         border: solid #1f6570;
     }
