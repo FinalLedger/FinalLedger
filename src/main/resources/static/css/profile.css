@@ -11,7 +11,7 @@ body {
 .btn-secondary {
  color: #fff;
  background: linear-gradient(to right, #172a43, #1f6570);
- border-color: #1f6570;
+ /*border-color: #1f6570;*/
 }
 
 .subheader {
@@ -59,4 +59,8 @@ button:not(:disabled) {
  width: 100%;
  height: 5px;
  background-color: #1f6570;
+}
+
+.hiddenElement {
+ display: none;
 }
