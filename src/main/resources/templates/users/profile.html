@@ -2,18 +2,20 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
           integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <title>Final Ledger Landing Page</title>
-    <link rel="stylesheet" type="text/css" href="/css/indexStyle.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/profile.css"/>
     <link rel="stylesheet" type="text/css" href="/css/navbar.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>My Profile</title>
 </head>
 <body>
-<nav th:replace="partials/navbar :: userNav"></nav>
-<nav th:replace="partials/navbar :: userNavSmall"></nav>
+<div th:replace="partials/navbar :: visitorNavSmall">
+</div>
+<div th:replace="partials/navbar :: visitorNav">
+</div>
 <br>
 <div class="container">
     <div class="row">
@@ -23,55 +25,62 @@
     </div>
     <br>
     <div class="row">
-        <div class="col-2 a-left">
-            <img class="profile-img rounded-circle mb-3" th:src="${user.getProfilePicUrl()}"
-                 alt="profile image" width="300" height="300"><br>
-            <h2 class="username" th:text="${user.username.toUpperCase()}"></h2>
+        <div class="row col-4 a-left justify-content-center">
+            <img class="circular circular-img mb-3" th:src="${user.getProfilePicUrl()}"
+                 alt="profile image">
+            <h3 class="d-flex username row justify-content-center" th:text="${user.username.toUpperCase()}"></h3>
+            <p class="d-flex row justify-content-center" th:text="${user.getEmail()}"></p>
         </div>
 
 <!--        THIS SHOWS ALL THE USERS ADDED AS A CONNECTION       -->
-        <div class="col-10 a-right">
+        <div class="col-8 a-right">
             <h2>My Connections</h2>
-
+            <hr>
             <div th:if="${trustedUsers != null}">
                 <th:block th:each="user : ${trustedUsers}">
                     <a th:href="@{|/ledger/${user.getAdded_user_id().getId()}/personal|}"
-                       type="button" class="btn btn-sm btn-primary">
+                       type="button" class="btn btn-secondary">
                         View <span th:text="${user.getAdded_user_id().getUsername()}"></span>'s Ledger</a>
                 </th:block>
             </div>
-
         </div>
+
     </div>
 
     <br><br>
     <!--        THIS WILL SEARCH FOR CONTACTS BY EMAIL ONCE IT IS FINISHED   -->
 
     <div class="row">
-        <div class="col-2 a-left"></div>
-        <div class="col-10 a-right">
+        <div class="row col-4 a-left justify-content-center">
+            <img hidden class="circular circular-img mb-3 hiddenElement" th:src="${user.getProfilePicUrl()}"
+                 alt="profile image">
+            <h3 class="d-flex username row justify-content-center hiddenElement"></h3>
+        </div>
+        <div class="col-8 a-right">
             <h2>Search for a Connection</h2>
-
-            <div>
+            <hr>
+            <div >
                 <form th:action="@{/search}" method="get">
                     <label>
                         <input type="text" name="searchedValue" placeholder="search by email">
                     </label>
-                    <br>
-                    <button type="submit" class="btn btn-blue">search</button>
-
+                    <button type="submit" class="btn btn-secondary">search</button>
                 </form>
             </div>
 
-            <!--                SEARCHED USERS BY EMAIL WILL APPEAR HERE         -->
+            <br>
+
+    <!--         SEARCHED USERS BY EMAIL WILL APPEAR HERE                   -->
+
             <div>
-                <div th:if="${searchedEmails != null}">
-                    <div class="col-md-6" th:each="email : ${searchedEmails}">
-                        <form th:method="post" th:action="@{/profile/addcontact}">
+                <div class="d-flex col" th:if="${searchedEmails != null}">
+                    <div class="d-flex me-1" th:each="email : ${searchedEmails}">
+                        <form class="col" th:method="post" th:action="@{/profile/addcontact}">
                             <input id="contactHidden" name="contactHidden" th:value="${email.getId()}" type="hidden">
                             <button type="submit" class="btn btn-secondary">
                                 <span>Add <span th:text="${email.getUsername()}"></span> to contacts!</span>
                             </button>
+                            <br>
                         </form>
                     </div>
                 </div>
@@ -81,11 +90,14 @@
     </div>
 
 </div>
+
 <div class="footer">
     <footer class="fixed-bottom" th:include="partials/footer :: footer"></footer>
 </div>
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
         crossorigin="anonymous"></script>
+<script th:src="@{/js/navbar.js}"></script>
 </body>
 </html>
