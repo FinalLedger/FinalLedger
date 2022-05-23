@@ -234,14 +234,14 @@ span:nth-child(2) {
 }
 
 
-.footer {
-    position: fixed;
-    bottom: 0px;
-    left: 0px;
-    right: 0px;
-    margin-bottom: 0px;
-    background-color: #172a43;
-}
+/*.footer {*/
+/*    position: fixed;*/
+/*    bottom: 0px;*/
+/*    left: 0px;*/
+/*    right: 0px;*/
+/*    margin-bottom: 0px;*/
+/*    background-color: #172a43;*/
+/*}*/
 .navbar-light .navbar-brand {
     color: rgb(255, 255, 255);
 }
@@ -287,22 +287,12 @@ button:not(:disabled) {
     border: solid ghostwhite;
 }
 
+
     .d-flex.justify-content-around.border-top.border-dark.bg-secondary {
         position: fixed;
         bottom: 0;
         width: 100%;
     }
-
-
-
-
-
-
-
-
-
-
-
 
   @media screen and (min-width: 300px) and (max-width: 500px) {
 
@@ -396,4 +386,11 @@ button:not(:disabled) {
           margin: 0 0 0 10.9vw;
       }
   }
+#final_ledger{
+    color: white;
+}
+.bg-secondary{
+    background-image: linear-gradient(315deg,#1f6570 0%,#172a43 74%);
+}
+
 
