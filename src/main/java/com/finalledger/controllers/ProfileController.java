@@ -1,11 +1,13 @@
 package com.finalledger.controllers;
 
-import com.finalledger.models.Message;
-import com.finalledger.models.SiteContact;
-import com.finalledger.models.User;
+import com.finalledger.models.*;
 import com.finalledger.repositories.SiteContactRepository;
+import com.finalledger.repositories.UserMedicalRepository;
+import com.finalledger.repositories.UserPersonalRepository;
 import com.finalledger.repositories.UserRepository;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,10 +25,19 @@ public class ProfileController {
 
     private UserRepository userDao;
     private SiteContactRepository siteContactDao;
+    private UserPersonalRepository userPersonalDao;
+    private UserMedicalRepository userMedicalDao;
+    private final PasswordEncoder passwordEncoder;
 
-    public ProfileController(UserRepository userDao, SiteContactRepository siteContactDao) {
+    @Value("${fileStackAPI}")
+    public String fileStackAPIKey;
+
+    public ProfileController(UserRepository userDao, SiteContactRepository siteContactDao, UserPersonalRepository userPersonalDao, UserMedicalRepository userMedicalDao, PasswordEncoder passwordEncoder) {
         this.userDao = userDao;
         this.siteContactDao = siteContactDao;
+        this.userPersonalDao = userPersonalDao;
+        this.userMedicalDao = userMedicalDao;
+        this.passwordEncoder = passwordEncoder;
     }
 
     @GetMapping("/profile")
@@ -46,7 +57,7 @@ public class ProfileController {
 
         model.addAttribute("messagingDisplay", false);
         model.addAttribute("message", new Message());
-        model.addAttribute("user", user);
+        model.addAttribute("user", persistUser);
         model.addAttribute("userList", userList);
         model.addAttribute("trustedUsers", trustedUserList);
 
@@ -69,6 +80,76 @@ public class ProfileController {
 
         return "users/profile";
 
+    }
+
+    @GetMapping("/profile/settings")
+    public String showProfileSettings(Model model) {
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User persistUser = userDao.getUserById(user.getId());
+        model.addAttribute("user", persistUser);
+        model.addAttribute("fileStackAPI", fileStackAPIKey);
+//        model.addAttribute("showErrorMsg", false);
+        return "users/profile_settings";
+    }
+
+    @GetMapping("/profile/settings?password")
+    public String showProfileSettingsError(Model model) {
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User persistUser = userDao.getUserById(user.getId());
+        model.addAttribute("user", persistUser);
+        model.addAttribute("fileStackAPI", fileStackAPIKey);
+        model.addAttribute("showErrorMsg", true);
+        return "users/profile_settings";
+    }
+
+    @PostMapping("/profile/settings/username")
+    public String updateUsername(@RequestParam(name = "username") String username) {
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User persistUser = userDao.getUserById(user.getId());
+        persistUser.setUsername(username);
+        userDao.save(persistUser);
+        return "redirect:/profile/settings";
+    }
+
+    @PostMapping("/profile/settings")
+    public String updatePassword(Model model, @RequestParam(name = "currentPswd") String currentPswd, @RequestParam(name = "newPswd") String newPswd) {
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User persistUser = userDao.getUserById(user.getId());
+        String hash = passwordEncoder.encode(newPswd);
+        if (!passwordEncoder.matches(currentPswd, persistUser.getPassword())) {
+            model.addAttribute("user", persistUser);
+            model.addAttribute("fileStackAPI", fileStackAPIKey);
+            model.addAttribute("showErrorMsg", true);
+            return "users/profile_settings";
+        }
+        persistUser.setPassword(hash);
+        userDao.save(persistUser);
+        return "redirect:/logout";
+    }
+
+    @PostMapping("/profile/settings/profile_pic")
+    public String updateProfilePic(@RequestParam(name = "profilePicUrl") String profilePicUrl) {
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User persistUser = userDao.getUserById(user.getId());
+        persistUser.setProfilePicUrl(profilePicUrl);
+        userDao.save(persistUser);
+        return "redirect:/profile/settings";
+    }
+
+    @PostMapping("/profile/settings/delete")
+    public String deleteUser() {
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User persistUser = userDao.getById(user.getId());
+        PersonalInformation userPersonalInfo = userPersonalDao.findByUserId(persistUser.getId());
+        MedicalInformation userMedicalInfo = userMedicalDao.findByUserId(persistUser.getId());
+        if (userPersonalInfo != null) {
+            userPersonalDao.delete(userPersonalInfo);
+        }
+        if (userMedicalInfo != null) {
+            userMedicalDao.delete(userMedicalInfo);
+        }
+        userDao.delete(persistUser);
+        return "redirect:/logout";
     }
 
     @PostMapping("/profile/addcontact")

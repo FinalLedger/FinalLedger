@@ -30,6 +30,8 @@
                  alt="profile image">
             <h3 class="d-flex username row justify-content-center" th:text="${user.username.toUpperCase()}"></h3>
             <p class="d-flex row justify-content-center" th:text="${user.getEmail()}"></p>
+            <a href="/profile/settings">Profile Settings</a>
+            <a href="/logout">Logout</a>
         </div>
 
 <!--        THIS SHOWS ALL THE USERS ADDED AS A CONNECTION       -->
