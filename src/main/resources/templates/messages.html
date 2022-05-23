@@ -3,7 +3,10 @@
 </head>
 <body>
     <div class="container">
-        <nav th:replace="partials/navbar :: userNav"></nav>
+        <div th:replace="partials/navbar :: visitorNavSmall">
+        </div>
+        <div th:replace="partials/navbar :: visitorNav">
+        </div>
 
         <main style="font-family: 'Montserrat', sans-serif;" class="site-content">
 

@@ -2,13 +2,13 @@ a.nav-link{
     color: white;
 }
 @media screen and (max-width:767px) {
-    #bigNav,#userNavBig,.img-one{
+    #bigNav,.img-one{
         display: none;
     }
     .footer{
         font-size: .7em;
     }
-    .navbarSmall {
+    .navbarSmall{
         background-image: linear-gradient(315deg,#1f6570 0%,#172a43 74%);
         /*display: flex;*/
         text-align: center;
@@ -17,7 +17,7 @@ a.nav-link{
         position: relative;
     }
     /* Hide the links inside the navigation menu (except for logo/home) */
-    .navbarSmall .myLinks {
+    .navbarSmall #myLinks{
         display: none;
     }
     /* Style navigation menu links */
@@ -58,7 +58,7 @@ a.nav-link{
 
 @media screen and (min-width: 768px){
 
-    #navSmall, #mobileFooter,#userNavMobile{
+    #navSmall{
         display: none;
     }
     .navbar {

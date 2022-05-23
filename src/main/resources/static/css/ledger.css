@@ -1,3 +1,8 @@
+@media screen and (min-width: 768px){
+    #back-top{
+        display: none;
+    }
+}
 p {
     margin-bottom: 0.5rem;
 }
@@ -105,3 +110,4 @@ link.active {
     color: ghostwhite;
     background-color: #404d60;
 }
+/*--- NavBar Styling---*/

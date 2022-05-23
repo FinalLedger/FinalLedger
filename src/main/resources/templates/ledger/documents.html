@@ -8,9 +8,14 @@
     <link th:replace="partials/navbar :: bootstrap">
     <link rel="stylesheet" th:href="@{/css/ledger.css}">
     <link rel="stylesheet" th:href="@{/css/navbar.css}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 </head>
 <body>
-<nav th:replace="partials/navbar :: userNav"></nav>
+<div th:replace="partials/navbar :: visitorNavSmall">
+</div>
+<div th:replace="partials/navbar :: visitorNav">
+</div>
 <div class="subheader"></div>
 
 <div class="container">
@@ -135,5 +140,6 @@
         crossorigin="anonymous"></script>
 <script src="//static.filestackapi.com/filestack-js/3.x.x/filestack.min.js"></script>
 <script th:inline="javascript" th:src="@{/js/documents.js}"></script>
+<script th:src="@{/js/navbar.js}"></script>
 </body>
 </html>

@@ -6,13 +6,15 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <title>Register</title>
     <link rel="stylesheet" type="text/css" th:href="@{/css/register.css}">
-
     <link rel="stylesheet" type="text/css" th:href="@{/css/navbar.css}">
     <link th:replace="partials/navbar :: bootstrap">
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
-<nav th:replace="partials/navbar :: visitorNav"></nav>
+<div th:replace="partials/navbar :: visitorNavSmall">
+</div>
+<div th:replace="partials/navbar :: visitorNav">
+</div>
 <div class="subheader"></div>
 <br>
 <div class="container col-8">
@@ -64,5 +66,6 @@
         crossorigin="anonymous"></script>
 <script src="//static.filestackapi.com/filestack-js/3.x.x/filestack.min.js"></script>
 <script th:src="@{/js/register.js}"></script>
+<script th:src="@{/js/navbar.js}"></script>
 </body>
 </html>
