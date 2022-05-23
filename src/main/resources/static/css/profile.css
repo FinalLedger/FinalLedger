@@ -27,6 +27,7 @@ body {
  position: relative;
  overflow: hidden;
 }
+
 .circular img {
  min-width: 100%;
  min-height: 100%;
@@ -41,6 +42,10 @@ body {
  transform: translate(-50%, -50%);
 }
 
+.a-right {
+ border: #172a43 1px solid;
+}
+
 button:not(:disabled) {
  border: solid #1f6570;
  background: linear-gradient(to right, #172a43, #1f6570);
@@ -48,11 +53,6 @@ button:not(:disabled) {
 
 .bg-secondary a:hover {
  color: ghostwhite;
-}
-
-img {
- height: 20px;
- /*padding-top: 3vh;*/
 }
 
 .subheader {

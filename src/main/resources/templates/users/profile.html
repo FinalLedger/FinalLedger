@@ -25,9 +25,9 @@
     <br>
     <div class="row">
         <div class="col-4 a-left">
-            <img class="circular circular-img mb-3 justify-content-center" th:src="${user.getProfilePicUrl()}"
+            <img class="d-flex circular circular-img mb-3 row justify-content-center" th:src="${user.getProfilePicUrl()}"
                  alt="profile image" width="300" height="300"><br>
-            <h3 class="username justify-content-center" th:text="${user.username.toUpperCase()}"></h3>
+            <h3 class="d-flex username row justify-content-center" th:text="${user.username.toUpperCase()}"></h3>
         </div>
 
 <!--        THIS SHOWS ALL THE USERS ADDED AS A CONNECTION       -->
@@ -37,7 +37,7 @@
             <div th:if="${trustedUsers != null}">
                 <th:block th:each="user : ${trustedUsers}">
                     <a th:href="@{|/ledger/${user.getAdded_user_id().getId()}/personal|}"
-                       type="button" class="btn btn-sm btn-secondary">
+                       type="button" class="btn btn-secondary">
                         View <span th:text="${user.getAdded_user_id().getUsername()}"></span>'s Ledger</a>
                 </th:block>
             </div>
@@ -58,11 +58,10 @@
                     <label>
                         <input type="text" name="searchedValue" placeholder="search by email">
                     </label>
-                    <br>
                     <button type="submit" class="btn btn-secondary">search</button>
                 </form>
             </div>
-
+            <br>
             <!--                SEARCHED USERS BY EMAIL WILL APPEAR HERE         -->
             <div>
                 <div th:if="${searchedEmails != null}">
@@ -72,6 +71,7 @@
                             <button type="submit" class="btn btn-secondary">
                                 <span>Add <span th:text="${email.getUsername()}"></span> to contacts!</span>
                             </button>
+                            <br>
                         </form>
                     </div>
                 </div>
