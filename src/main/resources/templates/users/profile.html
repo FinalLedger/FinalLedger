@@ -2,12 +2,11 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
           integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <title>Final Ledger Landing Page</title>
-    <link rel="stylesheet" type="text/css" href="/css/indexStyle.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/profile.css"/>
     <link rel="stylesheet" type="text/css" href="/css/navbar.css">
     <title>My Profile</title>
 </head>
@@ -25,20 +24,20 @@
     </div>
     <br>
     <div class="row">
-        <div class="col-2 a-left">
-            <img class="profile-img rounded-circle mb-3" th:src="${user.getProfilePicUrl()}"
+        <div class="col-4 a-left">
+            <img class="circular circular-img mb-3 justify-content-center" th:src="${user.getProfilePicUrl()}"
                  alt="profile image" width="300" height="300"><br>
-            <h2 class="username" th:text="${user.username.toUpperCase()}"></h2>
+            <h3 class="username justify-content-center" th:text="${user.username.toUpperCase()}"></h3>
         </div>
 
 <!--        THIS SHOWS ALL THE USERS ADDED AS A CONNECTION       -->
-        <div class="col-10 a-right">
+        <div class="col-8 a-right">
             <h2>My Connections</h2>
 
             <div th:if="${trustedUsers != null}">
                 <th:block th:each="user : ${trustedUsers}">
                     <a th:href="@{|/ledger/${user.getAdded_user_id().getId()}/personal|}"
-                       type="button" class="btn btn-sm btn-primary">
+                       type="button" class="btn btn-sm btn-secondary">
                         View <span th:text="${user.getAdded_user_id().getUsername()}"></span>'s Ledger</a>
                 </th:block>
             </div>
@@ -50,8 +49,8 @@
     <!--        THIS WILL SEARCH FOR CONTACTS BY EMAIL ONCE IT IS FINISHED   -->
 
     <div class="row">
-        <div class="col-2 a-left"></div>
-        <div class="col-10 a-right">
+        <div class="col-4 a-left"></div>
+        <div class="col-8 a-right">
             <h2>Search for a Connection</h2>
 
             <div>
@@ -60,8 +59,7 @@
                         <input type="text" name="searchedValue" placeholder="search by email">
                     </label>
                     <br>
-                    <button type="submit" class="btn btn-blue">search</button>
-
+                    <button type="submit" class="btn btn-secondary">search</button>
                 </form>
             </div>
 
