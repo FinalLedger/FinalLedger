@@ -36,9 +36,10 @@ h5#formModalLabel {
     color: #fff;
 }
 
-button.btn.btn-primary {
+button.btn.btn-primary,button.btn.btn-warning,button.btn.btn-danger {
     border: solid ghostwhite 2px;
     background-color: #172a43;
+    color: white;
 }
 button.btn-close{
     color: #fff;
