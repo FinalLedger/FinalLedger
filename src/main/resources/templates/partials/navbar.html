@@ -47,11 +47,12 @@
     <a class="smallNavTitle" href="/ledger/personal">Final Ledger</a>
     <!-- Navigation links (hidden by default) -->
     <div id="myLinks">
+        <hr>
         <a class="nav-link" href="/">Home</a><hr>
         <a class="nav-link" href="/about">About</a><hr>
-        <a th:block class="nav-link" href="/login" id="loginNav1" sec:authorize="!isAuthenticated()"> Login</a>
+        <a th:block class="nav-link" href="/login" id="loginNav1" sec:authorize="!isAuthenticated()">Login</a><hr>
         <a th:block class="nav-link" href="/profile" sec:authorize="isAuthenticated()">Profile</a>
-        <a th:block class="nav-link" href="/register" id="signUpNav1" sec:authorize="!isAuthenticated()">Sign up</a>
+        <a th:block class="nav-link" href="/register" id="signUpNav1" sec:authorize="!isAuthenticated()">Sign up</a><br>
         <a th:block class="nav-link" href="/logout" sec:authorize="isAuthenticated()">Logout</a>
     </div>
     <!-- "Hamburger menu" / "Bar icon" to toggle the navigation links -->
