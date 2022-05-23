@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8" name="fileStackAPI" th:content="${fileStackAPI}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="/css/profile.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/navbar.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>My Profile</title>
+</head>
+<body>
+<nav th:replace="partials/navbar :: visitorNav"></nav>
+<br>
+<div class="container">
+    <div class="row">
+        <br>
+        <h2>My Profile</h2>
+        <hr>
+    </div>
+    <br>
+    <div class="row justify-content-around">
+        <div class="col-4 a-left">
+            <div class="row">
+                <div class="col d-flex justify-content-center">
+                    <img class="profile-img rounded-circle mb-3" th:src="${user.getProfilePicUrl()}"
+                         alt="profile image" width="300" height="300"><br>
+                </div>
+                <div class="col text-center">
+                    <h2 class="username" th:text="${user.username.toUpperCase()}"></h2>
+                    <h3><a href="/profile">My Connections</a></h3>
+                    <h3><a href="/logout">Logout</a></h3>
+                </div>
+            </div>
+        </div>
+        <div class="col-8 a-right text-center">
+            <h2>My Profile Settings</h2>
+            <div th:if="${showErrorMsg}" class="alert alert-danger text-center" role="alert">Incorrect current password.
+                Could not update password.
+            </div>
+            <br>
+            <div class="d-inline-flex flex-column justify-content-around">
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                        data-bs-target="#usernameModal">
+                    Change Username
+                </button>
+                <br>
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                        data-bs-target="#passwordModal">
+                    Change Password
+                </button>
+                <br>
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                        data-bs-target="#profilePicModal">
+                    Change Profile Pic
+                </button>
+                <br>
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                        data-bs-target="#deleteAccountModal">
+                    Delete Account
+                </button>
+            </div>
+        </div>
+    </div>
+    <br><br>
+</div>
+<div class="footer">
+    <div th:include="partials/footer :: footer"></div>
+</div>
+
+<div class="modal fade" id="usernameModal" tabindex="-1" aria-labelledby="usernameModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="usernameModalLabel">Change your username</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form th:action="@{/profile/settings/username}" th:method="post">
+                    <div class="mb-3">
+                        <label for="username" class="form-label">Username</label>
+                        <input id="username" name="username" class="form-control" type="text">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="passwordModal" tabindex="-1" aria-labelledby="passwordModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="passwordModalLabel">Change your password</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <h3>Changing your password will log you out and require you to log back in with your new password.</h3>
+                <form id="passwordForm" th:action="@{/profile/settings}" th:method="post">
+                    <div class="mb-3">
+                        <div class="mb-3">
+                            <label for="currentPswd" class="form-label">Current Password</label>
+                            <input id="currentPswd" name="currentPswd" class="form-control" type="password">
+                        </div>
+                        <div class="mb-3">
+                            <label for="newPswd" class="form-label">New Password</label>
+                            <input id="newPswd" name="newPswd" class="form-control" type="password">
+                            <div id="passwordHelp" class="form-text">Your password must include at least one of
+                                each:<br>
+                                <span id="8char">8 characters</span>&nbsp;
+                                <span id="uppercase">Uppercase letters</span>&nbsp;
+                                <span id="lowercase">Lowercase letters</span>&nbsp;
+                                <span id="num">Numbers</span>&nbsp;
+                                <span id="special">Special characters</span>&nbsp;
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="confirmNewPswd" class="form-label">Confirm New Password</label>
+                            <input id="confirmNewPswd" name="confirmNewPswd" class="form-control" type="password">
+                            <div id="confirmPassMsg" class="form-text"></div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button id="submitBtn" type="submit" class="btn btn-primary">Submit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="profilePicModal" tabindex="-1" aria-labelledby="profilePicModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="profilePicModalLabel">Change your profile picture</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form th:action="@{/profile/settings/profile_pic}" th:method="post">
+                    <div class="mb-3">
+                        <label for="profilePicUrl" class="form-label">Upload Profile Picture</label>
+                        <input id="profilePicUrl" name="profilePicUrl" value="replaceMe" type="hidden">
+                        <br>
+                        <button id="buttonUpload" type="button" class="btn btn-primary">Upload Picture</button>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="deleteAccountModal" tabindex="-1" aria-labelledby="deleteAccountModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="deleteAccountModalLabel">Delete your account?</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form th:action="@{/profile/settings/delete}" method="post">
+                    <h3>Are you sure you wish to delete your account?<br>
+                        All info saved to your ledger will be deleted.</h3>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Delete</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+        crossorigin="anonymous"></script>
+<script src="//static.filestackapi.com/filestack-js/3.x.x/filestack.min.js"></script>
+<script th:src="@{/js/profile_settings.js}"></script>
+</body>
+</html>
