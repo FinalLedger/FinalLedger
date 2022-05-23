@@ -25,16 +25,17 @@
     </div>
     <br>
     <div class="row">
-        <div class="col-4 a-left">
-            <img class="d-flex circular circular-img mb-3 row justify-content-center" th:src="${user.getProfilePicUrl()}"
-                 alt="profile image" width="300" height="300"><br>
+        <div class="row col-4 a-left justify-content-center">
+            <img class="circular circular-img mb-3" th:src="${user.getProfilePicUrl()}"
+                 alt="profile image">
             <h3 class="d-flex username row justify-content-center" th:text="${user.username.toUpperCase()}"></h3>
+            <p class="d-flex row justify-content-center" th:text="${user.getEmail()}"></p>
         </div>
 
 <!--        THIS SHOWS ALL THE USERS ADDED AS A CONNECTION       -->
         <div class="col-8 a-right">
             <h2>My Connections</h2>
-
+            <hr>
             <div th:if="${trustedUsers != null}">
                 <th:block th:each="user : ${trustedUsers}">
                     <a th:href="@{|/ledger/${user.getAdded_user_id().getId()}/personal|}"
@@ -42,19 +43,23 @@
                         View <span th:text="${user.getAdded_user_id().getUsername()}"></span>'s Ledger</a>
                 </th:block>
             </div>
-
         </div>
+
     </div>
 
     <br><br>
     <!--        THIS WILL SEARCH FOR CONTACTS BY EMAIL ONCE IT IS FINISHED   -->
 
     <div class="row">
-        <div class="col-4 a-left"></div>
+        <div class="row col-4 a-left justify-content-center">
+            <img hidden class="circular circular-img mb-3 hiddenElement" th:src="${user.getProfilePicUrl()}"
+                 alt="profile image">
+            <h3 class="d-flex username row justify-content-center hiddenElement"></h3>
+        </div>
         <div class="col-8 a-right">
             <h2>Search for a Connection</h2>
-
-            <div>
+            <hr>
+            <div >
                 <form th:action="@{/search}" method="get">
                     <label>
                         <input type="text" name="searchedValue" placeholder="search by email">
@@ -62,12 +67,15 @@
                     <button type="submit" class="btn btn-secondary">search</button>
                 </form>
             </div>
+
             <br>
-            <!--                SEARCHED USERS BY EMAIL WILL APPEAR HERE         -->
+
+    <!--         SEARCHED USERS BY EMAIL WILL APPEAR HERE                   -->
+
             <div>
-                <div th:if="${searchedEmails != null}">
-                    <div class="col-md-6" th:each="email : ${searchedEmails}">
-                        <form th:method="post" th:action="@{/profile/addcontact}">
+                <div class="d-flex col" th:if="${searchedEmails != null}">
+                    <div class="d-flex me-1" th:each="email : ${searchedEmails}">
+                        <form class="col" th:method="post" th:action="@{/profile/addcontact}">
                             <input id="contactHidden" name="contactHidden" th:value="${email.getId()}" type="hidden">
                             <button type="submit" class="btn btn-secondary">
                                 <span>Add <span th:text="${email.getUsername()}"></span> to contacts!</span>
@@ -82,9 +90,11 @@
     </div>
 
 </div>
+
 <div class="footer">
     <footer class="fixed-bottom" th:include="partials/footer :: footer"></footer>
 </div>
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
         crossorigin="anonymous"></script>
