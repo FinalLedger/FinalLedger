@@ -1,8 +1,6 @@
 
 
-    /*@import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');
-    @import url('https://fonts.googleapis.com/css2?family=Radio+Canada:wght@300&display=swap');*/
-* {
+  * {
     box-sizing: border-box;
 }
 html {
@@ -23,12 +21,7 @@ nav {
     display: flex;
     flex-direction: row;
 
-    /*
-    color: #7d11e3;
-    */
-    /* border: #212121 solid 3px;*/
-    /*width: 100%;*/
-    /*height: 90px;*/
+
     text-align: center;
     position: center;
     justify-content: space-between;
@@ -52,7 +45,6 @@ h1:hover {
 .form-header {
     font-family: sans-serif;
     color: whitesmoke;
-    /* background-image: linear-gradient(315deg,#1f6570 0%,#172a43 74%); */
     border-radius: 5px;
     padding: 5px 10px 5px 10px;
 }
@@ -84,7 +76,6 @@ a {
     color: #333;
     font-size: 14px;
     text-decoration: none;
-    /*margin: 15px 0;*/
 }
 
 .button:hover {
@@ -93,7 +84,6 @@ a {
 }
 
 form {
-    /* background-color: #FFFFFF;*/
     background-color: #404d60;
     display: flex;
     align-items: center;
@@ -240,30 +230,7 @@ span:nth-child(2) {
     font-weight:  bolder;
     font-size: large;
 }
-/*Keep me, will consolidate*/
-/*.navbar {
 
-    background-image: linear-gradient(315deg,#1f6570 0%,#172a43 74%);
-
-}*/
-/*.navbar a {
-    color: #BD7979FF;
-    font-weight: bolder;
-}*/
-
-/*.navbar a {
-    font-weight: bolder;
-    color: #f8f0c6;
-}*/
-/*
-.navbar-light .navbar-brand {
-    color: rgb(255, 255, 255);
-    font-family: 'Luxurious Script',cursive;
-}
-a.navbar-brand {
-    font-family: 'Luxurious Script',cursive;
-}
-*/
 
 .footer {
     position: fixed;
@@ -276,19 +243,13 @@ a.navbar-brand {
 .navbar-light .navbar-brand {
     color: rgb(255, 255, 255);
 }
-/*.subheader {
-    width: 100%;
-    height: 5px;
-    background-color: #1f6570;
-}*/
+
 
 /*----*/
 
 
 /*Temp Register*/
-/*.col-8 {
-    background: linear-gradient(to right, #8a898b, #aea5b6);
-}*/
+
 
 div#passwordHelp {
     color:  #3e4245;
@@ -316,12 +277,10 @@ input#submitBtn {
 
     border-width: 3px;
     border-style: initial;
-    /*   border-color: #ef0c0c;*/
+
     border-image: initial;
 }
-/*.bg-secondary {
-    background-color: #172a43;
-}*/
+
 button:not(:disabled) {
     border: solid ghostwhite;
 }
