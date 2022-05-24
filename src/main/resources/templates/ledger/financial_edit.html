@@ -10,10 +10,8 @@
     <link rel="stylesheet" th:href="@{/css/navbar.css}">
 </head>
 <body>
-<div th:replace="partials/navbar :: visitorNavSmall">
-</div>
-<div th:replace="partials/navbar :: visitorNav">
-</div>
+<div th:replace="partials/navbar :: visitorNavSmall"></div>
+<div th:replace="partials/navbar :: visitorNav"></div>
 <div class="subheader"></div>
 
 <div class="container">
@@ -69,3 +67,8 @@
         <br>
     </div>
 </div>
+<div id="drop">
+    <footer th:replace="partials/footer :: footer"></footer>
+</div>
+</body>
+</html>
