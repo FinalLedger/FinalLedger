@@ -14,13 +14,13 @@
 <body>
 <div th:fragment="visitorNav" class="navbar navbar-expand-lg navbar-light bg-light justify-content-around" id="bigNav">
     <div class="container">
-        <a class="nav-link" href="/">Home</a>
-        <a class="nav-link" href="/about">About</a>
+        <a class="nav-link nav-bar-link" href="/">Home</a>
+        <a class="nav-link nav-bar-link" href="/about">About</a>
         <a class="navbar-brand me-0 title-nav" href="/ledger/personal" id="final_ledger">Final Ledger</a>
-        <a th:block class="nav-link" href="/login" id="loginNav" sec:authorize="!isAuthenticated()">Login</a>
-        <a th:block class="nav-link" href="/profile" sec:authorize="isAuthenticated()">Profile</a>
-        <a th:block class="nav-link" href="/register" id="signUpNav" sec:authorize="!isAuthenticated()">Sign up</a>
-        <a th:block class="nav-link" href="/logout" sec:authorize="isAuthenticated()">Logout</a>
+        <a th:block class="nav-link nav-bar-link" href="/login" id="loginNav" sec:authorize="!isAuthenticated()">Login</a>
+        <a th:block class="nav-link nav-bar-link" href="/profile" sec:authorize="isAuthenticated()">Profile</a>
+        <a th:block class="nav-link nav-bar-link" href="/register" id="signUpNav" sec:authorize="!isAuthenticated()">Sign up</a>
+        <a th:block class="nav-link nav-bar-link" href="/logout" sec:authorize="isAuthenticated()">Logout</a>
     </div>
 </div>
 
@@ -29,12 +29,12 @@
     <!-- Navigation links (hidden by default) -->
     <div id="myLinks">
         <hr>
-        <a class="nav-link" href="/">Home</a><hr>
-        <a class="nav-link" href="/about">About</a><hr>
-        <a th:block class="nav-link" href="/login" id="loginNav1" sec:authorize="!isAuthenticated()">Login</a><hr th:block sec:authorize="!isAuthenticated()">
-        <a th:block class="nav-link" href="/profile" sec:authorize="isAuthenticated()">Profile</a> <hr th:block sec:authorize="isAuthenticated()">
-        <a th:block class="nav-link" href="/register" id="signUpNav1" sec:authorize="!isAuthenticated()">Sign up</a><br th:block sec:authorize="!isAuthenticated()">
-        <a th:block class="nav-link" href="/logout" sec:authorize="isAuthenticated()">Logout</a><br th:block sec:authorize="isAuthenticated()">
+        <a class="nav-link nav-bar-link" href="/">Home</a><hr>
+        <a class="nav-link nav-bar-link" href="/about">About</a><hr>
+        <a th:block class="nav-link nav-bar-link" href="/login" id="loginNav1" sec:authorize="!isAuthenticated()">Login</a><hr th:block sec:authorize="!isAuthenticated()">
+        <a th:block class="nav-link nav-bar-link" href="/profile" sec:authorize="isAuthenticated()">Profile</a> <hr th:block sec:authorize="isAuthenticated()">
+        <a th:block class="nav-link nav-bar-link" href="/register" id="signUpNav1" sec:authorize="!isAuthenticated()">Sign up</a><br th:block sec:authorize="!isAuthenticated()">
+        <a th:block class="nav-link nav-bar-link" href="/logout" sec:authorize="isAuthenticated()">Logout</a><br th:block sec:authorize="isAuthenticated()">
     </div>
     <!-- "Hamburger menu" / "Bar icon" to toggle the navigation links -->
     <a href="javascript:void(0);" class="icon" onclick="myFunction()">

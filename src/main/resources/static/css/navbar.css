@@ -5,7 +5,7 @@ a.nav-link{
 a:visited,a:link, a:active{
     text-decoration: none;
 }
-a:hover{
+a.nav-link.nav-bar-link:hover,.navbar-brand:hover, .smallNavTitle{
     color: white !important;
     filter: drop-shadow(0 0 2px rgba(255,255,255,0.7)) drop-shadow(0 0 5px rgba(255,255,255,0.7)) drop-shadow(0 0 15px rgba(255,255,255,0.7));
     text-decoration: none;}
