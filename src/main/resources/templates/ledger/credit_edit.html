@@ -10,7 +10,10 @@
     <link rel="stylesheet" th:href="@{/css/navbar.css}">
 </head>
 <body>
-<nav th:replace="partials/navbar :: userNav"></nav>
+<div th:replace="partials/navbar :: visitorNavSmall">
+</div>
+<div th:replace="partials/navbar :: visitorNav">
+</div>
 <div class="subheader"></div>
 
 <div class="container">

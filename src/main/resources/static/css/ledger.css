@@ -3,6 +3,18 @@
         display: none;
     }
 }
+@media screen and (max-width: 767px){
+    #buttonUpload{
+
+    }
+    #uploadDoc{
+        width: 48px;
+    }
+}
+
+.container{
+    margin-bottom: inherit;
+}
 p {
     margin-bottom: 0.5rem;
 }
@@ -22,6 +34,9 @@ p,h6,label,h5,button.btn-close{
 .card-body {
     padding-bottom: 0.5rem;
 
+}
+.card{
+    border: 1px solid white;
 }
 .card,.list-group-item{
     background: hsla(0,0%,50%,.1);
