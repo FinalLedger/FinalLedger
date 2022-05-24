@@ -10,7 +10,10 @@
     <title>My Profile</title>
 </head>
 <body>
-<nav th:replace="partials/navbar :: visitorNav"></nav>
+<div th:replace="partials/navbar :: visitorNavSmall">
+</div>
+<div th:replace="partials/navbar :: visitorNav">
+</div>
 <br>
 <div class="container">
     <div class="row">
@@ -64,7 +67,7 @@
     </div>
     <br><br>
 </div>
-<div class="footer">
+<div id="drop" class="fixed-bottom">
     <div th:include="partials/footer :: footer"></div>
 </div>
 
