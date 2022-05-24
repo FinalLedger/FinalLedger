@@ -1,48 +1,41 @@
-
-
-  * {
+* {
     box-sizing: border-box;
 }
-html {
-    /*width: fit-content;*/
-}
+
 body {
 
     font-family: 'Montserrat', sans-serif;
     height: 100vh;
     margin: -20px 0 50px;
     /*  cursor: grabbing;*/
-
     background-color: #fff !important;
 }
-
 
 nav {
     display: flex;
     flex-direction: row;
-
-
     text-align: center;
     position: center;
     justify-content: space-between;
     font-weight: bolder;
 }
+
 .nav-logo {
     text-align: left;
     padding-left: 10px;
 }
+
 /*Left Side Text*/
 h1 {
-    /*
-    font-weight: bold;
-    */
     margin: auto;
     text-align: start;
 }
+
 h1:hover {
     background: linear-gradient(to right, #8a898b, #aea5b6);
     transition: ease-out 1s;
 }
+
 /*Login*/
 .form-header {
     font-family: sans-serif;
@@ -58,10 +51,12 @@ p {
     letter-spacing: 0.5px;
     margin: 20px 0 30px;
 }
+
 p:hover {
     font-weight: bolder;
     transition: ease-out .5ms;
 }
+
 .btn-login {
     margin: 5px 5px 5px 5px;
     height: 40px;
@@ -69,6 +64,7 @@ p:hover {
     width: 90px;
     color: ghostwhite;
 }
+
 span {
     font-size: 12px;
     margin-bottom: 2vw;
@@ -91,7 +87,6 @@ form {
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    padding: 0px 50px 5px 34vw;
     height: 100%;
     text-align: center;
    /* margin: 0 0 0 32%;*/
@@ -131,7 +126,6 @@ input {
     z-index: 2;
 }
 
-
 .overlay-container {
     position: absolute;
     top: 0;
@@ -164,9 +158,11 @@ input {
     height: 100%;
     width: 50%;
 }
+
 .overlay-panel.overlay-right {
     position: inherit;
 }
+
 .overlay-right {
     right: 0;
 }
@@ -212,59 +208,38 @@ span:nth-child(2) {
     display: flex;
 }
 
-
 /*main*/
 
 .tabs {
     color:whitesmoke;
 }
+
 .main-nav a {
     color: white;
     position:center;
 }
 
-/*Used For Color of typewrite for ABout Page*/  ✅
-/*                                                .typewrite {*/
-/*                                                    color: whitesmoke;*/
-/*                                                }*/
-/*Used For Main age*/
 .typewriter {
     font-weight:  bolder;
     font-size: large;
 }
 
-
-/*.footer {*/
-/*    position: fixed;*/
-/*    bottom: 0px;*/
-/*    left: 0px;*/
-/*    right: 0px;*/
-/*    margin-bottom: 0px;*/
-/*    background-color: #172a43;*/
-/*}*/
 .navbar-light .navbar-brand {
     color: rgb(255, 255, 255);
 }
 
-
-/*----*/
-
-
-/*Temp Register*/
-
-
 div#passwordHelp {
     color:  #3e4245;
 }
+
 h1.text-center {
     font-family: 'Luxurious Script',cursive;
 }
 
-
-
 p.text-center {
     color: ghostwhite;
 }
+
 div#container {
     margin-top: 40px;
 }
@@ -274,12 +249,9 @@ input#submitBtn {
 }
 
 .btn-primary {
-
     background: linear-gradient(to right, #172a43, #1f6570);
-
     border-width: 3px;
     border-style: initial;
-
     border-image: initial;
 }
 
@@ -287,110 +259,102 @@ button:not(:disabled) {
     border: solid ghostwhite;
 }
 
+.d-flex.justify-content-around.border-top.border-dark.bg-secondary {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
 
-    .d-flex.justify-content-around.border-top.border-dark.bg-secondary {
-        position: fixed;
-        bottom: 0;
-        width: 100%;
-    }
-
-  @media screen and (min-width: 300px) and (max-width: 500px) {
-
-
-      .footer {
-
-          position: inherit;
-          bottom: 0;
-          left: 0;
-          right: 0;
-
-
-      }
-
-      .bg-secondary {
-          background-image: linear-gradient(315deg,#1f6570 0%,#172a43 74%);
-      }
-      button:not(:disabled) {
-          border: solid #1f6570;
-      }
-
-      button:not(:disabled) {
-          border: solid #1f6570;
-      }
-      button.btn.button {
-          color: white;
-      }
-     /* form {
-          width: 40%;
-          height: 50%;
-      }*/
-      /*Test me*/
-     /*Login Position*/
-      form {
-       /*   padding: 0px 10px 53px 28px;
-          margin: 58px 0px 0px 97px;
-          height: 80%;
-          width: 61%;*/
-          width: 100%;
-          margin: 20vw 0 0 0;
-          padding: 0 0;
-      }
-
-      /*Login Header Position*/
-      .form-header {
-           font-family: sans-serif;
-           color: whitesmoke;
-           border-radius: 5px;
-           padding: 0px 0vw 5px 10px;
-           z-index: 1;
-       }
-
-
-      .h1, h1 {
-          font-size: calc(1.075rem + 1.5vw);
-          text-align: start;
-          margin: 0px 0px 42vw -7px;
-          font-weight: 200 !important;
-      }
-      .page-text {
-          margin: 0 0 17vh 0;
-      }
-      .overlay-container.d-flex {
-          padding: 0 0 0px 5px;
-      }
-      .overlay-container {
-          position: absolute;
-          top: 0px;
-          left: 100%;
-          width: 100%;
-          height: 51%;
-      }
-      div {
-          padding: 1px 2vw 0px 0px;
-          margin: 0px 0 0 0;
-      }
-      label {
-          display: inline-block;
-          text-align-last: center;
-      }
-      .overlay {
-          background: linear-gradient(to right, #172a43, #1f6570);
-          background-repeat: no-repeat;
-          background-size: cover;
-          background-position: 0 0;
-          color: #FFFFFF;
-          position: relative;
-          left: -106.5%;
-          height: 100%;
-          width: 85.5%;
-          margin: 0 0 0 10.9vw;
-      }
-  }
 #final_ledger{
     color: white;
 }
+
 .bg-secondary{
     background-image: linear-gradient(315deg,#1f6570 0%,#172a43 74%);
 }
+
+@media screen and (min-width: 300px) and (max-width: 500px) {
+
+  .footer {
+      position: inherit;
+      bottom: 0;
+      left: 0;
+      right: 0;
+  }
+
+  .bg-secondary {
+      background-image: linear-gradient(315deg,#1f6570 0%,#172a43 74%);
+  }
+
+  button:not(:disabled) {
+      border: solid #1f6570;
+  }
+
+  button:not(:disabled) {
+      border: solid #1f6570;
+  }
+
+  button.btn.button {
+      color: white;
+  }
+
+ /*Login Position*/
+  form {
+      width: 100%;
+      margin: 20vw 0 0 0;
+      padding: 0 0;
+  }
+
+  /*Login Header Position*/
+  .form-header {
+       font-family: sans-serif;
+       color: whitesmoke;
+       border-radius: 5px;
+       padding: 0px 0vw 5px 10px;
+       z-index: 1;
+   }
+
+
+  .h1, h1 {
+      font-size: calc(1.075rem + 1.5vw);
+      text-align: start;
+      margin: 0px 0px 42vw -7px;
+      font-weight: 200 !important;
+  }
+  .page-text {
+      margin: 3vh 0 10vh 20vh;
+  }
+  .overlay-container.d-flex {
+      padding: 0 0 0px 5px;
+  }
+  .overlay-container {
+      position: absolute;
+      top: 0px;
+      left: 100%;
+      width: 100%;
+      height: 51%;
+  }
+  div {
+      padding: 1px 2vw 0px 0px;
+      margin: 0px 0 0 0;
+  }
+  label {
+      display: inline-block;
+      text-align-last: center;
+  }
+  .overlay {
+      background: linear-gradient(to right, #172a43, #1f6570);
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: 0 0;
+      color: #FFFFFF;
+      position: relative;
+      left: -107.5%;
+      height: 87%;
+      width: 85.5%;
+      margin: 2vw 0 0 10.9vw;
+  }
+}
+
 
 
