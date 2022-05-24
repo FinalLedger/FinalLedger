@@ -23,7 +23,7 @@ figure#spinner {
 }
 figure#spinner img {
     width: 40%; max-width: 425px;
-    position: absolute; left: 30%;
+    position: absolute; left: 35%;
     transform-origin: 50% 50% -500px;
     outline:1px solid transparent;
 }
@@ -61,21 +61,22 @@ div#carousel ~ span:hover { color: #888; cursor: pointer; }
     text-decoration: none;
 }
 /*about page banner img's*/
-.card img {
-    height: 300px;
-    width:  250px;
+.profile-img {
+    height: 320px;
+    width:  300px;
     box-shadow: 5px 5px 15px 5px grey;
 }
 
 
-.card {
-
+.profile-card {
+    padding: 1rem 0;
     text-align: center;
     /*border: solid purple 4px;*/
 }
 
 .card-two {
-background-color: #fff;
+    padding: 1rem 0;
+    background-color: #fff;
     position: center;
     /*background-color: #FAEBD7;*/
 }
@@ -105,8 +106,9 @@ background-color: #fff;
 .title {
     font-family: 'Luxurious Script',cursive;
 }
-h1, h1 {
+h1.typewrite {
     background-color: #172a43;
+    margin-bottom: 0;
 }
 h1.title {
     color: #fff;

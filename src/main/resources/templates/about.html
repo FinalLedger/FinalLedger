@@ -2,8 +2,9 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <!--<link rel="stylesheet" href=".././static/css/styles.css">-->
-    <link rel="stylesheet" href="../static/js/about.js">  <!--Link Ineffective🚨 folder choice? Using inline for moment-->
-    <link  rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js">
+    <link rel="stylesheet" href="../static/js/about.js">
+    <!--Link Ineffective🚨 folder choice? Using inline for moment-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css">
     <meta charset="UTF-8">
     <meta name="viewport"
@@ -22,7 +23,8 @@
 <br>
 <div class="row about-us">
     <div>
-        <h2 class="sec-title"><span>A</span>
+        <h1 class="sec-title">
+            <span>A</span>
             <span>B</span>
             <span>O</span>
             <span>U</span>
@@ -30,11 +32,10 @@
             <span> </span>
             <span>U</span>
             <span>S</span>
-        </h2>
+        </h1>
     </div>
 </div>
 <br>
-<hr>
 <div id="carousel" class="d-none d-md-block">
     <figure id="spinner">
         <img src="https://ca.slack-edge.com/T029BRGN0-U02MUV5L150-39afa35a0e97-512" alt="pic of jason">
@@ -45,113 +46,102 @@
 </div>
 <span class="ss-icon" onclick="galleryspin('-')" id="span-left">&lt;</span>
 <span class="ss-icon" onclick="galleryspin('')" id="span-right">&gt;</span>
+<div class="profile-card">
+    <!--Profiles-->
 
-<!--Profiles-->
-
-<!--Profile 1-->
-    <h1>
-<!--        <a href="" class="typewrite" data-period="2000" data-type='[ "Hey There, Im Therman." ]'>-->
-        <p class="typewrite" data-period="2000" data-type='[ "Therman Haynes" ]'>
-            <span class="wrap"></span>
-        </p>
+    <!--Profile 1-->
+    <h1 class="text-center typewrite" data-period="2000" data-type='[ "Therman Haynes" ]'>
+        <span class="wrap"></span>
     </h1>
 
-    <div class="card ">
+    <div>
         <div class="card-two">
-            <img src="https://ca.slack-edge.com/T029BRGN0-U02MN8EJRGW-36a7ee367d5a-512" class="card-img-top profile-img" alt="img">
+            <img src="https://ca.slack-edge.com/T029BRGN0-U02MN8EJRGW-36a7ee367d5a-512" class="card-img-top profile-img"
+                 alt="img">
             <div class="card-body">
                 <h5 class="card-title">Therman Haynes</h5>
-<!--                <a href="" class="typewrite" data-period="2000" data-type='[ "Im just a guy who likes all aspects of I.T." ]'>-->
-<!--                    <span class="wrap"></span>-->
-<!--                </a>-->
+                <!--                <a href="" class="typewrite" data-period="2000" data-type='[ "Im just a guy who likes all aspects of I.T." ]'>-->
+                <!--                    <span class="wrap"></span>-->
+                <!--                </a>-->
                 <br>
                 <a href="https://github.com/Therman116220" class="btn btn-primary btn-color">Github</a>
-                <a href="https://www.linkedin.com/in/therman-haynes-4349b0198/" class="btn btn-primary btn-color">Linkedin</a>
+                <a href="https://www.linkedin.com/in/therman-haynes-4349b0198/"
+                   class="btn btn-primary btn-color">Linkedin</a>
             </div>
         </div>
     </div>
 
     <!--Profile 2-->
 
-    <h1>
-<!--        <a href="" class="typewrite" data-period="2000" data-type='[ "Hi, Im Jack." ]'>-->
-        <p class="typewrite" data-period="2000" data-type='[ "Ranchaya Sambath" ]'>
-            <span class="wrap"></span>
-        </p>
+    <h1 class="text-center typewrite" data-period="2000" data-type='[ "Ranchaya Sambath" ]'>
+        <span class="wrap"></span>
     </h1>
-
-    <div class="card ">
-        <div class="card-two">
-        <img src="https://ca.slack-edge.com/T029BRGN0-U02MS185YTX-bb22efb3fca3-512" class="card-img-top profile-img" alt="img">
+    <div class="card-two">
+        <img src="https://ca.slack-edge.com/T029BRGN0-U02MS185YTX-bb22efb3fca3-512" class="card-img-top profile-img"
+             alt="img">
         <div class="card-body">
             <h5 class="card-title">Ranchaya Sambath</h5>
-<!--            <a href="" class="typewrite" data-period="2000" data-type='[ "Im a coder who loves to develop" ]'>-->
-<!--                <span class="wrap"></span>-->
-<!--            </a>-->
+            <!--            <a href="" class="typewrite" data-period="2000" data-type='[ "Im a coder who loves to develop" ]'>-->
+            <!--                <span class="wrap"></span>-->
+            <!--            </a>-->
             <br>
             <a href="https://github.com/ranchayasambath" class="btn btn-primary btn-color">Github</a>
-            <a href="https://www.linkedin.com/in/ranchaya-sambath-1a3928180/" class="btn btn-primary btn-color">Linkedin</a>
+            <a href="https://www.linkedin.com/in/ranchaya-sambath-1a3928180/"
+               class="btn btn-primary btn-color">Linkedin</a>
         </div>
-        </div>
+    </div>
 
-<!--Profile 3-->
-        <h1 class="header-text">
-<!--            <a href="" class="typewrite" data-period="2000" data-type='[ "Hi, Im  Jason." ]'>-->
-                <p class="typewrite" data-period="2000" data-type='[ "Jason Comstock" ]'>
-                <span class="wrap"></span>
-            </p>
+    <!--Profile 3-->
+    <h1 class="text-center typewrite" data-period="2000" data-type='[ "Jason Comstock" ]'>
+        <span class="wrap"></span>
+    </h1>
+
+    <div>
+        <div class="card-two">
+            <img src="https://ca.slack-edge.com/T029BRGN0-U02MUV5L150-39afa35a0e97-512" class="card-img-top profile-img"
+                 alt="img">
+            <div class="card-body">
+                <h5 class="card-title">Jason Comstock</h5>
+                <!--                    <a href="" class="typewrite" data-period="2000" data-type='[ "A Marine with a passion for Back-end Development, Databases and Cyber-Security" ]'>-->
+                <!--                        <span class="wrap"></span>-->
+                <!--                    </a>-->
+                <br>
+                <a href="https://github.com/JMComstock" class="btn btn-primary btn-color">Github</a>
+                <a href="https://www.linkedin.com/in/jasonmcomstock/" class="btn btn-primary btn-color">Linkedin</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div>
+        <h1 class="text-center typewrite" data-period="2000" data-type='[ "Kat Rodriguez" ]'>
+            <span class="wrap"></span>
         </h1>
 
-        <div class="card ">
+        <div>
             <div class="card-two">
-                <img src="https://ca.slack-edge.com/T029BRGN0-U02MUV5L150-39afa35a0e97-512" class="card-img-top profile-img" alt="img">
+                <img src="https://ca.slack-edge.com/T029BRGN0-U02N7JEAQDP-e4013fbae92e-512"
+                     class="card-img-top profile-img" alt="img">
                 <div class="card-body">
-                    <h5 class="card-title">Jason Comstock</h5>
-<!--                    <a href="" class="typewrite" data-period="2000" data-type='[ "A Marine with a passion for Back-end Development, Databases and Cyber-Security" ]'>-->
-<!--                        <span class="wrap"></span>-->
-<!--                    </a>-->
+                    <h5 class="card-title">Kat Rodriguez </h5>
+                    <!--                        <a href="" class="typewrite" data-period="2000" data-type='[ "Im a full stack developer, who is very flexible in my capabilities." ]'>-->
+                    <!--                            <span class="wrap"></span>-->
+                    <!--                        </a>-->
                     <br>
-                    <a href="https://github.com/JMComstock" class="btn btn-primary btn-color">Github</a>
-                    <a href="https://www.linkedin.com/in/jasonmcomstock/" class="btn btn-primary btn-color">Linkedin</a>
+                    <a href="https://github.com/katrodriguez96" class="btn btn-primary btn-color">Github</a>
+                    <a href="https://www.linkedin.com/in/kathryn-rodriguez96/" class="btn btn-primary btn-color">Linkedin</a>
                 </div>
             </div>
         </div>
-
-
-
-        <div>
-            <h1 class="header-text">
-<!--                <a href="" class="typewrite" data-period="2000" data-type='[ "Hello, Im Kat." ]'>-->
-                <p class="typewrite" data-period="2000" data-type='[ "Kat Rodriguez" ]'>
-                    <span class="wrap"></span>
-                </p>
-            </h1>
-
-            <div class="card ">
-                <div class="card-two">
-                    <img src="https://ca.slack-edge.com/T029BRGN0-U02N7JEAQDP-e4013fbae92e-512" class="card-img-top profile-img" alt="img">
-                    <div class="card-body">
-                        <h5 class="card-title">Kat Rodriguez </h5>
-<!--                        <a href="" class="typewrite" data-period="2000" data-type='[ "Im a full stack developer, who is very flexible in my capabilities." ]'>-->
-<!--                            <span class="wrap"></span>-->
-<!--                        </a>-->
-                        <br>
-                        <a href="https://github.com/katrodriguez96" class="btn btn-primary btn-color">Github</a>
-                        <a href="https://www.linkedin.com/in/kathryn-rodriguez96/" class="btn btn-primary btn-color">Linkedin</a>
-                    </div></div>
-                </div>
-            </div>
     </div>
+</div>
 <div class="row back-top">
     <div>
         <a href="#" class="btn btn-primary"> Back to top</a>
     </div>
 </div>
-<!--<button><a class="btn-color" href="#top"> Top</a></button>-->
-<!--<div class="fixed-bottom" th:include="partials/footer :: footer"></div>-->
 <div id="drop">
-    <footer th:replace="partials/footer :: footer">
-    </footer>
+    <footer th:replace="partials/footer :: footer"></footer>
 </div>
 <script th:src="@{/js/about.js}"></script>
 <script th:src="@{/js/navbar.js}"></script>

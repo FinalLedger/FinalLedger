@@ -17,7 +17,7 @@
 </div>
 <div class="subheader"></div>
 <br>
-<div class="container col-8">
+<div class="container register-container col-8">
     <h1 class="text-center">Register</h1>
     <div th:if="${showErrorMsg}" class="alert alert-danger text-center" role="alert"><span th:text="${errorMsg}"></span></div>
     <form th:action="@{/register}" th:method="post" id="registerForm" th:object="${user}">
@@ -29,18 +29,17 @@
             <label for="username" class="form-label">Username</label>
             <input id="username" th:field="*{username}" name="username" class="form-control" type="text" required>
         </div>
-        <div class="mb-3">
+        <div>
             <label for="password" class="form-label">Password</label>
             <input id="password" th:field="*{password}" name="password" class="form-control" type="password" required>
         </div>
-            <div id="passwordHelp" class="form-text">Your password must include at least one of each:<br>
+            <div id="passwordHelp" class="form-text mb-3">Your password must include at least one of each:<br>
                 <span id="8char">8 characters</span>&nbsp;
                 <span id="uppercase">Uppercase letters</span>&nbsp;
                 <span id="lowercase">Lowercase letters</span>&nbsp;
                 <span id="num">Numbers</span>&nbsp;
                 <span id="special">Special characters</span>&nbsp;
             </div>
-<!--        </div>-->
         <div class="mb-3">
             <label for="confirmPass" class="form-label">Confirm Password</label>
             <input id="confirmPass" name="confirmPass" class="form-control" type="password" required>
@@ -55,16 +54,12 @@
         <button class="btn btn-primary" id="submitBtn" type="submit">Register</button>
     </form>
     <br>
-    <hr>
-    <p class="text-center">Already have an account? <a href="/login">Log in</a></p>
+    <p class="text-center">Already have an account? <a style="color: #fffef2" href="/login">Log in</a></p>
 </div>
 <br>
 <br>
-<!--<div class="fixed-bottom" th:include="partials/footer :: footer"></div>-->
-<div id="drop" class="fixed-bottom">
-    <footer th:replace="partials/footer :: footer">
-        <!--    <footer th:replace="partials/footer :: footer">-->
-    </footer>
+<div id="drop">
+    <footer th:replace="partials/footer :: footer"></footer>
 </div>
 
 <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
