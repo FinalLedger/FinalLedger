@@ -11,7 +11,7 @@ body {
 .btn-secondary {
  color: #fff;
  background: linear-gradient(to right, #172a43, #1f6570);
- /*border-color: #1f6570;*/
+ border-color: #1f6570;
 }
 
 .subheader {
@@ -21,8 +21,8 @@ body {
 }
 
 .circular {
- width: 250px;
- height: 250px;
+ width: 300px;
+ height: 300px;
  border-radius: 50%;
  position: relative;
  overflow: hidden;
@@ -67,4 +67,8 @@ button:not(:disabled) {
 
 .search {
  margin-bottom: 200px;
+}
+
+.btn-primary {
+ width: 23em;
 }
