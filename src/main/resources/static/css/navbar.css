@@ -1,6 +1,16 @@
 a.nav-link{
     color: white;
 }
+/*--- Light bleed hover ---*/
+a:visited,a:link, a:active{
+    text-decoration: none;
+}
+a:hover{
+    color: white !important;
+    filter: drop-shadow(0 0 2px rgba(255,255,255,0.7)) drop-shadow(0 0 5px rgba(255,255,255,0.7)) drop-shadow(0 0 15px rgba(255,255,255,0.7));
+    text-decoration: none;}
+
+/*------------------------------*/
 @media screen and (max-width:767px) {
     #bigNav,.img-one{
         display: none;
