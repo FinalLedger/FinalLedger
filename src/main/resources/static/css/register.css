@@ -144,13 +144,13 @@ div#container {
 }
 
 #buttonUpload {
-    height: 4vw;
-    width: 18vw;
+    height: 44px;
+    width: 205px;
 }
 
 #submitBtn {
-    height: 5vw;
-    width: 30vw;
+    height: 53px;
+    width: 270px;
     margin-bottom: 10px;
 }
 
