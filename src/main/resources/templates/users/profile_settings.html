@@ -26,6 +26,7 @@
         <div class="row m-1 col-md-3 a-md-left justify-content-center">
             <img class="circular circular-img mb-3" th:src="${user.getProfilePicUrl()}" alt="profile image"><br>
             <h3 class="d-flex username row justify-content-center" th:text="${user.username.toUpperCase()}"></h3>
+            <p class="d-flex row justify-content-center" th:text="${user.getEmail()}"></p>
             <a class="d-flex row justify-content-center btn btn-secondary" type="button" href="/profile">My Profile</a>
         </div>
 
