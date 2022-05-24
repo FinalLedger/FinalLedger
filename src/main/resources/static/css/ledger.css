@@ -7,11 +7,25 @@ p {
     margin-bottom: 0.5rem;
 }
 .card-title{
-    color: black;
+    text-align: center;
+    color: white;
+}
+a, a:visited{
+   text-decoration: none;
+    color: white;
+    text-align: center;
+}
+p,h6,label,h5,button.btn-close{
+    color: white;
 }
 
 .card-body {
     padding-bottom: 0.5rem;
+
+}
+.card,.list-group-item{
+    background: hsla(0,0%,50%,.1);
+    backdrop-filter: blur(.1em);
 }
 label.form-label,small{
     color: whitesmoke;
@@ -36,7 +50,7 @@ h5#formModalLabel {
     color: #fff;
 }
 
-button.btn.btn-primary,button.btn.btn-warning,button.btn.btn-danger {
+button.btn.btn-primary,button.btn.btn-warning,button.btn.btn-danger,.btn.btn-sm.btn-warning{
     border: solid ghostwhite 2px;
     background-color: #172a43;
     color: white;
@@ -61,7 +75,7 @@ div#infoView {
     background-color: #FFF;
 
 }
-.nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
+.nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active{
 
     color: ghostwhite;
     background-color: #404D60 ;
