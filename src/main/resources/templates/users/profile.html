@@ -25,13 +25,13 @@
     </div>
     <br>
     <div class="row">
-        <div class="row col-md-4 a-md-left justify-content-center">
+        <div class="row m-1 col-md-3 a-md-left justify-content-center">
             <img class="circular circular-img mb-3" th:src="${user.getProfilePicUrl()}"
                  alt="profile image">
             <h3 class="d-flex username row justify-content-center" th:text="${user.username.toUpperCase()}"></h3>
             <p class="d-flex row justify-content-center" th:text="${user.getEmail()}"></p>
-            <a href="/profile/settings">Profile Settings</a>
-            <a href="/logout">Logout</a>
+            <a class="d-flex row justify-content-center btn btn-secondary" type="button" href="/profile/settings">Profile Settings</a>
+            <a class="d-flex row justify-content-center btn btn-secondary" type="button" href="/logout">Logout</a>
         </div>
 
         <!--        THIS SHOWS ALL THE USERS ADDED AS A CONNECTION       -->
@@ -52,8 +52,8 @@
     <br><br>
     <!--        THIS WILL SEARCH FOR CONTACTS BY EMAIL ONCE IT IS FINISHED   -->
 
-    <div class="row">
-        <div class="row col-md-4 a-md-left justify-content-center">
+    <div class="row search">
+        <div class="row m-1 col-md-3 a-md-left justify-content-center">
             <img hidden class="circular circular-img mb-3 hiddenElement" th:src="${user.getProfilePicUrl()}"
                  alt="profile image">
             <h3 class="d-flex username row justify-content-center hiddenElement"></h3>
