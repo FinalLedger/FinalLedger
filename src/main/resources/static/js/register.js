@@ -1,5 +1,5 @@
 window.addEventListener("DOMContentLoaded", function () {
-    // $("#submitBtn").attr("disabled", "disabled");
+    $("#submitBtn").attr("disabled", "disabled");
 
     let apikey = document.querySelector('meta').content;
     const client = filestack.init(apikey); // filestack is not defined
@@ -93,16 +93,16 @@ window.addEventListener("DOMContentLoaded", function () {
         }
     });
 
-    // $("#registerForm").keyup(function () {
-    //     let password = $("#password").val();
-    //     let confirmPass = $("#confirmPass").val();
-    //     const pattern = new RegExp(
-    //         "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[-+_!@#$%^&*.,?]).+$"
-    //     );
-    //     if (pattern.test(password) && password === confirmPass) {
-    //         $("#submitBtn").removeAttr("disabled");
-    //     } else {
-    //         $("#submitBtn").attr("disabled", "disabled");
-    //     }
-    // })
+    $("#registerForm").keyup(function () {
+        let password = $("#password").val();
+        let confirmPass = $("#confirmPass").val();
+        const pattern = new RegExp(
+            "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[-+_!@#$%^&*.,?]).+$"
+        );
+        if (pattern.test(password) && password === confirmPass) {
+            $("#submitBtn").removeAttr("disabled");
+        } else {
+            $("#submitBtn").attr("disabled", "disabled");
+        }
+    })
 })
