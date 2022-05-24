@@ -72,7 +72,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="usernameModalLabel">Change your username</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
             </div>
             <div class="modal-body">
                 <form th:action="@{/profile/settings/username}" th:method="post">
@@ -81,7 +81,6 @@
                         <input id="username" name="username" class="form-control" type="text">
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                         <button type="submit" class="btn btn-primary">Submit</button>
                     </div>
                 </form>
@@ -94,7 +93,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="passwordModalLabel">Change your password</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
             </div>
             <div class="modal-body">
                 <h3>Changing your password will log you out and require you to log back in with your new password.</h3>
@@ -123,7 +122,6 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                         <button id="submitBtn" type="submit" class="btn btn-primary">Submit</button>
                     </div>
                 </form>
@@ -136,7 +134,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="profilePicModalLabel">Change your profile picture</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
             </div>
             <div class="modal-body">
                 <form th:action="@{/profile/settings/profile_pic}" th:method="post">
@@ -147,7 +145,6 @@
                         <button id="buttonUpload" type="button" class="btn btn-primary">Upload Picture</button>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                         <button type="submit" class="btn btn-primary">Submit</button>
                     </div>
                 </form>
@@ -168,7 +165,6 @@
                     <h3>Are you sure you wish to delete your account?<br>
                         All info saved to your ledger will be deleted.</h3>
                     <div class="modal-footer">
-
                         <button type="submit" class="btn btn-primary">Delete</button>
                     </div>
                 </form>

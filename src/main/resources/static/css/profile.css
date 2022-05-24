@@ -47,8 +47,18 @@ body {
 }
 
 button:not(:disabled) {
- border: solid #1f6570;
+ border-color: #1f6570;
  background: linear-gradient(to right, #172a43, #1f6570);
+}
+
+button:disabled {
+ background: linear-gradient(to right, #172a43, #1f6570);
+ border-color: #1f6570;
+}
+
+button:hover {
+ background: linear-gradient(to right, #172a43, #1f6570)!important;
+ border-color: #1f6570!important;
 }
 
 .bg-secondary a:hover {
