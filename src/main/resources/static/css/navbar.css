@@ -18,6 +18,11 @@ a.nav-link.nav-bar-link:hover,.navbar-brand:hover, .smallNavTitle{
     .footer{
         font-size: .7em;
     }
+
+    a.nav-link:hover {
+        color: ghostwhite;
+    }
+
     .navbarSmall{
         background-image: linear-gradient(315deg,#1f6570 0%,#172a43 74%);
         /*display: flex;*/
@@ -64,6 +69,7 @@ a.nav-link.nav-bar-link:hover,.navbar-brand:hover, .smallNavTitle{
         backdrop-filter: blur(.1em);
     }
 }
+
 @media screen and (min-width: 768px){
 
     #navSmall{
@@ -87,6 +93,11 @@ a.nav-link.nav-bar-link:hover,.navbar-brand:hover, .smallNavTitle{
     a.title-nav {
         color: #fff;
     }
+
+    a.nav-link:hover {
+        color: ghostwhite;
+    }
+
     .subheader {
         width: 100%;
         height: 5px;
