@@ -12,8 +12,6 @@
     #boxLogo {
         background-image: url("https://images.unsplash.com/photo-1620287920810-3f5b9746380c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1587&q=80");
         background-position: center;
-        /*background: lightgray;*/
-        /*font-weight: bolder;*/
         height: 25em;
         width: 50%;
         display: flex;
@@ -25,7 +23,6 @@
     #boxLogo > h1 {
 
     }
-
 
     #title-nav {
         font-family: 'Luxurious Script', cursive;
@@ -70,9 +67,6 @@
         text-align: center;
     }
 
-    /*img{*/
-    /*    clip-path: circle();*/
-    /*}*/
     .user-type {
         margin-bottom: 2em;
     }
@@ -95,57 +89,56 @@
         text-align: center;
     }
 
-    /*----------------------*/
     /*---card animations---*/
-    .flip-card-inner {
-        position: relative;
-        transition: transform 0.8s;
-        transform-style: preserve-3d;
-        margin-left: 61em;
-    }
+    /*.flip-card-inner {*/
+    /*    position: relative;*/
+    /*    transition: transform 0.8s;*/
+    /*    transform-style: preserve-3d;*/
+    /*    margin-left: 61em;*/
+    /*}*/
 
-    .flip-card-front > p {
-        margin-top: 2em;
-        width: 35em;
-        height: auto;
-    }
+    /*.flip-card-front > p {*/
+    /*    margin-top: 2em;*/
+    /*    width: 35em;*/
+    /*    height: auto;*/
+    /*}*/
 
-    .flip-card-back {
-        background: gray;
-        position: absolute;
-        transform: rotateY(180deg);
-    }
+    /*.flip-card-back {*/
+    /*    background: gray;*/
+    /*    position: absolute;*/
+    /*    transform: rotateY(180deg);*/
+    /*}*/
 
-    .flip-card-back > p {
-        margin-top: 2em;
-        width: 35em;
-        height: auto;
-    }
+    /*.flip-card-back > p {*/
+    /*    margin-top: 2em;*/
+    /*    width: 35em;*/
+    /*    height: auto;*/
+    /*}*/
 
-    .flip-card-front, .flip-card-back {
-        position: absolute;
-        width: fit-content;
-        height: fit-content;
-        -webkit-backface-visibility: hidden;
-        backface-visibility: hidden;
-    }
+    /*.flip-card-front, .flip-card-back {*/
+    /*    position: absolute;*/
+    /*    width: fit-content;*/
+    /*    height: fit-content;*/
+    /*    -webkit-backface-visibility: hidden;*/
+    /*    backface-visibility: hidden;*/
+    /*}*/
 
-    .flip-card-front {
-        background: gray;
-    }
+    /*.flip-card-front {*/
+    /*    background: gray;*/
+    /*}*/
 
-    .flip-card-inner {
-        position: absolute;
-        width: 300px;
-        height: 200px;
-        text-align: center;
-        transition: transform 0.8s;
-        transform-style: preserve-3d;
-    }
+    /*.flip-card-inner {*/
+    /*    position: absolute;*/
+    /*    width: 300px;*/
+    /*    height: 200px;*/
+    /*    text-align: center;*/
+    /*    transition: transform 0.8s;*/
+    /*    transform-style: preserve-3d;*/
+    /*}*/
 
-    .flip-card:hover .flip-card-inner {
-        transform: rotateY(180deg);
-    }
+    /*.flip-card:hover .flip-card-inner {*/
+    /*    transform: rotateY(180deg);*/
+    /*}*/
 
     .landing-container {
         box-shadow: 0 14px 28px rgba(5, 0, 9, 0.58), 0 10px 10px rgb(250, 235, 215);
@@ -208,68 +201,3 @@
     button.btn.button {
         color: #fff;
     }
-
-
-    /*
-    @media (max-width: 575px) {
-        p {
-            color: turquoise;
-        }
-        #ledger-h1, #row-1, #row-2, #row-3 {
-            margin-top: 5em;
-            margin-bottom: 5em;
-            text-align: center;
-            flex-direction: column;
-            align-items: center;
-        }
-    }
-
-
-    !*Small devices (landscape phones, 576px and up)*!
-    @media (min-width: 576px) {
-        p {
-            color: rebeccapurple;
-        }
-    }
-
-    !*!Medium devices (tablets, 768px and up)*!
-    @media (min-width: !*768px*! 600px) {
-        body {
-            width: fit-content;
-        }
-        p {
-            color: blue;
-            font-size: 4vw;
-        }
-        .landing-container {
-          !* width:  80%;*!
-        }
-
-        #ledger-h1, #row-1, #row-2, #row-3 {
-            margin-top: 5em;
-            margin-bottom: 5em;
-            text-align: center;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        #boxLogo {
-            height: 84vw;
-            width: 131vw;
-        }
-    }
-
-    !*!Large devices (desktops, 992px and up)*!
-    @media (min-width: 992px) {
-        p {
-            color: red;
-        }
-    }
-
-    !*Extra large devices (large desktops, 1200px and up)*!
-    @media (min-width: 1200px) {
-        p {
-            color: green;
-        }
-    }
-    */
